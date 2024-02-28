@@ -18,6 +18,7 @@ public class CameraScript : MonoBehaviour
         if (hook.transform.position.y < -2)
         {
             cam.Follow = hook.transform;
+            cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0.7f;
         }
     }
 }
