@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Reeling : MonoBehaviour
 {
+    GameObject fishStats;
     GameObject fish;
-
 
     // fish stats
     float str; // how hard the fish pulls back
@@ -25,6 +25,7 @@ public class Reeling : MonoBehaviour
     float length; // how much line is out
     bool pulling;
     bool reeling;
+    Vector2 scale; // the scale of the fish icon's x position
 
     // timer variables
     float pause; // final pause time
@@ -33,6 +34,7 @@ public class Reeling : MonoBehaviour
 
     private void Start()
     {
+        fish = GameObject.Find("Fish");
         Fish feesh = fish.GetComponent<Fish>();
         feesh.str = str;
         feesh.pauseBase = pauseBase;
@@ -41,6 +43,8 @@ public class Reeling : MonoBehaviour
         feesh.pullExtra = pullExtra;
         feesh.time = time;
         pause = pauseBase + Random.Range(0, pauseExtra);
+        scale = new Vector2(-3,2.8f);
+        length = ;
     }
     private void FixedUpdate()
     {
@@ -66,7 +70,7 @@ public class Reeling : MonoBehaviour
             }
         }
         length += Calculate();
-
+        length -= 3;
     }
     float Calculate()
     {
@@ -83,6 +87,6 @@ public class Reeling : MonoBehaviour
         {
             swim = strength;
         }
-        return swim;
+        return swim * 3;
     }
 }
