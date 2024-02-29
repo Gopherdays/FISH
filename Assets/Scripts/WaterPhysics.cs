@@ -22,20 +22,10 @@ public class WaterPhysics : MonoBehaviour
             rb.gravityScale = 1;
             rb.drag = 0;
         }
-        else if (rb.velocity.y < waterGravity)
-        {
-            rb.gravityScale = -0.15f;
-            rb.drag = waterDrag;
-        }
-        else if (rb.velocity.y > waterGravity)
-        {
-            rb.gravityScale = 0.15f;
-            rb.drag = 0;
-        }
         else
         {
-            rb.gravityScale = 0;
-            rb.drag = 0;
+            rb.gravityScale = 0.15f * Mathf.Sign(rb.velocity.y - waterGravity);
+            rb.drag = waterDrag;
         }
     }
 }
