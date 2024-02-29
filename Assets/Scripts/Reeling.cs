@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic; // haha I messed with your code    -Nick
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Reeling : MonoBehaviour
 {
@@ -42,12 +43,18 @@ public class Reeling : MonoBehaviour
         feesh.pullTime = pullTime;
         feesh.pullExtra = pullExtra;
         feesh.time = time;
+        maxLength = 1;
         pause = pauseBase + Random.Range(0, pauseExtra);
-        scale = new Vector2(-3,2.8f);
-        length = 0;
+        length = maxLength * 0.75f;
+        scale = new Vector2(length,-4);
     }
     private void FixedUpdate()
     {
+        if (Input.inputString != "") Debug.Log(Input.inputString);
+
+
+
+
         if (pulling)
         {
             if (timer < pullTime)
@@ -70,7 +77,8 @@ public class Reeling : MonoBehaviour
             }
         }
         length += Calculate();
-        length -= 3;
+        scale.x = (length * 5.8f / maxLength) - 3;
+        fish.transform.position = scale;
     }
     float Calculate()
     {
