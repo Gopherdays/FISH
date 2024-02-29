@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class HookControl : MonoBehaviour
 {
-    // Start is called before the first frame update
+    Rigidbody2D rb;
+    public float hookMovementSpeed;
+
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (rb.position.y < 0)
+            rb.AddForce(new Vector2(Input.GetAxis("Horizontal") / 2, Input.GetAxis("Vertical") * 2) * hookMovementSpeed);
     }
 }

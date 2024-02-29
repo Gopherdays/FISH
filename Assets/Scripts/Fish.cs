@@ -11,14 +11,27 @@ public class Fish : MonoBehaviour
     public float pullExtra; // the maximum amount of random extra time
     public float time; // the amount of time you have to reel in the fish before it automatically escapes
 
+    WaterPhysics waterPhysics;
+    Rigidbody2D rb;
+    Vector2 velocityVector;
+    public float swimSpeed;
+    public float swimCycle = 0.2f;
+    float randomOffset;
+    public float bounceSpeed = 4;
+    public Vector2 hookPoint;
+
     void Start()
     {
-        
+        waterPhysics = GetComponent<WaterPhysics>();
+        rb = GetComponent<Rigidbody2D>();
+        randomOffset = Random.Range(0, Mathf.PI * 2);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        waterPhysics.waterGravity = Mathf.Sin(randomOffset + Time.time * bounceSpeed) * swimCycle;
+        velocityVector = rb.velocity;
+        velocityVector.x = swimSpeed;
+        rb.velocity = velocityVector;
     }
 }

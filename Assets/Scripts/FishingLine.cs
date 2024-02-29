@@ -19,10 +19,12 @@ public class FishingLine : MonoBehaviour
     {
         positions[0] = origin.transform.position;
         positions[1] = hook.transform.position;
-        if (hook.transform.position.y < 0)
-            positions[1].y = 0;
         positions[2] = hook.transform.position;
         positions[2].y += 0.45f;
+        if (hook.transform.position.y < -0.45f)
+            positions[1].y = 0;
+        else
+            positions[1] = positions[2];
         line.SetPositions(positions);
     }
 }
