@@ -44,7 +44,7 @@ public class Reeling : MonoBehaviour
         feesh.time = time;
         pause = pauseBase + Random.Range(0, pauseExtra);
         scale = new Vector2(-3,2.8f);
-        length = ;
+        length = 0;
     }
     private void FixedUpdate()
     {
