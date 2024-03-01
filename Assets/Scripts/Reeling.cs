@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Reeling : MonoBehaviour
 {
-    GameObject fishStats;
+    public GameObject fishStats;
     GameObject fish;
 
     // fish stats
@@ -35,14 +35,13 @@ public class Reeling : MonoBehaviour
 
     private void Start()
     {
-        fish = GameObject.Find("Fish");
-        Fish feesh = fish.GetComponent<Fish>();
-        feesh.str = str;
-        feesh.pauseBase = pauseBase;
-        feesh.pauseExtra = pauseExtra;
-        feesh.pullTime = pullTime;
-        feesh.pullExtra = pullExtra;
-        feesh.time = time;
+        //Fish feesh = fish.GetComponent<Fish>();
+        //feesh.str = str;
+        //feesh.pauseBase = pauseBase;
+        //feesh.pauseExtra = pauseExtra;
+        //feesh.pullTime = pullTime;
+        //feesh.pullExtra = pullExtra;
+        //feesh.time = time;
         maxLength = 1;
         pause = pauseBase + Random.Range(0, pauseExtra);
         length = maxLength * 0.75f;
@@ -50,9 +49,6 @@ public class Reeling : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (Input.inputString != "") Debug.Log(Input.inputString);
-
-
 
 
         if (pulling)
@@ -78,7 +74,7 @@ public class Reeling : MonoBehaviour
         }
         length += Calculate();
         scale.x = (length * 5.8f / maxLength) - 3;
-        fish.transform.position = scale;
+        //fish.transform.position = scale;
     }
     float Calculate()
     {

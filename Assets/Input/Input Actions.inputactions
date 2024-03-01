@@ -1,0 +1,107 @@
+{
+    "name": "Input Actions",
+    "maps": [
+        {
+            "name": "Control Sticks",
+            "id": "1edae57f-327b-4577-912c-091f2ab966c9",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Value",
+                    "id": "1a656371-0713-42bf-8791-ccb73c4c90b5",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "58b1b113-4bed-408a-8bfc-d88256445c95",
+                    "path": "<XInputController>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Dpad",
+            "id": "87abd245-0852-4ba3-8309-e5af46683ed2",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "d2c143c4-87e7-4f50-b335-2f9374f507c8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "05da8d19-ccf0-4f53-8f25-46d2939b5c8c",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "716fa6ab-c4d9-44fb-a224-4e78f27a66c6",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4912eb53-d704-4bc5-920d-3a3fd1c4b7c0",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2bca8fa3-ea89-4790-b647-863d72bc082e",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Xbox",
+            "bindingGroup": "Xbox",
+            "devices": [
+                {
+                    "devicePath": "<XInputController>",
+                    "isOptional": true,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
