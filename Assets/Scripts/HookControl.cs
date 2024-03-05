@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class HookControl : MonoBehaviour
 {
+    public PlayerStatsEpic stats;
+
     Rigidbody2D rb;
     public Transform origin;
-    public float hookMovementSpeed;
+    public float hookSpeedHorizontal = 2;
+    public float hookSpeedVertical = 8;
     public bool thrown = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        hookSpeedHorizontal = 2 * stats.lineSpeedHorizontal;
+        hookSpeedVertical = 8 * stats.lineSpeedVertical;
     }
 
     void Update()
@@ -19,7 +24,7 @@ public class HookControl : MonoBehaviour
         if (thrown)
         {
             if (rb.position.y < 0)
-                rb.AddForce(new Vector2(Input.GetAxis("Horizontal") / 2, Input.GetAxis("Vertical") * 2) * hookMovementSpeed);
+                rb.AddForce(new Vector2(Input.GetAxis("Horizontal") * hookSpeedHorizontal, Input.GetAxis("Vertical") * hookSpeedVertical));
         }
         else
         {
@@ -36,11 +41,13 @@ public class HookControl : MonoBehaviour
         thrown = true;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Fish"))
         {
             Debug.Log("Catch this fish: " + collision.gameObject.name);
+
+            GameObject.Find("Virtual Camera").GetComponent<CameraScript>().Shake(100);
         }
     }
 }
