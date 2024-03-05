@@ -12,7 +12,6 @@ public class HookControl : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), origin.gameObject.GetComponent<BoxCollider2D>());
     }
 
     void Update()
@@ -33,8 +32,15 @@ public class HookControl : MonoBehaviour
 
     void ThrowHook()
     {
-        Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), origin.gameObject.GetComponent<BoxCollider2D>());
         rb.AddForce(new Vector2(Random.Range(0.25f, 1.25f) * -500, Random.Range(0.5f, 1.25f) * 1000));
         thrown = true;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Fish"))
+        {
+            Debug.Log("Catch this fish: " + collision.gameObject.name);
+        }
     }
 }
