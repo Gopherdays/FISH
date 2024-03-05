@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Reeling : MonoBehaviour
 {
     public GameObject fishStats;
-    GameObject fish;
+    public Slider bar;
 
     // fish stats
     float str; // how hard the fish pulls back
@@ -26,7 +26,6 @@ public class Reeling : MonoBehaviour
     float length; // how much line is out
     bool pulling;
     bool reeling;
-    Vector2 scale; // the scale of the fish icon's x position
 
     // timer variables
     float pause; // final pause time
@@ -35,6 +34,7 @@ public class Reeling : MonoBehaviour
 
     private void Start()
     {
+        bar.value = 0.75f;
         //Fish feesh = fish.GetComponent<Fish>();
         //feesh.str = str;
         //feesh.pauseBase = pauseBase;
@@ -45,12 +45,14 @@ public class Reeling : MonoBehaviour
         maxLength = 1;
         pause = pauseBase + Random.Range(0, pauseExtra);
         length = maxLength * 0.75f;
-        scale = new Vector2(length,-4);
+    }
+    private void Update()
+    {
+        
     }
     private void FixedUpdate()
     {
-
-
+        if (bar.value == 0)
         if (pulling)
         {
             if (timer < pullTime)
@@ -72,9 +74,7 @@ public class Reeling : MonoBehaviour
                 pulling = true;
             }
         }
-        length += Calculate();
-        scale.x = (length * 5.8f / maxLength) - 3;
-        //fish.transform.position = scale;
+        bar.value += Calculate();
     }
     float Calculate()
     {
