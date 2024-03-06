@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic; // haha I messed with your code    -Nick
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.InputSystem;
 public class Reeling : MonoBehaviour
 {
     public GameObject fishStats;
     public Slider bar;
-
+    public InputActions reel;
     // fish stats
     float str; // how hard the fish pulls back
     float pauseBase; // the minimum amount of time the fish pauses between pulls
@@ -31,9 +31,12 @@ public class Reeling : MonoBehaviour
     float pause; // final pause time
     float timer; // timer variable
     float swim; // how much the fish moves and in what direction
+    
 
     private void Start()
     {
+        reel = GetComponent<InputActions>();
+        transform.GetChild(0).gameObject.SetActive(false);
         bar.value = 0.75f;
         //Fish feesh = fish.GetComponent<Fish>();
         //feesh.str = str;
@@ -45,10 +48,11 @@ public class Reeling : MonoBehaviour
         maxLength = 1;
         pause = pauseBase + Random.Range(0, pauseExtra);
         length = maxLength * 0.75f;
+        reel.Reel.ReelAction.Enable();
     }
     private void Update()
     {
-        
+        //if (reel.Reel.ReelAction)
     }
     private void FixedUpdate()
     {

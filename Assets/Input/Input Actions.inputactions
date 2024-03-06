@@ -6,7 +6,7 @@
             "id": "66f0053b-ec20-4960-978a-844c05336e0c",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "ReelAction",
                     "type": "Button",
                     "id": "b3e8f563-9f57-4ab6-adf5-80d16fc2bae0",
                     "expectedControlType": "Button",
@@ -23,7 +23,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "ReelAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -34,7 +34,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "ReelAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -45,7 +45,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "ReelAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -56,7 +56,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "ReelAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
