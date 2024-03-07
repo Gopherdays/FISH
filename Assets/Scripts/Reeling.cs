@@ -3,6 +3,7 @@ using System.Collections.Generic; // haha I messed with your code    -Nick
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+
 public class Reeling : MonoBehaviour
 {
     public GameObject fishStats;
@@ -35,7 +36,7 @@ public class Reeling : MonoBehaviour
 
     private void Start()
     {
-        reel = GetComponent<InputActions>();
+        reel = new InputActions();
         transform.GetChild(0).gameObject.SetActive(false);
         bar.value = 0.75f;
         //Fish feesh = fish.GetComponent<Fish>();
@@ -80,6 +81,7 @@ public class Reeling : MonoBehaviour
         }
         bar.value += Calculate();
     }
+
     float Calculate()
     {
         float strength = 0;
@@ -96,5 +98,13 @@ public class Reeling : MonoBehaviour
             swim = strength;
         }
         return swim * 3;
+    }
+
+    public void ReelAction(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            Debug.Log("sdlkfjg;lkwes");
+        }
     }
 }
