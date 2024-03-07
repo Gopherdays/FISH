@@ -17,3 +17,4 @@ MonoBehaviour:
   turtleHunger: 30
   lineSpeedHorizontal: 1
   lineSpeedVertical: 1
+  lineSpeedUpgradeCost: 100

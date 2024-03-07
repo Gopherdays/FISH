@@ -11,6 +11,8 @@ public class PlayerStatsEpic : ScriptableObject
     public float lineSpeedHorizontal;
     public float lineSpeedVertical;
 
+    public int lineSpeedUpgradeCost;
+
     public void Reset()
     {
         money = 0;
@@ -18,6 +20,7 @@ public class PlayerStatsEpic : ScriptableObject
         turtleHunger = 30;
         lineSpeedHorizontal = 1;
         lineSpeedVertical = 1;
+        lineSpeedUpgradeCost = 100;
     }
 
     public void NewDay()
