@@ -1784,13 +1784,13 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1742874992}
+        m_TargetAssemblyTypeName: Reeling, Assembly-CSharp
+        m_MethodName: ReelAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2276,7 +2276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98c9c994f7f34754f91d5ce375c78ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
+  stats: {fileID: 11400000, guid: 444d98e1fff443f42b1ef1bb38fb97ed, type: 2}
   origin: {fileID: 728282006}
   hookSpeedHorizontal: 2
   hookSpeedVertical: 8
