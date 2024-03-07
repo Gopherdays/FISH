@@ -65,13 +65,16 @@ public class Shop : MonoBehaviour
         }
     }
 
-    void Dialogue(string[] array, Status whatisthisone)
+    void Dialogue(string[] array, Status whatisthisone, int force = -1)
     {
         if (whatisthisone != status)
         {
             status = whatisthisone;
             currentDialogue = "";
-            remainingDialogue = array[Random.Range(0,array.Length)];
+            if (force != -1)
+                remainingDialogue = array[force];
+            else
+                remainingDialogue = array[Random.Range(0,array.Length)];
         }
     }
 
@@ -96,17 +99,72 @@ public class Shop : MonoBehaviour
         
     }
 
-    public void LineUpgradePressed()
+    public void Leave()
     {
-        if (status != Status.LookingAtItem)
-            Dialogue(browsingDialogue, Status.LookingAtItem);
-        else if (playerStats.money < playerStats.lineSpeedUpgradeCost)
-        {
-            Dialogue(brokeDialogue, Status.YouArePoor);
-        }
+        if (status != Status.TryLeave)
+            Dialogue(leavingDialogue, Status.TryLeave);
         else
         {
+            Dialogue(leftDialogue, Status.Leave);
+            // leave after a few seconds
+        }
+    }
 
+    public void BuyItem(int whichButton)
+    {
+        if (status != Status.LookingAtItem)
+            Dialogue(browsingDialogue, Status.LookingAtItem, whichButton);
+        else
+        {
+            switch (whichButton)
+            {
+                case 0:
+                    // turtle food (code multiple things later)
+                    if (playerStats.money < 5)
+                        Dialogue(brokeDialogue, Status.YouArePoor);
+                    else
+                    {
+                        playerStats.money -= 5;
+                        Dialogue(purchaseDialogue, Status.PurchasedItem);
+                        playerStats.turtleFood++;
+                    }
+                    break;
+                case 1:
+                    //fhishg line
+                    if (playerStats.money < playerStats.lineSpeedUpgradeCost)
+                        Dialogue(brokeDialogue, Status.YouArePoor);
+                    else
+                    {
+                        playerStats.money -= playerStats.lineSpeedUpgradeCost;
+                        Dialogue(purchaseDialogue, Status.PurchasedItem);
+                        playerStats.lineSpeedVertical *= 1.5f;
+                    }
+                    break;
+                case 2:
+                    // fishing reel
+                    if (playerStats.money < 99999)
+                        Dialogue(brokeDialogue, Status.YouArePoor);
+                    else
+                    {
+                        playerStats.money -= 99999;
+                        Dialogue(purchaseDialogue, Status.PurchasedItem);
+                        playerStats.turtleFood++;
+                    }
+                    break;
+                case 3:
+                    // bucket
+                    break;
+                case 4:
+                    // lightbulb
+                    break;
+                case 5:
+                    //                                                                                                              <--   candle
+                    break;
+                default:
+                    // cannaeli
+                    break;
+            }
+            Dialogue(purchaseDialogue, Status.PurchasedItem);
         }
     }
 }
