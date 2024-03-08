@@ -30,11 +30,14 @@ public class Shop : MonoBehaviour
     Status status = Status.None;
 
     public PlayerStatsEpic playerStats;
+    public GameObject candleButton;
 
     private void Start()
     {
         Dialogue(regularDialogue, Status.Normal);
         StartCoroutine(Typing());
+        if (playerStats.candleStatus > 1)
+            candleButton.SetActive(false);
     }
 
     private void FixedUpdate()
@@ -138,27 +141,52 @@ public class Shop : MonoBehaviour
                         playerStats.money -= playerStats.lineSpeedUpgradeCost;
                         Dialogue(purchaseDialogue, Status.PurchasedItem);
                         playerStats.lineSpeedVertical *= 1.5f;
+                        playerStats.lineSpeedHorizontal *= 1.25f;
                     }
                     break;
                 case 2:
                     // fishing reel
-                    if (playerStats.money < 99999)
+                    if (playerStats.money < playerStats.strengthMultUpgradeCost)
                         Dialogue(brokeDialogue, Status.YouArePoor);
                     else
                     {
-                        playerStats.money -= 99999;
+                        playerStats.money -= playerStats.strengthMultUpgradeCost;
                         Dialogue(purchaseDialogue, Status.PurchasedItem);
-                        playerStats.turtleFood++;
+                        playerStats.strengthMult++;
                     }
                     break;
                 case 3:
                     // bucket
+                    if (playerStats.money < playerStats.bucketSizeCost)
+                        Dialogue(brokeDialogue, Status.YouArePoor);
+                    else
+                    {
+                        playerStats.money -= playerStats.bucketSizeCost;
+                        Dialogue(purchaseDialogue, Status.PurchasedItem);
+                        playerStats.bucketSize += 5;
+                    }
                     break;
                 case 4:
                     // lightbulb
+                    if (playerStats.money < playerStats.lightbulbCost)
+                        Dialogue(brokeDialogue, Status.YouArePoor);
+                    else
+                    {
+                        playerStats.money -= playerStats.lightbulbCost;
+                        Dialogue(purchaseDialogue, Status.PurchasedItem);
+                        playerStats.lightTier++;
+                    }
                     break;
                 case 5:
                     //                                                                                                              <--   candle
+                    if (playerStats.money < 2)
+                        Dialogue(brokeDialogue, Status.YouArePoor);
+                    else
+                    {
+                        playerStats.money -= 2;
+                        Dialogue(purchaseDialogue, Status.PurchasedItem);
+                        playerStats.candleStatus = 1;
+                    }
                     break;
                 default:
                     // cannaeli

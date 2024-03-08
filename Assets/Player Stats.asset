@@ -17,4 +17,11 @@ MonoBehaviour:
   turtleHunger: 30
   lineSpeedHorizontal: 1
   lineSpeedVertical: 1
+  strengthMult: 1
+  bucketSize: 5
+  lightTier: 0
+  candleStatus: 1
   lineSpeedUpgradeCost: 100
+  strengthMultUpgradeCost: 60
+  bucketSizeCost: 100
+  lightbulbCost: 100

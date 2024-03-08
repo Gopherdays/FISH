@@ -8,10 +8,18 @@ public class PlayerStatsEpic : ScriptableObject
     public int money;
     public int turtleFood;
     public int turtleHunger;
+
     public float lineSpeedHorizontal;
     public float lineSpeedVertical;
+    public float strengthMult;
+    public int bucketSize;
+    public int lightTier;
+    public int candleStatus;
 
     public int lineSpeedUpgradeCost;
+    public int strengthMultUpgradeCost;
+    public int bucketSizeCost;
+    public int lightbulbCost;
 
     public void Reset()
     {
