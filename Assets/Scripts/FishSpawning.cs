@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class FishSpawning : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject[] fishTypes;
+
     void Start()
     {
         
