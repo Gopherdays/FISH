@@ -11,12 +11,14 @@ public class HookControl : MonoBehaviour
     public float hookSpeedHorizontal = 2;
     public float hookSpeedVertical = 8;
     public bool thrown = false;
+    public bool fishing;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         hookSpeedHorizontal = 2 * stats.lineSpeedHorizontal;
         hookSpeedVertical = 8 * stats.lineSpeedVertical;
+        fishing = false;
     }
 
     void Update()
@@ -46,7 +48,8 @@ public class HookControl : MonoBehaviour
         if (collision.gameObject.CompareTag("Fish"))
         {
             Debug.Log("Catch this fish: " + collision.gameObject.name);
-
+            fishing = true;
+            collision.gameObject.
             GameObject.Find("Virtual Camera").GetComponent<CameraScript>().Shake(100);
         }
     }

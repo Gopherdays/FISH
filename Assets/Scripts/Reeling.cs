@@ -25,8 +25,10 @@ public class Reeling : MonoBehaviour
     // tracking variables
     float weight; // how much pressure is on your line
     float length; // how much line is out
+    float pull; // the total pull on the line for this frame
     bool pulling;
     bool reeling;
+    bool go;
 
     // timer variables
     float pause; // final pause time
@@ -34,7 +36,7 @@ public class Reeling : MonoBehaviour
     float swim; // how much the fish moves and in what direction
     
 
-    private void Start()
+    private void OnEnable()
     {
         reel = new InputActions();
         transform.GetChild(0).gameObject.SetActive(false);
@@ -50,46 +52,47 @@ public class Reeling : MonoBehaviour
         pause = pauseBase + Random.Range(0, pauseExtra);
         length = maxLength * 0.75f;
         reel.Reel.ReelAction.Enable();
-    }
-    private void Update()
-    {
-        //if (reel.Reel.ReelAction)
+        go = true;
     }
     private void FixedUpdate()
     {
-        if (bar.value == 0)
-        if (pulling)
+        if (go)
         {
-            if (timer < pullTime)
-                timer += Time.deltaTime;
-            else
-            {
-                timer = 0;
-                pause = pauseBase + Random.Range(0, pauseExtra);
-                pulling = false;
-            }
+            if (bar.value == 0)
+                if (pulling)
+                {
+                    if (timer < pullTime)
+                        timer += Time.deltaTime;
+                    else
+                    {
+                        timer = 0;
+                        pause = pauseBase + Random.Range(0, pauseExtra);
+                        pulling = false;
+                    }
+                }
+                else
+                {
+                    if (timer < pause)
+                        timer += Time.deltaTime;
+                    else
+                    {
+                        timer = 0;
+                        pulling = true;
+                    }
+                }
+            bar.value += Calculate();
         }
-        else
-        {
-            if (timer < pause)
-                timer += Time.deltaTime;
-            else
-            {
-                timer = 0;
-                pulling = true;
-            }
-        }
-        bar.value += Calculate();
     }
 
     float Calculate()
     {
+        swim = 0;
         float strength = 0;
         if (pulling)
             strength = str;
         if (reeling)
         {
-            swim = rodStr + strength;
+            swim = pull + strength;
             if (pulling)
                 weight += str;
         }
@@ -97,14 +100,15 @@ public class Reeling : MonoBehaviour
         {
             swim = strength;
         }
-        return swim * 3;
+        pull = 0;
+        return swim;
     }
 
     public void ReelAction(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            Debug.Log("sdlkfjg;lkwes");
+            pull += rodStr;
         }
     }
 }
