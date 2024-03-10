@@ -7,17 +7,19 @@ public class HookControl : MonoBehaviour
     public PlayerStatsEpic stats;
 
     Rigidbody2D rb;
+    CameraScript cs;
     public Transform origin;
     public float hookSpeedHorizontal = 2;
-    public float hookSpeedVertical = 8;
+    public float hookSpeedVertical = 4;
     public bool thrown = false;
     public bool fishing;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        cs = GameObject.Find("Virtual Camera").GetComponent<CameraScript>();
         hookSpeedHorizontal = 2 * stats.lineSpeedHorizontal;
-        hookSpeedVertical = 8 * stats.lineSpeedVertical;
+        hookSpeedVertical = 4 * stats.lineSpeedVertical;
         fishing = false;
     }
 
@@ -49,8 +51,15 @@ public class HookControl : MonoBehaviour
         {
             Debug.Log("Catch this fish: " + collision.gameObject.name);
             fishing = true;
-            collision.gameObject.
-            GameObject.Find("Virtual Camera").GetComponent<CameraScript>().Shake(100);
+            collision.gameObject.transform.SetParent(transform);
+            Fish fish = collision.gameObject.GetComponent<Fish>();
+            fish.enabled = false;
+            rb.gravityScale = 0;
+            fish.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            rb.velocity = Vector2.zero;
+            fish.gameObject.transform.position = (new Vector2(-0.56f, -0.05f) + fish.hookPoint) + (Vector2)transform.position;
+            cs.Shake(100);
+            this.enabled = false;
         }
     }
 }

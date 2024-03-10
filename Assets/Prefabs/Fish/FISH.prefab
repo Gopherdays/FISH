@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5619285366630353888
 SpriteRenderer:
@@ -109,7 +109,7 @@ MonoBehaviour:
   swimSpeed: 0.5
   swimCycle: 0.2
   bounceSpeed: 4
-  hookPoint: {x: 0, y: 0}
+  hookPoint: {x: 0.44, y: 0.01}
 --- !u!114 &5619285366630353890
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
         reeler = GameObject.Find("Virtual Camera").GetComponent<Reeling>();
         reeler.enabled = false;
     }
-    private void FixedUpdate()
+    private void Update()
     {
         if (win)
         {
@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
         if (/*SceneManager.GetActiveScene().buildIndex == #Insert Build Number# && */hook.fishing)
         {
             reeler.enabled = true;
+            GameObject canvas = GameObject.Find("Virtual Camera").transform.GetChild(0).gameObject;
+            canvas.SetActive(true);
         }
     }
     public void GoMenu()

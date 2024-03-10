@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 
 public class Reeling : MonoBehaviour
 {
-    public GameObject fishStats;
+    public GameObject canvas;
+    public Fish fishStats;
     public Slider bar;
     public InputActions reel;
     // fish stats
@@ -18,7 +19,6 @@ public class Reeling : MonoBehaviour
     float time; // the amount of time you have to reel in the fish before it automatically escapes
 
     // rod stats
-    float maxLength; // the maximum length you can let your line let out before the fish escapes
     float rodRes; // how much your rod can bend before it breaks
     float rodStr; // how much force the rod adds
 
@@ -39,18 +39,18 @@ public class Reeling : MonoBehaviour
     private void OnEnable()
     {
         reel = new InputActions();
-        transform.GetChild(0).gameObject.SetActive(false);
         bar.value = 0.75f;
-        //Fish feesh = fish.GetComponent<Fish>();
-        //feesh.str = str;
-        //feesh.pauseBase = pauseBase;
-        //feesh.pauseExtra = pauseExtra;
-        //feesh.pullTime = pullTime;
-        //feesh.pullExtra = pullExtra;
-        //feesh.time = time;
-        maxLength = 1;
+        if (GameObject.Find("Fishing Hook").transform.childCount == 1)
+        {
+            fishStats = GameObject.Find("Fishing Hook").transform.GetChild(0).GetComponent<Fish>();
+            fishStats.str = str;
+            fishStats.pauseBase = pauseBase;
+            fishStats.pauseExtra = pauseExtra;
+            fishStats.pullTime = pullTime;
+            fishStats.pullExtra = pullExtra;
+            fishStats.time = time;
+        }
         pause = pauseBase + Random.Range(0, pauseExtra);
-        length = maxLength * 0.75f;
         reel.Reel.ReelAction.Enable();
         go = true;
     }
@@ -58,28 +58,27 @@ public class Reeling : MonoBehaviour
     {
         if (go)
         {
-            if (bar.value == 0)
-                if (pulling)
-                {
-                    if (timer < pullTime)
-                        timer += Time.deltaTime;
-                    else
-                    {
-                        timer = 0;
-                        pause = pauseBase + Random.Range(0, pauseExtra);
-                        pulling = false;
-                    }
-                }
+            if (pulling)
+            {
+                if (timer < pullTime)
+                    timer += Time.deltaTime;
                 else
                 {
-                    if (timer < pause)
-                        timer += Time.deltaTime;
-                    else
-                    {
-                        timer = 0;
-                        pulling = true;
-                    }
+                    timer = 0;
+                    pause = pauseBase + Random.Range(0, pauseExtra);
+                    pulling = false;
                 }
+            }
+            else
+            {
+                if (timer < pause)
+                    timer += Time.deltaTime;
+                else
+                {
+                    timer = 0;
+                    pulling = true;
+                }
+            }
             bar.value += Calculate();
         }
     }
