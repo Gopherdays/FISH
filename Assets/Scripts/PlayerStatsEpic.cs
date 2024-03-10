@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [CreateAssetMenu]
 public class PlayerStatsEpic : ScriptableObject
 {
     public int money;
+    public int day;
     public int turtleFood;
     public int turtleHunger;
 
@@ -24,24 +26,35 @@ public class PlayerStatsEpic : ScriptableObject
     public void Reset()
     {
         money = 0;
+        day = 0;
         turtleFood = 0;
-        turtleHunger = 30;
+        turtleHunger = 0;
+
         lineSpeedHorizontal = 1;
         lineSpeedVertical = 1;
+        strengthMult = 1;
+        bucketSize = 5;
+        lightTier = 0;
+        candleStatus = 0;
+
         lineSpeedUpgradeCost = 100;
-    }
+        strengthMultUpgradeCost = 60;
+        bucketSizeCost = 150;
+        lightbulbCost = 120;
+}
 
     public void NewDay()
     {
         if (turtleFood < turtleHunger)
         {
-            // KILL YOU
-            Application.Quit();
+            // kill you less
+            SceneManager.LoadScene(0);
         }
         else
         {
             turtleHunger *= 2;
             turtleFood = 0;
+            day++;
         }
     }
 }
