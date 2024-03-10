@@ -125,6 +125,7 @@ MonoBehaviour:
   waterGravity: -0.1
   waterHeight: 0
   waterDrag: 3
+  above: 0
 --- !u!50 &5619285366630353901
 Rigidbody2D:
   serializedVersion: 4
@@ -140,7 +141,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

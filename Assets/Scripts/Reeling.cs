@@ -10,6 +10,9 @@ public class Reeling : MonoBehaviour
     public Fish fishStats;
     public Slider bar;
     public InputActions reel;
+
+    public GameObject hook;
+
     // fish stats
     float str; // how hard the fish pulls back
     float pauseBase; // the minimum amount of time the fish pauses between pulls
@@ -40,9 +43,10 @@ public class Reeling : MonoBehaviour
     {
         reel = new InputActions();
         bar.value = 0.75f;
-        if (GameObject.Find("Fishing Hook").transform.childCount == 1)
+        hook = GameObject.Find("Fishing Hook");
+        if (hook.transform.childCount == 1)
         {
-            fishStats = GameObject.Find("Fishing Hook").transform.GetChild(0).GetComponent<Fish>();
+            fishStats = hook.transform.GetChild(0).GetComponent<Fish>();
             fishStats.str = str;
             fishStats.pauseBase = pauseBase;
             fishStats.pauseExtra = pauseExtra;
@@ -60,6 +64,7 @@ public class Reeling : MonoBehaviour
         {
             if (pulling)
             {
+                Debug.Log("pulling");
                 if (timer < pullTime)
                     timer += Time.deltaTime;
                 else
@@ -71,6 +76,7 @@ public class Reeling : MonoBehaviour
             }
             else
             {
+                Debug.Log("not pulling");
                 if (timer < pause)
                     timer += Time.deltaTime;
                 else

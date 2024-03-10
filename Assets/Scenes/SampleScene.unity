@@ -1655,7 +1655,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01039d6fce58cf42a6969b6148800c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishTypes: []
+  fishTypes:
+  - {fileID: 5619285366630353900, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
+  - {fileID: 5619285366630353900, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
+  - {fileID: 5619285366630353900, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
+  - {fileID: 5619285366630353900, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
+  - {fileID: 5619285366630353900, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
 --- !u!4 &1638582026
 Transform:
   m_ObjectHideFlags: 0
