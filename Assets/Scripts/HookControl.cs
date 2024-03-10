@@ -49,7 +49,7 @@ public class HookControl : MonoBehaviour
         {
             Debug.Log("Catch this fish: " + collision.gameObject.name);
             fishing = true;
-            collision.gameObject.
+            //collision.gameObject.
             GameObject.Find("Virtual Camera").GetComponent<CameraScript>().Shake(100);
         }
     }
