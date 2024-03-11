@@ -12,6 +12,8 @@ public class Reeling : MonoBehaviour
     public InputActions reel;
 
     public GameObject hook;
+    public GameObject player;
+    public GameObject fish;
 
     // fish stats
     float str; // how hard the fish pulls back
@@ -23,14 +25,14 @@ public class Reeling : MonoBehaviour
 
     // rod stats
     float rodRes; // how much your rod can bend before it breaks
-    float rodStr; // how much force the rod adds
+    float rodStr = 1; // how much force the rod adds
 
     // tracking variables
     float weight; // how much pressure is on your line
     float length; // how much line is out
     float pull; // the total pull on the line for this frame
     bool pulling;
-    bool reeling;
+    float reeling;
     bool go;
 
     // timer variables
@@ -42,11 +44,12 @@ public class Reeling : MonoBehaviour
     private void OnEnable()
     {
         reel = new InputActions();
-        bar.value = 0.75f;
+        bar.value = 75;
         hook = GameObject.Find("Fishing Hook");
         if (hook.transform.childCount == 1)
         {
-            fishStats = hook.transform.GetChild(0).GetComponent<Fish>();
+            fish = hook.transform.GetChild(0).gameObject;
+            fishStats = fish.GetComponent<Fish>();
             str = fishStats.str;
             pauseBase = fishStats.pauseBase;
             pauseExtra = fishStats.pauseExtra;
@@ -64,7 +67,6 @@ public class Reeling : MonoBehaviour
         {
             if (pulling)
             {
-                Debug.Log("pulling");
                 if (timer < pullTime)
                     timer += Time.deltaTime;
                 else
@@ -76,7 +78,6 @@ public class Reeling : MonoBehaviour
             }
             else
             {
-                Debug.Log("not pulling");
                 if (timer < pause)
                     timer += Time.deltaTime;
                 else
@@ -86,6 +87,8 @@ public class Reeling : MonoBehaviour
                 }
             }
             bar.value += Calculate();
+            reeling -= Time.deltaTime;
+
         }
     }
 
@@ -94,8 +97,8 @@ public class Reeling : MonoBehaviour
         swim = 0;
         float strength = 0;
         if (pulling)
-            strength = str;
-        if (reeling)
+            strength = str * 0.33f;
+        if (reeling > 0)
         {
             swim = pull + strength;
             if (pulling)
@@ -113,6 +116,7 @@ public class Reeling : MonoBehaviour
     {
         if (context.started)
         {
+            reeling = 0.1f; // Maximum reel potential at 10 inputs/second, reasonable enough I think
             pull += rodStr;
         }
     }
