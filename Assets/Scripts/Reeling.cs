@@ -47,12 +47,12 @@ public class Reeling : MonoBehaviour
         if (hook.transform.childCount == 1)
         {
             fishStats = hook.transform.GetChild(0).GetComponent<Fish>();
-            fishStats.str = str;
-            fishStats.pauseBase = pauseBase;
-            fishStats.pauseExtra = pauseExtra;
-            fishStats.pullTime = pullTime;
-            fishStats.pullExtra = pullExtra;
-            fishStats.time = time;
+            str = fishStats.str;
+            pauseBase = fishStats.pauseBase;
+            pauseExtra = fishStats.pauseExtra;
+            pullTime = fishStats.pullTime;
+            pullExtra = fishStats.pullExtra;
+            time = fishStats.time;
         }
         pause = pauseBase + Random.Range(0, pauseExtra);
         reel.Reel.ReelAction.Enable();
