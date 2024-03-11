@@ -58,7 +58,8 @@ public class Reeling : MonoBehaviour
             time = fishStats.time;
         }
         pause = pauseBase + Random.Range(0, pauseExtra);
-        reel.Reel.ReelAction.Enable();
+        reel.Reel.Horizontal.Enable(); ;
+        reel.Reel.Vertical.Enable();
         go = true;
     }
     private void FixedUpdate()
@@ -112,7 +113,16 @@ public class Reeling : MonoBehaviour
         return swim;
     }
 
-    public void ReelAction(InputAction.CallbackContext context)
+    public void Vertical(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            reeling = 0.1f; // Maximum reel potential at 10 inputs/second, reasonable enough I think
+            pull += rodStr;
+        }
+    }
+
+    public void Horizontal(InputAction.CallbackContext context)
     {
         if (context.started)
         {

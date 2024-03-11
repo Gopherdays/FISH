@@ -6,9 +6,18 @@
             "id": "66f0053b-ec20-4960-978a-844c05336e0c",
             "actions": [
                 {
-                    "name": "ReelAction",
+                    "name": "Vertical",
                     "type": "Button",
                     "id": "b3e8f563-9f57-4ab6-adf5-80d16fc2bae0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Horizontal",
+                    "type": "Button",
+                    "id": "8409f007-b4de-49e5-a0e8-0060ee62dff8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -23,7 +32,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ReelAction",
+                    "action": "Vertical",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -34,29 +43,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ReelAction",
+                    "action": "Vertical",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "f5442968-066a-4902-a7d8-660fe147b76f",
+                    "id": "a2e74865-f963-4104-b68b-b0ace122a6e2",
                     "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ReelAction",
+                    "action": "Horizontal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "856dc100-7544-47c5-bc6e-2851c6f2093d",
+                    "id": "fea680d5-ffa4-4ab1-ac12-e3dce8e9279c",
                     "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ReelAction",
+                    "action": "Horizontal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

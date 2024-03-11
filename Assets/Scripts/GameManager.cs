@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     HookControl hook;
     Reeling reeler;
-    GameObject canvas;
+    public GameObject canvas;
 
     public bool win;
 
@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
         hook = GameObject.Find("Fishing Hook").GetComponent<HookControl>();
         reeler = GameObject.Find("Virtual Camera").GetComponent<Reeling>();
         reeler.enabled = false;
-        canvas = GameObject.Find("Virtual Camera").transform.GetChild(0).gameObject;
+        //canvas = GameObject.Find("Virtual Camera").transform.GetChild(0).gameObject;
         canvas.SetActive(false);
     }
     private void Update()

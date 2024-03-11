@@ -28,9 +28,18 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
             ""id"": ""66f0053b-ec20-4960-978a-844c05336e0c"",
             ""actions"": [
                 {
-                    ""name"": ""ReelAction"",
+                    ""name"": ""Vertical"",
                     ""type"": ""Button"",
                     ""id"": ""b3e8f563-9f57-4ab6-adf5-80d16fc2bae0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Horizontal"",
+                    ""type"": ""Button"",
+                    ""id"": ""8409f007-b4de-49e5-a0e8-0060ee62dff8"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -45,7 +54,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ReelAction"",
+                    ""action"": ""Vertical"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -56,29 +65,29 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ReelAction"",
+                    ""action"": ""Vertical"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f5442968-066a-4902-a7d8-660fe147b76f"",
+                    ""id"": ""a2e74865-f963-4104-b68b-b0ace122a6e2"",
                     ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ReelAction"",
+                    ""action"": ""Horizontal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""856dc100-7544-47c5-bc6e-2851c6f2093d"",
+                    ""id"": ""fea680d5-ffa4-4ab1-ac12-e3dce8e9279c"",
                     ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ReelAction"",
+                    ""action"": ""Horizontal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -101,7 +110,8 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
 }");
         // Reel
         m_Reel = asset.FindActionMap("Reel", throwIfNotFound: true);
-        m_Reel_ReelAction = m_Reel.FindAction("ReelAction", throwIfNotFound: true);
+        m_Reel_Vertical = m_Reel.FindAction("Vertical", throwIfNotFound: true);
+        m_Reel_Horizontal = m_Reel.FindAction("Horizontal", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -161,12 +171,14 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     // Reel
     private readonly InputActionMap m_Reel;
     private IReelActions m_ReelActionsCallbackInterface;
-    private readonly InputAction m_Reel_ReelAction;
+    private readonly InputAction m_Reel_Vertical;
+    private readonly InputAction m_Reel_Horizontal;
     public struct ReelActions
     {
         private @InputActions m_Wrapper;
         public ReelActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @ReelAction => m_Wrapper.m_Reel_ReelAction;
+        public InputAction @Vertical => m_Wrapper.m_Reel_Vertical;
+        public InputAction @Horizontal => m_Wrapper.m_Reel_Horizontal;
         public InputActionMap Get() { return m_Wrapper.m_Reel; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -176,16 +188,22 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_ReelActionsCallbackInterface != null)
             {
-                @ReelAction.started -= m_Wrapper.m_ReelActionsCallbackInterface.OnReelAction;
-                @ReelAction.performed -= m_Wrapper.m_ReelActionsCallbackInterface.OnReelAction;
-                @ReelAction.canceled -= m_Wrapper.m_ReelActionsCallbackInterface.OnReelAction;
+                @Vertical.started -= m_Wrapper.m_ReelActionsCallbackInterface.OnVertical;
+                @Vertical.performed -= m_Wrapper.m_ReelActionsCallbackInterface.OnVertical;
+                @Vertical.canceled -= m_Wrapper.m_ReelActionsCallbackInterface.OnVertical;
+                @Horizontal.started -= m_Wrapper.m_ReelActionsCallbackInterface.OnHorizontal;
+                @Horizontal.performed -= m_Wrapper.m_ReelActionsCallbackInterface.OnHorizontal;
+                @Horizontal.canceled -= m_Wrapper.m_ReelActionsCallbackInterface.OnHorizontal;
             }
             m_Wrapper.m_ReelActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @ReelAction.started += instance.OnReelAction;
-                @ReelAction.performed += instance.OnReelAction;
-                @ReelAction.canceled += instance.OnReelAction;
+                @Vertical.started += instance.OnVertical;
+                @Vertical.performed += instance.OnVertical;
+                @Vertical.canceled += instance.OnVertical;
+                @Horizontal.started += instance.OnHorizontal;
+                @Horizontal.performed += instance.OnHorizontal;
+                @Horizontal.canceled += instance.OnHorizontal;
             }
         }
     }
@@ -201,6 +219,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     }
     public interface IReelActions
     {
-        void OnReelAction(InputAction.CallbackContext context);
+        void OnVertical(InputAction.CallbackContext context);
+        void OnHorizontal(InputAction.CallbackContext context);
     }
 }
