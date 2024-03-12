@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     Reeling reeler;
     public GameObject canvas;
     public float time = 180;
+    public TextMeshProUGUI timer;
     public bool win;
 
     private void Start()
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
             canvas.SetActive(true);
         }
         time -= Time.deltaTime;
+        timer.text = Mathf.FloorToInt(time / 60) + ":" + Mathf.CeilToInt((time - Mathf.Floor(time / 60)) % 59);
     }
     public void GoMenu()
     {
