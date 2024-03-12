@@ -61,6 +61,7 @@ public class HookControl : MonoBehaviour
             fish.gameObject.transform.position = (new Vector2(-0.56f, -0.05f) + fish.hookPoint) + (Vector2)transform.position;
             cs.Shake(100);
             this.gameObject.GetComponent<CircleCollider2D>().enabled = false;
+            fish.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             this.enabled = false;
         }
     }
