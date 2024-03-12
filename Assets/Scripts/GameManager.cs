@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     HookControl hook;
     Reeling reeler;
     public GameObject canvas;
-
+    public float time = 180;
     public bool win;
 
     private void Start()
@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
             reeler.enabled = true;
             canvas.SetActive(true);
         }
+        time -= Time.deltaTime;
     }
     public void GoMenu()
     {

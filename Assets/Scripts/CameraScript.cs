@@ -7,7 +7,9 @@ public class CameraScript : MonoBehaviour
 {
     CinemachineVirtualCamera cam;
     CinemachineBasicMultiChannelPerlin noise;
+    public GameManager gm;
     public GameObject hook;
+    public GameObject sun;
 
     void Start()
     {
@@ -17,6 +19,7 @@ public class CameraScript : MonoBehaviour
 
     void Update()
     {
+        sun.transform.SetLocalPositionAndRotation(new(Mathf.Cos((gm.time - 30) * Mathf.Deg2Rad) * 8, (Mathf.Sin((gm.time - 30) * Mathf.Deg2Rad) * 5) - 1 - (cam.transform.position.y / 4), 10), Quaternion.identity);
         if (hook.transform.position.y < -2)
         {
             cam.Follow = hook.transform;
