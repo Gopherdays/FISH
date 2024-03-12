@@ -33,6 +33,7 @@ public class HookControl : MonoBehaviour
         else
         {
             transform.position = origin.transform.position;
+            rb.velocity = Vector2.zero;
             if (Input.GetMouseButtonDown(0))
                 ThrowHook();
         }
@@ -41,7 +42,7 @@ public class HookControl : MonoBehaviour
 
     void ThrowHook()
     {
-        rb.AddForce(new Vector2(Random.Range(0.25f, 1.25f) * -500, Random.Range(0.5f, 1.25f) * 1000));
+        rb.AddForce(new Vector2(Random.Range(0.25f, 1.25f) * -300, Random.Range(0.5f, 1.25f) * 300));
         thrown = true;
     }
 
