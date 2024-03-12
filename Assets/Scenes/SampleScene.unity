@@ -764,7 +764,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.03, y: 1.94, z: -10}
+  m_LocalPosition: {x: -1.8, y: 1.95, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2548,7 +2548,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 2145965925}
+  m_Follow: {fileID: 728282006}
   m_Lens:
     FieldOfView: 34
     OrthographicSize: 5
@@ -2576,7 +2576,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742874987}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.03, y: 1.94, z: -10}
+  m_LocalPosition: {x: -1.8, y: 1.95, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2607,17 +2607,17 @@ MonoBehaviour:
     key0: {r: 0.5882353, g: 0.7960785, b: 0.86274517, a: 1}
     key1: {r: 0.5882353, g: 0.7960785, b: 0.86274517, a: 1}
     key2: {r: 1, g: 0.3752398, b: 0, a: 0}
-    key3: {r: 0.26461804, g: 0, b: 0.4056604, a: 0}
-    key4: {r: 0.09019608, g: 0, b: 0.13725491, a: 0}
+    key3: {r: 0.006987577, g: 0, b: 0.23584908, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 25058
-    ctime2: 30647
-    ctime3: 37201
-    ctime4: 41441
-    ctime5: 65535
+    ctime1: 31804
+    ctime2: 34888
+    ctime3: 38165
+    ctime4: 45489
+    ctime5: 0
     ctime6: 0
     ctime7: 0
     atime0: 0
@@ -2630,7 +2630,7 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_ColorSpace: -1
-    m_NumColorKeys: 6
+    m_NumColorKeys: 5
     m_NumAlphaKeys: 2
 --- !u!114 &1742874991
 MonoBehaviour:
