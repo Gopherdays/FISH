@@ -7,9 +7,12 @@ public class CameraScript : MonoBehaviour
 {
     CinemachineVirtualCamera cam;
     CinemachineBasicMultiChannelPerlin noise;
+
     public GameManager gm;
     public GameObject hook;
     public GameObject sun;
+    public GameObject moon;
+    public Gradient skyGradient;
 
     void Start()
     {
@@ -19,7 +22,8 @@ public class CameraScript : MonoBehaviour
 
     void Update()
     {
-        sun.transform.SetLocalPositionAndRotation(new(Mathf.Cos((gm.time - 30) * Mathf.Deg2Rad) * 8, (Mathf.Sin((gm.time - 30) * Mathf.Deg2Rad) * 5) - 1 - (cam.transform.position.y / 4), 10), Quaternion.identity);
+        sun.transform.SetLocalPositionAndRotation(new(Mathf.Cos((gm.time * 1.5f - 120) * Mathf.Deg2Rad) * 8, (Mathf.Sin((gm.time * 1.5f - 120) * Mathf.Deg2Rad) * 5) - 1 - (cam.transform.position.y / 4), 10), Quaternion.identity);
+        moon.transform.SetLocalPositionAndRotation(new(Mathf.Cos((gm.time * 1.5f + 120) * Mathf.Deg2Rad) * 8, (Mathf.Sin((gm.time * 1.5f + 120) * Mathf.Deg2Rad) * 5) - 1 - (cam.transform.position.y / 4), 10), Quaternion.identity);
         if (hook.transform.position.y < -2)
         {
             cam.Follow = hook.transform;
@@ -29,6 +33,7 @@ public class CameraScript : MonoBehaviour
             noise.m_FrequencyGain *= 0.95f;
         else
             noise.m_FrequencyGain = 1;
+        Camera.main.backgroundColor = skyGradient.Evaluate((180 - gm.time) / 180);
     }
 
     public void Shake(float intensity)

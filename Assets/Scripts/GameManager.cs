@@ -34,7 +34,9 @@ public class GameManager : MonoBehaviour
             canvas.SetActive(true);
         }
         time -= Time.deltaTime;
-        timer.text = Mathf.FloorToInt(time / 60) + ":" + Mathf.CeilToInt((time - Mathf.Floor(time / 60)) % 59);
+        timer.text = Mathf.FloorToInt(time / 60) + ":";
+        if (Mathf.FloorToInt(time) % 60 < 10) timer.text += "0";
+        timer.text += Mathf.FloorToInt(time) % 60;
     }
     public void GoMenu()
     {
