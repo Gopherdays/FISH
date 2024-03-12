@@ -32,14 +32,18 @@ public class Reeling : MonoBehaviour
     float length; // how much line is out
     float pull; // the total pull on the line for this frame
     bool pulling;
-    float reeling;
     bool go;
 
     // timer variables
     float pause; // final pause time
     float timer; // timer variable
+    float timer2;
     float swim; // how much the fish moves and in what direction
-    
+
+    // moving variables
+    Vector2 direction;
+    float maxDistance;
+    float distance;
 
     private void OnEnable()
     {
@@ -60,7 +64,9 @@ public class Reeling : MonoBehaviour
         pause = pauseBase + Random.Range(0, pauseExtra);
         reel.Reel.Horizontal.Enable(); ;
         reel.Reel.Vertical.Enable();
-        go = true;
+        direction = GameObject.Find("Player").transform.position;
+        distance = Vector2.Distance(direction, transform.position);
+        maxDistance = distance * 4 / 3;
     }
     private void FixedUpdate()
     {
@@ -88,8 +94,13 @@ public class Reeling : MonoBehaviour
                 }
             }
             bar.value += Calculate();
-            reeling -= Time.deltaTime;
-
+            timer2 -= Time.deltaTime;
+            distance = bar.value / bar.maxValue * maxDistance;
+            transform.position = -direction.normalized * distance;
+            if (distance >= maxDistance)
+            {
+                print("Your fish is gone. You suck.");
+            }
         }
     }
 
@@ -99,7 +110,7 @@ public class Reeling : MonoBehaviour
         float strength = 0;
         if (pulling)
             strength = str * 0.33f;
-        if (reeling > 0)
+        if (timer2 > 0)
         {
             swim = pull + strength;
             if (pulling)
@@ -117,7 +128,7 @@ public class Reeling : MonoBehaviour
     {
         if (context.started)
         {
-            reeling = 0.1f; // Maximum reel potential at 10 inputs/second, reasonable enough I think
+            timer2 = 0.1f; // Maximum reel potential at 10 inputs/second, reasonable enough I think
             pull += rodStr;
         }
     }
@@ -126,7 +137,7 @@ public class Reeling : MonoBehaviour
     {
         if (context.started)
         {
-            reeling = 0.1f; // Maximum reel potential at 10 inputs/second, reasonable enough I think
+            timer2 = 0.1f; // Maximum reel potential at 10 inputs/second, reasonable enough I think
             pull += rodStr;
         }
     }
