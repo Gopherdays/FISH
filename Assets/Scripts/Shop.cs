@@ -179,7 +179,8 @@ public class Shop : MonoBehaviour
                     break;
                 case 5:
                     //                                                                                                              <--   candle
-                    if (playerStats.money < 2)
+                    if (playerStats.candleStatus != 0) { }
+                    else if (playerStats.money < 2)
                         Dialogue(brokeDialogue, Status.YouArePoor);
                     else
                     {
