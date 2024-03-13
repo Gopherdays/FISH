@@ -23,7 +23,7 @@ public class CameraScript : MonoBehaviour
     void Update()
     {
         sun.transform.SetLocalPositionAndRotation(new(Mathf.Cos((gm.time * 1.5f - 120) * Mathf.Deg2Rad) * 8, (Mathf.Sin((gm.time * 1.5f - 120) * Mathf.Deg2Rad) * 5) - 1 - (cam.transform.position.y / 4), 10), Quaternion.identity);
-        moon.transform.SetLocalPositionAndRotation(new(Mathf.Cos((gm.time * 1.5f + 120) * Mathf.Deg2Rad) * 8, (Mathf.Sin((gm.time * 1.5f + 120) * Mathf.Deg2Rad) * 5) - 1 - (cam.transform.position.y / 4), 10), Quaternion.identity);
+        moon.transform.SetLocalPositionAndRotation(new(Mathf.Cos((gm.time * 1.5f + 80) * Mathf.Deg2Rad) * 8, (Mathf.Sin((gm.time * 1.5f + 80) * Mathf.Deg2Rad) * 5) - 1 - (cam.transform.position.y / 4), 10), Quaternion.identity);
         if (hook.transform.position.y < -2)
         {
             cam.Follow = hook.transform;
