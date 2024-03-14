@@ -19,6 +19,7 @@ public class Shop : MonoBehaviour
     string currentDialogue;
     string remainingDialogue;
     float cawTimer;
+    bool stopInput;
     enum Status
     {
         None,
@@ -113,93 +114,102 @@ public class Shop : MonoBehaviour
         else
         {
             Dialogue(leftDialogue, Status.Leave);
-            // leave after a few seconds
+            stopInput = true;
+            StartCoroutine(ActuallyLeave());
         }
+    }
+    IEnumerator ActuallyLeave()
+    {
+        yield return new WaitForSeconds(4);
+        GameObject.Find("Game Manager").GetComponent<GameManager>().GoBoat();
     }
 
     public void BuyItem(int whichButton)
     {
-        if (status != Status.LookingAtItem)
-            Dialogue(browsingDialogue, Status.LookingAtItem, whichButton);
-        else
+        if (!stopInput)
         {
-            switch (whichButton)
+            if (status != Status.LookingAtItem)
+                Dialogue(browsingDialogue, Status.LookingAtItem, whichButton);
+            else
             {
-                case 0:
-                    // turtle food (code multiple things later)
-                    if (playerStats.money < 5)
-                        Dialogue(brokeDialogue, Status.YouArePoor);
-                    else
-                    {
-                        playerStats.money -= 5;
-                        Dialogue(purchaseDialogue, Status.PurchasedItem);
-                        playerStats.turtleFood++;
-                    }
-                    break;
-                case 1:
-                    //fhishg line
-                    if (playerStats.money < playerStats.lineSpeedUpgradeCost)
-                        Dialogue(brokeDialogue, Status.YouArePoor);
-                    else
-                    {
-                        playerStats.money -= playerStats.lineSpeedUpgradeCost;
-                        Dialogue(purchaseDialogue, Status.PurchasedItem);
-                        playerStats.lineSpeedVertical *= 1.5f;
-                        playerStats.lineSpeedHorizontal *= 1.25f;
-                        playerStats.lineSpeedUpgradeCost *= 2;
-                    }   
-                    break;
-                case 2:
-                    // fishing reel
-                    if (playerStats.money < playerStats.strengthMultUpgradeCost)
-                        Dialogue(brokeDialogue, Status.YouArePoor);
-                    else
-                    {
-                        playerStats.money -= playerStats.strengthMultUpgradeCost;
-                        Dialogue(purchaseDialogue, Status.PurchasedItem);
-                        playerStats.strengthMult++;
-                        playerStats.strengthMultUpgradeCost *= 2;
-                    }
-                    break;
-                case 3:
-                    // bucket
-                    if (playerStats.money < playerStats.bucketSizeCost)
-                        Dialogue(brokeDialogue, Status.YouArePoor);
-                    else
-                    {
-                        playerStats.money -= playerStats.bucketSizeCost;
-                        Dialogue(purchaseDialogue, Status.PurchasedItem);
-                        playerStats.bucketSize += 5;
-                        playerStats.bucketSizeCost *= 2;
-                    }
-                    break;
-                case 4:
-                    // lightbulb
-                    if (playerStats.money < playerStats.lightbulbCost)
-                        Dialogue(brokeDialogue, Status.YouArePoor);
-                    else
-                    {
-                        playerStats.money -= playerStats.lightbulbCost;
-                        Dialogue(purchaseDialogue, Status.PurchasedItem);
-                        playerStats.lightTier++;
-                        playerStats.lightbulbCost *= 2;
-                    }
-                    break;
-                case 5:
-                    //                                                                                                              <--   candle
-                    if (playerStats.candleStatus != 0) { }
-                    else if (playerStats.money < 2)
-                        Dialogue(brokeDialogue, Status.YouArePoor);
-                    else
-                    {
-                        playerStats.money -= 2;
-                        Dialogue(purchaseDialogue, Status.PurchasedItem);
-                        playerStats.candleStatus = 1;
-                    }
-                    break;
-                default:
-                    // cannaeli
-                    break;
+                switch (whichButton)
+                {
+                    case 0:
+                        // turtle food (code multiple things later)
+                        if (playerStats.money < 5)
+                            Dialogue(brokeDialogue, Status.YouArePoor);
+                        else
+                        {
+                            playerStats.money -= 5;
+                            Dialogue(purchaseDialogue, Status.PurchasedItem);
+                            playerStats.turtleFood++;
+                        }
+                        break;
+                    case 1:
+                        //fhishg line
+                        if (playerStats.money < playerStats.lineSpeedUpgradeCost)
+                            Dialogue(brokeDialogue, Status.YouArePoor);
+                        else
+                        {
+                            playerStats.money -= playerStats.lineSpeedUpgradeCost;
+                            Dialogue(purchaseDialogue, Status.PurchasedItem);
+                            playerStats.lineSpeedVertical *= 1.5f;
+                            playerStats.lineSpeedHorizontal *= 1.25f;
+                            playerStats.lineSpeedUpgradeCost *= 2;
+                        }
+                        break;
+                    case 2:
+                        // fishing reel
+                        if (playerStats.money < playerStats.strengthMultUpgradeCost)
+                            Dialogue(brokeDialogue, Status.YouArePoor);
+                        else
+                        {
+                            playerStats.money -= playerStats.strengthMultUpgradeCost;
+                            Dialogue(purchaseDialogue, Status.PurchasedItem);
+                            playerStats.strengthMult++;
+                            playerStats.strengthMultUpgradeCost *= 2;
+                        }
+                        break;
+                    case 3:
+                        // bucket
+                        if (playerStats.money < playerStats.bucketSizeCost)
+                            Dialogue(brokeDialogue, Status.YouArePoor);
+                        else
+                        {
+                            playerStats.money -= playerStats.bucketSizeCost;
+                            Dialogue(purchaseDialogue, Status.PurchasedItem);
+                            playerStats.bucketSize += 5;
+                            playerStats.bucketSizeCost *= 2;
+                        }
+                        break;
+                    case 4:
+                        // lightbulb
+                        if (playerStats.money < playerStats.lightbulbCost)
+                            Dialogue(brokeDialogue, Status.YouArePoor);
+                        else
+                        {
+                            playerStats.money -= playerStats.lightbulbCost;
+                            Dialogue(purchaseDialogue, Status.PurchasedItem);
+                            playerStats.lightTier++;
+                            playerStats.lightbulbCost *= 2;
+                        }
+                        break;
+                    case 5:
+                        //                                                                                                              <--   candle
+                        if (playerStats.candleStatus != 0) { break; }
+                        if (playerStats.money < 2)
+                            Dialogue(brokeDialogue, Status.YouArePoor);
+                        else
+                        {
+                            playerStats.money -= 2;
+                            Dialogue(purchaseDialogue, Status.PurchasedItem);
+                            playerStats.candleStatus = 1;
+                        }
+                        break;
+                    default:
+                        // cannaeli
+                        break;
+                }
             }
         }
     }

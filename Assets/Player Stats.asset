@@ -21,7 +21,7 @@ MonoBehaviour:
   strengthMult: 1
   bucketSize: 5
   lightTier: 0
-  candleStatus: 1
+  candleStatus: 0
   lineSpeedUpgradeCost: 100
   strengthMultUpgradeCost: 60
   bucketSizeCost: 150
