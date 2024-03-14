@@ -25,11 +25,13 @@ public class GameManager : MonoBehaviour
         //canvas = GameObject.Find("Virtual Camera").transform.GetChild(0).gameObject;
         canvas.SetActive(false);
     }
+    
     private void Update()
     {
-        if (SceneManager.GetActiveScene().name == "Main Menu")
+        if (SceneManager.GetActiveScene().name == "Main Menu" && time > 0)
         {
             StartCoroutine(CreditsSpawning());
+            time = -69;
         }
         if (win)
         {
@@ -74,23 +76,28 @@ public class GameManager : MonoBehaviour
     IEnumerator CreditsSpawning()
     {
         RectTransform lastFish = null;
-        Vector2 pos = new(1100, -270);
+        Vector2 pos = new(1200, -270);
         int i = 0;
         while (true)
         {
-            GameObject fish = Instantiate(creditsObject);
-            fish.GetComponent<Rigidbody2D>().velocity = Vector2.left * Random.Range(2f, 5f);
+            // Make a credits object and send it to the left towards its DOOM
+            GameObject fish = Instantiate(creditsObject, GameObject.Find("Canvas").transform);
+            fish.GetComponent<Rigidbody2D>().velocity = Vector2.left * Random.Range(125f, 250f);
+            Destroy(fish, 30);
+            // Cycle the credits text
             TextMeshProUGUI text = fish.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
             text.text = credits[i];
-            i++;
-            if (lastFish != null || pos.y == -430)
-                pos.y = -270;
-            else
-                pos.y = -430;
+            i = (i + 1) % credits.Length;
+            // Random y positions of the rectTransforms, and resize the objects to fit the given text
             lastFish = fish.GetComponent<RectTransform>();
+            pos.y = Random.Range(-260f, -440f);
             lastFish.anchoredPosition = pos;
             lastFish.sizeDelta = new(text.preferredWidth + 30, text.preferredHeight + 20);
-            yield return new WaitUntil(() => lastFish.anchoredPosition.x < 550);
+            // Collisions for fun
+            fish.GetComponent<CapsuleCollider2D>().size = lastFish.sizeDelta;
+            fish.GetComponent<Rigidbody2D>().mass = Random.Range(0.1f, 100f);
+            // Make a new one after three seconds
+            yield return new WaitForSeconds(3);
         }
     }
 }
