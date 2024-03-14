@@ -74,8 +74,8 @@ public class GameManager : MonoBehaviour
         {
             // Make a credits object and send it to the left towards its DOOM
             GameObject fish = Instantiate(creditsObject, GameObject.Find("Canvas").transform);
-            fish.GetComponent<Rigidbody2D>().velocity = Vector2.left * Random.Range(125f, 250f);
-            Destroy(fish, 30);
+            fish.GetComponent<Rigidbody2D>().velocity = Vector2.left * Random.Range(25f, 250f);
+            Destroy(fish, 60);
             // Cycle the credits text
             TextMeshProUGUI text = fish.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
             text.text = credits[i];
