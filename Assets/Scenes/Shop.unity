@@ -2076,6 +2076,8 @@ MonoBehaviour:
   - {fileID: 1833938814}
   - {fileID: 1833938813}
   - {fileID: 1833938812}
+  money: {fileID: 456992245}
+  food: {fileID: 2033500808}
   regularDialogue:
   - welcome to shop
   - buy something

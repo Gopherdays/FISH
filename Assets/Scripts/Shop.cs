@@ -7,6 +7,8 @@ public class Shop : MonoBehaviour
 {
     public TextMeshProUGUI textbox;
     public AudioSource[] noises;
+    public TextMeshProUGUI money;
+    public TextMeshProUGUI food;
     // Unity editor incapable of comprehending such a complex concept such as "array array"
     public string[] regularDialogue;
     public string[] browsingDialogue;
@@ -38,6 +40,8 @@ public class Shop : MonoBehaviour
         StartCoroutine(Typing());
         if (playerStats.candleStatus > 1)
             candleButton.SetActive(false);
+        money.text = "$" + playerStats.money;
+        food.text = playerStats.turtleFood + "/" + playerStats.turtleHunger;
     }
 
     private void FixedUpdate()
@@ -142,7 +146,8 @@ public class Shop : MonoBehaviour
                         Dialogue(purchaseDialogue, Status.PurchasedItem);
                         playerStats.lineSpeedVertical *= 1.5f;
                         playerStats.lineSpeedHorizontal *= 1.25f;
-                    }
+                        playerStats.lineSpeedUpgradeCost *= 2;
+                    }   
                     break;
                 case 2:
                     // fishing reel
@@ -153,6 +158,7 @@ public class Shop : MonoBehaviour
                         playerStats.money -= playerStats.strengthMultUpgradeCost;
                         Dialogue(purchaseDialogue, Status.PurchasedItem);
                         playerStats.strengthMult++;
+                        playerStats.strengthMultUpgradeCost *= 2;
                     }
                     break;
                 case 3:
@@ -164,6 +170,7 @@ public class Shop : MonoBehaviour
                         playerStats.money -= playerStats.bucketSizeCost;
                         Dialogue(purchaseDialogue, Status.PurchasedItem);
                         playerStats.bucketSize += 5;
+                        playerStats.bucketSizeCost *= 2;
                     }
                     break;
                 case 4:
@@ -175,6 +182,7 @@ public class Shop : MonoBehaviour
                         playerStats.money -= playerStats.lightbulbCost;
                         Dialogue(purchaseDialogue, Status.PurchasedItem);
                         playerStats.lightTier++;
+                        playerStats.lightbulbCost *= 2;
                     }
                     break;
                 case 5:
@@ -193,7 +201,6 @@ public class Shop : MonoBehaviour
                     // cannaeli
                     break;
             }
-            Dialogue(purchaseDialogue, Status.PurchasedItem);
         }
     }
 }
