@@ -51,18 +51,7 @@ public class HookControl : MonoBehaviour
         if (collision.gameObject.CompareTag("Fish"))
         {
             Debug.Log("Catch this fish: " + collision.gameObject.name);
-            fishing = true;
-            collision.gameObject.transform.SetParent(transform);
-            Fish fish = collision.gameObject.GetComponent<Fish>();
-            fish.enabled = false;
-            rb.gravityScale = 0;
-            fish.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            rb.velocity = Vector2.zero;
-            fish.gameObject.transform.position = (new Vector2(-0.56f, -0.05f) + fish.hookPoint) + (Vector2)transform.position;
             cs.Shake(100);
-            this.gameObject.GetComponent<CircleCollider2D>().enabled = false;
-            fish.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            this.enabled = false;
         }
     }
 }

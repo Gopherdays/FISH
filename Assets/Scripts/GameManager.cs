@@ -7,7 +7,6 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     HookControl hook;
-    Reeling reeler;
     public bool win;
 
     public GameObject canvas;
@@ -20,10 +19,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         hook = GameObject.Find("Fishing Hook").GetComponent<HookControl>();
-        reeler = GameObject.Find("Virtual Camera").GetComponent<Reeling>();
-        reeler.enabled = false;
-        //canvas = GameObject.Find("Virtual Camera").transform.GetChild(0).gameObject;
-        canvas.SetActive(false);
     }
     
     private void Update()
@@ -40,8 +35,6 @@ public class GameManager : MonoBehaviour
         }
         if (SceneManager.GetActiveScene().name == "Fishing" && hook.fishing)
         {
-            reeler.enabled = true;
-            canvas.SetActive(true);
             time -= Time.deltaTime;
             timer.text = Mathf.FloorToInt(time / 60) + ":";
             if (Mathf.FloorToInt(time) % 60 < 10) timer.text += "0";
