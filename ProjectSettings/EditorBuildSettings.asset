@@ -6,7 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: a09a08a19d6d1274fb538c0532484396
+  - enabled: 1
     path: Assets/Scenes/Fishing.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Transition Scene.unity
+    guid: 4f4126863bd9b92478b986e478e3f2ba
+  - enabled: 1
+    path: Assets/Scenes/Shop.unity
+    guid: 466be06f7d2f12f41bad98234bab1e3a
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: cfd210a0c5669d8469143c575b028b30, type: 2}

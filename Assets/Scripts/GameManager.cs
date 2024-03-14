@@ -55,17 +55,17 @@ public class GameManager : MonoBehaviour
 
     public void GoShop()
     {
-        SceneManager.LoadScene(0); // put in shop scene number
+        SceneManager.LoadScene(3);
     }
 
     public void GoFish()
     {
-        SceneManager.LoadScene(0); // put in fishing scene number
+        SceneManager.LoadScene(1);
     }
 
     public void GoBoat()
     {
-        SceneManager.LoadScene(0); // put in overworld scene number
+        SceneManager.LoadScene(2);
     }
 
     public void GoScene(int scene)
@@ -75,7 +75,6 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CreditsSpawning()
     {
-        RectTransform lastFish = null;
         Vector2 pos = new(1200, -270);
         int i = 0;
         while (true)
@@ -89,7 +88,7 @@ public class GameManager : MonoBehaviour
             text.text = credits[i];
             i = (i + 1) % credits.Length;
             // Random y positions of the rectTransforms, and resize the objects to fit the given text
-            lastFish = fish.GetComponent<RectTransform>();
+            RectTransform lastFish = fish.GetComponent<RectTransform>();
             pos.y = Random.Range(-260f, -440f);
             lastFish.anchoredPosition = pos;
             lastFish.sizeDelta = new(text.preferredWidth + 30, text.preferredHeight + 20);

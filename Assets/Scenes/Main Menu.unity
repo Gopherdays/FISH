@@ -206,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 15910396}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 406854830}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: GoFish
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &15910396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,6 +494,17 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &406854830 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
+  m_PrefabInstance: {fileID: 85073580}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43de9c2c17f0b2f458bead366574d112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1381576184
 GameObject:
   m_ObjectHideFlags: 0
