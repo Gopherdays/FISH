@@ -24,4 +24,14 @@ public class FadeInOut : MonoBehaviour
             color.a -= Time.deltaTime / seconds;
         sprite.color = color;
     }
+
+    public IEnumerator Fade(float time)
+    {
+        while (color.a !> 1 && color.a !< 0)
+        {
+            color.a += Time.deltaTime * (1 / seconds);
+            yield return new WaitForFixedUpdate();
+        }
+        yield return true;
+    }
 }
