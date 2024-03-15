@@ -70,6 +70,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Fishing",
+            "id": "1c95a321-fdfe-42aa-a248-ba379f9228ea",
+            "actions": [
+                {
+                    "name": "Movement",
+                    "type": "Button",
+                    "id": "14735848-96b4-44cd-b925-a9d1d41fa758",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ae7d00bd-036f-4ed1-b9a4-4acb7035a134",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

@@ -92,6 +92,34 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Fishing"",
+            ""id"": ""1c95a321-fdfe-42aa-a248-ba379f9228ea"",
+            ""actions"": [
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Button"",
+                    ""id"": ""14735848-96b4-44cd-b925-a9d1d41fa758"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""ae7d00bd-036f-4ed1-b9a4-4acb7035a134"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -112,6 +140,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_Reel = asset.FindActionMap("Reel", throwIfNotFound: true);
         m_Reel_Vertical = m_Reel.FindAction("Vertical", throwIfNotFound: true);
         m_Reel_Horizontal = m_Reel.FindAction("Horizontal", throwIfNotFound: true);
+        // Fishing
+        m_Fishing = asset.FindActionMap("Fishing", throwIfNotFound: true);
+        m_Fishing_Movement = m_Fishing.FindAction("Movement", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -208,6 +239,39 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         }
     }
     public ReelActions @Reel => new ReelActions(this);
+
+    // Fishing
+    private readonly InputActionMap m_Fishing;
+    private IFishingActions m_FishingActionsCallbackInterface;
+    private readonly InputAction m_Fishing_Movement;
+    public struct FishingActions
+    {
+        private @InputActions m_Wrapper;
+        public FishingActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Movement => m_Wrapper.m_Fishing_Movement;
+        public InputActionMap Get() { return m_Wrapper.m_Fishing; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(FishingActions set) { return set.Get(); }
+        public void SetCallbacks(IFishingActions instance)
+        {
+            if (m_Wrapper.m_FishingActionsCallbackInterface != null)
+            {
+                @Movement.started -= m_Wrapper.m_FishingActionsCallbackInterface.OnMovement;
+                @Movement.performed -= m_Wrapper.m_FishingActionsCallbackInterface.OnMovement;
+                @Movement.canceled -= m_Wrapper.m_FishingActionsCallbackInterface.OnMovement;
+            }
+            m_Wrapper.m_FishingActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Movement.started += instance.OnMovement;
+                @Movement.performed += instance.OnMovement;
+                @Movement.canceled += instance.OnMovement;
+            }
+        }
+    }
+    public FishingActions @Fishing => new FishingActions(this);
     private int m_XboxSchemeIndex = -1;
     public InputControlScheme XboxScheme
     {
@@ -221,5 +285,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     {
         void OnVertical(InputAction.CallbackContext context);
         void OnHorizontal(InputAction.CallbackContext context);
+    }
+    public interface IFishingActions
+    {
+        void OnMovement(InputAction.CallbackContext context);
     }
 }

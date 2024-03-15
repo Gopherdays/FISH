@@ -15,7 +15,8 @@ public class FishingRod : MonoBehaviour
     bool skip;
     public float speed;
     public int randomness;
-    private void Start()
+    float timer;
+    private void OnEnable()
     {
         randomness = 10;
         fishPos = Random.Range(2, 7);
@@ -25,11 +26,20 @@ public class FishingRod : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (timer < speed)
+            timer += Time.deltaTime;
+        else
+        {
+            newPos(fishPos);
+            timer = 0;
+        }
+
         if (fishPos != curFishPos)
         {
             fish.transform.rotation = Quaternion.Euler(0, 0, positions[fishPos]);
             curFishPos = fishPos;
         }
+
         if (catcherPos != curCatcherPos)
         {
             catcher.transform.rotation = Quaternion.Euler(0, 0, positions[catcherPos]);

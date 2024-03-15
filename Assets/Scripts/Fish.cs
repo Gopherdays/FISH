@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Fish : MonoBehaviour
 {
+    public float speed;
+    public int randomness;
 
     WaterPhysics waterPhysics;
     Rigidbody2D rb;
