@@ -16,9 +16,12 @@ public class GameManager : MonoBehaviour
     public GameObject creditsObject;
     public string[] credits;
 
+    public GameObject pause;
+
     private void Start()
     {
         hook = GameObject.Find("Fishing Hook").GetComponent<HookControl>();
+        pause.SetActive(false);
     }
     
     private void Update()
@@ -42,29 +45,58 @@ public class GameManager : MonoBehaviour
             if (Mathf.FloorToInt(time) % 60 < 10) timer.text += "0";
             timer.text += Mathf.FloorToInt(time) % 60;
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseUnpause();
+        }
     }
+
+    public void PauseUnpause()
+    {
+        if (pause.activeSelf)
+        {
+            pause.SetActive(false);
+            Time.timeScale = 1;
+        }
+        else
+        {
+            pause.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
+    public void ForceUnpause()
+    {
+        pause.SetActive(false);
+        Time.timeScale = 1;
+    }
+
     public void GoMenu()
     {
+        ForceUnpause();
         SceneManager.LoadScene(0);
     }
 
     public void GoShop()
     {
+        ForceUnpause();
         SceneManager.LoadScene(3);
     }
 
     public void GoFish()
     {
+        ForceUnpause();
         SceneManager.LoadScene(1);
     }
 
     public void GoBoat()
     {
+        ForceUnpause();
         SceneManager.LoadScene(2);
     }
 
     public void GoScene(int scene)
     {
+        ForceUnpause();
         SceneManager.LoadScene(scene);
     }
 
