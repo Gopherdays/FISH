@@ -44,6 +44,7 @@ public class HookControl : MonoBehaviour
     {
         rb.AddForce(new Vector2(Random.Range(0.25f, 1.25f) * -300, Random.Range(0.5f, 1.25f) * 300));
         thrown = true;
+        fishing = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

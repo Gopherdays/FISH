@@ -1671,8 +1671,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.5882353, g: 0.7960785, b: 0.86274517, a: 1}
-      key1: {r: 0.5882353, g: 0.7960785, b: 0.86274517, a: 1}
+      key0: {r: 1, g: 0.950071, b: 0.8254717, a: 1}
+      key1: {r: 1, g: 0.950071, b: 0.8254717, a: 1}
       key2: {r: 1, g: 0.3752398, b: 0, a: 0}
       key3: {r: 0.005823484, g: 0, b: 0.1965579, a: 0}
       key4: {r: 0.006987577, g: 0, b: 0.23584908, a: 0}
@@ -1680,7 +1680,7 @@ LineRenderer:
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 32575
+      ctime1: 65535
       ctime2: 36237
       ctime3: 39514
       ctime4: 39707
@@ -1696,7 +1696,7 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
@@ -2246,32 +2246,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6442cb3204fe7a7479224ae379236407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  fishStats: {fileID: 0}
-  bar: {fileID: 0}
-  hook: {fileID: 2145965923}
-  player: {fileID: 728282004}
-  fish: {fileID: 0}
-  str: 0
-  pauseBase: 0
-  pauseExtra: 0
-  pullTime: 0
-  pullExtra: 0
-  time: 0
-  rodRes: 0
-  rodStr: 1
-  weight: 0
-  length: 0
-  pull: 0
-  pulling: 0
-  go: 0
-  pause: 0
-  timer: 0
-  timer2: 0
-  swim: 0
-  direction: {x: 0, y: 0}
-  maxDistance: 0
-  distance: 0
 --- !u!1 &1914246540
 GameObject:
   m_ObjectHideFlags: 0
