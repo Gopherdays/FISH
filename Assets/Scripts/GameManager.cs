@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
             if (Mathf.FloorToInt(time) % 60 < 10) timer.text += "0";
             timer.text += Mathf.FloorToInt(time) % 60;
         }
+        time -= Time.deltaTime;
     }
     public void GoMenu()
     {
