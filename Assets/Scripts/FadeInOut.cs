@@ -18,11 +18,13 @@ public class FadeInOut : MonoBehaviour
 
     void FixedUpdate()
     {
+        /*
         if (fadeout)
             color.a += Time.deltaTime / seconds;
         else
             color.a -= Time.deltaTime / seconds;
         sprite.color = color;
+        */
     }
 
     public IEnumerator Fade(float time)

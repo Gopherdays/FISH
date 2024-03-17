@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,10 +18,19 @@ public class GameManager : MonoBehaviour
     public string[] credits;
 
     public GameObject pause;
+    public Image transitionImage;
+    public bool fade = true;
+    Color color;
 
     private void Start()
     {
-        hook = GameObject.Find("Fishing Hook").GetComponent<HookControl>();
+        if (fade)
+        {
+            color = Color.black;
+            StartCoroutine(FadeInOut(-1));
+        }
+        if (SceneManager.GetActiveScene().name == "Fishing")
+            hook = GameObject.Find("Fishing Hook").GetComponent<HookControl>();
         pause.SetActive(false);
     }
     
@@ -39,8 +49,12 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Fishing" && hook.fishing)
         {
             if (time <= 0)
-                SceneManager.LoadScene(2);
-            time -= Time.deltaTime;
+            {
+                GoBoat();
+                hook.fishing = false;
+            }
+            else
+                time -= Time.deltaTime;
             timer.text = Mathf.FloorToInt(time / 60) + ":";
             if (Mathf.FloorToInt(time) % 60 < 10) timer.text += "0";
             timer.text += Mathf.FloorToInt(time) % 60;
@@ -49,6 +63,22 @@ public class GameManager : MonoBehaviour
         {
             PauseUnpause();
         }
+    }
+
+    public IEnumerator FadeInOut(float speed, int scene = -1)
+    {
+        ForceUnpause();
+        while (color.a > -0.1f && color.a < 1.1f)
+        {
+            color.a += Time.deltaTime * (1 / speed);
+            transitionImage.color = color;
+            yield return new WaitForFixedUpdate();
+        }
+        if (scene >= 0)
+        {
+            SceneManager.LoadScene(scene);
+        }
+        yield break;
     }
 
     public void PauseUnpause()
@@ -70,34 +100,35 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    // Voids that start coroutines used to allow activation through buttons because that seems to happen a lot
     public void GoMenu()
     {
-        ForceUnpause();
-        SceneManager.LoadScene(0);
+        StopAllCoroutines();
+        StartCoroutine(FadeInOut(1, 0));
     }
 
     public void GoShop()
     {
-        ForceUnpause();
-        SceneManager.LoadScene(3);
+        StopAllCoroutines();
+        StartCoroutine(FadeInOut(1, 3));
     }
 
     public void GoFish()
     {
-        ForceUnpause();
-        SceneManager.LoadScene(1);
+        StopAllCoroutines();
+        StartCoroutine(FadeInOut(1, 1));
     }
 
     public void GoBoat()
     {
-        ForceUnpause();
-        SceneManager.LoadScene(2);
+        StopAllCoroutines();
+        StartCoroutine(FadeInOut(1, 2));
     }
 
     public void GoScene(int scene)
     {
-        ForceUnpause();
-        SceneManager.LoadScene(scene);
+        StopAllCoroutines();
+        StartCoroutine(FadeInOut(1, scene));
     }
 
     IEnumerator CreditsSpawning()
