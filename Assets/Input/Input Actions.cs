@@ -28,7 +28,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
             ""id"": ""66f0053b-ec20-4960-978a-844c05336e0c"",
             ""actions"": [
                 {
-                    ""name"": ""Vertical"",
+                    ""name"": ""Up"",
                     ""type"": ""Button"",
                     ""id"": ""b3e8f563-9f57-4ab6-adf5-80d16fc2bae0"",
                     ""expectedControlType"": ""Button"",
@@ -37,7 +37,25 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Horizontal"",
+                    ""name"": ""Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""63fbd7d3-d3f0-49f4-bbd4-5b4e21c693bb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""f78ffe52-ebc6-4b60-bcab-568d34605b96"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Right"",
                     ""type"": ""Button"",
                     ""id"": ""8409f007-b4de-49e5-a0e8-0060ee62dff8"",
                     ""expectedControlType"": ""Button"",
@@ -54,40 +72,40 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Vertical"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2e49afc8-3640-4881-a65e-c84ea7cdc196"",
-                    ""path"": ""<Gamepad>/dpad/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Vertical"",
+                    ""action"": ""Up"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""a2e74865-f963-4104-b68b-b0ace122a6e2"",
-                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Horizontal"",
+                    ""action"": ""Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""fea680d5-ffa4-4ab1-ac12-e3dce8e9279c"",
-                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""id"": ""f9abab48-87e0-45cf-83f7-2341738ce978"",
+                    ""path"": ""<Gamepad>/dpad/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Horizontal"",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d9aaab2-9b51-4246-9590-d7bb43a425bf"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -138,8 +156,10 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
 }");
         // Reel
         m_Reel = asset.FindActionMap("Reel", throwIfNotFound: true);
-        m_Reel_Vertical = m_Reel.FindAction("Vertical", throwIfNotFound: true);
-        m_Reel_Horizontal = m_Reel.FindAction("Horizontal", throwIfNotFound: true);
+        m_Reel_Up = m_Reel.FindAction("Up", throwIfNotFound: true);
+        m_Reel_Down = m_Reel.FindAction("Down", throwIfNotFound: true);
+        m_Reel_Left = m_Reel.FindAction("Left", throwIfNotFound: true);
+        m_Reel_Right = m_Reel.FindAction("Right", throwIfNotFound: true);
         // Fishing
         m_Fishing = asset.FindActionMap("Fishing", throwIfNotFound: true);
         m_Fishing_Movement = m_Fishing.FindAction("Movement", throwIfNotFound: true);
@@ -202,14 +222,18 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     // Reel
     private readonly InputActionMap m_Reel;
     private IReelActions m_ReelActionsCallbackInterface;
-    private readonly InputAction m_Reel_Vertical;
-    private readonly InputAction m_Reel_Horizontal;
+    private readonly InputAction m_Reel_Up;
+    private readonly InputAction m_Reel_Down;
+    private readonly InputAction m_Reel_Left;
+    private readonly InputAction m_Reel_Right;
     public struct ReelActions
     {
         private @InputActions m_Wrapper;
         public ReelActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Vertical => m_Wrapper.m_Reel_Vertical;
-        public InputAction @Horizontal => m_Wrapper.m_Reel_Horizontal;
+        public InputAction @Up => m_Wrapper.m_Reel_Up;
+        public InputAction @Down => m_Wrapper.m_Reel_Down;
+        public InputAction @Left => m_Wrapper.m_Reel_Left;
+        public InputAction @Right => m_Wrapper.m_Reel_Right;
         public InputActionMap Get() { return m_Wrapper.m_Reel; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -219,22 +243,34 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_ReelActionsCallbackInterface != null)
             {
-                @Vertical.started -= m_Wrapper.m_ReelActionsCallbackInterface.OnVertical;
-                @Vertical.performed -= m_Wrapper.m_ReelActionsCallbackInterface.OnVertical;
-                @Vertical.canceled -= m_Wrapper.m_ReelActionsCallbackInterface.OnVertical;
-                @Horizontal.started -= m_Wrapper.m_ReelActionsCallbackInterface.OnHorizontal;
-                @Horizontal.performed -= m_Wrapper.m_ReelActionsCallbackInterface.OnHorizontal;
-                @Horizontal.canceled -= m_Wrapper.m_ReelActionsCallbackInterface.OnHorizontal;
+                @Up.started -= m_Wrapper.m_ReelActionsCallbackInterface.OnUp;
+                @Up.performed -= m_Wrapper.m_ReelActionsCallbackInterface.OnUp;
+                @Up.canceled -= m_Wrapper.m_ReelActionsCallbackInterface.OnUp;
+                @Down.started -= m_Wrapper.m_ReelActionsCallbackInterface.OnDown;
+                @Down.performed -= m_Wrapper.m_ReelActionsCallbackInterface.OnDown;
+                @Down.canceled -= m_Wrapper.m_ReelActionsCallbackInterface.OnDown;
+                @Left.started -= m_Wrapper.m_ReelActionsCallbackInterface.OnLeft;
+                @Left.performed -= m_Wrapper.m_ReelActionsCallbackInterface.OnLeft;
+                @Left.canceled -= m_Wrapper.m_ReelActionsCallbackInterface.OnLeft;
+                @Right.started -= m_Wrapper.m_ReelActionsCallbackInterface.OnRight;
+                @Right.performed -= m_Wrapper.m_ReelActionsCallbackInterface.OnRight;
+                @Right.canceled -= m_Wrapper.m_ReelActionsCallbackInterface.OnRight;
             }
             m_Wrapper.m_ReelActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Vertical.started += instance.OnVertical;
-                @Vertical.performed += instance.OnVertical;
-                @Vertical.canceled += instance.OnVertical;
-                @Horizontal.started += instance.OnHorizontal;
-                @Horizontal.performed += instance.OnHorizontal;
-                @Horizontal.canceled += instance.OnHorizontal;
+                @Up.started += instance.OnUp;
+                @Up.performed += instance.OnUp;
+                @Up.canceled += instance.OnUp;
+                @Down.started += instance.OnDown;
+                @Down.performed += instance.OnDown;
+                @Down.canceled += instance.OnDown;
+                @Left.started += instance.OnLeft;
+                @Left.performed += instance.OnLeft;
+                @Left.canceled += instance.OnLeft;
+                @Right.started += instance.OnRight;
+                @Right.performed += instance.OnRight;
+                @Right.canceled += instance.OnRight;
             }
         }
     }
@@ -283,8 +319,10 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     }
     public interface IReelActions
     {
-        void OnVertical(InputAction.CallbackContext context);
-        void OnHorizontal(InputAction.CallbackContext context);
+        void OnUp(InputAction.CallbackContext context);
+        void OnDown(InputAction.CallbackContext context);
+        void OnLeft(InputAction.CallbackContext context);
+        void OnRight(InputAction.CallbackContext context);
     }
     public interface IFishingActions
     {

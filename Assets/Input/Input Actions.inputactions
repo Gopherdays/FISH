@@ -6,7 +6,7 @@
             "id": "66f0053b-ec20-4960-978a-844c05336e0c",
             "actions": [
                 {
-                    "name": "Vertical",
+                    "name": "Up",
                     "type": "Button",
                     "id": "b3e8f563-9f57-4ab6-adf5-80d16fc2bae0",
                     "expectedControlType": "Button",
@@ -15,7 +15,25 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Horizontal",
+                    "name": "Down",
+                    "type": "Button",
+                    "id": "63fbd7d3-d3f0-49f4-bbd4-5b4e21c693bb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Left",
+                    "type": "Button",
+                    "id": "f78ffe52-ebc6-4b60-bcab-568d34605b96",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Right",
                     "type": "Button",
                     "id": "8409f007-b4de-49e5-a0e8-0060ee62dff8",
                     "expectedControlType": "Button",
@@ -32,40 +50,40 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Vertical",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2e49afc8-3640-4881-a65e-c84ea7cdc196",
-                    "path": "<Gamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Vertical",
+                    "action": "Up",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "a2e74865-f963-4104-b68b-b0ace122a6e2",
-                    "path": "<Gamepad>/dpad/left",
+                    "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Horizontal",
+                    "action": "Right",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "fea680d5-ffa4-4ab1-ac12-e3dce8e9279c",
-                    "path": "<Gamepad>/dpad/right",
+                    "id": "f9abab48-87e0-45cf-83f7-2341738ce978",
+                    "path": "<Gamepad>/dpad/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Horizontal",
+                    "action": "Down",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4d9aaab2-9b51-4246-9590-d7bb43a425bf",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
