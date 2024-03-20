@@ -48,7 +48,37 @@ public class FishingRod : MonoBehaviour
     {
         if (changed)
         {
-            switch ()
+            changed = false;
+            switch (true)
+            {
+                case true when (up && !left && !right):
+                    catcherPos = 0;
+                    break;
+                case true when (up && left):
+                    catcherPos = 1;
+                    break;
+                case true when (left && !up && !down):
+                    catcherPos = 2;
+                    break;
+                case true when (down && left):
+                    catcherPos = 3;
+                    break;
+                case true when (down && !left && !right):
+                    catcherPos = 4;
+                    break;
+                case true when (down && right):
+                    catcherPos = 5;
+                    break;
+                case true when (right && !up && !down):
+                    catcherPos = 6;
+                    break;
+                case true when (up && right):
+                    catcherPos = 7;
+                    break;
+                default:
+                    print("There is no change, but we thought");
+                    break;
+            }
         }
     }
     private void FixedUpdate()
