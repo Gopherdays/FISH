@@ -24,6 +24,8 @@ public class FishingRod : MonoBehaviour
     public float speed;
     public int turnChance;
     public int skipChance;
+    public float rodStr;
+    public float distance;
     float timer;
 
     private void Start()
@@ -43,6 +45,8 @@ public class FishingRod : MonoBehaviour
         catcherPos = 1;
         curCatcherPos = 1;
         curFishPos = fishPos;
+        rodStr = 3;
+        distance = 50;
     }
     private void Update()
     {
@@ -103,6 +107,22 @@ public class FishingRod : MonoBehaviour
             catcher.transform.rotation = Quaternion.Euler(0, 0, positions[catcherPos]);
             curCatcherPos = catcherPos;
         }
+
+        if (catcherPos == fishPos)
+        {
+            distance -= rodStr * Time.deltaTime;
+            print((int)distance);
+        }
+        else if (newInt(catcherPos - 1) == fishPos || newInt(catcherPos + 1) == fishPos)
+        {
+            distance -= rodStr * Time.deltaTime * 0.5f;
+            print((int)distance);
+        }
+        else
+        {
+            distance += speed * Time.deltaTime * 3;
+            print((int)distance);
+        }
     }
     int newPos(int position)
     {
@@ -122,6 +142,12 @@ public class FishingRod : MonoBehaviour
             temp -= 2;
         else
             temp--;
+        temp = newInt(temp);
+        skip = false;
+        return temp;
+    }
+    int newInt(int temp)
+    {
         switch (temp)
         {
             case 8:
@@ -143,7 +169,6 @@ public class FishingRod : MonoBehaviour
             default:
                 break;
         }
-        skip = false;
         return temp;
     }
 
