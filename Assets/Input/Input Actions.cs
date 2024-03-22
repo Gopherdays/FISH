@@ -138,6 +138,34 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""B"",
+            ""id"": ""de630de0-8ee5-4800-9055-e532011f15b1"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""c3518b39-a4f0-4898-a4df-0fa11049dd61"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""05f9fd02-3809-4cad-a1d9-a0643d09c6a2"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -163,6 +191,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         // Fishing
         m_Fishing = asset.FindActionMap("Fishing", throwIfNotFound: true);
         m_Fishing_Movement = m_Fishing.FindAction("Movement", throwIfNotFound: true);
+        // B
+        m_B = asset.FindActionMap("B", throwIfNotFound: true);
+        m_B_Newaction = m_B.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -308,6 +339,39 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         }
     }
     public FishingActions @Fishing => new FishingActions(this);
+
+    // B
+    private readonly InputActionMap m_B;
+    private IBActions m_BActionsCallbackInterface;
+    private readonly InputAction m_B_Newaction;
+    public struct BActions
+    {
+        private @InputActions m_Wrapper;
+        public BActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_B_Newaction;
+        public InputActionMap Get() { return m_Wrapper.m_B; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(BActions set) { return set.Get(); }
+        public void SetCallbacks(IBActions instance)
+        {
+            if (m_Wrapper.m_BActionsCallbackInterface != null)
+            {
+                @Newaction.started -= m_Wrapper.m_BActionsCallbackInterface.OnNewaction;
+                @Newaction.performed -= m_Wrapper.m_BActionsCallbackInterface.OnNewaction;
+                @Newaction.canceled -= m_Wrapper.m_BActionsCallbackInterface.OnNewaction;
+            }
+            m_Wrapper.m_BActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Newaction.started += instance.OnNewaction;
+                @Newaction.performed += instance.OnNewaction;
+                @Newaction.canceled += instance.OnNewaction;
+            }
+        }
+    }
+    public BActions @B => new BActions(this);
     private int m_XboxSchemeIndex = -1;
     public InputControlScheme XboxScheme
     {
@@ -327,5 +391,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     public interface IFishingActions
     {
         void OnMovement(InputAction.CallbackContext context);
+    }
+    public interface IBActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
     }
 }

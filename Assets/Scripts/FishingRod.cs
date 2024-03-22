@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class FishingRod : MonoBehaviour
 {
     PlayerInput pi;
     public GameObject fish;
     public GameObject catcher;
+    public TextMeshProUGUI depthText;
     List<float> positions = new List<float>();
     int fishPos;
     int curFishPos;
@@ -27,15 +29,26 @@ public class FishingRod : MonoBehaviour
     public float rodStr;
     public float distance;
     float timer;
-
+    bool go;
     private void Start()
+    {
+        GameObject.Find("Fishing UI").SetActive(false);
+        GameObject.Find("Depth Meter").SetActive(false);
+        fishPos = Random.Range(2, 7);
+        fish.transform.rotation = Quaternion.Euler(0, 0, positions[fishPos]);
+        curFishPos = fishPos;
+        this.enabled = false;
+        this.gameObject.transform.GetChild(2).gameObject.SetActive(false);
+        this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
+    }
+
+    private void OnEnable()
     {
         pi = GetComponent<PlayerInput>();
         GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>().Follow = GameObject.Find("Player").transform;
         for (int i = 0; i < 8; i++)
         {
             positions.Add(i * 45);
-            print(i + " iteration");
         }
         direction = true;
         skip = false;
@@ -47,81 +60,87 @@ public class FishingRod : MonoBehaviour
         curFishPos = fishPos;
         rodStr = 3;
         distance = 50;
+
+        go = true;
     }
     private void Update()
     {
-        if (changed)
+        if (go)
         {
-            changed = false;
-            switch (true)
+            if (changed)
             {
-                case true when (up && !left && !right):
-                    catcherPos = 0;
-                    break;
-                case true when (up && left):
-                    catcherPos = 1;
-                    break;
-                case true when (left && !up && !down):
-                    catcherPos = 2;
-                    break;
-                case true when (down && left):
-                    catcherPos = 3;
-                    break;
-                case true when (down && !left && !right):
-                    catcherPos = 4;
-                    break;
-                case true when (down && right):
-                    catcherPos = 5;
-                    break;
-                case true when (right && !up && !down):
-                    catcherPos = 6;
-                    break;
-                case true when (up && right):
-                    catcherPos = 7;
-                    break;
-                default:
-                    print("There is no change, but we thought");
-                    break;
+                changed = false;
+                switch (true)
+                {
+                    case true when (up && !left && !right):
+                        catcherPos = 0;
+                        break;
+                    case true when (up && left):
+                        catcherPos = 1;
+                        break;
+                    case true when (left && !up && !down):
+                        catcherPos = 2;
+                        break;
+                    case true when (down && left):
+                        catcherPos = 3;
+                        break;
+                    case true when (down && !left && !right):
+                        catcherPos = 4;
+                        break;
+                    case true when (down && right):
+                        catcherPos = 5;
+                        break;
+                    case true when (right && !up && !down):
+                        catcherPos = 6;
+                        break;
+                    case true when (up && right):
+                        catcherPos = 7;
+                        break;
+                    default:
+                        print("There is no change, but we thought");
+                        break;
+                }
             }
         }
     }
     private void FixedUpdate()
     {
-        if (timer < speed)
-            timer += Time.deltaTime;
-        else
+        if (go)
         {
-            fishPos = newPos(fishPos);
-           // print(fishPos);
-            timer = 0;
-        }
+            if (timer < speed)
+                timer += Time.deltaTime;
+            else
+            {
+                fishPos = newPos(fishPos);
+                // print(fishPos);
+                timer = 0;
+            }
 
-        if (fishPos != curFishPos)
-        {
-            fish.transform.rotation = Quaternion.Euler(0, 0, positions[fishPos]);
-            curFishPos = fishPos;
-        }
+            if (fishPos != curFishPos)
+            {
+                fish.transform.rotation = Quaternion.Euler(0, 0, positions[fishPos]);
+                curFishPos = fishPos;
+            }
 
-        if (catcherPos != curCatcherPos)
-        {
-            catcher.transform.rotation = Quaternion.Euler(0, 0, positions[catcherPos]);
-            curCatcherPos = catcherPos;
-        }
+            if (catcherPos != curCatcherPos)
+            {
+                catcher.transform.rotation = Quaternion.Euler(0, 0, positions[catcherPos]);
+                curCatcherPos = catcherPos;
+            }
 
-        if (catcherPos == fishPos)
-        {
-            distance -= rodStr * Time.deltaTime;
-            print((int)distance);
-        }
-        else if (newInt(catcherPos - 1) == fishPos || newInt(catcherPos + 1) == fishPos)
-        {
-            distance -= rodStr * Time.deltaTime * 0.5f;
-            print((int)distance);
-        }
-        else
-        {
-            distance += speed * Time.deltaTime * 3;
-            print((int)distance);
+            if (catcherPos == fishPos)
+            {
+                distance -= rodStr * Time.deltaTime;
+            }
+            else if (newInt(catcherPos - 1) == fishPos || newInt(catcherPos + 1) == fishPos)
+            {
+                distance -= rodStr * Time.deltaTime * 0.5f;
+            }
+            else
+            {
+                distance += speed * Time.deltaTime * 3;
+            }
+            depthText.text = (int)distance + "m";
         }
     }
     int newPos(int position)
