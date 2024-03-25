@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Rendering.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -48,16 +49,23 @@ public class GameManager : MonoBehaviour
         }
         if (SceneManager.GetActiveScene().name == "Fishing" && hook.fishing)
         {
-            if (time <= 0)
+            if (time <= -60) // If you can't reel in one fish in an entire minute that's a skill issue
             {
                 GoBoat();
                 hook.fishing = false;
             }
             else
                 time -= Time.deltaTime;
-            timer.text = Mathf.FloorToInt(time / 60) + ":";
-            if (Mathf.FloorToInt(time) % 60 < 10) timer.text += "0";
-            timer.text += Mathf.FloorToInt(time) % 60;
+
+            // We need to check if the player is actively reeling in a fish. If they aren't and the time is below 0, then go to boat. I need an isReeling variable
+
+            if (time > 0)
+            {
+                timer.text = Mathf.FloorToInt(time / 60) + ":";
+                if (Mathf.FloorToInt(time) % 60 < 10) timer.text += "0";
+                timer.text += Mathf.FloorToInt(time) % 60;
+            }
+            else timer.text = "0:00";
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
