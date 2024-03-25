@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class HookControl : MonoBehaviour
 {
@@ -54,5 +55,25 @@ public class HookControl : MonoBehaviour
             Debug.Log("Catch this fish: " + collision.gameObject.name);
             cs.Shake(100);
         }
+    }
+
+    public void Up(InputAction.CallbackContext context)
+    {
+
+    }
+
+    public void Down(InputAction.CallbackContext context)
+    {
+
+    }
+
+    public void Left(InputAction.CallbackContext context)
+    {
+
+    }
+
+    public void Right(InputAction.CallbackContext context)
+    {
+
     }
 }
