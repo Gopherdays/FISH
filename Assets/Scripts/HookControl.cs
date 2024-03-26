@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class HookControl : MonoBehaviour
 {
     public PlayerStatsEpic stats;
 
+    CinemachineVirtualCamera cam;
     Rigidbody2D rb;
     CameraScript cs;
+    FishingRod fr;
     public Transform origin;
     public float hookSpeedHorizontal = 2;
     public float hookSpeedVertical = 4;
@@ -17,8 +20,10 @@ public class HookControl : MonoBehaviour
 
     void Start()
     {
+        cam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
         rb = GetComponent<Rigidbody2D>();
-        cs = GameObject.Find("Virtual Camera").GetComponent<CameraScript>();
+        cs = cam.gameObject.GetComponent<CameraScript>();
+        fr = GameObject.Find("Main Camera").GetComponent<FishingRod>();
         hookSpeedHorizontal = 2 * stats.lineSpeedHorizontal;
         hookSpeedVertical = 4 * stats.lineSpeedVertical;
         fishing = false;
@@ -53,7 +58,16 @@ public class HookControl : MonoBehaviour
         if (collision.gameObject.CompareTag("Fish"))
         {
             Debug.Log("Catch this fish: " + collision.gameObject.name);
+            GameObject[] things = GameObject.FindGameObjectsWithTag("Fish");
+            foreach (GameObject go in things)
+            {
+                if (go != collision.gameObject)
+                    Destroy(go);
+            }
+            cam.Follow = GameObject.Find("Player").transform;
             cs.Shake(100);
+            fr.enabled = true;
+            this.enabled = false;
         }
     }
 
