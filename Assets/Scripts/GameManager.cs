@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject canvas;
     public float time = 180;
     public TextMeshProUGUI timer;
+    public TextMeshProUGUI HHHURRYUPP;
 
     public GameObject creditsObject;
     public string[] credits;
@@ -31,7 +32,10 @@ public class GameManager : MonoBehaviour
             StartCoroutine(FadeInOut(-1));
         }
         if (SceneManager.GetActiveScene().name == "Fishing")
+        {
             hook = GameObject.Find("Fishing Hook").GetComponent<HookControl>();
+            HHHURRYUPP.alpha = 0;
+        }
         pause.SetActive(false);
     }
     
@@ -66,6 +70,10 @@ public class GameManager : MonoBehaviour
                 timer.text += Mathf.FloorToInt(time) % 60;
             }
             else timer.text = "0:00";
+            HHHURRYUPP.text = Mathf.FloorToInt((time + 61) / 60) + ":";
+            if (Mathf.FloorToInt(time+61) % 60 < 10) HHHURRYUPP.text += "0";
+            HHHURRYUPP.text += Mathf.FloorToInt(time+61) % 60;
+            HHHURRYUPP.alpha = (-time - 30) / 300;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
