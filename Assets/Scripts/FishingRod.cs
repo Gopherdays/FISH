@@ -141,6 +141,11 @@ public class FishingRod : MonoBehaviour
                 distance += speed * Time.deltaTime * 3;
             }
             depthText.text = (int)distance + "m";
+
+            if (distance >= 0)
+            {
+                go = false;
+            }
         }
     }
     int newPos(int position)
