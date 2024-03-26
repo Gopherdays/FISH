@@ -15,6 +15,9 @@ public class MusicControl : MonoBehaviour
         {
             music.Play();
             waiting.Stop();
+            intenseMoment.Play();
+            intenseMoment.mute = true;
         }
+        intenseMoment.mute = !(Input.GetKey(KeyCode.P)); // Replace input with reeling variable in hookControl
     }
 }
