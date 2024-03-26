@@ -37,9 +37,9 @@ public class FishingRod : MonoBehaviour
         fishPos = Random.Range(2, 7);
         fish.transform.rotation = Quaternion.Euler(0, 0, positions[fishPos]);
         curFishPos = fishPos;
-        this.enabled = false;
         this.gameObject.transform.GetChild(2).gameObject.SetActive(false);
         this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
+        this.enabled = false;
     }
 
     private void OnEnable()
