@@ -50,6 +50,8 @@ public class FishingRod : MonoBehaviour
         {
             positions.Add(i * 45);
         }
+        this.gameObject.transform.GetChild(2).gameObject.SetActive(true);
+        this.gameObject.transform.GetChild(3).gameObject.SetActive(true);
         direction = true;
         skip = false;
         skipChance = 10;
@@ -59,7 +61,6 @@ public class FishingRod : MonoBehaviour
         curCatcherPos = 1;
         curFishPos = fishPos;
         rodStr = 3;
-        distance = 50;
 
         go = true;
     }
@@ -97,7 +98,6 @@ public class FishingRod : MonoBehaviour
                         catcherPos = 7;
                         break;
                     default:
-                        print("There is no change, but we thought");
                         break;
                 }
             }

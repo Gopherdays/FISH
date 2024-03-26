@@ -8,7 +8,7 @@ public class FishSpawning : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < 100; i++)
+        for (int i = 3; i < 1000; i++)
         {
             SpawnFish(-i);
         }
@@ -19,6 +19,6 @@ public class FishSpawning : MonoBehaviour
         float randomFishIndex = (-depth + Mathf.Sqrt(Random.Range(0,9f) * Random.Range(0,2))) / 10;
         randomFishIndex = Mathf.RoundToInt(Mathf.Clamp(randomFishIndex, 0, fishTypes.Length - 1));
         GameObject fish = Instantiate(fishTypes[(int)randomFishIndex]);
-        fish.transform.position = new Vector3(Random.Range(-15f, 15f), Mathf.Clamp(depth + Random.Range(-3f, 3f),-9999999,-1));
+        fish.transform.position = new Vector3(Random.Range(-45f, 45f), Mathf.Clamp(depth + Random.Range(-3f, 3f),-9999999,-1));
     }
 }
