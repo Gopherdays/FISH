@@ -8,10 +8,12 @@ public class HookControl : MonoBehaviour
 {
     public PlayerStatsEpic stats;
 
+    GameObject player;
     CinemachineVirtualCamera cam;
     Rigidbody2D rb;
     CameraScript cs;
     FishingRod fr;
+    FishingLine fl;
     public Transform origin;
     public float hookSpeedHorizontal = 2;
     public float hookSpeedVertical = 4;
@@ -20,10 +22,12 @@ public class HookControl : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.Find("Player");
         cam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
         rb = GetComponent<Rigidbody2D>();
         cs = cam.gameObject.GetComponent<CameraScript>();
         fr = GameObject.Find("Main Camera").GetComponent<FishingRod>();
+        fl = GameObject.Find("Line Renderer").GetComponent<FishingLine>();
         hookSpeedHorizontal = 2 * stats.lineSpeedHorizontal;
         hookSpeedVertical = 4 * stats.lineSpeedVertical;
         fishing = false;
@@ -57,17 +61,27 @@ public class HookControl : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Fish"))
         {
-            Debug.Log("Catch this fish: " + collision.gameObject.name);
+            GameObject fish = collision.gameObject;
+            Debug.Log("Catch this fish: " + fish.name);
             GameObject[] things = GameObject.FindGameObjectsWithTag("Fish");
             foreach (GameObject go in things)
             {
-                if (go != collision.gameObject)
-                    Destroy(go);
+                if (go != fish)
+                    go.SetActive(false);
             }
-            cam.Follow = GameObject.Find("Player").transform;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            fish.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            fr.distance = Vector2.Distance(fish.transform.position, player.transform.position);
+            cam.Follow = player.transform;
+            transform.position = player.transform.position;
+            fish.transform.rotation = Quaternion.Euler (0 , 0 , 90);
+            fish.transform.position = new Vector2(-7, -5);
+            fish.GetComponent<SpriteRenderer>().sortingOrder = 420; //lol
+            fl.hook = fish;
             cs.Shake(100);
             fr.enabled = true;
-            this.enabled = false;
+            this.gameObject.SetActive(false);
+            enabled = false;
         }
     }
 
