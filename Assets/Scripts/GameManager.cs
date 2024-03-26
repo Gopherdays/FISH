@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
             color = Color.black;
             StartCoroutine(FadeInOut(-1));
         }
+        else color = Color.clear;
         if (SceneManager.GetActiveScene().name == "Fishing")
         {
             hook = GameObject.Find("Fishing Hook").GetComponent<HookControl>();
