@@ -9,10 +9,15 @@ public class FishingRod : MonoBehaviour
 {
     PlayerInput pi;
     public GameObject fish;
+    public GameObject indicator;
     public GameObject catcher;
+    public GameObject hook;
+    public GameObject[] things;
     public TextMeshProUGUI depthText;
+    public FishingLine fl;
+    Vector2 tempV;
     List<float> positions = new List<float>();
-    int fishPos;
+    int indPos;
     int curFishPos;
     int catcherPos;
     int curCatcherPos;
@@ -30,16 +35,18 @@ public class FishingRod : MonoBehaviour
     public float distance;
     float timer;
     bool go;
+    bool reset;
     private void Start()
     {
         GameObject.Find("Fishing UI").SetActive(false);
         GameObject.Find("Depth Meter").SetActive(false);
-        fishPos = Random.Range(2, 7);
-        fish.transform.rotation = Quaternion.Euler(0, 0, positions[fishPos]);
-        curFishPos = fishPos;
+        indPos = Random.Range(2, 7);
+        indicator.transform.rotation = Quaternion.Euler(0, 0, positions[indPos]);
+        curFishPos = indPos;
         this.gameObject.transform.GetChild(2).gameObject.SetActive(false);
         this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
         this.enabled = false;
+        tempV = new Vector2(-7, -5);
     }
 
     private void OnEnable()
@@ -56,10 +63,10 @@ public class FishingRod : MonoBehaviour
         skip = false;
         skipChance = 10;
         turnChance = 30;
-        fishPos = Random.Range(2, 7);
+        indPos = Random.Range(2, 7);
         catcherPos = 1;
         curCatcherPos = 1;
-        curFishPos = fishPos;
+        curFishPos = indPos;
         rodStr = 3;
 
         go = true;
@@ -111,15 +118,15 @@ public class FishingRod : MonoBehaviour
                 timer += Time.deltaTime;
             else
             {
-                fishPos = newPos(fishPos);
-                // print(fishPos);
+                indPos = newPos(indPos);
+                // print(indPos);
                 timer = 0;
             }
 
-            if (fishPos != curFishPos)
+            if (indPos != curFishPos)
             {
-                fish.transform.rotation = Quaternion.Euler(0, 0, positions[fishPos]);
-                curFishPos = fishPos;
+                indicator.transform.rotation = Quaternion.Euler(0, 0, positions[indPos]);
+                curFishPos = indPos;
             }
 
             if (catcherPos != curCatcherPos)
@@ -128,23 +135,47 @@ public class FishingRod : MonoBehaviour
                 curCatcherPos = catcherPos;
             }
 
-            if (catcherPos == fishPos)
-            {
+            if (catcherPos == indPos)
                 distance -= rodStr * Time.deltaTime;
-            }
-            else if (newInt(catcherPos - 1) == fishPos || newInt(catcherPos + 1) == fishPos)
-            {
+
+            else if (newInt(catcherPos - 1) == indPos || newInt(catcherPos + 1) == indPos)
                 distance -= rodStr * Time.deltaTime * 0.5f;
+
+            else
+                distance += speed * Time.deltaTime * 3;
+
+            depthText.text = (int)distance + "m";
+            if (distance <= 0)
+            {
+                go = false;
+                reset = true;
+            }
+        }
+        else if (reset)
+        {
+            if (fish.transform.position.y <= -1.5f)
+            {
+                tempV.y += Time.deltaTime * 1.5f;
+                fish.transform.position = tempV;
             }
             else
             {
-                distance += speed * Time.deltaTime * 3;
-            }
-            depthText.text = (int)distance + "m";
-
-            if (distance >= 0)
-            {
-                go = false;
+                print("Yay! You caught: " + fish.name.Remove(fish.name.Length-7));
+                GameObject.Find("Fishing UI").SetActive(false);
+                GameObject.Find("Depth Meter").SetActive(false);
+                GameObject.Find("Virtual Camera").GetComponent<CameraScript>().cast = false;
+                fl.hook = hook;
+                HookControl hooky = hook.GetComponent<HookControl>();
+                hooky.ThrowHook();
+                hooky.enabled = true;
+                hook.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+                hook.SetActive(true);
+                this.enabled = false;
+                Destroy(fish);
+                foreach (GameObject go in things)
+                {
+                    go.SetActive(true);
+                }
             }
         }
     }

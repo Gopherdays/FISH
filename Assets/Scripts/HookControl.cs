@@ -14,6 +14,7 @@ public class HookControl : MonoBehaviour
     CameraScript cs;
     FishingRod fr;
     FishingLine fl;
+    GameObject[] things;
     public Transform origin;
     public float hookSpeedHorizontal = 2;
     public float hookSpeedVertical = 4;
@@ -32,7 +33,6 @@ public class HookControl : MonoBehaviour
         hookSpeedVertical = 4 * stats.lineSpeedVertical;
         fishing = false;
     }
-
     void Update()
     {
         if (thrown)
@@ -50,7 +50,7 @@ public class HookControl : MonoBehaviour
         
     }
 
-    void ThrowHook()
+    public void ThrowHook()
     {
         rb.AddForce(new Vector2(Random.Range(0.25f, 1.25f) * -300, Random.Range(0.5f, 1.25f) * 300));
         thrown = true;
@@ -63,15 +63,19 @@ public class HookControl : MonoBehaviour
         {
             GameObject fish = collision.gameObject;
             Debug.Log("Catch this fish: " + fish.name);
-            GameObject[] things = GameObject.FindGameObjectsWithTag("Fish");
+            things = GameObject.FindGameObjectsWithTag("Fish");
             foreach (GameObject go in things)
             {
                 if (go != fish)
                     go.SetActive(false);
             }
+            fr.things = things;
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            fr.hook = this.gameObject;
             fish.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             fr.distance = Vector2.Distance(fish.transform.position, player.transform.position);
+            fr.fish = fish;
+            fr.fl = fl;
             cam.Follow = player.transform;
             transform.position = player.transform.position;
             fish.transform.rotation = Quaternion.Euler (0 , 0 , 90);
@@ -80,7 +84,6 @@ public class HookControl : MonoBehaviour
             fl.hook = fish;
             cs.Shake(100);
             fr.enabled = true;
-            this.gameObject.SetActive(false);
             enabled = false;
         }
     }

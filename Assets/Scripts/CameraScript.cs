@@ -13,7 +13,7 @@ public class CameraScript : MonoBehaviour
     public GameObject sun;
     public GameObject moon;
     public Gradient skyGradient;
-    bool cast;
+    public bool cast;
 
     void Start()
     {

@@ -1526,10 +1526,6 @@ MonoBehaviour:
     m_ActionId: 8409f007-b4de-49e5-a0e8-0060ee62dff8
     m_ActionName: Reel/Horizontal[/XInputControllerWindows1/dpad/left,/XInputControllerWindows1/dpad/right]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 14735848-96b4-44cd-b925-a9d1d41fa758
-    m_ActionName: Fishing/Movement
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 519420036}
         m_TargetAssemblyTypeName: FishingRod, Assembly-CSharp
@@ -1565,6 +1561,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: c3518b39-a4f0-4898-a4df-0fa11049dd61
     m_ActionName: B/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e170203f-4169-457d-8a53-e3a36a28a74f
+    m_ActionName: A/Button[/XInputControllerWindows/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Xbox
   m_DefaultActionMap: Reel
@@ -1582,9 +1582,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab94a8267c1b31b49afb76af7a70dded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fish: {fileID: 697841801}
+  fish: {fileID: 0}
+  indicator: {fileID: 697841801}
   catcher: {fileID: 514807378}
+  hook: {fileID: 0}
+  things: []
   depthText: {fileID: 1682392426}
+  fl: {fileID: 0}
   speed: 1
   turnChance: 0
   skipChance: 0
@@ -3210,8 +3214,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fish: {fileID: 0}
+  indicator: {fileID: 0}
   catcher: {fileID: 0}
+  hook: {fileID: 0}
+  things: []
   depthText: {fileID: 0}
+  fl: {fileID: 0}
   speed: 0
   turnChance: 0
   skipChance: 0
@@ -3230,7 +3238,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1298266801
 GameObject:
@@ -3334,7 +3342,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1517018393
 GameObject:
@@ -3588,7 +3596,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1682392424
 GameObject:
@@ -3940,6 +3948,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 6
     m_NumAlphaKeys: 2
+  cast: 0
 --- !u!1 &1914246540
 GameObject:
   m_ObjectHideFlags: 0
@@ -4506,76 +4515,3 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
---- !u!1001 &5619285365527513834
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5619285366630353889, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5619285366630353889, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -20.874468
-      objectReference: {fileID: 0}
-    - target: {fileID: 5619285366630353889, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 5619285366630353889, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5619285366630353889, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5619285366630353889, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5619285366630353889, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5619285366630353889, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5619285366630353889, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5619285366630353889, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5619285366630353889, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5619285366630353890, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5619285366630353900, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
-      propertyPath: m_Name
-      value: FISH
-      objectReference: {fileID: 0}
-    - target: {fileID: 5619285366630353900, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
-      propertyPath: m_TagString
-      value: Fish
-      objectReference: {fileID: 0}
-    - target: {fileID: 5619285366630353901, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
