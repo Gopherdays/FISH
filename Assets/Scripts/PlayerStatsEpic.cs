@@ -23,6 +23,8 @@ public class PlayerStatsEpic : ScriptableObject
     public int bucketSizeCost;
     public int lightbulbCost;
 
+    public List<GameObject> bucket;
+
     public void Reset()
     {
         money = 0;
@@ -41,6 +43,8 @@ public class PlayerStatsEpic : ScriptableObject
         strengthMultUpgradeCost = 60;
         bucketSizeCost = 150;
         lightbulbCost = 120;
+
+        bucket = new();
 }
 
     public void NewDay()

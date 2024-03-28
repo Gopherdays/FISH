@@ -8,6 +8,7 @@ using TMPro;
 public class FishingRod : MonoBehaviour
 {
     PlayerInput pi;
+    public PlayerStatsEpic playerStats;
     public GameObject fish;
     public GameObject indicator;
     public GameObject catcher;
@@ -171,6 +172,7 @@ public class FishingRod : MonoBehaviour
                 hook.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
                 hook.SetActive(true);
                 this.enabled = false;
+                playerStats.bucket.Add(fish);
                 Destroy(fish);
                 foreach (GameObject go in things)
                 {

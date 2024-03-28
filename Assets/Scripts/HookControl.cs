@@ -78,8 +78,7 @@ public class HookControl : MonoBehaviour
             fr.fl = fl;
             cam.Follow = player.transform;
             transform.position = player.transform.position;
-            fish.transform.rotation = Quaternion.Euler (0 , 0 , 90);
-            fish.transform.position = new Vector2(-7, -5);
+            fish.transform.SetPositionAndRotation(new Vector2(-7, -5), Quaternion.Euler (0 , 0 , 90));
             fish.GetComponent<SpriteRenderer>().sortingOrder = 420; //lol
             fl.hook = fish;
             cs.Shake(100);
