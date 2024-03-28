@@ -119,7 +119,7 @@ public class FishingRod : MonoBehaviour
                 timer += Time.deltaTime;
             else
             {
-                indPos = newPos(indPos);
+                indPos = NewPos(indPos);
                 // print(indPos);
                 timer = 0;
             }
@@ -139,7 +139,7 @@ public class FishingRod : MonoBehaviour
             if (catcherPos == indPos)
                 distance -= rodStr * Time.deltaTime;
 
-            else if (newInt(catcherPos - 1) == indPos || newInt(catcherPos + 1) == indPos)
+            else if (NewInt(catcherPos - 1) == indPos || NewInt(catcherPos + 1) == indPos)
                 distance -= rodStr * Time.deltaTime * 0.5f;
 
             else
@@ -181,7 +181,7 @@ public class FishingRod : MonoBehaviour
             }
         }
     }
-    int newPos(int position)
+    int NewPos(int position)
     {
         if (Random.Range(1, 101) <= turnChance)
             direction = !direction;
@@ -199,11 +199,11 @@ public class FishingRod : MonoBehaviour
             temp -= 2;
         else
             temp--;
-        temp = newInt(temp);
+        temp = NewInt(temp);
         skip = false;
         return temp;
     }
-    int newInt(int temp)
+    int NewInt(int temp)
     {
         switch (temp)
         {
