@@ -1002,7 +1002,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &449824768
 MonoBehaviour:
@@ -1760,13 +1760,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab94a8267c1b31b49afb76af7a70dded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 11400000, guid: 444d98e1fff443f42b1ef1bb38fb97ed, type: 2}
   fish: {fileID: 0}
   indicator: {fileID: 697841801}
   catcher: {fileID: 514807378}
-  hook: {fileID: 0}
+  hook: {fileID: 2145965923}
   things: []
   depthText: {fileID: 1682392426}
-  fl: {fileID: 0}
+  fl: {fileID: 1117054078}
   speed: 1
   turnChance: 0
   skipChance: 0
@@ -3391,6 +3392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab94a8267c1b31b49afb76af7a70dded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 0}
   fish: {fileID: 0}
   indicator: {fileID: 0}
   catcher: {fileID: 0}
