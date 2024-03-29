@@ -16,6 +16,7 @@ public class Shop : MonoBehaviour
     public string[] brokeDialogue;
     public string[] leavingDialogue;
     public string[] leftDialogue;
+    public string[] soldDialogue;
     string currentDialogue;
     string remainingDialogue;
     float cawTimer;
@@ -27,6 +28,7 @@ public class Shop : MonoBehaviour
         LookingAtItem,
         PurchasedItem,
         YouArePoor,
+        SoldFish,
         TryLeave,
         Leave
     }
@@ -122,6 +124,17 @@ public class Shop : MonoBehaviour
     {
         yield return new WaitForSeconds(4);
         GameObject.Find("Game Manager").GetComponent<GameManager>().GoBoat();
+    }
+
+    public void SellFish()
+    {
+        foreach (int item in playerStats.fishPricesAfterDay)
+        {
+            playerStats.money += item;
+        }
+        playerStats.bucket.Clear();
+        playerStats.fishPricesAfterDay.Clear();
+        Dialogue(soldDialogue, Status.SoldFish);
     }
 
     public void BuyItem(int whichButton)

@@ -24,6 +24,7 @@ public class PlayerStatsEpic : ScriptableObject
     public int lightbulbCost;
 
     public List<GameObject> bucket;
+    public List<int> fishPricesAfterDay;
 
     public void Reset()
     {

@@ -181,7 +181,8 @@ public class FishingRod : MonoBehaviour
         hook.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         hook.SetActive(true);
         playerStats.bucket.Add(fish);
-        Destroy(fish);
+        fish.transform.SetParent(GameObject.Find("Bucket").transform);
+        fish.SetActive(false);
         foreach (GameObject go in things)
         {
             go.SetActive(true);

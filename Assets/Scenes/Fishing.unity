@@ -859,7 +859,7 @@ GameObject:
   - component: {fileID: 449824764}
   - component: {fileID: 449824768}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Bucket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1768,6 +1768,7 @@ MonoBehaviour:
   things: []
   depthText: {fileID: 1682392426}
   fl: {fileID: 1117054078}
+  sr: {fileID: 0}
   speed: 1
   turnChance: 0
   skipChance: 0
@@ -3400,6 +3401,7 @@ MonoBehaviour:
   things: []
   depthText: {fileID: 0}
   fl: {fileID: 0}
+  sr: {fileID: 0}
   speed: 0
   turnChance: 0
   skipChance: 0
