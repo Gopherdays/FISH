@@ -16,6 +16,7 @@ public class FishingRod : MonoBehaviour
     public GameObject[] things;
     public TextMeshProUGUI depthText;
     public FishingLine fl;
+    public SpriteRenderer sr;
     Vector2 tempV;
     List<float> positions = new List<float>();
     int indPos;
@@ -161,26 +162,36 @@ public class FishingRod : MonoBehaviour
             }
             else
             {
-                print("Yay! You caught: " + fish.name.Remove(fish.name.Length-7));
-                GameObject.Find("Fishing UI").SetActive(false);
-                GameObject.Find("Depth Meter").SetActive(false);
-                GameObject.Find("Virtual Camera").GetComponent<CameraScript>().cast = false;
-                fl.hook = hook;
-                HookControl hooky = hook.GetComponent<HookControl>();
-                hooky.ThrowHook();
-                hooky.enabled = true;
-                hook.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-                hook.SetActive(true);
-                this.enabled = false;
-                playerStats.bucket.Add(fish);
-                Destroy(fish);
-                foreach (GameObject go in things)
-                {
-                    go.SetActive(true);
-                }
+                StartCoroutine("WaitForAnimation");
             }
         }
     }
+
+    IEnumerator WaitForAnimation()
+    {
+        yield return new WaitForSeconds(1);
+        print("Yay! You caught: " + fish.name.Remove(fish.name.Length - 7));
+        GameObject.Find("Fishing UI").SetActive(false);
+        GameObject.Find("Depth Meter").SetActive(false);
+        GameObject.Find("Virtual Camera").GetComponent<CameraScript>().cast = false;
+        fl.hook = hook;
+        HookControl hooky = hook.GetComponent<HookControl>();
+        hooky.ThrowHook();
+        hooky.enabled = true;
+        hook.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        hook.SetActive(true);
+        playerStats.bucket.Add(fish);
+        Destroy(fish);
+        foreach (GameObject go in things)
+        {
+            go.SetActive(true);
+        }
+        tempV = new Vector2(-7, -5);
+        sr.enabled = true;
+        this.enabled = false;
+    }
+
+
     int NewPos(int position)
     {
         if (Random.Range(1, 101) <= turnChance)

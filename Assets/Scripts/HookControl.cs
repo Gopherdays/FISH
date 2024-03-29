@@ -7,7 +7,7 @@ using Cinemachine;
 public class HookControl : MonoBehaviour
 {
     public PlayerStatsEpic stats;
-
+    SpriteRenderer sr;
     GameObject player;
     CinemachineVirtualCamera cam;
     Rigidbody2D rb;
@@ -26,6 +26,7 @@ public class HookControl : MonoBehaviour
         player = GameObject.Find("Player");
         cam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
         cs = cam.gameObject.GetComponent<CameraScript>();
         fr = GameObject.Find("Main Camera").GetComponent<FishingRod>();
         fl = GameObject.Find("Line Renderer").GetComponent<FishingLine>();
@@ -76,6 +77,7 @@ public class HookControl : MonoBehaviour
             fr.distance = Vector2.Distance(fish.transform.position, player.transform.position);
             fr.fish = fish;
             fr.fl = fl;
+            fr.sr = sr;
             cam.Follow = player.transform;
             transform.position = player.transform.position;
             fish.transform.SetPositionAndRotation(new Vector2(-7, -5), Quaternion.Euler (0 , 0 , 90));
@@ -83,6 +85,7 @@ public class HookControl : MonoBehaviour
             fl.hook = fish;
             cs.Shake(100);
             fr.enabled = true;
+            sr.enabled = false;
             enabled = false;
         }
     }
