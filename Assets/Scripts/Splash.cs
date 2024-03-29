@@ -17,10 +17,10 @@ public class Splash : MonoBehaviour
     {
         if (transform.position.y < 0 && above)
         {
-            Splash();
+            Effect();
         }
     }
-    void Splash()
+    void Effect()
     {
 
     }
