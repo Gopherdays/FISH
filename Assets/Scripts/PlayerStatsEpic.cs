@@ -29,6 +29,7 @@ public class PlayerStatsEpic : ScriptableObject
     public void Reset()
     {
         money = 0;
+        points = 0;
         day = 0;
         turtleFood = 0;
         turtleHunger = 0;

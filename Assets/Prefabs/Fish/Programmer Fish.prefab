@@ -100,16 +100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dba577292e78f64b888b5231b01c8b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  str: 1
-  pauseBase: 5
-  pauseExtra: 5
-  pullTime: 1
-  pullExtra: 2
-  time: 30
   swimSpeed: 0.5
   swimCycle: 0.2
-  bounceSpeed: 4
   hookPoint: {x: 0.44, y: 0.01}
+  value: 5
+  points: 100
 --- !u!114 &5619285366630353890
 MonoBehaviour:
   m_ObjectHideFlags: 0
