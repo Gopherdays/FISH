@@ -105,6 +105,7 @@ MonoBehaviour:
   hookPoint: {x: 0.44, y: 0.01}
   value: 10
   points: 100
+  description: ...Don't look at it. It already sees, it already knows.
 --- !u!114 &5619285366630353890
 MonoBehaviour:
   m_ObjectHideFlags: 0

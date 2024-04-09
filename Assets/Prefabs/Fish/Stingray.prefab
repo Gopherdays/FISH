@@ -105,6 +105,7 @@ MonoBehaviour:
   hookPoint: {x: 0.44, y: 0.01}
   value: 30
   points: 350
+  description: The fish have public transportation too? Crazy!
 --- !u!114 &5619285366630353890
 MonoBehaviour:
   m_ObjectHideFlags: 0

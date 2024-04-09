@@ -105,6 +105,8 @@ MonoBehaviour:
   hookPoint: {x: 0.44, y: 0.01}
   value: 5
   points: 200
+  description: This fish looks like it shouldn't be here. Hastily made by uncultured
+    hands.
 --- !u!114 &5619285366630353890
 MonoBehaviour:
   m_ObjectHideFlags: 0

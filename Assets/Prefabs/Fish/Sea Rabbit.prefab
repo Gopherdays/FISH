@@ -105,6 +105,7 @@ MonoBehaviour:
   hookPoint: {x: 0.44, y: 0.01}
   value: 15
   points: 150
+  description: Another domesticated fish. For some reason, fishermen keep doing that.
 --- !u!114 &5619285366630353890
 MonoBehaviour:
   m_ObjectHideFlags: 0
