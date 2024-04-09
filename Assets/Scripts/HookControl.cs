@@ -6,6 +6,7 @@ using Cinemachine;
 
 public class HookControl : MonoBehaviour
 {
+    public GameObject splash;
     public PlayerStatsEpic stats;
     SpriteRenderer sr;
     GameObject player;
@@ -20,9 +21,11 @@ public class HookControl : MonoBehaviour
     public float hookSpeedVertical = 4;
     public bool thrown = false;
     public bool fishing;
+    float prevY;
 
     void Start()
     {
+        prevY = transform.position.y;
         player = GameObject.Find("Player");
         cam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
         rb = GetComponent<Rigidbody2D>();
@@ -48,9 +51,21 @@ public class HookControl : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
                 ThrowHook();
         }
-        
     }
+    private void FixedUpdate()
+    {
+        if (transform.position.y < 0 && prevY >= 0)
+        {
+            for (int i = 0; i < Random.Range(50, 80); i++)
+            {
+                GameObject g = Instantiate(splash, transform.position, Quaternion.identity);
+                g.GetComponent<Rigidbody2D>().AddForce(new Vector2(Vector2.));
+                Destroy(g, 3);
+            }
+        }
 
+        prevY = transform.position.y;
+    }
     public void ThrowHook()
     {
         rb.AddForce(new Vector2(Random.Range(0.25f, 1.25f) * -300, Random.Range(0.5f, 1.25f) * 300));
