@@ -170,6 +170,7 @@ public class FishingRod : MonoBehaviour
 
     IEnumerator WaitForAnimation()
     {
+        reset = false;
         yield return new WaitForSeconds(1);
         print("Yay! You caught: " + fish.name.Remove(fish.name.Length - 7));
         GameObject.Find("Fishing UI").SetActive(false);
