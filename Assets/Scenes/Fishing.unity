@@ -4618,6 +4618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98c9c994f7f34754f91d5ce375c78ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  splash: {fileID: 3462652267452336289, guid: 2b87ad0dbabbffe47a32e8bac38adfa8, type: 3}
   stats: {fileID: 11400000, guid: 444d98e1fff443f42b1ef1bb38fb97ed, type: 2}
   origin: {fileID: 728282006}
   hookSpeedHorizontal: 2
