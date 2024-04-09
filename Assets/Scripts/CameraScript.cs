@@ -37,7 +37,7 @@ public class CameraScript : MonoBehaviour
             noise.m_FrequencyGain = 1;
         Camera.main.backgroundColor = skyGradient.Evaluate((180 - gm.time) / 180);
         if (gm.time < 0)
-            Destroy(sun);
+            sun.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public void Shake(float intensity)
