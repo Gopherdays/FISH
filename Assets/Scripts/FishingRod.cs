@@ -18,7 +18,7 @@ public class FishingRod : MonoBehaviour
     public FishingLine fl;
     public SpriteRenderer sr;
     Vector2 tempV;
-    List<float> positions = new List<float>();
+    List<float> positions = new();
     int indPos;
     int curFishPos;
     int catcherPos;
@@ -162,7 +162,8 @@ public class FishingRod : MonoBehaviour
             }
             else
             {
-                StartCoroutine("WaitForAnimation");
+                StartCoroutine(WaitForAnimation());
+                Debug.Log("blargleblorp it started the coroutine");
             }
         }
     }
@@ -180,9 +181,9 @@ public class FishingRod : MonoBehaviour
         hooky.enabled = true;
         hook.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         hook.SetActive(true);
-        playerStats.bucket.Add(fish);
-        fish.transform.SetParent(GameObject.Find("Bucket").transform);
-        fish.SetActive(false);
+        playerStats.bucket.Add(fish.GetComponent<Fish>().value);
+        playerStats.points += fish.GetComponent<Fish>().points;
+        Destroy(fish);
         foreach (GameObject go in things)
         {
             go.SetActive(true);

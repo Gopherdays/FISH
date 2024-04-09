@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerStatsEpic : ScriptableObject
 {
     public int money;
+    public int points;
     public int day;
     public int turtleFood;
     public int turtleHunger;
@@ -23,8 +24,7 @@ public class PlayerStatsEpic : ScriptableObject
     public int bucketSizeCost;
     public int lightbulbCost;
 
-    public List<GameObject> bucket;
-    public List<int> fishPricesAfterDay;
+    public List<int> bucket;
 
     public void Reset()
     {

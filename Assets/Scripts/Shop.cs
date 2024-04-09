@@ -128,12 +128,11 @@ public class Shop : MonoBehaviour
 
     public void SellFish()
     {
-        foreach (int item in playerStats.fishPricesAfterDay)
+        foreach (int item in playerStats.bucket)
         {
             playerStats.money += item;
         }
         playerStats.bucket.Clear();
-        playerStats.fishPricesAfterDay.Clear();
         Dialogue(soldDialogue, Status.SoldFish);
     }
 

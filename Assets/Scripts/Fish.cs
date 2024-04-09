@@ -10,6 +10,9 @@ public class Fish : MonoBehaviour
     public float swimCycle = 0.2f;
     public Vector2 hookPoint;
 
+    public int value;
+    public int points;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

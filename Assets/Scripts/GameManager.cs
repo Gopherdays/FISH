@@ -9,8 +9,7 @@ public class GameManager : MonoBehaviour
 {
     HookControl hook;
     public bool win;
-
-    public GameObject canvas;
+    
     public float time = 180;
     public TextMeshProUGUI timer;
     public TextMeshProUGUI HHHURRYUPP;
