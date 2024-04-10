@@ -59,7 +59,7 @@ public class HookControl : MonoBehaviour
             for (int i = 0; i < Random.Range(50, 80); i++)
             {
                 GameObject g = Instantiate(splash, transform.position, Quaternion.identity);
-                g.GetComponent<Rigidbody2D>().AddForce(new Vector2(Vector2.));
+                g.GetComponent<Rigidbody2D>().AddForce(new Vector2());
                 Destroy(g, 3);
             }
         }
