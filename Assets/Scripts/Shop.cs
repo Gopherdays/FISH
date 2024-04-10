@@ -43,12 +43,12 @@ public class Shop : MonoBehaviour
         StartCoroutine(Typing());
         if (playerStats.candleStatus > 1)
             candleButton.SetActive(false);
-        money.text = "$" + playerStats.money;
-        food.text = playerStats.turtleFood + "/" + playerStats.turtleHunger;
     }
 
     private void FixedUpdate()
     {
+        money.text = "$" + playerStats.money;
+        food.text = playerStats.turtleFood + "/" + playerStats.turtleHunger;
         cawTimer -= Time.deltaTime;
         switch (status)
         {

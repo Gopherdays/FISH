@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
         if (fade)
         {
             color = Color.black;
-            StartCoroutine(FadeInOut(-1));
+            StartCoroutine(FadeIn(1));
         }
         else color = Color.clear;
         if (SceneManager.GetActiveScene().name == "Fishing")
@@ -80,19 +80,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public IEnumerator FadeInOut(float speed, int scene = -1)
+    public IEnumerator FadeIn(float speed, int scene = -1)
     {
         ForceUnpause();
-        while (color.a > -0.1f && color.a < 1.1f)
+        while (color.a > -0.1f)
+        {
+            color.a -= Time.deltaTime * (1 / speed);
+            transitionImage.color = color;
+            yield return new WaitForFixedUpdate();
+        }
+        yield break;
+    }
+
+    public IEnumerator FadeOut(float speed, int scene)
+    {
+        ForceUnpause();
+        while (color.a < 1.1f)
         {
             color.a += Time.deltaTime * (1 / speed);
             transitionImage.color = color;
             yield return new WaitForFixedUpdate();
         }
-        if (scene >= 0)
-        {
-            SceneManager.LoadScene(scene);
-        }
+        SceneManager.LoadScene(scene);
         yield break;
     }
 
@@ -119,31 +128,31 @@ public class GameManager : MonoBehaviour
     public void GoMenu()
     {
         StopAllCoroutines();
-        StartCoroutine(FadeInOut(1, 0));
+        StartCoroutine(FadeOut(1, 0));
     }
 
     public void GoShop()
     {
         StopAllCoroutines();
-        StartCoroutine(FadeInOut(1, 3));
+        StartCoroutine(FadeOut(1, 3));
     }
 
     public void GoFish()
     {
         StopAllCoroutines();
-        StartCoroutine(FadeInOut(1, 1));
+        StartCoroutine(FadeOut(1, 1));
     }
 
     public void GoBoat()
     {
         StopAllCoroutines();
-        StartCoroutine(FadeInOut(1, 2));
+        StartCoroutine(FadeOut(1, 2));
     }
 
     public void GoScene(int scene)
     {
         StopAllCoroutines();
-        StartCoroutine(FadeInOut(1, scene));
+        StartCoroutine(FadeOut(1, scene));
     }
 
     IEnumerator CreditsSpawning()
