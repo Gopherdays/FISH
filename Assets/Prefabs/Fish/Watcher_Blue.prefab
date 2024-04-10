@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 5619285366630353890}
   - component: {fileID: 5619285366630353901}
   - component: {fileID: 5619285366630353894}
-  - component: {fileID: -2282353967799356423}
+  - component: {fileID: 7589379366930053672}
   m_Layer: 0
-  m_Name: Biblically Accurate Angelfish
+  m_Name: Watcher_Blue
   m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,8 +31,8 @@ Transform:
   m_GameObject: {fileID: 5619285366630353900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -20.874468, y: -4.35, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b298f072f1ec7bf4d91008e2ba3b19f6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4f63632225037914dbd7896a9081d758, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -104,9 +104,9 @@ MonoBehaviour:
   swimSpeed: 0.5
   swimCycle: 0.2
   hookPoint: {x: 0.44, y: 0.01}
-  value: 20
-  points: 500
-  description: Be not afraid...
+  value: 10
+  points: 100
+  description: ...Don't look at it. It already sees, it already knows.
 --- !u!114 &5619285366630353890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +195,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!95 &-2282353967799356423
+--- !u!95 &7589379366930053672
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -205,7 +205,7 @@ Animator:
   m_GameObject: {fileID: 5619285366630353900}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2bf0bb2aaf9a2bb49badf9525089ba85, type: 2}
+  m_Controller: {fileID: 9100000, guid: c90ea6b54298e774690bcf05c8cc7144, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

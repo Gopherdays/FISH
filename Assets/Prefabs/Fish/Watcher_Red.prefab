@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5619285366630353901}
   - component: {fileID: 5619285366630353894}
   m_Layer: 0
-  m_Name: Watcher
+  m_Name: Watcher_Red
   m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
