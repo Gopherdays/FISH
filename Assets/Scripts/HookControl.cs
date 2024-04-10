@@ -22,6 +22,11 @@ public class HookControl : MonoBehaviour
     public bool thrown = false;
     public bool fishing;
     float prevY;
+    Vector2 temp;
+    bool up;
+    bool down;
+    bool left;
+    bool right;
 
     void Start()
     {
@@ -35,14 +40,47 @@ public class HookControl : MonoBehaviour
         fl = GameObject.Find("Line Renderer").GetComponent<FishingLine>();
         hookSpeedHorizontal = 2 * stats.lineSpeedHorizontal;
         hookSpeedVertical = 4 * stats.lineSpeedVertical;
+        temp = new Vector2();
         fishing = false;
     }
     void Update()
     {
         if (thrown)
         {
-            if (rb.position.y < 0)
-                rb.AddForce(new Vector2(Input.GetAxis("Horizontal") * hookSpeedHorizontal, Input.GetAxis("Vertical") * hookSpeedVertical));
+            switch (true)
+            {
+                case true when (up && !left && !right):
+                    temp = Vector2.up;
+                    break;
+                case true when (up && left):
+                    temp.y = 1;
+                    temp.x = -1;
+                    break;
+                case true when (left && !up && !down):
+                    temp = Vector2.left;
+                    break;
+                case true when (down && left):
+                    temp.y = -1;
+                    temp.x = -1;
+                    break;
+                case true when (down && !left && !right):
+                    temp = Vector2.down;
+                    break;
+                case true when (down && right):
+                    temp.y = -1;
+                    temp.x = 1;
+                    break;
+                case true when (right && !up && !down):
+                    temp = Vector2.right;
+                    break;
+                case true when (up && right):
+                    temp.y = 1;
+                    temp.x = 1;
+                    break;
+                default:
+                    temp = Vector2.zero;
+                    break;
+            }
         }
         else
         {
@@ -64,7 +102,13 @@ public class HookControl : MonoBehaviour
                 Destroy(g, 3);
             }
         }
-
+        if (thrown && transform.position.y <= 0)
+        {
+            temp = temp.normalized;
+            temp.y *= stats.lineSpeedVertical;
+            temp.x *= stats.lineSpeedHorizontal;
+            rb.AddForce(temp * 20);
+        }
         prevY = transform.position.y;
     }
     public void ThrowHook()
@@ -108,21 +152,49 @@ public class HookControl : MonoBehaviour
 
     public void Up(InputAction.CallbackContext context)
     {
-
+        if (context.started)
+        {
+            up = true;
+        }
+        else if (context.canceled)
+        {
+            up = false;
+        }
     }
 
     public void Down(InputAction.CallbackContext context)
     {
-
+        if (context.started)
+        {
+            down = true;
+        }
+        else if (context.canceled)
+        {
+            down = false;
+        }
     }
 
     public void Left(InputAction.CallbackContext context)
     {
-
+        if (context.started)
+        {
+            left = true;
+        }
+        else if (context.canceled)
+        {
+            left = false;
+        }
     }
 
     public void Right(InputAction.CallbackContext context)
     {
-
+        if (context.started)
+        {
+            right = true;
+        }
+        else if (context.canceled)
+        {
+            right = false;
+        }
     }
 }
