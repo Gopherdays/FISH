@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
+using UnityEngine.UI;
 
 public class HookControl : MonoBehaviour
 {
@@ -40,8 +41,12 @@ public class HookControl : MonoBehaviour
         fl = GameObject.Find("Line Renderer").GetComponent<FishingLine>();
         hookSpeedHorizontal = 2 * stats.lineSpeedHorizontal;
         hookSpeedVertical = 4 * stats.lineSpeedVertical;
-        temp = new Vector2();
+        temp = new Vector2(0,0);
         fishing = false;
+        up = false;
+        left = false;
+        down = false;
+        right = false;
     }
     void Update()
     {
