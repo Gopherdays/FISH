@@ -106,7 +106,7 @@ MonoBehaviour:
   hookPoint: {x: 0.44, y: 0.01}
   value: 50
   points: 200
-  description: Eats fish by tricking them into following the GLOWING ORB THING.
+  description: Scary fish. Very meaty though, so very yummy.
 --- !u!114 &5619285366630353890
 MonoBehaviour:
   m_ObjectHideFlags: 0

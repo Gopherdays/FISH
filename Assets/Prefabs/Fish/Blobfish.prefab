@@ -104,8 +104,8 @@ MonoBehaviour:
   swimCycle: 0.2
   hookPoint: {x: 0.44, y: 0.01}
   value: 40
-  points: 10
-  description: Looks normal when in the water.
+  points: 100
+  description: Blob.
 --- !u!114 &5619285366630353890
 MonoBehaviour:
   m_ObjectHideFlags: 0
