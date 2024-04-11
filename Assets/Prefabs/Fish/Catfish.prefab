@@ -105,7 +105,7 @@ MonoBehaviour:
   hookPoint: {x: 0.44, y: 0.01}
   value: 15
   points: 200
-  description: This fish is exactly what you meant to catch, right?
+  description: It's a catfish, nothing wrong here
 --- !u!114 &5619285366630353890
 MonoBehaviour:
   m_ObjectHideFlags: 0
