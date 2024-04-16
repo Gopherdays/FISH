@@ -8,28 +8,19 @@ using TMPro;
 
 public class Fishing : MonoBehaviour
 {
-    public PlayerStatsEpic playerStats;
-    bool thrown;
-    public Transform origin;
-    Rigidbody2D rb;
-    CameraScript cs;
-    FishingRod fr;
-    FishingLine fl;
-    SpriteRenderer sr;
-    float timer;
-    bool reset;
-
-    bool up;
+    bool up; // input variables
     bool left;
     bool down;
     bool right;
     bool changed;
     Vector2 temp = new Vector2();
 
+    GameObject player; // Minigame variables
     public GameObject fish;
     public GameObject indicator;
     public GameObject catcher;
     public GameObject hook;
+    public TextMeshProUGUI depthText;
     public GameObject[] things;
     Vector2 tempV;
     int catcherPos;
@@ -38,28 +29,53 @@ public class Fishing : MonoBehaviour
     int curIndPos;
     List<float> positions = new List<float>();
 
-    public float speed;
+    public float speed; // Minigame stat variables
     public int turnChance;
     public int skipChance;
     public float rodStr;
     public float distance;
+    float timer;
     bool direction;
     bool skip;
 
+    public GameObject splash; // Hook mavement variables
+    public Transform origin;
+    public PlayerStatsEpic stats;
+    Rigidbody2D rb;
+    CameraScript cs;
+    FishingLine fl;
+    SpriteRenderer sr;
+    CinemachineVirtualCamera cam;
+    public float hookSpeedHorizontal = 2;
+    public float hookSpeedVertical = 4;
+    float prevY;
+    bool thrown;
+    bool reset;
 
     private void Start()
     {
+        GameObject.Find("Fishing UI").SetActive(false);
+        GameObject.Find("Depth Meter").SetActive(false);
         for (int i = 0; i < 8; i++) //loads the different positions on the indicator
         {
             positions.Add(i * 45);
         }
+        indPos = Random.Range(2, 7);
+        indicator.transform.rotation = Quaternion.Euler(0, 0, positions[indPos]);
+        curIndPos = indPos;
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Switch()
+    {
+
     }
 
     private void Update()
     {
-        if (thrown)
+        if (thrown && changed)
         {
+            changed = false;
             switch (true) // figures out what direction the joystick is facing
             {
                 case true when (up && !left && !right):
@@ -116,13 +132,24 @@ public class Fishing : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (timer < speed)
+        if (timer < speed) // fish position update
             timer += Time.deltaTime;
         else
         {
             indPos = NewPos(indPos);
-            // print(indPos);
             timer = 0;
+        }
+
+        if (indPos != curIndPos) // fish indicator position update
+        {
+            indicator.transform.rotation = Quaternion.Euler(0, 0, positions[indPos]);
+            curIndPos = indPos;
+        }
+
+        if (catcherPos != curCatcherPos) // catcher indicator position update
+        {
+            catcher.transform.rotation = Quaternion.Euler(0, 0, positions[catcherPos]);
+            curCatcherPos = catcherPos;
         }
     }
 
@@ -140,8 +167,8 @@ public class Fishing : MonoBehaviour
         hooky.enabled = true;
         hook.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         hook.SetActive(true);
-        playerStats.bucket.Add(fish.GetComponent<Fish>().value);
-        playerStats.points += fish.GetComponent<Fish>().points;
+        stats.bucket.Add(fish.GetComponent<Fish>().value);
+        stats.points += fish.GetComponent<Fish>().points;
         Destroy(fish);
         foreach (GameObject go in things)
         {
