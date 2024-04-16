@@ -1165,7 +1165,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &449824768
 MonoBehaviour:
@@ -1366,7 +1366,6 @@ GameObject:
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
   - component: {fileID: 519420036}
-  - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1607,108 +1606,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &519420035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 796c0fbb9587fbb4aaa1b6a55f19d0fe, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 519420036}
-        m_TargetAssemblyTypeName: FishingRod, Assembly-CSharp
-        m_MethodName: Up
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: b3e8f563-9f57-4ab6-adf5-80d16fc2bae0
-    m_ActionName: Reel/ReelAction
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 519420036}
-        m_TargetAssemblyTypeName: FishingRod, Assembly-CSharp
-        m_MethodName: Right
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 8409f007-b4de-49e5-a0e8-0060ee62dff8
-    m_ActionName: Reel/Horizontal[/XInputControllerWindows1/dpad/left,/XInputControllerWindows1/dpad/right]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 519420036}
-        m_TargetAssemblyTypeName: FishingRod, Assembly-CSharp
-        m_MethodName: Down
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 63fbd7d3-d3f0-49f4-bbd4-5b4e21c693bb
-    m_ActionName: Reel/Down[/XInputControllerWindows/dpad/down]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 519420036}
-        m_TargetAssemblyTypeName: FishingRod, Assembly-CSharp
-        m_MethodName: Left
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: f78ffe52-ebc6-4b60-bcab-568d34605b96
-    m_ActionName: Reel/Left[/XInputControllerWindows/dpad/left]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: c3518b39-a4f0-4898-a4df-0fa11049dd61
-    m_ActionName: B/New action
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e170203f-4169-457d-8a53-e3a36a28a74f
-    m_ActionName: A/Button[/XInputControllerWindows/buttonSouth]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Xbox
-  m_DefaultActionMap: Reel
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &519420036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1716,7 +1613,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab94a8267c1b31b49afb76af7a70dded, type: 3}
   m_Name: 
@@ -2339,7 +2236,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &697841801
 GameObject:
@@ -2510,7 +2407,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &728282007
 MonoBehaviour:
@@ -3239,7 +3136,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1175830643
 GameObject:
@@ -3381,7 +3278,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1298266801
 GameObject:
@@ -3407,7 +3304,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298266801}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7, y: 2, z: -15}
+  m_LocalPosition: {x: -9.03, y: 3.94, z: -15}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3416,8 +3313,8 @@ Transform:
   - {fileID: 697841802}
   - {fileID: 514807380}
   - {fileID: 455311375}
-  m_Father: {fileID: 2145965925}
-  m_RootOrder: -1
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1449438158
 GameObject:
@@ -3485,7 +3382,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1517018393
 GameObject:
@@ -3570,7 +3467,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1517018397
 Rigidbody2D:
@@ -3740,7 +3637,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1682392424
 GameObject:
@@ -4044,7 +3941,7 @@ Transform:
   - {fileID: 2099074962}
   - {fileID: 1914246541}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1742874990
 MonoBehaviour:
@@ -4220,7 +4117,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972373449}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -15}
+  m_LocalPosition: {x: -2.03, y: 1.94, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4230,8 +4127,8 @@ Transform:
   - {fileID: 1984098592}
   - {fileID: 859369706}
   - {fileID: 875535586}
-  m_Father: {fileID: 2145965925}
-  m_RootOrder: -1
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1984098591
 GameObject:
@@ -4416,6 +4313,7 @@ GameObject:
   - component: {fileID: 2145965927}
   - component: {fileID: 2145965928}
   - component: {fileID: 2145965929}
+  - component: {fileID: 2145965931}
   - component: {fileID: 2145965930}
   m_Layer: 0
   m_Name: Fishing Hook
@@ -4487,9 +4385,7 @@ Transform:
   m_LocalPosition: {x: -2.03, y: 1.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1298266802}
-  - {fileID: 1972373450}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4578,7 +4474,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145965923}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98c9c994f7f34754f91d5ce375c78ba4, type: 3}
   m_Name: 
@@ -4617,8 +4513,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2145965929}
-        m_TargetAssemblyTypeName: HookControl, Assembly-CSharp
+      - m_Target: {fileID: 2145965931}
+        m_TargetAssemblyTypeName: Fishing, Assembly-CSharp
         m_MethodName: Up
         m_Mode: 0
         m_Arguments:
@@ -4633,8 +4529,8 @@ MonoBehaviour:
     m_ActionName: Reel/Up[/XInputControllerWindows/dpad/up]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2145965929}
-        m_TargetAssemblyTypeName: HookControl, Assembly-CSharp
+      - m_Target: {fileID: 2145965931}
+        m_TargetAssemblyTypeName: Fishing, Assembly-CSharp
         m_MethodName: Down
         m_Mode: 0
         m_Arguments:
@@ -4649,8 +4545,8 @@ MonoBehaviour:
     m_ActionName: Reel/Down[/XInputControllerWindows/dpad/down]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2145965929}
-        m_TargetAssemblyTypeName: HookControl, Assembly-CSharp
+      - m_Target: {fileID: 2145965931}
+        m_TargetAssemblyTypeName: Fishing, Assembly-CSharp
         m_MethodName: Left
         m_Mode: 0
         m_Arguments:
@@ -4665,8 +4561,8 @@ MonoBehaviour:
     m_ActionName: Reel/Left[/XInputControllerWindows/dpad/left]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2145965929}
-        m_TargetAssemblyTypeName: HookControl, Assembly-CSharp
+      - m_Target: {fileID: 2145965931}
+        m_TargetAssemblyTypeName: Fishing, Assembly-CSharp
         m_MethodName: Right
         m_Mode: 0
         m_Arguments:
@@ -4680,18 +4576,57 @@ MonoBehaviour:
     m_ActionId: 8409f007-b4de-49e5-a0e8-0060ee62dff8
     m_ActionName: Reel/Right[/XInputControllerWindows/dpad/right]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: c3518b39-a4f0-4898-a4df-0fa11049dd61
-    m_ActionName: B/Button[/XInputControllerWindows/buttonEast]
+      m_Calls:
+      - m_Target: {fileID: 2145965931}
+        m_TargetAssemblyTypeName: Fishing, Assembly-CSharp
+        m_MethodName: A
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1d1262c2-41d6-4bb9-b924-fd0b4d407c2a
+    m_ActionName: Reel/A[/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: e170203f-4169-457d-8a53-e3a36a28a74f
-    m_ActionName: A/Button[/XInputControllerWindows/buttonSouth]
+    m_ActionId: 55ecb160-de70-49df-a946-96d7bbb932af
+    m_ActionName: Reel/B[/XInputControllerWindows/buttonEast]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Xbox
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Reel
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &2145965931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145965923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 924f78cc9a72e9a40abcb8af6ffef4b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fish: {fileID: 0}
+  indicator: {fileID: 697841801}
+  catcher: {fileID: 514807378}
+  depthText: {fileID: 1682392426}
+  things: []
+  speed: 0
+  turnChance: 0
+  skipChance: 0
+  rodStr: 0
+  distance: 0
+  splash: {fileID: 3462652267452336289, guid: 2b87ad0dbabbffe47a32e8bac38adfa8, type: 3}
+  origin: {fileID: 728282006}
+  stats: {fileID: 11400000, guid: 444d98e1fff443f42b1ef1bb38fb97ed, type: 2}
+  hookSpeedHorizontal: 2
+  hookSpeedVertical: 8
 --- !u!1001 &4999972280380581603
 PrefabInstance:
   m_ObjectHideFlags: 0

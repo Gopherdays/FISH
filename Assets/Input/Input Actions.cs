@@ -62,6 +62,24 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""A"",
+                    ""type"": ""Button"",
+                    ""id"": ""1d1262c2-41d6-4bb9-b924-fd0b4d407c2a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""B"",
+                    ""type"": ""Button"",
+                    ""id"": ""55ecb160-de70-49df-a946-96d7bbb932af"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -108,60 +126,26 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Left"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""B"",
-            ""id"": ""de630de0-8ee5-4800-9055-e532011f15b1"",
-            ""actions"": [
-                {
-                    ""name"": ""Button"",
-                    ""type"": ""Button"",
-                    ""id"": ""c3518b39-a4f0-4898-a4df-0fa11049dd61"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
+                },
                 {
                     ""name"": """",
-                    ""id"": ""05f9fd02-3809-4cad-a1d9-a0643d09c6a2"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Button"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""A"",
-            ""id"": ""02607623-529f-4eb3-b81a-92342055c88a"",
-            ""actions"": [
-                {
-                    ""name"": ""Button"",
-                    ""type"": ""Button"",
-                    ""id"": ""e170203f-4169-457d-8a53-e3a36a28a74f"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""4616aa09-c56b-4c31-b0e6-3f9d7d070db2"",
+                    ""id"": ""e046d2a8-8586-4f39-8bae-3923e427c99b"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Button"",
+                    ""action"": ""A"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f43c4005-6f79-46bd-b995-8567f4aeb5a7"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""B"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -188,12 +172,8 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_Reel_Down = m_Reel.FindAction("Down", throwIfNotFound: true);
         m_Reel_Left = m_Reel.FindAction("Left", throwIfNotFound: true);
         m_Reel_Right = m_Reel.FindAction("Right", throwIfNotFound: true);
-        // B
-        m_B = asset.FindActionMap("B", throwIfNotFound: true);
-        m_B_Button = m_B.FindAction("Button", throwIfNotFound: true);
-        // A
-        m_A = asset.FindActionMap("A", throwIfNotFound: true);
-        m_A_Button = m_A.FindAction("Button", throwIfNotFound: true);
+        m_Reel_A = m_Reel.FindAction("A", throwIfNotFound: true);
+        m_Reel_B = m_Reel.FindAction("B", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -257,6 +237,8 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Reel_Down;
     private readonly InputAction m_Reel_Left;
     private readonly InputAction m_Reel_Right;
+    private readonly InputAction m_Reel_A;
+    private readonly InputAction m_Reel_B;
     public struct ReelActions
     {
         private @InputActions m_Wrapper;
@@ -265,6 +247,8 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         public InputAction @Down => m_Wrapper.m_Reel_Down;
         public InputAction @Left => m_Wrapper.m_Reel_Left;
         public InputAction @Right => m_Wrapper.m_Reel_Right;
+        public InputAction @A => m_Wrapper.m_Reel_A;
+        public InputAction @B => m_Wrapper.m_Reel_B;
         public InputActionMap Get() { return m_Wrapper.m_Reel; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -286,6 +270,12 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Right.started -= m_Wrapper.m_ReelActionsCallbackInterface.OnRight;
                 @Right.performed -= m_Wrapper.m_ReelActionsCallbackInterface.OnRight;
                 @Right.canceled -= m_Wrapper.m_ReelActionsCallbackInterface.OnRight;
+                @A.started -= m_Wrapper.m_ReelActionsCallbackInterface.OnA;
+                @A.performed -= m_Wrapper.m_ReelActionsCallbackInterface.OnA;
+                @A.canceled -= m_Wrapper.m_ReelActionsCallbackInterface.OnA;
+                @B.started -= m_Wrapper.m_ReelActionsCallbackInterface.OnB;
+                @B.performed -= m_Wrapper.m_ReelActionsCallbackInterface.OnB;
+                @B.canceled -= m_Wrapper.m_ReelActionsCallbackInterface.OnB;
             }
             m_Wrapper.m_ReelActionsCallbackInterface = instance;
             if (instance != null)
@@ -302,76 +292,16 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @Right.started += instance.OnRight;
                 @Right.performed += instance.OnRight;
                 @Right.canceled += instance.OnRight;
+                @A.started += instance.OnA;
+                @A.performed += instance.OnA;
+                @A.canceled += instance.OnA;
+                @B.started += instance.OnB;
+                @B.performed += instance.OnB;
+                @B.canceled += instance.OnB;
             }
         }
     }
     public ReelActions @Reel => new ReelActions(this);
-
-    // B
-    private readonly InputActionMap m_B;
-    private IBActions m_BActionsCallbackInterface;
-    private readonly InputAction m_B_Button;
-    public struct BActions
-    {
-        private @InputActions m_Wrapper;
-        public BActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Button => m_Wrapper.m_B_Button;
-        public InputActionMap Get() { return m_Wrapper.m_B; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(BActions set) { return set.Get(); }
-        public void SetCallbacks(IBActions instance)
-        {
-            if (m_Wrapper.m_BActionsCallbackInterface != null)
-            {
-                @Button.started -= m_Wrapper.m_BActionsCallbackInterface.OnButton;
-                @Button.performed -= m_Wrapper.m_BActionsCallbackInterface.OnButton;
-                @Button.canceled -= m_Wrapper.m_BActionsCallbackInterface.OnButton;
-            }
-            m_Wrapper.m_BActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Button.started += instance.OnButton;
-                @Button.performed += instance.OnButton;
-                @Button.canceled += instance.OnButton;
-            }
-        }
-    }
-    public BActions @B => new BActions(this);
-
-    // A
-    private readonly InputActionMap m_A;
-    private IAActions m_AActionsCallbackInterface;
-    private readonly InputAction m_A_Button;
-    public struct AActions
-    {
-        private @InputActions m_Wrapper;
-        public AActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Button => m_Wrapper.m_A_Button;
-        public InputActionMap Get() { return m_Wrapper.m_A; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(AActions set) { return set.Get(); }
-        public void SetCallbacks(IAActions instance)
-        {
-            if (m_Wrapper.m_AActionsCallbackInterface != null)
-            {
-                @Button.started -= m_Wrapper.m_AActionsCallbackInterface.OnButton;
-                @Button.performed -= m_Wrapper.m_AActionsCallbackInterface.OnButton;
-                @Button.canceled -= m_Wrapper.m_AActionsCallbackInterface.OnButton;
-            }
-            m_Wrapper.m_AActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Button.started += instance.OnButton;
-                @Button.performed += instance.OnButton;
-                @Button.canceled += instance.OnButton;
-            }
-        }
-    }
-    public AActions @A => new AActions(this);
     private int m_XboxSchemeIndex = -1;
     public InputControlScheme XboxScheme
     {
@@ -387,13 +317,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         void OnDown(InputAction.CallbackContext context);
         void OnLeft(InputAction.CallbackContext context);
         void OnRight(InputAction.CallbackContext context);
-    }
-    public interface IBActions
-    {
-        void OnButton(InputAction.CallbackContext context);
-    }
-    public interface IAActions
-    {
-        void OnButton(InputAction.CallbackContext context);
+        void OnA(InputAction.CallbackContext context);
+        void OnB(InputAction.CallbackContext context);
     }
 }
