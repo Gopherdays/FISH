@@ -147,7 +147,7 @@ public class Shop : MonoBehaviour
                 switch (whichButton)
                 {
                     case 0:
-                        // turtle food (code multiple things later)
+                        // turtle food
                         if (playerStats.money < 5)
                             Dialogue(brokeDialogue, Status.YouArePoor);
                         else
