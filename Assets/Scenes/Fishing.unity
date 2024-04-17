@@ -181,7 +181,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 29389757}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -200,22 +200,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &29389760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29389757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0aa6fd59d385dfb458b2a99105bff121, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waterGravity: 0.3
-  waterHeight: 3.65
-  waterDrag: 3
-  above: 0
 --- !u!1 &137524599
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,9 +683,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 269872096468461868, guid: 76eda600dcb0a7f4b80b166e95012ffd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 29389760}
     - targetCorrespondingSourceObject: {fileID: 269872096468461868, guid: 76eda600dcb0a7f4b80b166e95012ffd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 29389759}
