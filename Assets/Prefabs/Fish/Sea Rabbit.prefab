@@ -106,6 +106,10 @@ MonoBehaviour:
   value: 15
   points: 150
   description: Has many sensors on its body. How'd it become so big?.
+  speed: 1
+  escape: 2
+  turnChance: 10
+  skipChance: 10
 --- !u!114 &5619285366630353890
 MonoBehaviour:
   m_ObjectHideFlags: 0

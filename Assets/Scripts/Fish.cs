@@ -14,6 +14,11 @@ public class Fish : MonoBehaviour
     public int points;
     public string description;
 
+    public float speed;
+    public float escape;
+    public int turnChance;
+    public int skipChance;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

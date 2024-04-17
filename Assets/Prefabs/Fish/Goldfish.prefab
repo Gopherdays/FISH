@@ -107,6 +107,10 @@ MonoBehaviour:
   points: 500
   description: Good for trophies, but most people don't want to pay to eat solid
     gold.
+  speed: 1
+  escape: 2
+  turnChance: 10
+  skipChance: 10
 --- !u!114 &5619285366630353890
 MonoBehaviour:
   m_ObjectHideFlags: 0

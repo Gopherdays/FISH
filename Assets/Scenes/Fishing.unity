@@ -526,7 +526,7 @@ MonoBehaviour:
   music: {fileID: 234780658}
   intenseMoment: {fileID: 234780660}
   waiting: {fileID: 234780657}
-  hookControl: {fileID: 2145965929}
+  fishing: {fileID: 2145965931}
 --- !u!82 &234780660
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1346,7 +1346,6 @@ GameObject:
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
-  - component: {fileID: 519420036}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1587,32 +1586,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &519420036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab94a8267c1b31b49afb76af7a70dded, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerStats: {fileID: 11400000, guid: 444d98e1fff443f42b1ef1bb38fb97ed, type: 2}
-  fish: {fileID: 0}
-  indicator: {fileID: 697841801}
-  catcher: {fileID: 514807378}
-  hook: {fileID: 2145965923}
-  things: []
-  depthText: {fileID: 1682392426}
-  fl: {fileID: 1117054078}
-  sr: {fileID: 0}
-  speed: 1
-  turnChance: 0
-  skipChance: 0
-  rodStr: 0
-  distance: 0
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2964,7 +2937,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.015014648}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1117054077
@@ -4293,7 +4266,6 @@ GameObject:
   - component: {fileID: 2145965926}
   - component: {fileID: 2145965927}
   - component: {fileID: 2145965928}
-  - component: {fileID: 2145965929}
   - component: {fileID: 2145965931}
   - component: {fileID: 2145965930}
   m_Layer: 0
@@ -4448,25 +4420,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.01}
   serializedVersion: 2
   m_Radius: 0.29
---- !u!114 &2145965929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2145965923}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98c9c994f7f34754f91d5ce375c78ba4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  splash: {fileID: 3462652267452336289, guid: 2b87ad0dbabbffe47a32e8bac38adfa8, type: 3}
-  stats: {fileID: 11400000, guid: 444d98e1fff443f42b1ef1bb38fb97ed, type: 2}
-  origin: {fileID: 728282006}
-  hookSpeedHorizontal: 2
-  hookSpeedVertical: 8
-  thrown: 0
-  fishing: 0
 --- !u!114 &2145965930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4599,6 +4552,7 @@ MonoBehaviour:
   depthText: {fileID: 1682392426}
   things: []
   speed: 0
+  escape: 0
   turnChance: 0
   skipChance: 0
   rodStr: 0
@@ -4608,6 +4562,8 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: 444d98e1fff443f42b1ef1bb38fb97ed, type: 2}
   hookSpeedHorizontal: 2
   hookSpeedVertical: 8
+  thrown: 0
+  fishing: 0
 --- !u!1001 &4999972280380581603
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -107,6 +107,10 @@ MonoBehaviour:
   points: 200
   description: This fish looks like it shouldn't be here. Hastily made by uncultured
     hands.
+  speed: 1
+  escape: 2
+  turnChance: 10
+  skipChance: 10
 --- !u!114 &5619285366630353890
 MonoBehaviour:
   m_ObjectHideFlags: 0

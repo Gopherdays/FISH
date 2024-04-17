@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    HookControl hook;
+    Fishing hook;
     public bool win;
     
     public float time = 180;
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         else color = Color.clear;
         if (SceneManager.GetActiveScene().name == "Fishing")
         {
-            hook = GameObject.Find("Fishing Hook").GetComponent<HookControl>();
+            hook = GameObject.Find("Fishing Hook").GetComponent<Fishing>();
             HHHURRYUPP.alpha = 0;
         }
         pause.SetActive(false);

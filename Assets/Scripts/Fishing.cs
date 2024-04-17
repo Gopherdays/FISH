@@ -21,7 +21,7 @@ public class Fishing : MonoBehaviour
     public GameObject indicator;
     public GameObject catcher;
     public TextMeshProUGUI depthText;
-    public GameObject[] things;
+    public List<GameObject> things = new List<GameObject>();
     Vector2 tempV;
     int catcherPos;
     int curCatcherPos;
@@ -30,6 +30,7 @@ public class Fishing : MonoBehaviour
     List<float> positions = new List<float>();
 
     public float speed; // Minigame stat variables
+    public float escape;
     public int turnChance;
     public int skipChance;
     public float rodStr;
@@ -49,12 +50,13 @@ public class Fishing : MonoBehaviour
     public float hookSpeedHorizontal = 2;
     public float hookSpeedVertical = 4;
     float prevY;
-    bool thrown;
+    public bool thrown;
 
     GameObject fishingUI;
     GameObject depth;
     bool hooking; // mode swapping variables
-    bool fishing;
+    public bool fishing;
+    bool reset;
 
     private void Start()
     {
@@ -79,6 +81,7 @@ public class Fishing : MonoBehaviour
         fl = GameObject.Find("Line Renderer").GetComponent<FishingLine>();
         hookSpeedHorizontal = 2 * stats.lineSpeedHorizontal;
         hookSpeedVertical = 4 * stats.lineSpeedVertical;
+        rodStr = 4 * stats.strengthMult;
         temp = new Vector2(0, 0);
         fishing = false;
         up = false;
@@ -93,7 +96,8 @@ public class Fishing : MonoBehaviour
         if (hooking)
         {
             Debug.Log("Catch this fish: " + fish.name);
-            things = GameObject.FindGameObjectsWithTag("Fish");
+            things.AddRange(GameObject.FindGameObjectsWithTag("Fish"));
+            things.Remove(fish);
             foreach (GameObject go in things)
             {
                 if (go != fish)
@@ -114,7 +118,8 @@ public class Fishing : MonoBehaviour
             sr.enabled = false;
             hooking = false;
             fishing = true;
-            return;
+            fishingUI.SetActive(true);
+            depth.SetActive(true);
         }
         else if (fishing)
         {
@@ -122,14 +127,16 @@ public class Fishing : MonoBehaviour
         }
     }
 
-    IEnumerator WaitForAnimation() // fire all of this code after you wait so the player gets to look at the fish
+    IEnumerator WaitForAnimation() // fire this code after you wait so the player gets to look at the fish
     {
         yield return new WaitForSeconds(1);
+
         print("Yay! You caught: " + fish.name.Remove(fish.name.Length - 7));
         fishingUI.SetActive(false);
         depth.SetActive(false);
         stats.bucket.Add(fish.GetComponent<Fish>().value);
         stats.points += fish.GetComponent<Fish>().points;
+        fl.hook = gameObject;
         Destroy(fish);
         foreach (GameObject go in things)
         {
@@ -212,6 +219,17 @@ public class Fishing : MonoBehaviour
     {
         if (hooking)
         {
+            if (transform.position.y < 0 && prevY >= 0)
+            {
+                for (int i = 0; i < Random.Range(50, 80); i++)
+                {
+                    GameObject g = Instantiate(splash, transform.position, Quaternion.identity);
+                    float xVal = Random.Range(-0.5f, 0.5f);
+                    g.GetComponent<Rigidbody2D>().AddForce(new Vector2(xVal, 2 + Random.Range(0f, 1f) - Mathf.Abs(2 * xVal)) * (75 + Random.Range(0, 75)));
+                    Destroy(g, 3);
+                }
+            }
+
             if (thrown && transform.position.y <= 0)
             {
                 temp = temp.normalized;
@@ -222,12 +240,13 @@ public class Fishing : MonoBehaviour
             prevY = transform.position.y;
         }
 
-        else if (fishing)
+        else if (fishing && !reset)
         {
             if (timer < speed) // fish position update
                 timer += Time.deltaTime;
             else
             {
+                print("done");
                 indPos = NewPos(indPos);
                 timer = 0;
             }
@@ -251,10 +270,21 @@ public class Fishing : MonoBehaviour
                 distance -= rodStr * Time.deltaTime * 0.5f;
 
             else
-                distance += speed * Time.deltaTime * 3;
+                distance += escape * Time.deltaTime;
             
             depthText.text = (int)distance + "m";
             if (distance <= 0)
+                reset = true;
+
+        }
+        else if (reset)
+        {
+            if (fish.transform.position.y <= -1.5f)
+            {
+                tempV.y += Time.deltaTime * 1.5f;
+                fish.transform.position = tempV;
+            }
+            else
             {
                 Switch();
             }
@@ -266,6 +296,11 @@ public class Fishing : MonoBehaviour
         if (collision.gameObject.CompareTag("Fish"))
         {
             fish = collision.gameObject;
+            Fish feesh = fish.GetComponent<Fish>();
+            speed = feesh.speed;
+            escape = feesh.escape;
+            turnChance = feesh.turnChance;
+            skipChance = feesh.skipChance;
             Switch();
         }
     }

@@ -7,11 +7,11 @@ public class MusicControl : MonoBehaviour
     public AudioSource music;
     public AudioSource intenseMoment;
     public AudioSource waiting;
-    public HookControl hookControl;
+    public Fishing fishing;
 
     private void Update()
     {
-        if (hookControl.thrown && !music.isPlaying)
+        if (fishing.thrown && !music.isPlaying)
         {
             music.Play();
             waiting.Stop();

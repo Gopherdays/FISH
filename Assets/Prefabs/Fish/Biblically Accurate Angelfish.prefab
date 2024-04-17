@@ -107,6 +107,10 @@ MonoBehaviour:
   value: 20
   points: 500
   description: Hard to comprehend for normal humans.
+  speed: 1
+  escape: 2
+  turnChance: 10
+  skipChance: 10
 --- !u!114 &5619285366630353890
 MonoBehaviour:
   m_ObjectHideFlags: 0
