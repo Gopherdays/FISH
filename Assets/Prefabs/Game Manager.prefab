@@ -1108,14 +1108,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43de9c2c17f0b2f458bead366574d112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 11400000, guid: 444d98e1fff443f42b1ef1bb38fb97ed, type: 2}
   win: 0
-  canvas: {fileID: 0}
-  time: 180
+  time: 0
   timer: {fileID: 0}
+  foodBar: {fileID: 0}
   creditsObject: {fileID: 0}
   credits: []
   pause: {fileID: 8608829742108951651}
   transitionImage: {fileID: 8075485521155465974}
+  fade: 1
 --- !u!1 &8179644358846597915
 GameObject:
   m_ObjectHideFlags: 0

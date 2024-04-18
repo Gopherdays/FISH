@@ -23,8 +23,8 @@ public class CameraScript : MonoBehaviour
 
     void Update()
     {
-        sun.transform.SetLocalPositionAndRotation(new Vector3(Mathf.Cos((gm.time * 1.5f - 120) * Mathf.Deg2Rad) * 8, (Mathf.Sin((gm.time * 1.5f - 120) * Mathf.Deg2Rad) * 5) - 1 - (cam.transform.position.y / 4), 10), Quaternion.identity);
-        moon.transform.SetLocalPositionAndRotation(new Vector3(Mathf.Cos((gm.time * 1.5f + 80) * Mathf.Deg2Rad) * 8, (Mathf.Sin((gm.time * 1.5f + 80) * Mathf.Deg2Rad) * 5) - 1 - (cam.transform.position.y / 4), 10), Quaternion.identity);
+        sun.transform.SetLocalPositionAndRotation(new Vector3(Mathf.Cos((gm.time * 2) * Mathf.Deg2Rad) * 8, (Mathf.Sin((gm.time * 2) * Mathf.Deg2Rad) * 5) - 1 - (cam.transform.position.y / 4), 10), Quaternion.identity);
+        moon.transform.SetLocalPositionAndRotation(new Vector3(Mathf.Cos((gm.time * 2 + 180) * Mathf.Deg2Rad) * 8, (Mathf.Sin((gm.time * 2 + 180) * Mathf.Deg2Rad) * 5) - 1 - (cam.transform.position.y / 4), 10), Quaternion.identity);
         if (hook.transform.position.y < 0 && !cast)
         {
             cast = true;

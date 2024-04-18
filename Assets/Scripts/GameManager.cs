@@ -8,11 +8,12 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     Fishing hook;
+    public PlayerStatsEpic playerStats;
     public bool win;
     
     public float time = 180;
     public TextMeshProUGUI timer;
-    public TextMeshProUGUI HHHURRYUPP;
+    public Image foodBar;
 
     public GameObject creditsObject;
     public string[] credits;
@@ -33,7 +34,6 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Fishing")
         {
             hook = GameObject.Find("Fishing Hook").GetComponent<Fishing>();
-            HHHURRYUPP.alpha = 0;
         }
         pause.SetActive(false);
     }
@@ -50,29 +50,25 @@ public class GameManager : MonoBehaviour
             GoBoat();
             win = false;
         }
-        if (SceneManager.GetActiveScene().name == "Fishing" && hook.fishing)
+        if (SceneManager.GetActiveScene().name == "Fishing" && hook.thrown)
         {
-            if (time <= -60) // If you can't reel in one fish in an entire minute that's a skill issue
-            {
-                GoBoat();
-                hook.fishing = false;
-            }
-            else
-                time -= Time.deltaTime;
+            time += Time.deltaTime;
+            playerStats.turtleHunger -= Time.deltaTime / 180;
 
-            // We need to check if the player is actively reeling in a fish. If they aren't and the time is below 0, then go to boat. I need an isReeling variable
-
-            if (time > 0)
+            timer.text = "Day " + playerStats.day + " - ";
+            if (time > 3600)
             {
-                timer.text = Mathf.FloorToInt(time / 60) + ":";
-                if (Mathf.FloorToInt(time) % 60 < 10) timer.text += "0";
-                timer.text += Mathf.FloorToInt(time) % 60;
+                timer.text += Mathf.FloorToInt(time / 3600) + ":";
+                if (Mathf.FloorToInt(time) % 3600 < 600) timer.text += "0";
             }
-            else timer.text = "0:00";
-            HHHURRYUPP.text = Mathf.FloorToInt((time + 61) / 60) + ":";
-            if (Mathf.FloorToInt(time+61) % 60 < 10) HHHURRYUPP.text += "0";
-            HHHURRYUPP.text += Mathf.FloorToInt(time+61) % 60;
-            HHHURRYUPP.alpha = (-time - 30) / 300;
+            timer.text += Mathf.FloorToInt(time / 60) + ":";
+            if (Mathf.FloorToInt(time) % 60 < 10) timer.text += "0";
+            timer.text += Mathf.FloorToInt(time) % 60;
+
+            if (time >= playerStats.day * 180)
+                playerStats.NewDay();
+
+            foodBar.fillAmount = playerStats.turtleHunger / 100;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
