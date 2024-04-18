@@ -160,8 +160,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 300}
+  m_AnchoredPosition: {x: 0, y: -300}
+  m_SizeDelta: {x: 800, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &15910395
 MonoBehaviour:
@@ -209,7 +209,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 406854830}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: GoFish
+        m_MethodName: GoMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -311,15 +311,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
       propertyPath: fade
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
-      propertyPath: creditsObject
-      value: 
-      objectReference: {fileID: 1200591651036022085, guid: 8d6f2b2a3eed34a44a96398609e173b7, type: 3}
-    - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
       propertyPath: credits.Array.size
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
       propertyPath: credits.Array.data[0]
@@ -327,39 +323,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
       propertyPath: credits.Array.data[1]
-      value: Co-Director<br>Nicholas
-      objectReference: {fileID: 0}
-    - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
-      propertyPath: credits.Array.data[2]
       value: Programmer<br>Nicholas
       objectReference: {fileID: 0}
     - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
-      propertyPath: credits.Array.data[3]
+      propertyPath: credits.Array.data[2]
       value: Programmer<br>Jake
       objectReference: {fileID: 0}
     - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
-      propertyPath: credits.Array.data[4]
+      propertyPath: credits.Array.data[3]
       value: Composer<br>Nicholas
       objectReference: {fileID: 0}
     - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
-      propertyPath: credits.Array.data[5]
+      propertyPath: credits.Array.data[4]
       value: SFX<br>Cael
       objectReference: {fileID: 0}
     - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
-      propertyPath: credits.Array.data[6]
+      propertyPath: credits.Array.data[5]
       value: Art<br>Xavier
       objectReference: {fileID: 0}
     - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
-      propertyPath: credits.Array.data[7]
+      propertyPath: credits.Array.data[6]
       value: Art<br>Aspen
       objectReference: {fileID: 0}
     - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
-      propertyPath: credits.Array.data[8]
-      value: Dialogue<br>Darius
-      objectReference: {fileID: 0}
-    - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
-      propertyPath: credits.Array.data[9]
-      value: Art Contributions<br>Chloe
+      propertyPath: credits.Array.data[7]
+      value: ...Eventually<br>Darius
       objectReference: {fileID: 0}
     - target: {fileID: 7738027014404792582, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
       propertyPath: m_Name
@@ -575,7 +563,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PLAY
+  m_text: Return to Title
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -602,8 +590,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 319.45
-  m_fontSizeBase: 319.45
+  m_fontSize: 120
+  m_fontSizeBase: 120
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -710,9 +698,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Seas of Hydra
-
-    (make art for title)'
+  m_text: GAME OVER
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -739,8 +725,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 160
-  m_fontSizeBase: 160
+  m_fontSize: 200
+  m_fontSizeBase: 200
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

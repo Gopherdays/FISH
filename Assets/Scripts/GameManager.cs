@@ -36,15 +36,15 @@ public class GameManager : MonoBehaviour
             hook = GameObject.Find("Fishing Hook").GetComponent<Fishing>();
         }
         pause.SetActive(false);
-    }
-    
-    private void Update()
-    {
-        if (SceneManager.GetActiveScene().name == "Main Menu" && time > 0)
+        if (SceneManager.GetActiveScene().name == "Main Menu")
         {
             StartCoroutine(CreditsSpawning());
             time = -69;
         }
+    }
+    
+    private void Update()
+    {
         if (win)
         {
             GoBoat();
@@ -69,6 +69,11 @@ public class GameManager : MonoBehaviour
                 playerStats.NewDay();
 
             foodBar.fillAmount = playerStats.turtleHunger / 100;
+            if (playerStats.turtleHunger <= 0 && !fade)
+            {
+                fade = true;
+                GoLose();
+            }
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -143,6 +148,12 @@ public class GameManager : MonoBehaviour
     {
         StopAllCoroutines();
         StartCoroutine(FadeOut(1, 2));
+    }
+
+    public void GoLose()
+    {
+        StopAllCoroutines();
+        StartCoroutine(FadeOut(1, 4));
     }
 
     public void GoScene(int scene)
