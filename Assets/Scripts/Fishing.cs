@@ -124,6 +124,7 @@ public class Fishing : MonoBehaviour
         else if (fishing)
         {
             StartCoroutine(WaitForAnimation());
+            return;
         }
     }
 
@@ -145,10 +146,10 @@ public class Fishing : MonoBehaviour
         sr.enabled = true;
         fishing = false;
         hooking = true;
+        thrown = false;
         GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>().Follow = GameObject.Find("Player").transform;
-        fishingUI.gameObject.SetActive(true);
-        depth.gameObject.SetActive(true);
         indPos = Random.Range(2, 7);
+        tempV.y = -5;
         catcherPos = 1;
         curCatcherPos = 1;
     }
@@ -221,6 +222,7 @@ public class Fishing : MonoBehaviour
         {
             if (transform.position.y < 0 && prevY >= 0)
             {
+                rb.velocity = new Vector2(0,rb.velocity.y);
                 for (int i = 0; i < Random.Range(50, 80); i++)
                 {
                     GameObject g = Instantiate(splash, transform.position, Quaternion.identity);
@@ -273,7 +275,7 @@ public class Fishing : MonoBehaviour
                 distance += escape * Time.deltaTime;
             
             depthText.text = (int)distance + "m";
-            if (distance <= 0)
+            if (distance <= 0 && fish.transform.position.y == -5)
                 reset = true;
 
         }
@@ -286,6 +288,9 @@ public class Fishing : MonoBehaviour
             }
             else
             {
+                reset = false;
+                fishingUI.SetActive(false);
+                depth.SetActive(false);
                 Switch();
             }
         }
