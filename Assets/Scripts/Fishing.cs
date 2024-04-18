@@ -135,7 +135,6 @@ public class Fishing : MonoBehaviour
         fishing = false;
         hooking = true;
         thrown = false;
-        cam.Follow = transform;
         rb.constraints = RigidbodyConstraints2D.None;
         GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>().Follow = GameObject.Find("Player").transform;
         indPos = Random.Range(2, 7);
@@ -214,6 +213,7 @@ public class Fishing : MonoBehaviour
             if (transform.position.y < 0 && prevY >= 0)
             {
                 rb.velocity = new Vector2(0,rb.velocity.y);
+                cam.Follow = transform;
                 for (int i = 0; i < Random.Range(50, 80); i++)
                 {
                     GameObject g = Instantiate(splash, transform.position, Quaternion.identity);
