@@ -15,6 +15,5 @@ public class TransitionScreen : MonoBehaviour
     {
         dayCounter.text = "Day " + playerStats.day;
         moneyCounter.text = "$" + playerStats.money;
-        foodCounter.text = playerStats.turtleFood + "/" + playerStats.turtleHunger;
     }
 }

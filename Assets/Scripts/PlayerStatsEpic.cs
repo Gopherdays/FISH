@@ -9,8 +9,8 @@ public class PlayerStatsEpic : ScriptableObject
     public int money;
     public int points;
     public int day;
-    public int turtleFood;
-    public int turtleHunger;
+    public int foodEffectiveness;
+    public float turtleHunger;
 
     public float lineSpeedHorizontal;
     public float lineSpeedVertical;
@@ -31,8 +31,8 @@ public class PlayerStatsEpic : ScriptableObject
         money = 0;
         points = 0;
         day = 0;
-        turtleFood = 0;
-        turtleHunger = 6;
+        turtleHunger = 100;
+        foodEffectiveness = 25;
 
         lineSpeedHorizontal = 1;
         lineSpeedVertical = 1;
@@ -51,16 +51,12 @@ public class PlayerStatsEpic : ScriptableObject
 
     public void NewDay()
     {
-        if (turtleFood < turtleHunger)
-        {
-            // kill you less
-            SceneManager.LoadScene(0);
-        }
-        else
-        {
-            turtleHunger *= 2;
-            turtleFood = 0;
-            day++;
-        }
+        day++;
+        foodEffectiveness /= 2;
+    }
+
+    public void Feed()
+    {
+        turtleHunger += foodEffectiveness;
     }
 }

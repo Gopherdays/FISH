@@ -48,7 +48,6 @@ public class Shop : MonoBehaviour
     private void FixedUpdate()
     {
         money.text = "$" + playerStats.money;
-        food.text = playerStats.turtleFood + "/" + playerStats.turtleHunger;
         cawTimer -= Time.deltaTime;
         switch (status)
         {
@@ -154,7 +153,7 @@ public class Shop : MonoBehaviour
                         {
                             playerStats.money -= 5;
                             Dialogue(purchaseDialogue, Status.PurchasedItem);
-                            playerStats.turtleFood++;
+                            playerStats.Feed();
                         }
                         break;
                     case 1:
