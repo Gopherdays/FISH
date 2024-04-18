@@ -21,7 +21,6 @@ public class Fishing : MonoBehaviour
     public GameObject indicator;
     public GameObject catcher;
     public TextMeshProUGUI depthText;
-    public List<GameObject> things = new List<GameObject>();
     Vector2 tempV;
     int catcherPos;
     int curCatcherPos;
@@ -96,13 +95,6 @@ public class Fishing : MonoBehaviour
         if (hooking)
         {
             Debug.Log("Catch this fish: " + fish.name);
-            things.AddRange(GameObject.FindGameObjectsWithTag("Fish"));
-            things.Remove(fish);
-            foreach (GameObject go in things)
-            {
-                if (go != fish)
-                    go.SetActive(false);
-            }
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             fish.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             distance = Vector2.Distance(fish.transform.position, player.transform.position);
@@ -139,14 +131,12 @@ public class Fishing : MonoBehaviour
         stats.points += fish.GetComponent<Fish>().points;
         fl.hook = gameObject;
         Destroy(fish);
-        foreach (GameObject go in things)
-        {
-            go.SetActive(true);
-        }
         sr.enabled = true;
         fishing = false;
         hooking = true;
         thrown = false;
+        cam.Follow = transform;
+        rb.constraints = RigidbodyConstraints2D.None;
         GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>().Follow = GameObject.Find("Player").transform;
         indPos = Random.Range(2, 7);
         tempV.y = -5;
@@ -204,6 +194,7 @@ public class Fishing : MonoBehaviour
         }
         else if (!thrown) // reset the hook position and start looking for a click to send the hook
         {
+            print("Awaiting input...");
             if (transform.position != origin.transform.position)
                 transform.position = origin.transform.position;
             if (rb.velocity != Vector2.zero)
