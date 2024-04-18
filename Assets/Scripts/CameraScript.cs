@@ -35,7 +35,7 @@ public class CameraScript : MonoBehaviour
             noise.m_FrequencyGain *= 0.95f;
         else
             noise.m_FrequencyGain = 1;
-        Camera.main.backgroundColor = skyGradient.Evaluate((180 - gm.time) / 180);
+        Camera.main.backgroundColor = skyGradient.Evaluate((gm.time % 180) / 180);
         if (gm.time < 0)
             sun.GetComponent<SpriteRenderer>().enabled = false;
     }

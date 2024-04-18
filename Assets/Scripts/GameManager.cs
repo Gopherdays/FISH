@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public PlayerStatsEpic playerStats;
     public bool win;
     
-    public float time = 180;
+    public float time = 0;
     public TextMeshProUGUI timer;
     public Image foodBar;
 
@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Fishing" && hook.thrown)
         {
             time += Time.deltaTime;
-            playerStats.turtleHunger -= Time.deltaTime / 180;
+            playerStats.turtleHunger -= Time.deltaTime * 100 / 180;
 
             timer.text = "Day " + playerStats.day + " - ";
             if (time > 3600)

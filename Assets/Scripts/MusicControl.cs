@@ -7,7 +7,12 @@ public class MusicControl : MonoBehaviour
     public AudioSource music;
     public AudioSource intenseMoment;
     public AudioSource waiting;
-    public Fishing fishing;
+    Fishing fishing;
+
+    private void Start()
+    {
+        fishing = GameObject.Find("Fishing Hook").GetComponent<Fishing>();
+    }
 
     private void Update()
     {
