@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -165,7 +166,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CreditsSpawning()
     {
-        Vector2 pos = new(1200, -270);
+        Vector2 pos = new Vector2(1200, -270);
         int i = 0;
         while (true)
         {
@@ -181,12 +182,27 @@ public class GameManager : MonoBehaviour
             RectTransform lastFish = fish.GetComponent<RectTransform>();
             pos.y = Random.Range(-260f, -440f);
             lastFish.anchoredPosition = pos;
-            lastFish.sizeDelta = new(text.preferredWidth + 30, text.preferredHeight + 20);
+            lastFish.sizeDelta = new Vector2(text.preferredWidth + 30, text.preferredHeight + 20);
             // Collisions for fun
             fish.GetComponent<CapsuleCollider2D>().size = lastFish.sizeDelta;
             fish.GetComponent<Rigidbody2D>().mass = Random.Range(0.1f, 100f);
             // Make a new one after three seconds
             yield return new WaitForSeconds(3);
+        }
+    }
+    public void B(InputAction.CallbackContext context)
+    {
+        if (context.started) // on button press
+        {
+
+        }
+        if (context.performed) // on button hold
+        {
+
+        }
+        if (context.canceled) // on button 
+        {
+
         }
     }
 }
