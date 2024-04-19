@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(CreditsSpawning());
             time = -69;
+            playerStats.Reset();
         }
     }
     
