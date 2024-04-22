@@ -37,7 +37,7 @@ public class Shop : MonoBehaviour
     public PlayerStatsEpic playerStats;
     public GameObject candleButton;
 
-    private void Start()
+    private void OnEnable()
     {
         Dialogue(regularDialogue, Status.Normal);
         StartCoroutine(Typing());
