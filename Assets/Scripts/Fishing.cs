@@ -55,6 +55,8 @@ public class Fishing : MonoBehaviour
     public float hookSpeedVertical = 4;
     float prevY;
     public bool thrown;
+    public AudioSource src;
+    public AudioClip clip1, clip2, clip3, clip4;
 
     GameObject fishingUI; // mode swapping variables
     GameObject depth;
@@ -239,6 +241,8 @@ public class Fishing : MonoBehaviour
                     g.GetComponent<Rigidbody2D>().AddForce(new Vector2(xVal, 2 + Random.Range(0f, 1f) - Mathf.Abs(2 * xVal)) * (75 + Random.Range(0, 75)));
                     Destroy(g, 3);
                 }
+                src.clip = clip1;
+                src.Play();
             }
 
             if (thrown && transform.position.y <= 0)
@@ -277,16 +281,25 @@ public class Fishing : MonoBehaviour
             if (catcherPos == indPos)
             {
                 distance -= rodStr * Time.deltaTime;
+                src.clip = clip2;
+                src.Play();
+                //audio
             }
 
             else if (NewInt(catcherPos - 1) == indPos || NewInt(catcherPos + 1) == indPos)
             {
                 distance -= rodStr * Time.deltaTime * 0.5f;
+                src.clip = clip3;
+                src.Play();
+                //audio
             }
 
             else
             {
                 distance += escape * Time.deltaTime;
+                src.clip = clip4;
+                src.Play();
+                //audio
             }
 
             depthText.text = (int)distance + "m";
