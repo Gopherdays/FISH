@@ -127,7 +127,10 @@ public class Fishing : MonoBehaviour
         print("Yay! You caught: " + fish.name.Remove(fish.name.Length - 7));
         fishingUI.SetActive(false);
         depth.SetActive(false);
-        stats.bucket.Add(fish.GetComponent<Fish>().value);
+        if (stats.bucketSize > stats.bucket.Count)
+            stats.bucket.Add(fish.GetComponent<Fish>().value);
+        else
+            print("HELP MY BUCKET IS FULLLLLLLLLLLLLLLLL");
         stats.points += fish.GetComponent<Fish>().points;
         fl.hook = gameObject;
         Destroy(fish);
