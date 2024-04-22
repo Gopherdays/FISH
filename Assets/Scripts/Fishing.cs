@@ -16,6 +16,11 @@ public class Fishing : MonoBehaviour
     bool changed;
     Vector2 temp = new Vector2();
 
+    public GameObject move; // tutorial variables
+    public GameObject cast;
+    public GameObject aim;
+    bool tutorial;
+
     GameObject player; // Minigame variables
     public GameObject fish;
     public GameObject indicator;
@@ -50,10 +55,12 @@ public class Fishing : MonoBehaviour
     public float hookSpeedVertical = 4;
     float prevY;
     public bool thrown;
+    public AudioSource src;
+    public AudioClip clip1, clip2, clip3, clip4;
 
-    GameObject fishingUI;
+    GameObject fishingUI; // mode swapping variables
     GameObject depth;
-    bool hooking; // mode swapping variables
+    bool hooking;
     public bool fishing;
     bool reset;
 
@@ -63,6 +70,8 @@ public class Fishing : MonoBehaviour
         fishingUI.SetActive(false);
         depth = GameObject.Find("Depth Meter");
         depth.SetActive(false);
+        move.SetActive(false);
+        aim.SetActive(false);
         for (int i = 0; i < 8; i++) //loads the different positions on the indicator
         {
             positions.Add(i * 45);
@@ -88,6 +97,7 @@ public class Fishing : MonoBehaviour
         down = false;
         right = false;
         hooking = true;
+        tutorial = true;
     }
 
     void Switch()
@@ -112,6 +122,8 @@ public class Fishing : MonoBehaviour
             fishing = true;
             fishingUI.SetActive(true);
             depth.SetActive(true);
+            if (tutorial)
+                aim.SetActive(true);
         }
         else if (fishing)
         {
@@ -125,8 +137,6 @@ public class Fishing : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         print("Yay! You caught: " + fish.name.Remove(fish.name.Length - 7));
-        fishingUI.SetActive(false);
-        depth.SetActive(false);
         if (stats.bucketSize > stats.bucket.Count)
             stats.bucket.Add(fish.GetComponent<Fish>().value);
         else
@@ -151,6 +161,11 @@ public class Fishing : MonoBehaviour
         if (thrown && changed)
         {
             changed = false;
+            if (tutorial && move.activeSelf)
+            {
+                StartCoroutine(WaitHook());
+                StartCoroutine(WaitMove());
+            }
             switch (true) // figures out what direction the joystick is facing
             {
                 case true when (up && !left && !right):
@@ -203,6 +218,9 @@ public class Fishing : MonoBehaviour
             if (confirm)
             {
                 confirm = false;
+                cast.SetActive(false);
+                if (tutorial)
+                    StartCoroutine(WaitForInWater());
                 ThrowHook();
             }
         }
@@ -223,6 +241,8 @@ public class Fishing : MonoBehaviour
                     g.GetComponent<Rigidbody2D>().AddForce(new Vector2(xVal, 2 + Random.Range(0f, 1f) - Mathf.Abs(2 * xVal)) * (75 + Random.Range(0, 75)));
                     Destroy(g, 3);
                 }
+                src.clip = clip1;
+                src.Play();
             }
 
             if (thrown && transform.position.y <= 0)
@@ -258,15 +278,30 @@ public class Fishing : MonoBehaviour
                 curCatcherPos = catcherPos;
             }
 
-            if (catcherPos == indPos) // calculate where the fish wants to go
+            if (catcherPos == indPos)
+            {
                 distance -= rodStr * Time.deltaTime;
+                src.clip = clip2;
+                src.Play();
+                //audio
+            }
 
             else if (NewInt(catcherPos - 1) == indPos || NewInt(catcherPos + 1) == indPos)
+            {
                 distance -= rodStr * Time.deltaTime * 0.5f;
+                src.clip = clip3;
+                src.Play();
+                //audio
+            }
 
             else
+            {
                 distance += escape * Time.deltaTime;
-            
+                src.clip = clip4;
+                src.Play();
+                //audio
+            }
+
             depthText.text = (int)distance + "m";
             if (distance <= 0 && fish.transform.position.y == -5)
                 reset = true;
@@ -284,6 +319,11 @@ public class Fishing : MonoBehaviour
                 reset = false;
                 fishingUI.SetActive(false);
                 depth.SetActive(false);
+                if (tutorial)
+                {
+                    tutorial = false;
+                    aim.SetActive(false);
+                }
                 Switch();
             }
         }
@@ -357,6 +397,30 @@ public class Fishing : MonoBehaviour
     {
         thrown = true;
         rb.AddForce(new Vector2(Random.Range(0.25f, 1.25f) * -300, Random.Range(0.5f, 1.25f) * 300));
+    }
+
+    IEnumerator WaitForInWater()
+    {
+        yield return new WaitUntil(() => prevY > 0 && transform.position.y <= 0);
+        move.SetActive(true);
+    }
+
+    IEnumerator WaitHook()
+    {
+        yield return new WaitUntil(() => fishing);
+        if (move.activeSelf)
+        {
+            move.SetActive(false);
+        }
+    }
+
+    IEnumerator WaitMove()
+    {
+        yield return new WaitForSeconds(3);
+        if (move.activeSelf)
+        {
+            move.SetActive(false);
+        }
     }
 
     // all of the input functions
