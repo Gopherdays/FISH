@@ -120,6 +120,8 @@ public class Fishing : MonoBehaviour
             fishing = true;
             fishingUI.SetActive(true);
             depth.SetActive(true);
+            if (tutorial)
+                aim.SetActive(true);
         }
         else if (fishing)
         {
@@ -133,8 +135,6 @@ public class Fishing : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         print("Yay! You caught: " + fish.name.Remove(fish.name.Length - 7));
-        fishingUI.SetActive(false);
-        depth.SetActive(false);
         if (stats.bucketSize > stats.bucket.Count)
             stats.bucket.Add(fish.GetComponent<Fish>().value);
         else
@@ -159,6 +159,11 @@ public class Fishing : MonoBehaviour
         if (thrown && changed)
         {
             changed = false;
+            if (tutorial && move.activeSelf)
+            {
+                StartCoroutine(WaitHook());
+                StartCoroutine(WaitMove());
+            }
             switch (true) // figures out what direction the joystick is facing
             {
                 case true when (up && !left && !right):
@@ -212,6 +217,8 @@ public class Fishing : MonoBehaviour
             {
                 confirm = false;
                 cast.SetActive(false);
+                if (tutorial)
+                    StartCoroutine(WaitForInWater());
                 ThrowHook();
             }
         }
@@ -299,6 +306,11 @@ public class Fishing : MonoBehaviour
                 reset = false;
                 fishingUI.SetActive(false);
                 depth.SetActive(false);
+                if (tutorial)
+                {
+                    tutorial = false;
+                    aim.SetActive(false);
+                }
                 Switch();
             }
         }
@@ -376,7 +388,26 @@ public class Fishing : MonoBehaviour
 
     IEnumerator WaitForInWater()
     {
-        yield return new WaitUntil(prevY > 0 && transform.position.y <= 0);
+        yield return new WaitUntil(() => prevY > 0 && transform.position.y <= 0);
+        move.SetActive(true);
+    }
+
+    IEnumerator WaitHook()
+    {
+        yield return new WaitUntil(() => fishing);
+        if (move.activeSelf)
+        {
+            move.SetActive(false);
+        }
+    }
+
+    IEnumerator WaitMove()
+    {
+        yield return new WaitForSeconds(3);
+        if (move.activeSelf)
+        {
+            move.SetActive(false);
+        }
     }
 
     // all of the input functions
