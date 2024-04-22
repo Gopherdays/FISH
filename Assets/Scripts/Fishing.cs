@@ -196,7 +196,6 @@ public class Fishing : MonoBehaviour
         }
         else if (!thrown) // reset the hook position and start looking for a click to send the hook
         {
-            print("Awaiting input...");
             if (transform.position != origin.transform.position)
                 transform.position = origin.transform.position;
             if (rb.velocity != Vector2.zero)

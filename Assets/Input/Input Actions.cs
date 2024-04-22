@@ -80,6 +80,15 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Y"",
+                    ""type"": ""Button"",
+                    ""id"": ""0a5331d2-e783-43a0-8be4-d092418524df"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -148,6 +157,17 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""action"": ""B"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""998e9e32-2fac-4df1-aac4-af3a9e91f847"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Y"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -174,6 +194,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_Reel_Right = m_Reel.FindAction("Right", throwIfNotFound: true);
         m_Reel_A = m_Reel.FindAction("A", throwIfNotFound: true);
         m_Reel_B = m_Reel.FindAction("B", throwIfNotFound: true);
+        m_Reel_Y = m_Reel.FindAction("Y", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -239,6 +260,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Reel_Right;
     private readonly InputAction m_Reel_A;
     private readonly InputAction m_Reel_B;
+    private readonly InputAction m_Reel_Y;
     public struct ReelActions
     {
         private @InputActions m_Wrapper;
@@ -249,6 +271,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         public InputAction @Right => m_Wrapper.m_Reel_Right;
         public InputAction @A => m_Wrapper.m_Reel_A;
         public InputAction @B => m_Wrapper.m_Reel_B;
+        public InputAction @Y => m_Wrapper.m_Reel_Y;
         public InputActionMap Get() { return m_Wrapper.m_Reel; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -276,6 +299,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @B.started -= m_Wrapper.m_ReelActionsCallbackInterface.OnB;
                 @B.performed -= m_Wrapper.m_ReelActionsCallbackInterface.OnB;
                 @B.canceled -= m_Wrapper.m_ReelActionsCallbackInterface.OnB;
+                @Y.started -= m_Wrapper.m_ReelActionsCallbackInterface.OnY;
+                @Y.performed -= m_Wrapper.m_ReelActionsCallbackInterface.OnY;
+                @Y.canceled -= m_Wrapper.m_ReelActionsCallbackInterface.OnY;
             }
             m_Wrapper.m_ReelActionsCallbackInterface = instance;
             if (instance != null)
@@ -298,6 +324,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @B.started += instance.OnB;
                 @B.performed += instance.OnB;
                 @B.canceled += instance.OnB;
+                @Y.started += instance.OnY;
+                @Y.performed += instance.OnY;
+                @Y.canceled += instance.OnY;
             }
         }
     }
@@ -319,5 +348,6 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         void OnRight(InputAction.CallbackContext context);
         void OnA(InputAction.CallbackContext context);
         void OnB(InputAction.CallbackContext context);
+        void OnY(InputAction.CallbackContext context);
     }
 }

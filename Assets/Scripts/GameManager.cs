@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     Fishing hook;
     public PlayerStatsEpic playerStats;
     public bool win;
+    bool confirm;
     
     public float time = 0;
     public TextMeshProUGUI timer;
@@ -21,17 +22,15 @@ public class GameManager : MonoBehaviour
 
     public GameObject pause;
     public Image transitionImage;
-    public bool fade = true;
     Color color;
 
     private void Start()
     {
-        if (fade)
-        {
-            color = Color.black;
-            StartCoroutine(FadeIn(1));
-        }
-        else color = Color.clear;
+        playerStats.Reset();
+
+        color = Color.black;
+        StartCoroutine(FadeIn(1));
+        
         if (SceneManager.GetActiveScene().name == "Fishing")
         {
             hook = GameObject.Find("Fishing Hook").GetComponent<Fishing>();
@@ -47,6 +46,11 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
+        if (confirm)
+        {
+            confirm = false;
+            playerStats.Feed();
+        }
         if (win)
         {
             GoBoat();
@@ -71,9 +75,9 @@ public class GameManager : MonoBehaviour
                 playerStats.NewDay();
 
             foodBar.fillAmount = playerStats.turtleHunger / 100;
-            if (playerStats.turtleHunger <= 0 && !fade)
+            if (playerStats.turtleHunger <= 0)
             {
-                fade = true;
+                print("ya stuipid");
                 GoLose();
             }
         }
@@ -203,6 +207,13 @@ public class GameManager : MonoBehaviour
         if (context.canceled) // on button 
         {
 
+        }
+    }
+    public void Y(InputAction.CallbackContext context)
+    {
+        if (context.started) // on button press
+        {
+            confirm = true;
         }
     }
 }
