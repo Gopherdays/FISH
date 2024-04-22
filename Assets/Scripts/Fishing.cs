@@ -16,6 +16,11 @@ public class Fishing : MonoBehaviour
     bool changed;
     Vector2 temp = new Vector2();
 
+    public GameObject move; // tutorial variables
+    public GameObject cast;
+    public GameObject aim;
+    bool tutorial;
+
     GameObject player; // Minigame variables
     public GameObject fish;
     public GameObject indicator;
@@ -51,9 +56,9 @@ public class Fishing : MonoBehaviour
     float prevY;
     public bool thrown;
 
-    GameObject fishingUI;
+    GameObject fishingUI; // mode swapping variables
     GameObject depth;
-    bool hooking; // mode swapping variables
+    bool hooking;
     public bool fishing;
     bool reset;
 
@@ -63,6 +68,8 @@ public class Fishing : MonoBehaviour
         fishingUI.SetActive(false);
         depth = GameObject.Find("Depth Meter");
         depth.SetActive(false);
+        move.SetActive(false);
+        aim.SetActive(false);
         for (int i = 0; i < 8; i++) //loads the different positions on the indicator
         {
             positions.Add(i * 45);
@@ -88,6 +95,7 @@ public class Fishing : MonoBehaviour
         down = false;
         right = false;
         hooking = true;
+        tutorial = true;
     }
 
     void Switch()
@@ -203,6 +211,7 @@ public class Fishing : MonoBehaviour
             if (confirm)
             {
                 confirm = false;
+                cast.SetActive(false);
                 ThrowHook();
             }
         }
@@ -258,15 +267,21 @@ public class Fishing : MonoBehaviour
                 curCatcherPos = catcherPos;
             }
 
-            if (catcherPos == indPos) // calculate where the fish wants to go
+            if (catcherPos == indPos)
+            {
                 distance -= rodStr * Time.deltaTime;
+            }
 
             else if (NewInt(catcherPos - 1) == indPos || NewInt(catcherPos + 1) == indPos)
+            {
                 distance -= rodStr * Time.deltaTime * 0.5f;
+            }
 
             else
+            {
                 distance += escape * Time.deltaTime;
-            
+            }
+
             depthText.text = (int)distance + "m";
             if (distance <= 0 && fish.transform.position.y == -5)
                 reset = true;
@@ -357,6 +372,11 @@ public class Fishing : MonoBehaviour
     {
         thrown = true;
         rb.AddForce(new Vector2(Random.Range(0.25f, 1.25f) * -300, Random.Range(0.5f, 1.25f) * 300));
+    }
+
+    IEnumerator WaitForInWater()
+    {
+        yield return new WaitUntil(prevY > 0 && transform.position.y <= 0);
     }
 
     // all of the input functions
