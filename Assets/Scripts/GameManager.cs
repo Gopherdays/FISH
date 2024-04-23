@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     Fishing hook;
     public PlayerStatsEpic playerStats;
     public bool win;
-    bool confirm;
+    bool shopToggle;
     
     public float time = 0;
     public TextMeshProUGUI timer;
@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject creditsObject;
     public string[] credits;
+
+    public GameObject shoppe;
+    public GameObject feesherCam;
 
     public GameObject pause;
     public Image transitionImage;
@@ -46,11 +49,6 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
-        if (confirm)
-        {
-            confirm = false;
-            playerStats.Feed();
-        }
         if (win)
         {
             GoBoat();
@@ -194,11 +192,18 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(3);
         }
     }
+
+    void SwitchShop()
+    {
+        shoppe.SetActive(!shoppe.activeSelf);
+        feesherCam.SetActive(!feesherCam.activeSelf);
+    }
+
     public void B(InputAction.CallbackContext context)
     {
         if (context.started) // on button press
         {
-
+            SwitchShop();
         }
         if (context.performed) // on button hold
         {
@@ -213,7 +218,7 @@ public class GameManager : MonoBehaviour
     {
         if (context.started) // on button press
         {
-            confirm = true;
+            playerStats.Feed();
         }
     }
 }
