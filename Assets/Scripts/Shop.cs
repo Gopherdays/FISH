@@ -39,6 +39,7 @@ public class Shop : MonoBehaviour
 
     private void OnEnable()
     {
+        status = Status.None;
         Dialogue(regularDialogue, Status.Normal);
         StartCoroutine(Typing());
         if (playerStats.candleStatus > 1)

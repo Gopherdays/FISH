@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     Fishing hook;
     public PlayerStatsEpic playerStats;
     public bool win;
-    bool shopToggle;
     
     public float time = 0;
     public TextMeshProUGUI timer;
