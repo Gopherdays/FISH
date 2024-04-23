@@ -43,7 +43,7 @@ public class Fishing : MonoBehaviour
     bool direction;
     bool skip;
 
-    public GameObject splash; // Hook mavement variables
+    public GameObject splash; // Hook shmoovement variables
     public Transform origin;
     public PlayerStatsEpic stats;
     Rigidbody2D rb;
@@ -55,14 +55,15 @@ public class Fishing : MonoBehaviour
     public float hookSpeedVertical = 4;
     float prevY;
     public bool thrown;
-    public AudioSource src;
-    public AudioClip clip1, clip2, clip3, clip4;
 
     GameObject fishingUI; // mode swapping variables
     GameObject depth;
     bool hooking;
     public bool fishing;
     bool reset;
+
+    public AudioSource src; // Audio variables
+    public AudioClip clip1, clip2, clip3, clip4;
 
     private void Start()
     {
@@ -104,7 +105,6 @@ public class Fishing : MonoBehaviour
     {
         if (hooking)
         {
-            Debug.Log("Catch this fish: " + fish.name);
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             fish.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             distance = Vector2.Distance(fish.transform.position, player.transform.position);
@@ -234,11 +234,13 @@ public class Fishing : MonoBehaviour
             {
                 rb.velocity = new Vector2(0,rb.velocity.y);
                 cam.Follow = transform;
-                for (int i = 0; i < Random.Range(50, 80); i++)
+                for (int i = 0; i < Random.Range(40, 61); i++)
                 {
                     GameObject g = Instantiate(splash, transform.position, Quaternion.identity);
-                    float xVal = Random.Range(-0.5f, 0.5f);
-                    g.GetComponent<Rigidbody2D>().AddForce(new Vector2(xVal, 2 + Random.Range(0f, 1f) - Mathf.Abs(2 * xVal)) * (75 + Random.Range(0, 75)));
+                    float rand = Random.Range(0.25f, 0.35f);
+                    g.transform.localScale = new Vector2(rand,rand);
+                    float xVal = Random.Range(-0.25f, 0.25f);
+                    g.GetComponent<Rigidbody2D>().AddForce(new Vector2(xVal, 2 + Random.Range(0f, 1f) - Mathf.Abs(2 * xVal)) * (30 + Random.Range(0, 50)));
                     Destroy(g, 3);
                 }
                 src.clip = clip1;
@@ -261,7 +263,6 @@ public class Fishing : MonoBehaviour
                 timer += Time.deltaTime;
             else
             {
-                print("done");
                 indPos = NewPos(indPos);
                 timer = 0;
             }
