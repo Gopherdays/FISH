@@ -32,6 +32,7 @@ public class Fishing : MonoBehaviour
     int indPos;
     int curIndPos;
     List<float> positions = new List<float>();
+    
 
     public float speed; // Minigame stat variables
     public float escape;
@@ -62,11 +63,14 @@ public class Fishing : MonoBehaviour
     public bool fishing;
     bool reset;
 
-    public AudioSource src; // Audio variables
-    public AudioClip clip1, clip2, clip3, clip4;
+    private AudioSource source; // Audio variables
+    public AudioClip clip1;
+    public AudioClip[] sounds;
 
     private void Start()
     {
+        source = GetComponent<AudioSource>();
+
         fishingUI = GameObject.Find("Fishing UI");
         fishingUI.SetActive(false);
         depth = GameObject.Find("Depth Meter");
@@ -243,8 +247,8 @@ public class Fishing : MonoBehaviour
                     g.GetComponent<Rigidbody2D>().AddForce(new Vector2(xVal, 2 + Random.Range(0f, 1f) - Mathf.Abs(2 * xVal)) * (30 + Random.Range(0, 50)));
                     Destroy(g, 3);
                 }
-                src.clip = clip1;
-                src.Play();
+                source.clip = clip1;
+                source.Play();
             }
 
             if (thrown && transform.position.y <= 0)
@@ -281,26 +285,22 @@ public class Fishing : MonoBehaviour
 
             if (catcherPos == indPos)
             {
+                source.clip = sounds[Random.Range(0, sounds.Length)];
+                source.Play();
                 distance -= rodStr * Time.deltaTime;
-                src.clip = clip2;
-                src.Play();
                 //audio
             }
 
             else if (NewInt(catcherPos - 1) == indPos || NewInt(catcherPos + 1) == indPos)
             {
                 distance -= rodStr * Time.deltaTime * 0.5f;
-                src.clip = clip3;
-                src.Play();
-                //audio
+                
             }
 
             else
             {
                 distance += escape * Time.deltaTime;
-                src.clip = clip4;
-                src.Play();
-                //audio
+                
             }
 
             depthText.text = (int)distance + "m";
