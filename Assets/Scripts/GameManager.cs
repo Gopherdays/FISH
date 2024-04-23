@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
             GoBoat();
             win = false;
         }
-        if (SceneManager.GetActiveScene().name == "Fishing" && hook.thrown)
+        if (SceneManager.GetActiveScene().name == "Fishing")
         {
             time += Time.deltaTime;
             playerStats.turtleHunger -= Time.deltaTime * 100 / 180;

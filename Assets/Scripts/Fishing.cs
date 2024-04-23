@@ -285,7 +285,7 @@ public class Fishing : MonoBehaviour
 
             if (catcherPos == indPos)
             {
-                source.clip = sounds[Random.Range(0, sounds.Length)];
+                source.clip = sounds[Random.Range(0, sounds.Length - 1)];
                 source.Play();
                 distance -= rodStr * Time.deltaTime;
                 //audio

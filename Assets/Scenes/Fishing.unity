@@ -7802,7 +7802,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 8
     m_NumAlphaKeys: 2
-  cast: 0
+  cast: 1
 --- !u!1 &1802639266
 GameObject:
   m_ObjectHideFlags: 0
@@ -10043,7 +10043,8 @@ MonoBehaviour:
   thrown: 0
   fishing: 0
   clip1: {fileID: 8300000, guid: 435d5edfa1ea8064ea3782079819255a, type: 3}
-  sounds: []
+  sounds:
+  - {fileID: 8300000, guid: ce3b7a32ea3ddf24f869f5e13a3e3411, type: 3}
 --- !u!82 &2145965932
 AudioSource:
   m_ObjectHideFlags: 0
