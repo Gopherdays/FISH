@@ -16,6 +16,11 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI timer;
     public Image foodBar;
 
+    public float bucketTotal;
+    public TextMeshProUGUI total;
+    public Image bucketBar;
+    public bool full;
+
     public GameObject creditsObject;
     public string[] credits;
 
@@ -74,9 +79,10 @@ public class GameManager : MonoBehaviour
             foodBar.fillAmount = playerStats.turtleHunger / 100;
             if (playerStats.turtleHunger <= 0)
             {
-                print("ya stuipid");
                 GoLose();
             }
+            if (playerStats.bucket.Count >= playerStats.bucketSize)
+                full = true;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -127,7 +133,20 @@ public class GameManager : MonoBehaviour
         pause.SetActive(false);
         Time.timeScale = 1;
     }
-
+    public void AddFish(int value)
+    {
+        if (!full)
+        {
+            playerStats.BucketAdd(value);
+            bucketBar.fillAmount = playerStats.bucket.Count / playerStats.bucketSize;
+            bucketTotal += value;
+            total.text = "$" + bucketTotal;
+        }
+        else
+        {
+            print("HELP MY BUCKET IS FULLLLLLLLLLLLLLLLL");
+        }
+    }
     // Voids that start coroutines used to allow activation through buttons because that seems to happen a lot
     public void GoMenu()
     {

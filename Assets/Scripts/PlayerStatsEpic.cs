@@ -46,8 +46,14 @@ public class PlayerStatsEpic : ScriptableObject
         bucketSizeCost = 150;
         lightbulbCost = 120;
 
-        bucket = new();
-}
+        bucket = new List<int>();
+    }
+
+    public void BucketAdd(int value)
+    {
+        if (bucket.Count < bucketSize)
+            bucket.Add(value);
+    }
 
     public void NewDay()
     {

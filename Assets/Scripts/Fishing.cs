@@ -32,12 +32,14 @@ public class Fishing : MonoBehaviour
     int indPos;
     int curIndPos;
     List<float> positions = new List<float>();
-    
 
-    public float speed; // Minigame stat variables
+
+    public GameManager gm; // Minigame stat variables
+    public float speed; 
     public float escape;
     public int turnChance;
     public int skipChance;
+    public int value;
     public float rodStr;
     public float distance;
     float timer;
@@ -112,6 +114,7 @@ public class Fishing : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             fish.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             distance = Vector2.Distance(fish.transform.position, player.transform.position);
+            value = Mathf.RoundToInt(fish.GetComponent<Fish>().value * (100 + distance));
             cam.Follow = player.transform;
             transform.position = player.transform.position;
             if (fish.transform.localScale.x > 0)
@@ -132,7 +135,6 @@ public class Fishing : MonoBehaviour
         else if (fishing)
         {
             StartCoroutine(WaitForAnimation());
-            return;
         }
     }
 
@@ -141,10 +143,7 @@ public class Fishing : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         print("Yay! You caught: " + fish.name.Remove(fish.name.Length - 7));
-        if (stats.bucketSize > stats.bucket.Count)
-            stats.bucket.Add(fish.GetComponent<Fish>().value);
-        else
-            print("HELP MY BUCKET IS FULLLLLLLLLLLLLLLLL");
+        gm.AddFish(fish.GetComponent<Fish>().value);
         stats.points += fish.GetComponent<Fish>().points;
         fl.hook = gameObject;
         Destroy(fish);
