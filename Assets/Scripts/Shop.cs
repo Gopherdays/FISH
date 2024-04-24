@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.InputSystem;
+
 public class Shop : MonoBehaviour
 {
     public TextMeshProUGUI textbox;
     public AudioSource[] noises;
     public TextMeshProUGUI money;
     public TextMeshProUGUI food;
-
     // Unity editor incapable of comprehending such a complex concept such as "array array"
     public string[] regularDialogue;
     public string[] browsingDialogue;
@@ -18,19 +17,10 @@ public class Shop : MonoBehaviour
     public string[] leavingDialogue;
     public string[] leftDialogue;
     public string[] soldDialogue;
-
     string currentDialogue;
     string remainingDialogue;
     float cawTimer;
     bool stopInput;
-
-    bool up; // input variables
-    bool left;
-    bool down;
-    bool right;
-    bool changed;
-    int dir;
-
     enum Status
     {
         None,
@@ -82,43 +72,6 @@ public class Shop : MonoBehaviour
                 break;
             default:
                 break;
-        }
-
-        if (changed)
-        {
-            changed = false;
-            switch (true) // figures out what direction the joystick is facing
-            {
-                case true when (up && !left && !right): //north
-                    //disabled, we don't need leave button
-                    break;
-                case true when (up && left): //northwest
-                    PointToItem(1);
-                    break;
-                case true when (left && !up && !down): //west
-                    PointToItem(0);
-                    break;
-                case true when (down && left): //southwest
-                    PointToItem(3);
-                    break;
-                case true when (down && !left && !right): //south
-                    //disabled, nothing in that direction
-                    break;
-                case true when (down && right): //southeast
-                    SellFish();
-                    break;
-                case true when (right && !up && !down): //east
-                    PointToItem(2);
-                    break;
-                case true when (up && right): //northeast
-                    if (playerStats.candleStatus < 1)
-                        PointToItem(5);
-                    else
-                        PointToItem(4);
-                    break;
-                default:
-                    break;
-            }
         }
     }
 
@@ -181,51 +134,6 @@ public class Shop : MonoBehaviour
         }
         playerStats.bucket.Clear();
         Dialogue(soldDialogue, Status.SoldFish);
-    }
-
-    public void PointToItem(int whichButton)
-    {
-        if (!stopInput)
-        {
-            status = Status.None;
-            Dialogue(browsingDialogue, Status.LookingAtItem, whichButton);
-        }
-    }
-
-    public void Confirm()
-    {
-        switch (true) // figures out what direction the joystick is facing
-        {
-            case true when (up && !left && !right): //north
-                //ighjioguhiudfghdi
-                break;
-            case true when (up && left): //northwest
-                BuyItem(1);
-                break;
-            case true when (left && !up && !down): //west
-                BuyItem(0);
-                break;
-            case true when (down && left): //southwest
-                BuyItem(3);
-                break;
-            case true when (down && !left && !right): //south
-                //blargle I AM A PROFESSIONAL
-                break;
-            case true when (down && right): //southeast
-                SellFish();
-                break;
-            case true when (right && !up && !down): //east
-                BuyItem(2);
-                break;
-            case true when (up && right): //northeast
-                if (playerStats.candleStatus < 1)
-                    BuyItem(5);
-                else
-                    BuyItem(4);
-                break;
-            default:
-                break;
-        }
     }
 
     public void BuyItem(int whichButton)
@@ -300,8 +208,7 @@ public class Shop : MonoBehaviour
                         break;
                     case 5:
                         //                                                                                                              <--   candle
-                        if (playerStats.candleStatus != 0)
-                            break;
+                        if (playerStats.candleStatus != 0) { break; }
                         if (playerStats.money < 2)
                             Dialogue(brokeDialogue, Status.YouArePoor);
                         else
@@ -316,55 +223,6 @@ public class Shop : MonoBehaviour
                         break;
                 }
             }
-        }
-    }
-
-    public void Up(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            up = true; // value that help track the joystick direction
-            changed = true; // turn this value on to change the position of the catcher indicator
-        }
-        if (context.canceled)
-        {
-            up = false;
-        }
-    }
-    public void Left(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            left = true;
-            changed = true;
-        }
-        if (context.canceled)
-        {
-            left = false;
-        }
-    }
-    public void Down(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            down = true;
-            changed = true;
-        }
-        if (context.canceled)
-        {
-            down = false;
-        }
-    }
-    public void Right(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            right = true;
-            changed = true;
-        }
-        if (context.canceled)
-        {
-            right = false;
         }
     }
 }
