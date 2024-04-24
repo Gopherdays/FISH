@@ -66,7 +66,7 @@ public class Fishing : MonoBehaviour
     bool reset;
 
     private AudioSource source; // Audio variables
-    public AudioClip clip1;
+    public AudioClip clip1, clip2, clip3;
     public AudioClip[] sounds;
 
     private void Start()
@@ -268,6 +268,7 @@ public class Fishing : MonoBehaviour
             {
                 indPos = NewPos(indPos);
                 timer = 0;
+               
             }
 
             if (indPos != curIndPos) // fish indicator position update
@@ -283,11 +284,15 @@ public class Fishing : MonoBehaviour
             }
 
             if (catcherPos == indPos)
-            {
-                source.clip = sounds[Random.Range(0, sounds.Length - 1)];
-                source.Play();
+            { 
+                
+                if (!source.isPlaying) //audio
+                {
+                    source.clip = sounds[Random.Range(0, sounds.Length)]; 
+                    source.Play();
+                }
                 distance -= rodStr * Time.deltaTime;
-                //audio
+               
             }
 
             else if (NewInt(catcherPos - 1) == indPos || NewInt(catcherPos + 1) == indPos)
@@ -299,7 +304,11 @@ public class Fishing : MonoBehaviour
             else
             {
                 distance += escape * Time.deltaTime;
-                
+                if (!source.isPlaying) //audio
+                {
+                    source.clip = clip3;
+                    source.Play();
+                }
             }
 
             depthText.text = (int)distance + "m";
@@ -339,6 +348,8 @@ public class Fishing : MonoBehaviour
             escape = feesh.escape;
             turnChance = feesh.turnChance;
             skipChance = feesh.skipChance;
+            source.clip = clip2;
+            source.Play();
             Switch();
         }
     }
