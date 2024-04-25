@@ -10375,12 +10375,8 @@ MonoBehaviour:
   clip2: {fileID: 8300000, guid: e409443abd62d9448a59943fff805540, type: 3}
   clip3: {fileID: 8300000, guid: cba6eeda2e3cae6459135427abfe5988, type: 3}
   sounds:
-<<<<<<< Updated upstream
-  - {fileID: 8300000, guid: ce3b7a32ea3ddf24f869f5e13a3e3411, type: 3}
-=======
   - {fileID: 8300000, guid: c3a6c807abbc2ba42bf96eaeb621b177, type: 3}
   - {fileID: 8300000, guid: c619c2af61943bc4591d1a68a8e59e10, type: 3}
->>>>>>> Stashed changes
 --- !u!82 &2145965932
 AudioSource:
   m_ObjectHideFlags: 0
