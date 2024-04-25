@@ -135,10 +135,10 @@ public class GameManager : MonoBehaviour
     }
     public void AddFish(int value)
     {
-        if (!full)
+        if (playerStats.bucket.Count < playerStats.bucketSize)
         {
             playerStats.BucketAdd(value);
-            bucketBar.fillAmount = playerStats.bucket.Count / playerStats.bucketSize;
+            bucketBar.fillAmount = (float)playerStats.bucket.Count / playerStats.bucketSize;
             bucketTotal += value;
             total.text = "$" + bucketTotal;
         }

@@ -61,6 +61,15 @@ public class PlayerStatsEpic : ScriptableObject
         foodEffectiveness /= 2;
     }
 
+    public void SellFish()
+    {
+        foreach (int item in bucket)
+        {
+            money += item;
+        }
+        bucket.Clear();
+    }
+
     public void Feed()
     {
         turtleHunger += foodEffectiveness;
