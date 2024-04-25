@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Player Stats
   m_EditorClassIdentifier: 
   money: 0
-  points: 0
+  points: 1650
   day: 1
   foodEffectiveness: 12.5
-  turtleHunger: 95.89506
+  turtleHunger: 1805.7297
   lineSpeedHorizontal: 1
   lineSpeedVertical: 1
-  strengthMult: 1
+  strengthMult: 4
   bucketSize: 5
   lightTier: 0
   candleStatus: 0
@@ -27,4 +27,4 @@ MonoBehaviour:
   strengthMultUpgradeCost: 60
   bucketSizeCost: 150
   lightbulbCost: 120
-  bucket: 
+  bucket: 060000000c000000060000000c00000006000000

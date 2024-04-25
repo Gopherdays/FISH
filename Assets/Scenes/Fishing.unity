@@ -9282,7 +9282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &2077936969
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10155,7 +10155,6 @@ MonoBehaviour:
   turnChance: 0
   skipChance: 0
   value: 0
-  rodStr: 0
   distance: 0
   splash: {fileID: 3462652267452336289, guid: 2b87ad0dbabbffe47a32e8bac38adfa8, type: 3}
   origin: {fileID: 728282006}
@@ -10273,7 +10272,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145965923}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 

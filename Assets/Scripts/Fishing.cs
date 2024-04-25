@@ -40,7 +40,6 @@ public class Fishing : MonoBehaviour
     public int turnChance;
     public int skipChance;
     public int value;
-    public float rodStr;
     public float distance;
     float timer;
     bool direction;
@@ -96,7 +95,6 @@ public class Fishing : MonoBehaviour
         fl = GameObject.Find("Line Renderer").GetComponent<FishingLine>();
         hookSpeedHorizontal = 2 * stats.lineSpeedHorizontal;
         hookSpeedVertical = 4 * stats.lineSpeedVertical;
-        rodStr = 4 * stats.strengthMult;
         temp = new Vector2(0, 0);
         fishing = false;
         up = false;
@@ -291,13 +289,13 @@ public class Fishing : MonoBehaviour
                     source.clip = sounds[Random.Range(0, sounds.Length)]; 
                     source.Play();
                 }
-                distance -= rodStr * Time.deltaTime;
+                distance -= stats.strengthMult * Time.deltaTime;
                
             }
 
             else if (NewInt(catcherPos - 1) == indPos || NewInt(catcherPos + 1) == indPos)
             {
-                distance -= rodStr * Time.deltaTime * 0.5f;
+                distance -= stats.strengthMult * Time.deltaTime * 0.5f;
                 
             }
 

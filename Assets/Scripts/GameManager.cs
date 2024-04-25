@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
@@ -30,6 +31,12 @@ public class GameManager : MonoBehaviour
     public GameObject pause;
     public Image transitionImage;
     Color color;
+
+    Light2D light;
+    int bulbLvl;
+    int lineLvl;
+    int buckLvl;
+    int reelLvl;
 
     private void Start()
     {
@@ -146,6 +153,41 @@ public class GameManager : MonoBehaviour
         {
             print("HELP MY BUCKET IS FULLLLLLLLLLLLLLLLL");
         }
+    }
+    public void UpgradeLight()
+    {
+        if (playerStats.money >= playerStats.lightbulbCost)
+        {
+            playerStats.money -= playerStats.lightbulbCost;
+            if (bulbLvl == 0)
+                light.enabled = true;
+            else
+                light.pointLightOuterRadius += 1;
+            bulbLvl++;
+        }
+    }
+    public void UpgradeLine()
+    {
+        if (playerStats.money >= playerStats.lineSpeedUpgradeCost)
+        {
+            playerStats.money -= playerStats.lineSpeedUpgradeCost;
+            playerStats.lineSpeedVertical *= 1.5f;
+            playerStats.lineSpeedHorizontal *= 1.5f;
+            lineLvl++;
+        }
+    }
+    public void UpgradeReel()
+    {
+        if (playerStats.money >= playerStats.strengthMultUpgradeCost)
+        {
+            playerStats.money -= playerStats.strengthMultUpgradeCost;
+            playerStats.strengthMult += 2;
+            reelLvl++;
+        }
+    }
+    public void UpgradeBucket()
+    {
+
     }
     // Voids that start coroutines used to allow activation through buttons because that seems to happen a lot
     public void GoMenu()

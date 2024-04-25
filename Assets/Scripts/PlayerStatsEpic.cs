@@ -36,7 +36,7 @@ public class PlayerStatsEpic : ScriptableObject
 
         lineSpeedHorizontal = 1;
         lineSpeedVertical = 1;
-        strengthMult = 1;
+        strengthMult = 4;
         bucketSize = 5;
         lightTier = 0;
         candleStatus = 0;
