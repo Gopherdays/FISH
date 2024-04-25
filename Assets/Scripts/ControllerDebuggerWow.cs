@@ -10,7 +10,7 @@ public class ControllerDebuggerWow : MonoBehaviour
     private void Update()
     {
         device = InputSystem.GetDeviceById(17);
-        print(device["stick"]);
-        print(device["trigger"]);
+        print(device["stick"].ReadValueAsObject());
+        print(device["trigger"].ReadValueAsObject());
     }
 }
