@@ -9,7 +9,7 @@ public class ControllerDebuggerWow : MonoBehaviour
 
     private void Update()
     {
-        device = InputSystem.GetDevice("Microntek             USB Joystick          ");
+        device = InputSystem.GetDeviceById(17);
         print(device.displayName);
     }
 }
