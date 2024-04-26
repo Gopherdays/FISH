@@ -9282,7 +9282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &2077936969
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9945,13 +9945,49 @@ MonoBehaviour:
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2145965931}
+        m_TargetAssemblyTypeName: Fishing, Assembly-CSharp
+        m_MethodName: Scream
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_DeviceRegainedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2145965931}
+        m_TargetAssemblyTypeName: Fishing, Assembly-CSharp
+        m_MethodName: oh
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_ControlsChangedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2145965931}
+        m_TargetAssemblyTypeName: Fishing, Assembly-CSharp
+        m_MethodName: Scream
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
@@ -10069,8 +10105,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2145965931}
         m_TargetAssemblyTypeName: Fishing, Assembly-CSharp
-        m_MethodName: A
-        m_Mode: 0
+        m_MethodName: ThrowHook
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10126,7 +10162,7 @@ MonoBehaviour:
     m_ActionId: 0a5331d2-e783-43a0-8be4-d092418524df
     m_ActionName: Reel/Y[/XInputControllerWindows/buttonNorth]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Gamepad
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Reel
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
