@@ -27,6 +27,7 @@ public class ControllerDebuggerWow : MonoBehaviour
 
     private void Update()
     {
+        print(device);
         if (!device.name.Contains("Microntek"))
             device = FindJoystick();
         print(device["stick"].ReadValueAsObject());
