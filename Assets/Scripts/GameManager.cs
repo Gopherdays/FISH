@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI total;
     public Image bucketBar;
     public bool full;
+    float clock;
 
     public GameObject creditsObject;
     public string[] credits;
@@ -67,6 +68,14 @@ public class GameManager : MonoBehaviour
         }
         if (SceneManager.GetActiveScene().name == "Fishing")
         {
+            if (clock < 0.1)
+                clock += Time.deltaTime;
+            else
+            {
+                UIUpdate();
+                clock = 0;
+            }
+
             time += Time.deltaTime;
             playerStats.turtleHunger -= Time.deltaTime * 100 / 180;
 
@@ -145,13 +154,26 @@ public class GameManager : MonoBehaviour
         if (playerStats.bucket.Count < playerStats.bucketSize)
         {
             playerStats.BucketAdd(value);
-            bucketBar.fillAmount = (float)playerStats.bucket.Count / playerStats.bucketSize;
             bucketTotal += value;
-            total.text = "$" + bucketTotal;
+            UIUpdate();
         }
         else
         {
             print("HELP MY BUCKET IS FULLLLLLLLLLLLLLLLL");
+        }
+    }
+    public void UIUpdate()
+    {
+        bucketBar.fillAmount = (float)playerStats.bucket.Count / playerStats.bucketSize;
+        total.text = "$" + bucketTotal;
+
+    }
+    public void BuyFood()
+    {
+        if (playerStats.money >= playerStats.foodCost)
+        {
+            playerStats.money -= playerStats.foodCost;
+            playerStats.food++;
         }
     }
     public void UpgradeLight()
@@ -176,6 +198,7 @@ public class GameManager : MonoBehaviour
             lineLvl++;
         }
     }
+    
     public void UpgradeReel()
     {
         if (playerStats.money >= playerStats.strengthMultUpgradeCost)
@@ -187,7 +210,12 @@ public class GameManager : MonoBehaviour
     }
     public void UpgradeBucket()
     {
-
+        if (playerStats.money >= playerStats.bucketSizeCost)
+        {
+            playerStats.money -= playerStats.bucketSizeCost;
+            playerStats.bucketSize += 1;
+            reelLvl++;
+        }
     }
     // Voids that start coroutines used to allow activation through buttons because that seems to happen a lot
     public void GoMenu()
