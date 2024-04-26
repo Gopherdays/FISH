@@ -10126,7 +10126,7 @@ MonoBehaviour:
     m_ActionId: 0a5331d2-e783-43a0-8be4-d092418524df
     m_ActionName: Reel/Y[/XInputControllerWindows/buttonNorth]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Reel
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
