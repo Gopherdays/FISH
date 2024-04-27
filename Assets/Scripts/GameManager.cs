@@ -187,7 +187,12 @@ public class GameManager : MonoBehaviour
     }
     public void UpgradeBucket()
     {
-
+        if (playerStats.money >= playerStats.bucketSizeCost)
+        {
+            playerStats.money -= playerStats.bucketSizeCost;
+            playerStats.bucketSize += 1;
+            buckLvl++;
+        }
     }
     // Voids that start coroutines used to allow activation through buttons because that seems to happen a lot
     public void GoMenu()

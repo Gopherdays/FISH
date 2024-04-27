@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerStatsEpic : ScriptableObject
 {
     public int money;
+    public int food;
     public int points;
     public int day;
     public float foodEffectiveness;
@@ -29,6 +30,7 @@ public class PlayerStatsEpic : ScriptableObject
     public void Reset()
     {
         money = 0;
+        food = 0;
         points = 0;
         day = 0;
         turtleHunger = 100;
@@ -37,7 +39,7 @@ public class PlayerStatsEpic : ScriptableObject
         lineSpeedHorizontal = 1;
         lineSpeedVertical = 1;
         strengthMult = 4;
-        bucketSize = 5;
+        bucketSize = 3;
         lightTier = 0;
         candleStatus = 0;
 
