@@ -159,6 +159,7 @@ public class Fishing : MonoBehaviour
 
     private void Update()
     {
+
         if (thrown && changed)
         {
             changed = false;
@@ -435,6 +436,8 @@ public class Fishing : MonoBehaviour
     // all of the input functions
     public void Up(InputAction.CallbackContext context)
     {
+        print("Hello");
+
         if (context.started)
         {
             up = true; // value that help track the joystick direction
@@ -491,5 +494,15 @@ public class Fishing : MonoBehaviour
         {
             confirm = true;
         }
+    }
+
+    public void Scream()
+    {
+        print("AHHHHHHHHHHHH GOD NO FUCK AHHHHHHHHHH!!!!!!!!");
+    }
+
+    public void oh()
+    {
+        print("Oh, hai senpai UwU :3");
     }
 }

@@ -20,6 +20,7 @@ public class PlayerStatsEpic : ScriptableObject
     public int lightTier;
     public int candleStatus;
 
+    public int foodCost;
     public int lineSpeedUpgradeCost;
     public int strengthMultUpgradeCost;
     public int bucketSizeCost;
@@ -74,6 +75,12 @@ public class PlayerStatsEpic : ScriptableObject
 
     public void Feed()
     {
-        turtleHunger += foodEffectiveness;
+        if (food > 0)
+        {
+            food--;
+            turtleHunger += foodEffectiveness;
+        }
+        else
+            Debug.Log("No food.");
     }
 }
