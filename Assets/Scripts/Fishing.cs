@@ -500,9 +500,4 @@ public class Fishing : MonoBehaviour
     {
         print("AHHHHHHHHHHHH GOD NO FUCK AHHHHHHHHHH!!!!!!!!");
     }
-
-    public void oh()
-    {
-        print("Oh, hai senpai UwU :3");
-    }
 }
