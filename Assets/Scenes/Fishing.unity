@@ -8324,37 +8324,36 @@ MonoBehaviour:
   money: {fileID: 456992245}
   food: {fileID: 0}
   regularDialogue:
-  - welcome to shop
-  - buy something
-  - me am a bird ahahaa caaaw
+  - Welcome to shop. See anything you like.
+  - Greetings friend, would you like to see my wares.
+  - I've got some interesting stuff for sale, care to take a look.
   browsingDialogue:
-  - that is turtle food
-  - that is a fishing line upgrade
-  - that is a fishing reel upgrade
-  - bucket lets you hold the fish
-  - i can put a light bulb on your fishing hook
+  - This will help you feed your turtle.
+  - This will get you a better fishing line.
+  - This here will upgrade your reel.
+  - Purchasing this will allow you to hold more fish.
+  - This will let you see in the deep dark of the ocean.
   - the ocean is dark, this candle will let you see, trust
   purchaseDialogue:
-  - thanks
-  - nice money
-  - i love money
+  - Thank you for your purchase.
+  - I appreciated that friend.
+  - Much oblidged.
   brokeDialogue:
-  - you do not have money
-  - loser you are broke
-  - imagine having no money HA HA HA HA HA HA HA HA HA HA HA HA HA HA HA HA HA HA
-    HA HA HA HA HA HA HA HA HA HA HA HA HA HA HA HA HA HA HA HA HA HA HA HA
+  - You don't have enough money to purchase this item.
+  - Maybe you can purchase this next time.
+  - I'm not going to lower the price.
   leavingDialogue:
-  - why are you leaving
-  - do you have everything
-  - is that all
+  - Leaving so soon?
+  - Do you have everything you need?
+  - Will that be all then?
   leftDialogue:
-  - ok bye
-  - see you tomorrow possibly
-  - you better feed your turtle
+  - Come back anytime.
+  - See ya around friend.
+  - Don't forget to feed your turtle.
   soldDialogue:
-  - thanks for the fish
-  - this is a wide variety of fish
-  - okay here is your money
+  - This is some good fish you got here.
+  - Thanks for the fish friend.
+  - Here is your money.
   playerStats: {fileID: 11400000, guid: 444d98e1fff443f42b1ef1bb38fb97ed, type: 2}
   candleButton: {fileID: 98276638}
 --- !u!82 &1833938812
