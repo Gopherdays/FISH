@@ -182,6 +182,17 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""91b60f10-33de-48de-b409-b14192ba4482"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/button3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""A"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""e046d2a8-8586-4f39-8bae-3923e427c99b"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
@@ -193,12 +204,12 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""91b60f10-33de-48de-b409-b14192ba4482"",
-                    ""path"": ""<HID::Microntek              USB Joystick          >/button3"",
+                    ""id"": ""357ad715-9bf9-4eb2-82e2-e7e7deb74a16"",
+                    ""path"": ""<HID::Microntek              USB Joystick          >/trigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Joystick"",
-                    ""action"": ""A"",
+                    ""action"": ""B"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -244,13 +255,13 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
             ""bindingGroup"": ""Joystick"",
             ""devices"": [
                 {
-                    ""devicePath"": ""<Joystick>"",
-                    ""isOptional"": true,
+                    ""devicePath"": ""<HID::Microntek              USB Joystick          >"",
+                    ""isOptional"": false,
                     ""isOR"": false
                 },
                 {
-                    ""devicePath"": ""<HID::Microntek              USB Joystick          >"",
-                    ""isOptional"": false,
+                    ""devicePath"": ""<Joystick>"",
+                    ""isOptional"": true,
                     ""isOR"": false
                 }
             ]

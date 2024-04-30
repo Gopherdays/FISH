@@ -10352,7 +10352,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2145965931}
         m_TargetAssemblyTypeName: Fishing, Assembly-CSharp
-        m_MethodName: Scream
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10367,7 +10367,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2145965931}
         m_TargetAssemblyTypeName: Fishing, Assembly-CSharp
-        m_MethodName: oh
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
