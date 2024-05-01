@@ -231,12 +231,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(FadeOut(1, 0));
     }
 
-    public void GoShop()
-    {
-        StopAllCoroutines();
-        StartCoroutine(FadeOut(1, 3));
-    }
-
     public void GoFish()
     {
         StopAllCoroutines();
@@ -252,7 +246,7 @@ public class GameManager : MonoBehaviour
     public void GoLose()
     {
         StopAllCoroutines();
-        StartCoroutine(FadeOut(1, 4));
+        StartCoroutine(FadeOut(1, 3));
     }
 
     public void GoScene(int scene)

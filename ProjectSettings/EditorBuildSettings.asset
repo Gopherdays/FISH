@@ -15,9 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Transition Scene.unity
     guid: 4f4126863bd9b92478b986e478e3f2ba
   - enabled: 1
-    path: Assets/Scenes/Shop.unity
-    guid: 466be06f7d2f12f41bad98234bab1e3a
-  - enabled: 1
     path: Assets/Scenes/Game Over.unity
     guid: 55cc5dcf7d5a198479a1a271d01eee53
   - enabled: 1
