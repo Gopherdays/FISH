@@ -315,9 +315,12 @@ public class GameManager : MonoBehaviour
     }
     public void A(InputAction.CallbackContext context)
     {
-        if (context.started && SceneManager.GetActiveScene().name == "Main Menu")
+        if (context.started)
         {
-            GoFish();
+            if (SceneManager.GetActiveScene().name == "Main Menu")
+                GoFish();
+            else if (SceneManager.GetActiveScene().name == "Game Over")
+                GoMenu();
         }
     }
 }
