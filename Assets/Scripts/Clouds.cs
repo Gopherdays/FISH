@@ -15,7 +15,7 @@ public class Clouds : MonoBehaviour
             rb = GetComponent<Rigidbody2D>();
             GetComponent<SpriteRenderer>().sprite = clouds[Random.Range(0, clouds.Length)];
             GetComponent<SpriteRenderer>().sortingOrder = Random.Range(-110, -105);
-            random = Random.Range(0.2f, 0.6f);
+            random = Random.Range(0.1f, 0.3f);
         }
         rb.velocity = Vector2.left * random;
         if (transform.localPosition.x < -12)
