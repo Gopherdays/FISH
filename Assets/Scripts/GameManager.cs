@@ -144,11 +144,13 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
         }
     }
+
     public void ForceUnpause()
     {
         pause.SetActive(false);
         Time.timeScale = 1;
     }
+
     public void AddFish(int value)
     {
         if (playerStats.bucket.Count < playerStats.bucketSize)
@@ -162,12 +164,14 @@ public class GameManager : MonoBehaviour
             print("HELP MY BUCKET IS FULLLLLLLLLLLLLLLLL");
         }
     }
+
     public void UIUpdate()
     {
         bucketBar.fillAmount = (float)playerStats.bucket.Count / playerStats.bucketSize;
         total.text = "$" + bucketTotal;
 
     }
+
     public void BuyFood()
     {
         if (playerStats.money >= playerStats.foodCost)
@@ -176,6 +180,7 @@ public class GameManager : MonoBehaviour
             playerStats.food++;
         }
     }
+
     public void UpgradeLight()
     {
         if (playerStats.money >= playerStats.lightbulbCost)
@@ -188,6 +193,7 @@ public class GameManager : MonoBehaviour
             bulbLvl++;
         }
     }
+
     public void UpgradeLine()
     {
         if (playerStats.money >= playerStats.lineSpeedUpgradeCost)
@@ -208,6 +214,7 @@ public class GameManager : MonoBehaviour
             reelLvl++;
         }
     }
+
     public void UpgradeBucket()
     {
         if (playerStats.money >= playerStats.bucketSizeCost)
@@ -217,7 +224,7 @@ public class GameManager : MonoBehaviour
             buckLvl++;
         }
     }
-    // Voids that start coroutines used to allow activation through buttons because that seems to happen a lot
+
     public void GoMenu()
     {
         StopAllCoroutines();
@@ -254,23 +261,23 @@ public class GameManager : MonoBehaviour
         int i = 0;
         while (true)
         {
-            // Make a credits object and send it to the left towards its DOOM
+
             GameObject fish = Instantiate(creditsObject, GameObject.Find("Canvas").transform);
             fish.GetComponent<Rigidbody2D>().velocity = Vector2.left * Random.Range(25f, 250f);
             Destroy(fish, 60);
-            // Cycle the credits text
+            
             TextMeshProUGUI text = fish.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
             text.text = credits[i];
             i = (i + 1) % credits.Length;
-            // Random y positions of the rectTransforms, and resize the objects to fit the given text
+
             RectTransform lastFish = fish.GetComponent<RectTransform>();
             pos.y = Random.Range(-260f, -440f);
             lastFish.anchoredPosition = pos;
             lastFish.sizeDelta = new Vector2(text.preferredWidth + 30, text.preferredHeight + 20);
-            // Collisions for fun
+
             fish.GetComponent<CapsuleCollider2D>().size = lastFish.sizeDelta;
             fish.GetComponent<Rigidbody2D>().mass = Random.Range(0.1f, 100f);
-            // Make a new one after three seconds
+
             yield return new WaitForSeconds(3);
         }
     }
@@ -283,24 +290,32 @@ public class GameManager : MonoBehaviour
 
     public void B(InputAction.CallbackContext context)
     {
-        if (context.started) // on button press
+        if (context.started)
         {
             SwitchShop();
         }
-        if (context.performed) // on button hold
+        if (context.performed)
         {
 
         }
-        if (context.canceled) // on button 
+        if (context.canceled)
         {
 
         }
     }
+
     public void Y(InputAction.CallbackContext context)
     {
-        if (context.started) // on button press
+        if (context.started)
         {
             playerStats.Feed();
+        }
+    }
+    public void A(InputAction.CallbackContext context)
+    {
+        if (context.started && SceneManager.GetActiveScene().name == "Main Menu")
+        {
+            GoFish();
         }
     }
 }
