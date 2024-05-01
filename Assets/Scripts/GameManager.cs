@@ -104,6 +104,8 @@ public class GameManager : MonoBehaviour
         {
             PauseUnpause();
         }
+        if (playerStats.bucket.Count == 0)
+            bucketTotal = 0;
     }
 
     public IEnumerator FadeIn(float speed, int scene = -1)
