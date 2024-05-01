@@ -8571,13 +8571,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textbox: {fileID: 1178324303}
+  money: {fileID: 456992245}
+  food: {fileID: 0}
+  gm: {fileID: 1730600965}
   noises:
   - {fileID: 1833938815}
   - {fileID: 1833938814}
   - {fileID: 1833938813}
   - {fileID: 1833938812}
-  money: {fileID: 456992245}
-  food: {fileID: 0}
   regularDialogue:
   - Welcome to my shop. See anything you like?
   - Greetings friend, would you like to see my wares?
@@ -9864,7 +9865,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &2077936969
 SpriteRenderer:
   m_ObjectHideFlags: 0

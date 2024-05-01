@@ -6,9 +6,10 @@ using UnityEngine.InputSystem;
 public class Shop : MonoBehaviour
 {
     public TextMeshProUGUI textbox;
-    public AudioSource[] noises;
     public TextMeshProUGUI money;
     public TextMeshProUGUI food;
+    public GameManager gm;
+    public AudioSource[] noises;
 
     // Unity editor incapable of comprehending such a complex concept such as "array array"
     public string[] regularDialogue;
