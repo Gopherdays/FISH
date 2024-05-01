@@ -24,9 +24,9 @@ public class CameraScript : MonoBehaviour
         cam = GetComponent<CinemachineVirtualCamera>();
         noise = cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         test = GameObject.Find("Global Light 2D").GetComponent<Light2D>();
-        for (int i = 0; i < Random.Range(4, 7); i++)
+        for (int i = 0; i < Random.Range(4, 11); i++)
         {
-            Instantiate(cloud, Vector2.right * Random.Range(-14, 14) + Vector2.up * Random.Range(3,6), Quaternion.identity, transform);
+            Instantiate(cloud, Vector2.right * Random.Range(-14, 14f) + Vector2.up * Random.Range(1,7.5f), Quaternion.identity, transform);
         }
     }
 
@@ -48,11 +48,11 @@ public class CameraScript : MonoBehaviour
             noise.m_FrequencyGain = 1;
         Camera.main.backgroundColor = skyGradient.Evaluate((gm.time % 180) / 180);
 
-        if (transform.childCount < 8)
+        if (transform.childCount < 11)
         {
-            for (int i = 0; i < Random.Range(4,7); i++)
+            for (int i = 0; i < Random.Range(4,13); i++)
             {
-                Instantiate(cloud, Vector2.right * Random.Range(10, 14f) + Vector2.up * Random.Range(3, 6f), Quaternion.identity, transform);
+                Instantiate(cloud, Vector2.right * Random.Range(10, 17f) + Vector2.up * Random.Range(1, 7.5f), Quaternion.identity, transform);
             }
         }
     }
