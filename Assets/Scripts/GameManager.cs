@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
                 timer.text += Mathf.FloorToInt(time / 3600) + ":";
                 if (Mathf.FloorToInt(time) % 3600 < 600) timer.text += "0";
             }
-            timer.text += Mathf.FloorToInt(time / 60) + ":";
+            timer.text += Mathf.FloorToInt(time / 60) % 60 + ":";
             if (Mathf.FloorToInt(time) % 60 < 10) timer.text += "0";
             timer.text += Mathf.FloorToInt(time) % 60;
 
