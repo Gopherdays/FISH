@@ -159,6 +159,7 @@ public class Shop : MonoBehaviour
     IEnumerator Typing()
     {
         yield return new WaitUntil(() => remainingDialogue != null);
+        cawTimer = 0.1f;
         while (true)
         {
             if (remainingDialogue != null && remainingDialogue.Length > 0)
@@ -168,9 +169,13 @@ public class Shop : MonoBehaviour
                 if (cawTimer < 0)
                 {
                     noises[Random.Range(0, noises.Length)].Play();
-                    cawTimer += Random.Range(0.15f, 0.3f);
+                    cawTimer += Random.Range(0.25f, 0.4f);
                 }
                 textbox.text = currentDialogue;
+            }
+            else
+            {
+                cawTimer = 0.1f;
             }
             yield return new WaitForSeconds(0.05f);
         }

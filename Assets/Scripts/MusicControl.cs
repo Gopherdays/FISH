@@ -5,24 +5,22 @@ using UnityEngine;
 public class MusicControl : MonoBehaviour
 {
     public AudioSource music;
-    public AudioSource intenseMoment;
-    public AudioSource waiting;
-    Fishing fishing;
-
-    private void Start()
-    {
-        fishing = GameObject.Find("Fishing Hook").GetComponent<Fishing>();
-    }
+    public AudioSource shopMusic;
+    public GameObject fishing;
+    public GameObject shop;
 
     private void Update()
     {
-        if (fishing.thrown && !music.isPlaying)
+        if (fishing.activeSelf)
         {
-            music.Play();
-            waiting.Stop();
-            intenseMoment.Play();
-            intenseMoment.mute = true;
+            music.mute = false;
+            shopMusic.Stop();
         }
-        intenseMoment.mute = !(Input.GetKey(KeyCode.P)); // Replace input with reeling variable in hookControl
+        else if (shop.activeSelf)
+        {
+            music.mute = true;
+            if (!shopMusic.isPlaying)
+                shopMusic.Play();
+        }
     }
 }
