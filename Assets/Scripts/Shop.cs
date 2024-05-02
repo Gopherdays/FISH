@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 public class Shop : MonoBehaviour
 {
     public TextMeshProUGUI textbox;
@@ -19,6 +20,15 @@ public class Shop : MonoBehaviour
     public string[] leavingDialogue;
     public string[] leftDialogue;
     public string[] soldDialogue;
+
+    public Image lineButton;
+    public Image foodButton;
+    public Image bucketButton;
+    public Image bulbButton;
+    public Image reelButton;
+    public Image sellButton;
+    Color faded = new Color(1,1,1,(255/50));
+    Color highlight = new Color (1,1,1,1);
 
     string currentDialogue;
     string remainingDialogue;
@@ -121,6 +131,16 @@ public class Shop : MonoBehaviour
                     break;
             }
         }
+    }
+
+    void ResetColors()
+    {
+        lineButton.color = faded;
+        foodButton.color = faded;
+        bucketButton.color = faded;
+        bulbButton.color = faded;
+        reelButton.color = faded;
+        sellButton.color = faded;
     }
 
     void Dialogue(string[] array, Status whatisthisone, int force = -1)
