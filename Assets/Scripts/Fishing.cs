@@ -31,10 +31,9 @@ public class Fishing : MonoBehaviour
     public GameObject move;
     public GameObject cast;
     public GameObject aim;
-    public GameObject point;
     public GameObject shop;
     bool tutorial;
-    bool shopTutorial;
+    public bool shopTutorial;
     
     public GameManager gm;
     public float speed; 
@@ -86,6 +85,7 @@ public class Fishing : MonoBehaviour
         depth.SetActive(false);
         move.SetActive(false);
         aim.SetActive(false);
+        shop.SetActive(false);
         up = false;
         left = false;
         down = false;
@@ -172,6 +172,8 @@ public class Fishing : MonoBehaviour
             {
                 confirm = false;
                 cast.SetActive(false);
+                if (shop.activeSelf)
+                    shop.SetActive(false);
                 if (tutorial)
                     StartCoroutine(WaitForInWater());
                 ThrowHook();
@@ -324,6 +326,8 @@ public class Fishing : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
 
+        if (shopTutorial)
+            shop.SetActive(true);
         print("Yay! You caught: " + fish.name.Remove(fish.name.Length - 7));
         rb.constraints = RigidbodyConstraints2D.None;
         fl.hook = gameObject;

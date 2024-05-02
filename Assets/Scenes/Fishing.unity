@@ -1440,7 +1440,7 @@ GameObject:
   - component: {fileID: 263171299}
   - component: {fileID: 263171298}
   m_Layer: 5
-  m_Name: Use the Joystick to Aim
+  m_Name: Press B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1486,7 +1486,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Use the Joystick to Aim the green Catcher Toward the Purple Icon!
+  m_text: Press B to go to the shop!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3163,37 +3163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab94a8267c1b31b49afb76af7a70dded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pi: {fileID: 0}
-  playerStats: {fileID: 11400000, guid: 444d98e1fff443f42b1ef1bb38fb97ed, type: 2}
-  fish: {fileID: 0}
-  indicator: {fileID: 697841801}
-  catcher: {fileID: 514807378}
-  hook: {fileID: 2145965923}
-  things: []
-  depthText: {fileID: 1682392426}
-  fl: {fileID: 1117054078}
-  sr: {fileID: 0}
-  tempV: {x: 0, y: 0}
-  positions: []
-  indPos: 0
-  curFishPos: 0
-  catcherPos: 0
-  curCatcherPos: 0
-  direction: 0
-  skip: 0
-  up: 0
-  down: 0
-  left: 0
-  right: 0
-  changed: 0
-  speed: 1
-  turnChance: 0
-  skipChance: 0
-  rodStr: 0
-  distance: 0
-  timer: 0
-  go: 0
-  reset: 0
 --- !u!1 &535753858
 GameObject:
   m_ObjectHideFlags: 0
@@ -7538,37 +7507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab94a8267c1b31b49afb76af7a70dded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pi: {fileID: 0}
-  playerStats: {fileID: 0}
-  fish: {fileID: 0}
-  indicator: {fileID: 0}
-  catcher: {fileID: 0}
-  hook: {fileID: 0}
-  things: []
-  depthText: {fileID: 0}
-  fl: {fileID: 0}
-  sr: {fileID: 0}
-  tempV: {x: 0, y: 0}
-  positions: []
-  indPos: 0
-  curFishPos: 0
-  catcherPos: 0
-  curCatcherPos: 0
-  direction: 0
-  skip: 0
-  up: 0
-  down: 0
-  left: 0
-  right: 0
-  changed: 0
-  speed: 0
-  turnChance: 0
-  skipChance: 0
-  rodStr: 0
-  distance: 0
-  timer: 0
-  go: 0
-  reset: 0
 --- !u!4 &1263986405
 Transform:
   m_ObjectHideFlags: 0
@@ -7693,7 +7631,7 @@ Transform:
   - {fileID: 697841802}
   - {fileID: 514807380}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1332527212
 GameObject:
@@ -10203,7 +10141,7 @@ Transform:
   - {fileID: 859369706}
   - {fileID: 875535586}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1984098591
 GameObject:
@@ -10999,7 +10937,7 @@ RectTransform:
   m_Children:
   - {fileID: 1164178623}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -11678,8 +11616,8 @@ MonoBehaviour:
   move: {fileID: 1889238039}
   cast: {fileID: 2088420908}
   aim: {fileID: 1205523593}
-  point: {fileID: 310232385}
   shop: {fileID: 594141964}
+  shopTutorial: 0
   gm: {fileID: 1730600965}
   speed: 0
   escape: 0
@@ -11928,6 +11866,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
+      propertyPath: point
+      value: 
+      objectReference: {fileID: 310232385}
     - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
       propertyPath: timer
       value: 

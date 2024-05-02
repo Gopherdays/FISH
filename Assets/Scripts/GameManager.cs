@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public string[] credits;
 
     public GameObject shoppe;
+    public GameObject point;
     public GameObject feesherCam;
 
     public GameObject pause;
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Fishing")
         {
             hook = GameObject.Find("Fishing Hook").GetComponent<Fishing>();
+            point.SetActive(false);
         }
         pause.SetActive(false);
         if (SceneManager.GetActiveScene().name == "Main Menu")
@@ -288,6 +290,13 @@ public class GameManager : MonoBehaviour
     {
         shoppe.SetActive(!shoppe.activeSelf);
         feesherCam.SetActive(!feesherCam.activeSelf);
+        if (hook.shopTutorial && shoppe.activeSelf)
+            point.SetActive(true);
+        else if (hook.shopTutorial && !shoppe.activeSelf)
+        {
+            hook.shopTutorial = false;
+            hook.shop.SetActive(false);
+        }
     }
 
     public void B(InputAction.CallbackContext context)
