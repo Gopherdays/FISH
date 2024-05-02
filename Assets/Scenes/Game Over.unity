@@ -356,7 +356,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7738027014404792582, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1185372567}
   m_SourcePrefab: {fileID: 100100000, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
 --- !u!1 &187884728
 GameObject:
@@ -499,12 +502,87 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
   m_PrefabInstance: {fileID: 85073580}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1185372566}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43de9c2c17f0b2f458bead366574d112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1185372566 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7738027014404792582, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
+  m_PrefabInstance: {fileID: 85073580}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1185372567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185372566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 796c0fbb9587fbb4aaa1b6a55f19d0fe, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b3e8f563-9f57-4ab6-adf5-80d16fc2bae0
+    m_ActionName: Reel/Up[/XInputControllerWindows/dpad/up]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 63fbd7d3-d3f0-49f4-bbd4-5b4e21c693bb
+    m_ActionName: Reel/Down[/XInputControllerWindows/dpad/down]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f78ffe52-ebc6-4b60-bcab-568d34605b96
+    m_ActionName: Reel/Left[/XInputControllerWindows/dpad/left]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8409f007-b4de-49e5-a0e8-0060ee62dff8
+    m_ActionName: Reel/Right[/XInputControllerWindows/dpad/right]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 406854830}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: A
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1d1262c2-41d6-4bb9-b924-fd0b4d407c2a
+    m_ActionName: Reel/A[/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 55ecb160-de70-49df-a946-96d7bbb932af
+    m_ActionName: Reel/B[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0a5331d2-e783-43a0-8be4-d092418524df
+    m_ActionName: Reel/Y[/XInputControllerWindows/buttonNorth]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Reel
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1381576184
 GameObject:
   m_ObjectHideFlags: 0
