@@ -296,6 +296,7 @@ public class GameManager : MonoBehaviour
         {
             hook.shopTutorial = false;
             hook.shop.SetActive(false);
+            point.SetActive(false);
         }
     }
 

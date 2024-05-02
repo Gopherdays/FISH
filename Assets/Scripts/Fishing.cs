@@ -93,7 +93,7 @@ public class Fishing : MonoBehaviour
         fishing = false;
         hooking = true;
         tutorial = true;
-        shopTutorial = false;
+        shopTutorial = true;
         temp = new Vector2(0, 0);
         tempV = new Vector2(-7, -5);
         prevY = transform.position.y;
@@ -414,7 +414,7 @@ public class Fishing : MonoBehaviour
     public void ThrowHook()
     {
         thrown = true;
-        rb.AddForce(new Vector2(Random.Range(0.25f, 1.25f) * -150, Random.Range(0.5f, 1.25f) * 150));
+        rb.AddForce(new Vector2(Random.Range(0.25f, 1.25f) * -300, Random.Range(0.5f, 1.25f) * 300));
     }
 
     IEnumerator WaitForInWater()
