@@ -9160,11 +9160,11 @@ MonoBehaviour:
   - I've got some interesting stuff for sale, care to take a look?
   browsingDialogue:
   - This will help you feed your turtle.
-  - This will get you a better fishing line.
-  - This here will upgrade your reel.
+  - This will get you a better fishing line, and it will make your line travel faster
+    and will increase the more you purchase it.
+  - This here will upgrade your reel, making the reeling much easier after buying.
   - Purchasing this will allow you to hold more fish.
-  - This will let you see in the deep dark of the ocean.
-  - the ocean is dark, this candle will let you see, trust
+  - This will let you see in the deep dark of the ocean the further you go down.
   purchaseDialogue:
   - Thank you for your purchase.
   - I appreciate this, friend.
