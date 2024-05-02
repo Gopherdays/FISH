@@ -31,7 +31,10 @@ public class Fishing : MonoBehaviour
     public GameObject move;
     public GameObject cast;
     public GameObject aim;
+    public GameObject point;
+    public GameObject shop;
     bool tutorial;
+    bool shopTutorial;
     
     public GameManager gm;
     public float speed; 
@@ -90,6 +93,7 @@ public class Fishing : MonoBehaviour
         fishing = false;
         hooking = true;
         tutorial = true;
+        shopTutorial = false;
         temp = new Vector2(0, 0);
         tempV = new Vector2(-7, -5);
         prevY = transform.position.y;
