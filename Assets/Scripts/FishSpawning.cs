@@ -9,7 +9,7 @@ public class FishSpawning : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 3; i < 1000; i += 2)
+        for (int i = 3; i < 250; i += 2)
         {
             SpawnFish(-i);
         }
@@ -27,7 +27,7 @@ public class FishSpawning : MonoBehaviour
         {
             fish = Instantiate(fishTypes[(int)randomFishIndex]);
         }
-        fish.transform.position = new Vector3(Random.Range(-85f, 85f), Mathf.Clamp(depth + Random.Range(-3f, 3f),-9999999,-1));
+        fish.transform.position = new Vector3(Random.Range(-99f, 99f), Mathf.Clamp(depth + Random.Range(-3f, 3f),-9999999,-1));
         fish.GetComponent<Fish>().swimSpeed *= Random.Range(0.6f, 1.35f);
         if (Random.Range(0,2) == 0)
         {

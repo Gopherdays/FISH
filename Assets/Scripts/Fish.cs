@@ -5,9 +5,7 @@ using UnityEngine;
 public class Fish : MonoBehaviour
 {
     Rigidbody2D rb;
-    Vector2 velocityVector;
     public float swimSpeed;
-    public float swimCycle = 0.2f;
     public Vector2 hookPoint;
 
     public int value;
@@ -26,8 +24,12 @@ public class Fish : MonoBehaviour
 
     void Update()
     {
-        velocityVector = rb.velocity;
-        velocityVector.x = swimSpeed;
-        rb.velocity = velocityVector;
+        rb.velocity = Vector2.right * swimSpeed;
+        if (Mathf.Abs(transform.position.x) > 100)
+        {
+            Vector3 temp = transform.position;
+            temp.x *= -1;
+            transform.position = temp;
+        }
     }
 }
