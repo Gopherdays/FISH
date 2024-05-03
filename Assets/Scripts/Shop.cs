@@ -27,7 +27,7 @@ public class Shop : MonoBehaviour
     public Image bulbButton;
     public Image reelButton;
     public Image sellButton;
-    Color faded = new Color(1,1,1,(255/50));
+    Color faded = new Color(1,1,1,(50/255f));
     Color highlight = new Color (1,1,1,1);
 
     string currentDialogue;
@@ -60,6 +60,7 @@ public class Shop : MonoBehaviour
 
     private void OnEnable()
     {
+        ResetColors();
         status = Status.None;
         Dialogue(regularDialogue, Status.Normal);
         StartCoroutine(Typing());
@@ -104,27 +105,40 @@ public class Shop : MonoBehaviour
                     //disabled, we don't need leave button
                     break;
                 case true when (up && left): //northwest
+                    ResetColors();
+                    lineButton.color = highlight;
                     PointToItem(1);
                     break;
                 case true when (left && !up && !down): //west
+                    ResetColors();
+                    foodButton.color = highlight;
                     PointToItem(0);
                     break;
                 case true when (down && left): //southwest
+                    ResetColors();
+                    bucketButton.color = highlight;
                     PointToItem(3);
                     break;
                 case true when (down && !left && !right): //south
                     //disabled, nothing in that direction
                     break;
                 case true when (down && right): //southeast
+                    ResetColors();
+                    sellButton.color = highlight;
                     SellFish();
                     break;
                 case true when (right && !up && !down): //east
+                    ResetColors();
+                    reelButton.color = highlight;
                     PointToItem(2);
                     break;
                 case true when (up && right): //northeast
+                    ResetColors();
+                    bulbButton.color = highlight;
                     PointToItem(4);
                     break;
                 default:
+                    ResetColors();
                     break;
             }
         }

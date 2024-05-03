@@ -178,35 +178,26 @@ public class GameManager : MonoBehaviour
 
     public void BuyFood()
     {
-        if (playerStats.money >= playerStats.foodCost)
-        {
-            playerStats.money -= playerStats.foodCost;
-            playerStats.food++;
-        }
+        playerStats.money -= playerStats.foodCost;
+        playerStats.food++;
     }
 
     public void UpgradeLight()
     {
-        if (playerStats.money >= playerStats.lightbulbCost)
-        {
-            playerStats.money -= playerStats.lightbulbCost;
-            if (bulbLvl == 0)
-                light.enabled = true;
-            else
-                light.pointLightOuterRadius += 1;
-            bulbLvl++;
-        }
+        playerStats.money -= playerStats.lightbulbCost;
+        if (bulbLvl == 0)
+            light.enabled = true;
+        else
+            light.pointLightOuterRadius += 1;
+        bulbLvl++;
     }
 
     public void UpgradeLine()
     {
-        if (playerStats.money >= playerStats.lineSpeedUpgradeCost)
-        {
-            playerStats.money -= playerStats.lineSpeedUpgradeCost;
-            playerStats.lineSpeedVertical *= 1.5f;
-            playerStats.lineSpeedHorizontal *= 1.5f;
-            lineLvl++;
-        }
+        playerStats.money -= playerStats.lineSpeedUpgradeCost;
+        playerStats.lineSpeedVertical *= 1.5f;
+        playerStats.lineSpeedHorizontal *= 1.5f;
+        lineLvl++;
     }
     
     public void UpgradeReel()
