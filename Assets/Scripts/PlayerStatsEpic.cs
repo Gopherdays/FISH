@@ -33,7 +33,7 @@ public class PlayerStatsEpic : ScriptableObject
         money = 0;
         food = 0;
         points = 0;
-        day = 0;
+        day = 1;
         turtleHunger = 100;
         foodEffectiveness = 25;
 
