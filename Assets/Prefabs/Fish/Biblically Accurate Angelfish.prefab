@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 5619285366630353889}
   - component: {fileID: 5619285366630353888}
   - component: {fileID: 5619285366630353891}
-  - component: {fileID: 5619285366630353890}
   - component: {fileID: 5619285366630353901}
   - component: {fileID: 5619285366630353894}
   - component: {fileID: -2282353967799356423}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Biblically Accurate Angelfish
   m_TagString: Fish
   m_Icon: {fileID: 0}
@@ -102,31 +101,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swimSpeed: 0.5
-  swimCycle: 0.2
   hookPoint: {x: 0.44, y: 0.01}
   value: 20
   points: 500
   description: Hard to comprehend for normal humans.
-  speed: 1
+  speed: 4
   escape: 2
-  turnChance: 10
-  skipChance: 10
---- !u!114 &5619285366630353890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5619285366630353900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0aa6fd59d385dfb458b2a99105bff121, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waterGravity: -0.1
-  waterHeight: 0
-  waterDrag: 3
-  above: 0
+  turnChance: 0
+  skipChance: 0
 --- !u!50 &5619285366630353901
 Rigidbody2D:
   serializedVersion: 4
@@ -169,7 +151,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

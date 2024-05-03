@@ -495,7 +495,7 @@ public class Fishing : MonoBehaviour
     }
     public void A(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && !gm.shoppe.activeSelf)
         {
             confirm = true;
         }

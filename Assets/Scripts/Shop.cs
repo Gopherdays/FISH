@@ -122,10 +122,7 @@ public class Shop : MonoBehaviour
                     PointToItem(2);
                     break;
                 case true when (up && right): //northeast
-                    if (playerStats.candleStatus < 1)
-                        PointToItem(5);
-                    else
-                        PointToItem(4);
+                    PointToItem(4);
                     break;
                 default:
                     break;
@@ -240,10 +237,7 @@ public class Shop : MonoBehaviour
                 BuyItem(2);
                 break;
             case true when (up && right): //northeast
-                if (playerStats.candleStatus < 1)
-                    BuyItem(5);
-                else
-                    BuyItem(4);
+                BuyItem(4);
                 break;
             default:
                 break;
@@ -268,7 +262,7 @@ public class Shop : MonoBehaviour
                         {
                             playerStats.money -= 5;
                             Dialogue(purchaseDialogue, Status.PurchasedItem);
-                            playerStats.Feed();
+                            playerStats.food++;
                         }
                         break;
                     case 1:
