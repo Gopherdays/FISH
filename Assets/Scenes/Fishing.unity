@@ -8994,7 +8994,8 @@ MonoBehaviour:
   - This will help you feed your turtle.
   - This will get you a better fishing line, and it will make your line travel faster
     and will increase the more you purchase it.
-  - This here will upgrade your reel, making the reeling much easier after buying.
+  - This here will upgrade your reel, making it much easier to pull up fish after
+    buying.
   - Purchasing this will allow you to hold more fish.
   - This will let you see in the deep dark of the ocean the further you go down.
   purchaseDialogue:
@@ -9017,11 +9018,11 @@ MonoBehaviour:
   - This is some good fish you got here.
   - Thanks for the fish, friend.
   - Here is your money.
-  lineButton: {fileID: 2056643585}
-  foodButton: {fileID: 1376647116}
-  bucketButton: {fileID: 1204013544}
-  bulbButton: {fileID: 720967394}
-  reelButton: {fileID: 1514668423}
+  lineButton: {fileID: 2056643588}
+  foodButton: {fileID: 1376647119}
+  bucketButton: {fileID: 1204013547}
+  bulbButton: {fileID: 720967397}
+  reelButton: {fileID: 1514668426}
   sellButton: {fileID: 456992243}
   playerStats: {fileID: 11400000, guid: 444d98e1fff443f42b1ef1bb38fb97ed, type: 2}
   candleButton: {fileID: 98276638}
