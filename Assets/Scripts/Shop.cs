@@ -225,36 +225,33 @@ public class Shop : MonoBehaviour
         }
     }
 
-    public void Confirm()
+    public void Confirm(InputAction.CallbackContext context)
     {
-        switch (true) // figures out what direction the joystick is facing
+        if (context.started)
         {
-            case true when (up && !left && !right): //north
-                //ighjioguhiudfghdi
-                break;
-            case true when (up && left): //northwest
-                BuyItem(1);
-                break;
-            case true when (left && !up && !down): //west
-                BuyItem(0);
-                break;
-            case true when (down && left): //southwest
-                BuyItem(3);
-                break;
-            case true when (down && !left && !right): //south
-                //blargle I AM A PROFESSIONAL
-                break;
-            case true when (down && right): //southeast
-                SellFish();
-                break;
-            case true when (right && !up && !down): //east
-                BuyItem(2);
-                break;
-            case true when (up && right): //northeast
-                BuyItem(4);
-                break;
-            default:
-                break;
+            switch (true) // figures out what direction the joystick is facing
+            {
+                case true when (up && left): //northwest
+                    BuyItem(1);
+                    break;
+                case true when (left && !up && !down): //west
+                    BuyItem(0);
+                    break;
+                case true when (down && left): //southwest
+                    BuyItem(3);
+                    break;
+                case true when (down && right): //southeast
+                    SellFish();
+                    break;
+                case true when (right && !up && !down): //east
+                    BuyItem(2);
+                    break;
+                case true when (up && right): //northeast
+                    BuyItem(4);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -328,21 +325,8 @@ public class Shop : MonoBehaviour
                             playerStats.lightbulbCost *= 2;
                         }
                         break;
-                    case 5:
-                        //                                                                                                              <--   candle
-                        if (playerStats.candleStatus != 0)
-                            break;
-                        if (playerStats.money < 2)
-                            Dialogue(brokeDialogue, Status.YouArePoor);
-                        else
-                        {
-                            playerStats.money -= 2;
-                            Dialogue(purchaseDialogue, Status.PurchasedItem);
-                            playerStats.candleStatus = 1;
-                        }
-                        break;
                     default:
-                        // cannaeli
+                        // nicolasagna
                         break;
                 }
             }

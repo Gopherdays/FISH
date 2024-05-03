@@ -297,14 +297,6 @@ public class GameManager : MonoBehaviour
         {
             SwitchShop();
         }
-        if (context.performed)
-        {
-
-        }
-        if (context.canceled)
-        {
-
-        }
     }
 
     public void Y(InputAction.CallbackContext context)
