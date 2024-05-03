@@ -110,7 +110,11 @@ public class Fishing : MonoBehaviour
 
     private void Update()
     {
-
+        if (thrown && confirm)
+        {
+            confirm = false;
+            gm.playerStats.Feed();
+        }
         if (thrown && changed)
         {
             changed = false;
@@ -171,12 +175,13 @@ public class Fishing : MonoBehaviour
             if (confirm)
             {
                 confirm = false;
-                cast.SetActive(false);
-                if (shop.activeSelf)
-                    shop.SetActive(false);
-                if (tutorial)
-                    StartCoroutine(WaitForInWater());
-                ThrowHook();
+                    print("m'name ejff");
+                    cast.SetActive(false);
+                    if (shop.activeSelf)
+                        shop.SetActive(false);
+                    if (tutorial)
+                        StartCoroutine(WaitForInWater());
+                    ThrowHook();
             }
         }
     }
@@ -495,7 +500,7 @@ public class Fishing : MonoBehaviour
     }
     public void A(InputAction.CallbackContext context)
     {
-        if (context.started && !gm.shoppe.activeSelf)
+        if (context.started)
         {
             confirm = true;
         }

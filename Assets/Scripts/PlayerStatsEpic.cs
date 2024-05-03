@@ -77,6 +77,7 @@ public class PlayerStatsEpic : ScriptableObject
     {
         if (food > 0)
         {
+            Debug.Log("Yes food.");
             food--;
             turtleHunger += foodEffectiveness;
         }
