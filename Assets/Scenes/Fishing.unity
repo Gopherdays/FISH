@@ -4138,7 +4138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &684868321
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4356,7 +4356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &720967395
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6935,7 +6935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1204013545
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7629,7 +7629,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1376647117
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7908,7 +7908,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1514668424
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9023,7 +9023,7 @@ MonoBehaviour:
   bucketButton: {fileID: 1204013547}
   bulbButton: {fileID: 720967397}
   reelButton: {fileID: 1514668426}
-  sellButton: {fileID: 456992243}
+  sellButton: {fileID: 684868323}
   playerStats: {fileID: 11400000, guid: 444d98e1fff443f42b1ef1bb38fb97ed, type: 2}
   candleButton: {fileID: 98276638}
 --- !u!82 &1833938812
@@ -10314,7 +10314,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2056643586
 RectTransform:
   m_ObjectHideFlags: 0
