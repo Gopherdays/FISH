@@ -110,7 +110,7 @@ public class Fishing : MonoBehaviour
 
     private void Update()
     {
-        if (thrown && confirm)
+        if (thrown && confirm && !gm.shoppe.activeSelf)
         {
             confirm = false;
             gm.playerStats.Feed();
