@@ -120,7 +120,6 @@ public class Shop : MonoBehaviour
                 case true when (down && right): //southeast
                     ResetColors();
                     sellButton.color = highlight;
-                    SellFish();
                     break;
                 case true when (right && !up && !down): //east
                     ResetColors();
@@ -188,12 +187,6 @@ public class Shop : MonoBehaviour
         
     }
 
-    public void SellFish()
-    {
-        playerStats.SellFish();
-        Dialogue(soldDialogue, Status.SoldFish);
-    }
-
     public void PointToItem(int whichButton)
     {
         if (!stopInput)
@@ -219,7 +212,8 @@ public class Shop : MonoBehaviour
                     BuyItem(3);
                     break;
                 case true when (down && right): //southeast
-                    SellFish();
+                    playerStats.SellFish();
+                    Dialogue(soldDialogue, Status.SoldFish);
                     break;
                 case true when (right && !up && !down): //east
                     BuyItem(2);

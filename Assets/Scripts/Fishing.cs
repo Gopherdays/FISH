@@ -175,13 +175,13 @@ public class Fishing : MonoBehaviour
             if (confirm)
             {
                 confirm = false;
-                    print("m'name ejff");
-                    cast.SetActive(false);
-                    if (shop.activeSelf)
-                        shop.SetActive(false);
-                    if (tutorial)
-                        StartCoroutine(WaitForInWater());
-                    ThrowHook();
+                print("m'name ejff");
+                cast.SetActive(false);
+                if (shop.activeSelf)
+                    shop.SetActive(false);
+                if (tutorial)
+                    StartCoroutine(WaitForInWater());
+                ThrowHook();
             }
         }
     }
