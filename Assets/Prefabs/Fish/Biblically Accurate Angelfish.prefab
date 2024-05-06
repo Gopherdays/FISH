@@ -102,12 +102,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swimSpeed: 0.5
   hookPoint: {x: 0.44, y: 0.01}
-  value: 20
+  value: 100
   points: 500
   description: Hard to comprehend for normal humans.
-  speed: 4
-  escape: 2
-  turnChance: 0
+  speed: 0.1
+  escape: 5
+  turnChance: 1
   skipChance: 0
 --- !u!50 &5619285366630353901
 Rigidbody2D:
