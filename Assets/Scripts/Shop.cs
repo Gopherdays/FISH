@@ -39,6 +39,7 @@ public class Shop : MonoBehaviour
     bool left;
     bool down;
     bool right;
+    bool confirm;
     bool changed;
     int dir;
 
@@ -101,9 +102,6 @@ public class Shop : MonoBehaviour
             changed = false;
             switch (true) // figures out what direction the joystick is facing
             {
-                case true when (up && !left && !right): //north
-                    //disabled, we don't need leave button
-                    break;
                 case true when (up && left): //northwest
                     ResetColors();
                     lineButton.color = highlight;
@@ -118,9 +116,6 @@ public class Shop : MonoBehaviour
                     ResetColors();
                     bucketButton.color = highlight;
                     PointToItem(3);
-                    break;
-                case true when (down && !left && !right): //south
-                    //disabled, nothing in that direction
                     break;
                 case true when (down && right): //southeast
                     ResetColors();
@@ -191,23 +186,6 @@ public class Shop : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
         
-    }
-
-    public void Leave()
-    {
-        if (status != Status.TryLeave)
-            Dialogue(leavingDialogue, Status.TryLeave);
-        else
-        {
-            Dialogue(leftDialogue, Status.Leave);
-            stopInput = true;
-            StartCoroutine(ActuallyLeave());
-        }
-    }
-    IEnumerator ActuallyLeave()
-    {
-        yield return new WaitForSeconds(4);
-        GameObject.Find("Game Manager").GetComponent<GameManager>().GoBoat();
     }
 
     public void SellFish()
