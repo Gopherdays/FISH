@@ -34,11 +34,11 @@ public class GameManager : MonoBehaviour
     public Image transitionImage;
     Color color;
 
-    Light2D light;
-    int bulbLvl;
-    int lineLvl;
-    int buckLvl;
-    int reelLvl;
+    public Light2D light;
+    public int bulbLvl;
+    public int lineLvl;
+    public int buckLvl;
+    public int reelLvl;
 
     private void Start()
     {

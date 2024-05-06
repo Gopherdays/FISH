@@ -300,6 +300,7 @@ public class Fishing : MonoBehaviour
     {
         if (hooking)
         {
+            distance = Vector2.Distance(fish.transform.position, player.transform.position);
             cs.Shake(100);
             cam.Follow = player.transform;
             fishingUI.SetActive(true);
@@ -314,8 +315,7 @@ public class Fishing : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             fish.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             fish.GetComponent<SpriteRenderer>().sortingOrder = 420;
-            distance = Vector2.Distance(fish.transform.position, player.transform.position);
-            value = Mathf.RoundToInt(fish.GetComponent<Fish>().value * (100 + distance));
+            value = Mathf.RoundToInt(fish.GetComponent<Fish>().value * (100 + distance)/100);
             fl.hook = fish;
             sr.enabled = false;
             hooking = false;
@@ -337,7 +337,7 @@ public class Fishing : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.None;
         fl.hook = gameObject;
         cam.Follow = GameObject.Find("Player").transform;
-        gm.AddFish(fish.GetComponent<Fish>().value);
+        gm.AddFish(value);
         stats.points += fish.GetComponent<Fish>().points;
         indPos = Random.Range(2, 7);
         tempV.y = -5;

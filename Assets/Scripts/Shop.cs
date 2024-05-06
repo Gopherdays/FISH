@@ -41,6 +41,7 @@ public class Shop : MonoBehaviour
     bool right;
     bool confirm;
     bool changed;
+    float timer;
     int dir;
 
     enum Status
@@ -96,7 +97,13 @@ public class Shop : MonoBehaviour
             default:
                 break;
         }
-
+        if (timer < 0.1f)
+            timer += Time.deltaTime;
+        else
+        {
+            timer = 0;
+            changed = true;
+        }
         if (changed)
         {
             changed = false;
@@ -293,12 +300,17 @@ public class Shop : MonoBehaviour
                         {
                             playerStats.money -= playerStats.lightbulbCost;
                             Dialogue(purchaseDialogue, Status.PurchasedItem);
-                            playerStats.lightTier++;
+                            playerStats.money -= playerStats.lightbulbCost;
+                            if (gm.bulbLvl == 0)
+                                gm.light.enabled = true;
+                            else
+                                gm.light.pointLightOuterRadius += 1;
+                            gm.bulbLvl++;
                             playerStats.lightbulbCost *= 2;
                         }
                         break;
                     default:
-                        // nicolasagna
+                        // nicholasagna
                         break;
                 }
             }
