@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swimSpeed: 0.5
-  swimCycle: 0.2
-  hookPoint: {x: 0.44, y: 0.01}
+  hookPoint: {x: 0.4, y: -0.04}
+  hookRotation: 0
   value: 15
   points: 250
   description: A colorful, domesticated fish. Science cannot tell if it meows or

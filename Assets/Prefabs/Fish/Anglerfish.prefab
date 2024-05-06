@@ -101,7 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swimSpeed: 0.5
-  hookPoint: {x: 0.44, y: 0.01}
+  hookPoint: {x: 0.18, y: -0.17}
+  hookRotation: 0
   value: 70
   points: 200
   description: Scary fish. Very meaty though, so very yummy.

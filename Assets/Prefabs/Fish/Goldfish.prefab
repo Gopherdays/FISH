@@ -100,7 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swimSpeed: 0.5
-  hookPoint: {x: 0.44, y: 0.01}
+  hookPoint: {x: 0.38, y: -0.1}
+  hookRotation: 0
   value: 6
   points: 500
   description: Good for trophies, but most people don't want to pay to eat solid

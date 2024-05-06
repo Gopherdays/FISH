@@ -100,7 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swimSpeed: 0.5
-  hookPoint: {x: 0.44, y: 0.01}
+  hookPoint: {x: 0.35, y: -0.01}
+  hookRotation: 0
   value: 5
   points: 200
   description: This fish looks like it shouldn't be here. Hastily made by uncultured

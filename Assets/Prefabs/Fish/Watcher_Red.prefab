@@ -100,7 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swimSpeed: 0.5
-  hookPoint: {x: 0.44, y: 0.01}
+  hookPoint: {x: 0.25, y: -0.03}
+  hookRotation: 0
   value: 30
   points: 100
   description: ...Don't look at it. It already sees, it already knows.
