@@ -100,15 +100,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swimSpeed: 0.5
-  swimCycle: 0.2
   hookPoint: {x: 0.44, y: 0.01}
-  value: 10
+  value: 30
   points: 100
   description: ...Don't look at it. It already sees, it already knows.
-  speed: 1
-  escape: 2
-  turnChance: 10
-  skipChance: 10
+  speed: 0.7
+  escape: 7
+  turnChance: 0
+  skipChance: 0
 --- !u!50 &5619285366630353901
 Rigidbody2D:
   serializedVersion: 4

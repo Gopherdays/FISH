@@ -100,15 +100,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swimSpeed: 0.5
-  swimCycle: 0.2
   hookPoint: {x: 0.44, y: 0.01}
   value: 15
   points: 150
   description: Has many sensors on its body. How'd it become so big?.
-  speed: 1
-  escape: 2
+  speed: 0.7
+  escape: 4
   turnChance: 10
-  skipChance: 10
+  skipChance: 30
 --- !u!50 &5619285366630353901
 Rigidbody2D:
   serializedVersion: 4

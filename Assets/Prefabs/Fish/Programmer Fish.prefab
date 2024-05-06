@@ -100,16 +100,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swimSpeed: 0.5
-  swimCycle: 0.2
   hookPoint: {x: 0.44, y: 0.01}
   value: 5
   points: 200
   description: This fish looks like it shouldn't be here. Hastily made by uncultured
     hands.
-  speed: 1
-  escape: 2
-  turnChance: 10
-  skipChance: 10
+  speed: 1000
+  escape: 0
+  turnChance: 0
+  skipChance: 0
 --- !u!50 &5619285366630353901
 Rigidbody2D:
   serializedVersion: 4
