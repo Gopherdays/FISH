@@ -17,10 +17,10 @@ public class FishSpawning : MonoBehaviour
 
     void SpawnFish(float depth)
     {
-        float randomFishIndex = ((-depth/2) + Mathf.Sqrt(Random.Range(0,9f) * Random.Range(0,2))) / 10; // uuuummm... you know maybe I should turn off my math brain and think simpler every once in a while
+        float randomFishIndex = ((-depth*0.75f) + Mathf.Sqrt(Random.Range(0,9f) * Random.Range(0,2))) / 10; // uuuummm... you know maybe I should turn off my math brain and think simpler every once in a while
         randomFishIndex = Mathf.RoundToInt(Mathf.Clamp(randomFishIndex, 0, fishTypes.Length - 1));
         GameObject fish;
-        if (Random.Range(0f,1f) > 0.9925f)
+        if (Random.Range(0f,1f) > 0.99f)
         {
             fish = Instantiate(rareFishTypes[Random.Range(0,rareFishTypes.Length)]);
         } else
