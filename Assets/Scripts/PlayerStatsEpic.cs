@@ -44,10 +44,10 @@ public class PlayerStatsEpic : ScriptableObject
         lightTier = 0;
         candleStatus = 0;
 
-        lineSpeedUpgradeCost = 100;
-        strengthMultUpgradeCost = 60;
-        bucketSizeCost = 150;
-        lightbulbCost = 120;
+        lineSpeedUpgradeCost = 40;
+        strengthMultUpgradeCost = 30;
+        bucketSizeCost = 60;
+        lightbulbCost = 50;
 
         bucket = new List<int>();
     }
