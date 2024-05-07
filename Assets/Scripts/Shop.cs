@@ -300,7 +300,6 @@ public class Shop : MonoBehaviour
                         {
                             playerStats.money -= playerStats.lightbulbCost;
                             Dialogue(purchaseDialogue, Status.PurchasedItem);
-                            playerStats.money -= playerStats.lightbulbCost;
                             if (gm.bulbLvl == 0)
                                 gm.light.enabled = true;
                             else
