@@ -69,6 +69,7 @@ public class Fishing : MonoBehaviour
     private AudioSource source;
     public AudioClip clip1, clip2, clip3;
     public AudioClip[] sounds;
+    public AudioClip[] sounds2;
 
     private void Start()
     {
@@ -113,7 +114,11 @@ public class Fishing : MonoBehaviour
         if (thrown && confirm && !gm.shoppe.activeSelf)
         {
             confirm = false;
-            gm.playerStats.Feed();
+            if (gm.playerStats.Feed())
+            {
+                source.clip = sounds2[Random.Range(0, sounds2.Length)];
+                source.Play();
+            }
         }
         if (thrown && changed)
         {
