@@ -67,7 +67,7 @@ public class Fishing : MonoBehaviour
     bool reset;
 
     private AudioSource source;
-    public AudioClip clip1, clip2, clip3;
+    public AudioClip clip1, clip2, clip3, clip4;
     public AudioClip[] sounds;
     public AudioClip[] sounds2;
 
@@ -187,6 +187,7 @@ public class Fishing : MonoBehaviour
                 if (tutorial)
                     StartCoroutine(WaitForInWater());
                 ThrowHook();
+
             }
         }
     }
@@ -425,6 +426,8 @@ public class Fishing : MonoBehaviour
     {
         thrown = true;
         rb.AddForce(new Vector2(Random.Range(0.25f, 1.25f) * -300, Random.Range(0.5f, 1.25f) * 300));
+        source.clip = clip4;
+        source.Play();
     }
 
     IEnumerator WaitForInWater()

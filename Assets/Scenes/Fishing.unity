@@ -11504,6 +11504,7 @@ MonoBehaviour:
   clip1: {fileID: 8300000, guid: 435d5edfa1ea8064ea3782079819255a, type: 3}
   clip2: {fileID: 8300000, guid: e409443abd62d9448a59943fff805540, type: 3}
   clip3: {fileID: 8300000, guid: cba6eeda2e3cae6459135427abfe5988, type: 3}
+  clip4: {fileID: 8300000, guid: 58bcf9f97c9fb5947941727247b8271c, type: 3}
   sounds:
   - {fileID: 8300000, guid: c3a6c807abbc2ba42bf96eaeb621b177, type: 3}
   - {fileID: 8300000, guid: c619c2af61943bc4591d1a68a8e59e10, type: 3}
