@@ -73,15 +73,15 @@ public class PlayerStatsEpic : ScriptableObject
         bucket.Clear();
     }
 
-    public void Feed()
+    public bool Feed()
     {
         if (food > 0)
         {
-            Debug.Log("Yes food.");
             food--;
             turtleHunger += foodEffectiveness;
+            return true;
         }
         else
-            Debug.Log("No food.");
+            return false;
     }
 }

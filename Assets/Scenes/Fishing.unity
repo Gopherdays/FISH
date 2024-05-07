@@ -9169,6 +9169,7 @@ MonoBehaviour:
   - {fileID: 1833938814}
   - {fileID: 1833938813}
   - {fileID: 1833938812}
+  seagull: {fileID: 2043066847}
   regularDialogue:
   - Welcome to my shop. See anything you like?
   - Greetings friend, would you like to see my wares?
@@ -10404,6 +10405,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2043066846}
   - component: {fileID: 2043066845}
+  - component: {fileID: 2043066847}
   m_Layer: 0
   m_Name: seagull
   m_TagString: Untagged
@@ -10478,6 +10480,26 @@ Transform:
   m_Father: {fileID: 2077936970}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2043066847
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043066844}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 017b7dc0b739d254e926bf83269aa52e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &2056643585
 GameObject:
   m_ObjectHideFlags: 0
@@ -11723,9 +11745,15 @@ MonoBehaviour:
   clip1: {fileID: 8300000, guid: 435d5edfa1ea8064ea3782079819255a, type: 3}
   clip2: {fileID: 8300000, guid: e409443abd62d9448a59943fff805540, type: 3}
   clip3: {fileID: 8300000, guid: cba6eeda2e3cae6459135427abfe5988, type: 3}
+  clip4: {fileID: 8300000, guid: 58bcf9f97c9fb5947941727247b8271c, type: 3}
   sounds:
   - {fileID: 8300000, guid: c3a6c807abbc2ba42bf96eaeb621b177, type: 3}
   - {fileID: 8300000, guid: c619c2af61943bc4591d1a68a8e59e10, type: 3}
+  sounds2:
+  - {fileID: 8300000, guid: 4f7bdc2456372b1438f4d71c34fbb935, type: 3}
+  - {fileID: 8300000, guid: edfd24f711806c341909117bab12e39b, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!82 &2145965932
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11953,6 +11981,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
+      propertyPath: light
+      value: 
+      objectReference: {fileID: 2145965933}
     - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
       propertyPath: point
       value: 

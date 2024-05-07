@@ -12,6 +12,8 @@ public class Shop : MonoBehaviour
     public GameManager gm;
     public AudioSource[] noises;
 
+    public Animator seagull;
+
     // Unity editor incapable of comprehending such a complex concept such as "array array"
     public string[] regularDialogue;
     public string[] browsingDialogue;
@@ -170,11 +172,13 @@ public class Shop : MonoBehaviour
 
     IEnumerator Typing()
     {
-        yield return new WaitUntil(() => remainingDialogue != null);
-        cawTimer = 0.1f;
         while (true)
         {
-            if (remainingDialogue != null && remainingDialogue.Length > 0)
+            seagull.Play("talknt");
+            yield return new WaitUntil(() => remainingDialogue != null);
+            cawTimer = 0.1f;
+            seagull.Play("talk");
+            while (remainingDialogue.Length > 0)
             {
                 currentDialogue += remainingDialogue[0];
                 remainingDialogue = remainingDialogue[1..];
@@ -184,14 +188,10 @@ public class Shop : MonoBehaviour
                     cawTimer += Random.Range(0.25f, 0.4f);
                 }
                 textbox.text = currentDialogue;
+                yield return new WaitForSeconds(0.05f);
             }
-            else
-            {
-                cawTimer = 0.1f;
-            }
-            yield return new WaitForSeconds(0.05f);
+            cawTimer = 0.1f;
         }
-        
     }
 
     public void PointToItem(int whichButton)
@@ -306,7 +306,6 @@ public class Shop : MonoBehaviour
                         {
                             playerStats.money -= playerStats.lightbulbCost;
                             Dialogue(purchaseDialogue, Status.PurchasedItem);
-                            playerStats.money -= playerStats.lightbulbCost;
                             if (gm.bulbLvl == 0)
                                 gm.light.enabled = true;
                             else
