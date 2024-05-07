@@ -11508,9 +11508,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c3a6c807abbc2ba42bf96eaeb621b177, type: 3}
   - {fileID: 8300000, guid: c619c2af61943bc4591d1a68a8e59e10, type: 3}
   sounds2:
-  - {fileID: 8300000, guid: 30cad4f1455eb584d89c3b30eef8372d, type: 3}
-  - {fileID: 8300000, guid: f1841b3ace49aa14b9b041b1342f3e5d, type: 3}
   - {fileID: 8300000, guid: 4f7bdc2456372b1438f4d71c34fbb935, type: 3}
+  - {fileID: 8300000, guid: edfd24f711806c341909117bab12e39b, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!82 &2145965932
 AudioSource:
   m_ObjectHideFlags: 0
