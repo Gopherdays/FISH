@@ -28,12 +28,15 @@ public class Fishing : MonoBehaviour
     bool changed;
     Vector2 temp = new Vector2();
 
+    public GameObject feed;
     public GameObject move;
     public GameObject cast;
     public GameObject aim;
     public GameObject shop;
     bool tutorial;
     public bool shopTutorial;
+    public bool foodTutorial;
+    public bool foodBought;
     
     public GameManager gm;
     public float speed; 
@@ -86,6 +89,7 @@ public class Fishing : MonoBehaviour
         move.SetActive(false);
         aim.SetActive(false);
         shop.SetActive(false);
+        feed.SetActive(false);
         up = false;
         left = false;
         down = false;
@@ -94,6 +98,7 @@ public class Fishing : MonoBehaviour
         hooking = true;
         tutorial = true;
         shopTutorial = true;
+        foodTutorial = true;
         temp = new Vector2(0, 0);
         tempV = new Vector2(-7, -5);
         prevY = transform.position.y;
@@ -118,10 +123,15 @@ public class Fishing : MonoBehaviour
         if (thrown && changed)
         {
             changed = false;
-            if (tutorial && move.activeSelf)
+            if (move.activeSelf)
             {
-                StartCoroutine(WaitHook());
-                StartCoroutine(WaitMove());
+                StartCoroutine(WaitHook(move));
+                StartCoroutine(WaitMove(move));
+            }
+            if (feed.activeSelf)
+            {
+                StartCoroutine(WaitHook(feed));
+                StartCoroutine(WaitMove(feed));
             }
             switch (true)
             {
@@ -175,12 +185,13 @@ public class Fishing : MonoBehaviour
             if (confirm)
             {
                 confirm = false;
-                print("m'name ejff");
                 cast.SetActive(false);
                 if (shop.activeSelf)
                     shop.SetActive(false);
                 if (tutorial)
-                    StartCoroutine(WaitForInWater());
+                    StartCoroutine(WaitForInWater(move));
+                if (foodBought && foodTutorial && !tutorial)
+                    StartCoroutine(WaitForInWater(feed));
                 ThrowHook();
             }
         }
@@ -422,27 +433,27 @@ public class Fishing : MonoBehaviour
         rb.AddForce(new Vector2(Random.Range(0.25f, 1.25f) * -300, Random.Range(0.5f, 1.25f) * 300));
     }
 
-    IEnumerator WaitForInWater()
+    IEnumerator WaitForInWater(GameObject obj)
     {
         yield return new WaitUntil(() => prevY > 0 && transform.position.y <= 0);
-        move.SetActive(true);
+        obj.SetActive(true);
     }
 
-    IEnumerator WaitHook()
+    IEnumerator WaitHook(GameObject obj)
     {
         yield return new WaitUntil(() => fishing);
-        if (move.activeSelf)
+        if (obj.activeSelf)
         {
-            move.SetActive(false);
+            obj.SetActive(false);
         }
     }
 
-    IEnumerator WaitMove()
+    IEnumerator WaitMove(GameObject obj)
     {
         yield return new WaitForSeconds(3);
-        if (move.activeSelf)
+        if (obj.activeSelf)
         {
-            move.SetActive(false);
+            obj.SetActive(false);
         }
     }
     
@@ -500,7 +511,7 @@ public class Fishing : MonoBehaviour
     }
     public void A(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && !gm.shoppe.activeSelf)
         {
             confirm = true;
         }

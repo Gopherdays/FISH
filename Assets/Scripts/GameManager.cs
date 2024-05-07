@@ -9,7 +9,7 @@ using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
-    Fishing hook;
+    public Fishing hook;
     public PlayerStatsEpic playerStats;
     public bool win;
     

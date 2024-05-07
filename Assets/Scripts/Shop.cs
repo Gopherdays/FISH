@@ -253,6 +253,12 @@ public class Shop : MonoBehaviour
                             playerStats.money -= 5;
                             Dialogue(purchaseDialogue, Status.PurchasedItem);
                             playerStats.food++;
+
+                            if (gm.hook.foodTutorial && !gm.hook.shopTutorial)
+                            {
+                                gm.hook.foodTutorial = true;
+                                gm.hook.foodBought = true;
+                            }
                         }
                         break;
                     case 1:
