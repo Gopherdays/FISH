@@ -8,7 +8,12 @@ public class Shop : MonoBehaviour
 {
     public TextMeshProUGUI textbox;
     public TextMeshProUGUI money;
-    public TextMeshProUGUI food;
+
+    public TextMeshProUGUI bulbCost;
+    public TextMeshProUGUI lineCost;
+    public TextMeshProUGUI reelCost;
+    public TextMeshProUGUI bucketCost;
+
     public GameManager gm;
     public AudioSource[] noises;
 
@@ -75,6 +80,12 @@ public class Shop : MonoBehaviour
     private void FixedUpdate()
     {
         money.text = "$" + playerStats.money;
+
+        bulbCost.text = "$" + playerStats.lightbulbCost;
+        bucketCost.text = "$" + playerStats.bucketSizeCost;
+        reelCost.text = "$" + playerStats.strengthMultUpgradeCost;
+        lineCost.text = "$" + playerStats.lineSpeedUpgradeCost;
+
         cawTimer -= Time.deltaTime;
         switch (status)
         {
