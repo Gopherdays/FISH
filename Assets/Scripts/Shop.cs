@@ -23,12 +23,12 @@ public class Shop : MonoBehaviour
     public string[] leftDialogue;
     public string[] soldDialogue;
 
-    public Image lineButton;
-    public Image foodButton;
-    public Image bucketButton;
-    public Image bulbButton;
-    public Image reelButton;
-    public Image sellButton;
+    public SpriteRenderer lineButton;
+    public SpriteRenderer foodButton;
+    public SpriteRenderer bucketButton;
+    public SpriteRenderer bulbButton;
+    public SpriteRenderer reelButton;
+    public SpriteRenderer sellButton;
     Color faded = new Color(1,1,1,(50/255f));
     Color highlight = new Color (1,1,1,1);
 

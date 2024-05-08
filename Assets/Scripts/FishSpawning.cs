@@ -6,12 +6,25 @@ public class FishSpawning : MonoBehaviour
 {
     public GameObject[] fishTypes;
     public GameObject[] rareFishTypes;
+    GameObject fishingHook;
+
+    public int maxDepth = -15;
 
     private void Start()
     {
-        for (int i = 3; i < 250; i += 2)
+        for (int i = 3; i < 18; i += 3)
         {
             SpawnFish(-i);
+        }
+        fishingHook = GameObject.Find("Fishing Hook");
+    }
+
+    private void Update()
+    {
+        if (fishingHook.transform.position.y < maxDepth + 9)
+        {
+            SpawnFish(maxDepth);
+            maxDepth -= 3;
         }
     }
 
@@ -27,7 +40,7 @@ public class FishSpawning : MonoBehaviour
         {
             fish = Instantiate(fishTypes[(int)randomFishIndex]);
         }
-        fish.transform.position = new Vector3(Random.Range(-99f, 99f), Mathf.Clamp(depth + Random.Range(-3f, 3f),-9999999,-1));
+        fish.transform.position = new Vector3(Random.Range(-49f, 49f), Mathf.Clamp(depth + Random.Range(-3f, 3f),-9999999,-1));
         fish.GetComponent<Fish>().swimSpeed *= Random.Range(0.6f, 1.35f);
         if (Random.Range(0,2) == 0)
         {
