@@ -48,7 +48,6 @@ public class Shop : MonoBehaviour
     bool right;
     bool confirm;
     bool changed;
-    float timer;
     int dir;
 
     enum Status
@@ -110,16 +109,8 @@ public class Shop : MonoBehaviour
             default:
                 break;
         }
-        if (timer < 0.1f)
-            timer += Time.deltaTime;
-        else
-        {
-            timer = 0;
-            changed = true;
-        }
         if (changed)
         {
-            changed = false;
             switch (true) // figures out what direction the joystick is facing
             {
                 case true when (up && left): //northwest
@@ -155,6 +146,7 @@ public class Shop : MonoBehaviour
                     ResetColors();
                     break;
             }
+            changed = false;
         }
     }
 
@@ -207,7 +199,7 @@ public class Shop : MonoBehaviour
 
     public void PointToItem(int whichButton)
     {
-        if (!stopInput)
+        if (!stopInput && changed)
         {
             status = Status.None;
             Dialogue(browsingDialogue, Status.LookingAtItem, whichButton);
@@ -337,12 +329,13 @@ public class Shop : MonoBehaviour
     {
         if (context.started)
         {
-            up = true; // value that help track the joystick direction
-            changed = true; // turn this value on to change the position of the catcher indicator
+            up = true;
+            changed = true;
         }
         if (context.canceled)
         {
             up = false;
+            changed = true;
         }
     }
     public void Left(InputAction.CallbackContext context)
@@ -355,6 +348,7 @@ public class Shop : MonoBehaviour
         if (context.canceled)
         {
             left = false;
+            changed = true;
         }
     }
     public void Down(InputAction.CallbackContext context)
@@ -367,6 +361,7 @@ public class Shop : MonoBehaviour
         if (context.canceled)
         {
             down = false;
+            changed = true;
         }
     }
     public void Right(InputAction.CallbackContext context)
@@ -379,6 +374,7 @@ public class Shop : MonoBehaviour
         if (context.canceled)
         {
             right = false;
+            changed = true;
         }
     }
 }
