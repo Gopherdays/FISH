@@ -63,11 +63,6 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
-        if (win)
-        {
-            GoBoat();
-            win = false;
-        }
         if (SceneManager.GetActiveScene().name == "Fishing")
         {
             if (clock < 0.1)
@@ -231,19 +226,11 @@ public class GameManager : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(FadeOut(1, 1));
     }
-
-    public void GoBoat()
+    public void GoLose()
     {
         StopAllCoroutines();
         StartCoroutine(FadeOut(1, 2));
     }
-
-    public void GoLose()
-    {
-        StopAllCoroutines();
-        StartCoroutine(FadeOut(1, 3));
-    }
-
     public void GoScene(int scene)
     {
         StopAllCoroutines();
