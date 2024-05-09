@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public Image bucketBar;
     public bool full;
     float clock;
+    bool fishCancel;
 
     public GameObject creditsObject;
     public string[] credits;
@@ -296,7 +297,14 @@ public class GameManager : MonoBehaviour
     {
         if (context.started)
         {
-            SwitchShop();
+            if (!hook.fishing)
+                SwitchShop();
+            else if (!fishCancel)
+                fishCancel = true;
+            else
+            {
+                fishCancel = false;
+            }
         }
     }
 
