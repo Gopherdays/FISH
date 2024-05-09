@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3cf2de11bd567f4f981bd217570fe94, type: 3}
   m_Name: Player Stats
   m_EditorClassIdentifier: 
-  money: 0
-  food: 864
+  money: 4038
+  food: 322
   points: 0
-  day: 8
+  day: 7
   finalTime: 0
-  foodEffectiveness: 0.1953125
-  turtleHunger: 97.05405
+  foodEffectiveness: 0.390625
+  turtleHunger: 102.53201
   lineSpeedHorizontal: 1
   lineSpeedVertical: 1
   strengthMult: 4

@@ -238,6 +238,24 @@ public class Shop : MonoBehaviour
                     break;
             }
         }
+        if (context.performed && playerStats.day >= 4 && gm.shoppe.activeSelf)
+        {
+            StartCoroutine(BulkBuyFood());
+        }
+        if (context.canceled)
+        {
+            StopCoroutine("BulkBuyFood");
+        }
+    }
+
+    IEnumerator BulkBuyFood()
+    {
+        while (left && !up && !down)
+        {
+            print("YEEHAW");
+            BuyItem(0);
+            yield return new WaitForFixedUpdate();
+        }
     }
 
     public void BuyItem(int whichButton)
@@ -317,9 +335,9 @@ public class Shop : MonoBehaviour
                             Dialogue(purchaseDialogue, Status.PurchasedItem);
                             chaching.Play();
                             if (gm.bulbLvl == 0)
-                                gm.light.enabled = true;
+                                gm.lt.enabled = true;
                             else
-                                gm.light.pointLightOuterRadius += 1;
+                                gm.lt.pointLightOuterRadius += 1;
                             gm.bulbLvl++;
                             playerStats.lightbulbCost *= 2;
                         }

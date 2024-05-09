@@ -9,6 +9,7 @@ using TMPro;
 public class Fishing : MonoBehaviour
 {
     GameObject player;
+    CircleCollider2D coll;
     public GameObject fish;
     public GameObject indicator;
     public GameObject catcher;
@@ -26,6 +27,7 @@ public class Fishing : MonoBehaviour
     bool right;
     bool confirm;
     bool changed;
+    bool bulk;
     Vector2 temp = new Vector2();
 
     public GameObject feed;
@@ -118,7 +120,8 @@ public class Fishing : MonoBehaviour
     {
         if (thrown && confirm && !gm.shoppe.activeSelf)
         {
-            confirm = false;
+            if (gm.playerStats.day < 4 || !bulk)
+                confirm = false;
             if (gm.playerStats.Feed())
             {
                 source.clip = sounds2[Random.Range(0, sounds2.Length)];
@@ -465,6 +468,15 @@ public class Fishing : MonoBehaviour
         }
     }
     
+    public void FreezeUnfreeze()
+    {
+        if (rb.constraints == RigidbodyConstraints2D.FreezeRotation)
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        else
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        coll.enabled = !coll.enabled;
+    }
+
     public void Up(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -522,6 +534,9 @@ public class Fishing : MonoBehaviour
         if (context.started && !gm.shoppe.activeSelf)
         {
             confirm = true;
+            bulk = true;
         }
+        if (context.canceled)
+            bulk = false;
     }
 }

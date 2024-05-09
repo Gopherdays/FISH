@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     public Image transitionImage;
     Color color;
 
-    public Light2D light;
+    public Light2D lt;
     public int bulbLvl;
     public int lineLvl;
     public int buckLvl;
@@ -196,9 +196,9 @@ public class GameManager : MonoBehaviour
     {
         playerStats.money -= playerStats.lightbulbCost;
         if (bulbLvl == 0)
-            light.enabled = true;
+            lt.enabled = true;
         else
-            light.pointLightOuterRadius += 1;
+            lt.pointLightOuterRadius += 1;
         bulbLvl++;
     }
 
@@ -283,6 +283,7 @@ public class GameManager : MonoBehaviour
     {
         shoppe.SetActive(!shoppe.activeSelf);
         feesherCam.SetActive(!feesherCam.activeSelf);
+        hook.FreezeUnfreeze();
         if (hook.shopTutorial && shoppe.activeSelf)
             point.SetActive(true);
         else if (hook.shopTutorial && !shoppe.activeSelf)
