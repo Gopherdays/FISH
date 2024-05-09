@@ -337,7 +337,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Use the Joystick to Aim the green Catcher Toward the Purple Icon!
+  m_text: 'Use the Joystick to Aim the green Catcher Toward the Purple Icon!
+
+
+    (Or
+    press B twice to let go...)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b193878909d0137499063a73ae1f6792, type: 2}
   m_sharedMaterial: {fileID: -5167847212838566212, guid: b193878909d0137499063a73ae1f6792, type: 2}
@@ -372,7 +376,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
