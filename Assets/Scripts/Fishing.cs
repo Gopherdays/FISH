@@ -78,6 +78,7 @@ public class Fishing : MonoBehaviour
 
     private void Start()
     {
+        coll = GetComponent<CircleCollider2D>();
         fishingUI = GameObject.Find("Fishing UI");
         depth = GameObject.Find("Depth Meter");
         player = GameObject.Find("Player");
@@ -470,7 +471,7 @@ public class Fishing : MonoBehaviour
     
     public void FreezeUnfreeze()
     {
-        if (rb.constraints == RigidbodyConstraints2D.FreezeRotation)
+        if (gm.shoppe.activeSelf)
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
         else
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
