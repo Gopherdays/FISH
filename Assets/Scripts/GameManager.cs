@@ -93,9 +93,23 @@ public class GameManager : MonoBehaviour
             if (playerStats.turtleHunger <= 0)
             {
                 GoLose();
+                playerStats.finalTime = time;
             }
             if (playerStats.bucket.Count >= playerStats.bucketSize)
                 full = true;
+        }
+        else if (SceneManager.GetActiveScene().name == "Game Over")
+        {
+            time = playerStats.finalTime;
+            timer.text = "Day " + playerStats.day + " - ";
+            if (time > 3600)
+            {
+                timer.text += Mathf.FloorToInt(time / 3600) + ":";
+                if (Mathf.FloorToInt(time) % 3600 < 600) timer.text += "0";
+            }
+            timer.text += Mathf.FloorToInt(time / 60) % 60 + ":";
+            if (Mathf.FloorToInt(time) % 60 < 10) timer.text += "0";
+            timer.text += Mathf.FloorToInt(time) % 60;
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {

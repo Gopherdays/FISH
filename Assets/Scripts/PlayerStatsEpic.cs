@@ -10,6 +10,7 @@ public class PlayerStatsEpic : ScriptableObject
     public int food;
     public int points;
     public int day;
+    public float finalTime;
     public float foodEffectiveness;
     public float turtleHunger;
 
