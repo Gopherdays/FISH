@@ -8767,6 +8767,7 @@ GameObject:
   - component: {fileID: 1833938814}
   - component: {fileID: 1833938813}
   - component: {fileID: 1833938812}
+  - component: {fileID: 1833938816}
   m_Layer: 0
   m_Name: Shop Script
   m_TagString: Untagged
@@ -8813,19 +8814,20 @@ MonoBehaviour:
   - {fileID: 1833938814}
   - {fileID: 1833938813}
   - {fileID: 1833938812}
+  chaching: {fileID: 1833938816}
   seagull: {fileID: 2043066847}
   regularDialogue:
   - Welcome to my shop. See anything you like?
   - Greetings friend, would you like to see my wares?
   - I've got some interesting stuff for sale, care to take a look?
   browsingDialogue:
-  - This will help you feed your turtle.
-  - This will get you a better fishing line, and it will make your line travel faster
-    and will increase the more you purchase it.
+  - This will help you feed your turtle. Don't make it hungry...
+  - This will get you a better fishing line, and it will make your line travel faster.
   - This here will upgrade your reel, making it much easier to pull up fish after
     buying.
   - Purchasing this will allow you to hold more fish.
   - This will let you see in the deep dark of the ocean the further you go down.
+  - I will gladly buy any fish you've caught.
   purchaseDialogue:
   - Thank you for your purchase.
   - I appreciate this, friend.
@@ -8864,9 +8866,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7b1ff5a0d5da74f4e96533a9d5d655ae, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0f443b4415dfd564cbfb4d43c0235d72, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -8962,7 +8964,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 571dc495767bb21468ff10be77d66776, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -9056,9 +9058,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 17dd807c67dc07948b0010fc5a8180cf, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f2be437969d60ac4393e9f91f285308f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -9152,9 +9154,105 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: dbe02dd0d055f6144b8057887c7beaf0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6874949f16a635041a3ea35c75b12784, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &1833938816
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833938809}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d18aefdbd3508c0418de5af83dfcdf7d, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

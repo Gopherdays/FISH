@@ -16,6 +16,7 @@ public class Shop : MonoBehaviour
 
     public GameManager gm;
     public AudioSource[] noises;
+    public AudioSource chaching;
 
     public Animator seagull;
 
@@ -131,6 +132,7 @@ public class Shop : MonoBehaviour
                 case true when (down && right): //southeast
                     ResetColors();
                     sellButton.color = highlight;
+                    PointToItem(5);
                     break;
                 case true when (right && !up && !down): //east
                     ResetColors();
@@ -223,6 +225,7 @@ public class Shop : MonoBehaviour
                     break;
                 case true when (down && right): //southeast
                     playerStats.SellFish();
+                    chaching.Play();
                     Dialogue(soldDialogue, Status.SoldFish);
                     break;
                 case true when (right && !up && !down): //east
@@ -256,7 +259,7 @@ public class Shop : MonoBehaviour
                             playerStats.money -= 5;
                             Dialogue(purchaseDialogue, Status.PurchasedItem);
                             playerStats.food++;
-
+                            chaching.Play();
                             if (gm.hook.foodTutorial && !gm.hook.shopTutorial)
                             {
                                 gm.hook.foodTutorial = true;
@@ -272,6 +275,7 @@ public class Shop : MonoBehaviour
                         {
                             playerStats.money -= playerStats.lineSpeedUpgradeCost;
                             Dialogue(purchaseDialogue, Status.PurchasedItem);
+                            chaching.Play();
                             playerStats.lineSpeedVertical *= 1.5f;
                             playerStats.lineSpeedHorizontal *= 1.25f;
                             playerStats.lineSpeedUpgradeCost *= 2;
@@ -285,6 +289,7 @@ public class Shop : MonoBehaviour
                         {
                             playerStats.money -= playerStats.strengthMultUpgradeCost;
                             Dialogue(purchaseDialogue, Status.PurchasedItem);
+                            chaching.Play();
                             playerStats.strengthMult++;
                             playerStats.strengthMultUpgradeCost *= 2;
                         }
@@ -297,6 +302,7 @@ public class Shop : MonoBehaviour
                         {
                             playerStats.money -= playerStats.bucketSizeCost;
                             Dialogue(purchaseDialogue, Status.PurchasedItem);
+                            chaching.Play();
                             playerStats.bucketSize += 5;
                             playerStats.bucketSizeCost *= 2;
                         }
@@ -309,6 +315,7 @@ public class Shop : MonoBehaviour
                         {
                             playerStats.money -= playerStats.lightbulbCost;
                             Dialogue(purchaseDialogue, Status.PurchasedItem);
+                            chaching.Play();
                             if (gm.bulbLvl == 0)
                                 gm.light.enabled = true;
                             else
