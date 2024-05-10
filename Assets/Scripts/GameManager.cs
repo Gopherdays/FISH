@@ -45,8 +45,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        playerStats.Reset();
-
         color = Color.black;
         StartCoroutine(FadeIn(1));
         
