@@ -45,8 +45,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        bulk.SetActive(false);
-
         playerStats.Reset();
 
         color = Color.black;
@@ -64,6 +62,8 @@ public class GameManager : MonoBehaviour
             time = -69;
             playerStats.Reset();
         }
+        bulk.SetActive(false);
+        bulkTutorial = true;
     }
     
     private void Update()
@@ -292,12 +292,14 @@ public class GameManager : MonoBehaviour
             point.SetActive(true);
         else if (hook.shopTutorial && !shoppe.activeSelf)
         {
+            print("2");
             hook.shopTutorial = false;
             hook.shop.SetActive(false);
             point.SetActive(false);
         }
         else if (bulkTutorial)
         {
+            print("3");
             bulkTutorial = false;
             bulk.SetActive(true);
         }
