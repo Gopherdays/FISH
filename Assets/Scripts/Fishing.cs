@@ -26,6 +26,8 @@ public class Fishing : MonoBehaviour
     bool down;
     bool right;
     bool confirm;
+    bool bConfirm;
+    bool once;
     bool changed;
     bool bulk;
     Vector2 temp = new Vector2();
@@ -205,6 +207,24 @@ public class Fishing : MonoBehaviour
 
             }
         }
+        if (bConfirm)
+        {
+            bConfirm = false;
+            if (!once)
+                once = true;
+            else
+            {
+                once = false;
+                fishingUI.SetActive(false);
+                depth.SetActive(false);
+                if (tutorial)
+                {
+                    tutorial = false;
+                    aim.SetActive(false);
+                }
+                Switch();
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -311,6 +331,7 @@ public class Fishing : MonoBehaviour
                     tutorial = false;
                     aim.SetActive(false);
                 }
+                gm.AddFish(value);
                 Switch();
             }
         }
@@ -358,7 +379,6 @@ public class Fishing : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.None;
         fl.hook = gameObject;
         cam.Follow = GameObject.Find("Player").transform;
-        gm.AddFish(value);
         stats.points += fish.GetComponent<Fish>().points;
         indPos = Random.Range(2, 7);
         tempV.y = -5;
@@ -539,5 +559,12 @@ public class Fishing : MonoBehaviour
         }
         if (context.canceled)
             bulk = false;
+    }
+    public void B(InputAction.CallbackContext context)
+    {
+        if (context.started && fishing)
+        {
+            bConfirm = true;
+        }
     }
 }
