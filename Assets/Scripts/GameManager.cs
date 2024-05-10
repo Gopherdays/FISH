@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject shoppe;
     public GameObject point;
+    public GameObject bulk;
+    bool bulkTutorial;
     public GameObject feesherCam;
 
     public GameObject pause;
@@ -43,6 +45,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        bulk.SetActive(false);
+
         playerStats.Reset();
 
         color = Color.black;
@@ -292,6 +296,13 @@ public class GameManager : MonoBehaviour
             hook.shop.SetActive(false);
             point.SetActive(false);
         }
+        else if (bulkTutorial)
+        {
+            bulkTutorial = false;
+            bulk.SetActive(true);
+        }
+        else if (bulk.activeSelf)
+            bulk.SetActive(false);
     }
 
     public void B(InputAction.CallbackContext context)
