@@ -496,6 +496,10 @@ public class Fishing : MonoBehaviour
         else
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         coll.enabled = !coll.enabled;
+        if (rb.position.y >= 0)
+        {
+            thrown = false;
+        }
     }
 
     public void Up(InputAction.CallbackContext context)
