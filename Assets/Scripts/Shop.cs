@@ -17,6 +17,7 @@ public class Shop : MonoBehaviour
     public GameManager gm;
     public AudioSource[] noises;
     public AudioSource chaching;
+    Coroutine holdThatCoroutine;
 
     public Animator seagull;
 
@@ -240,11 +241,11 @@ public class Shop : MonoBehaviour
         }
         if (context.performed && playerStats.day >= 4 && gm.shoppe.activeSelf)
         {
-            StartCoroutine(BulkBuyFood());
+            holdThatCoroutine = StartCoroutine(BulkBuyFood());
         }
         if (context.canceled)
         {
-            StopCoroutine("BulkBuyFood");
+            StopCoroutine(holdThatCoroutine);
         }
     }
 
