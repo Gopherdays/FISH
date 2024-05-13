@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
         
         if (SceneManager.GetActiveScene().name == "Fishing")
         {
+            bulk.SetActive(false);
             hook = GameObject.Find("Fishing Hook").GetComponent<Fishing>();
             point.SetActive(false);
         }
@@ -60,7 +61,6 @@ public class GameManager : MonoBehaviour
             time = -69;
             playerStats.Reset();
         }
-        bulk.SetActive(false);
         bulkTutorial = true;
     }
     
@@ -167,12 +167,16 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void AddFish(int value)
+    public void AddFish(Fish fish, float mult)
     {
         if (playerStats.bucket.Count < playerStats.bucketSize)
         {
-            playerStats.BucketAdd(value);
-            bucketTotal += value;
+            playerStats.BucketAdd(Mathf.RoundToInt(fish.value * mult));
+            if (!playerStats.discoveredFish.Contains(fish.description))
+            {
+                playerStats.discoveredFish.Add(fish.description);
+            }
+            bucketTotal += Mathf.RoundToInt(fish.value * mult);
             UIUpdate();
         }
         else
@@ -247,6 +251,11 @@ public class GameManager : MonoBehaviour
     {
         StopAllCoroutines();
         StartCoroutine(FadeOut(1, 2));
+    }
+    public void GoEncyclopedia()
+    {
+        StopAllCoroutines();
+        StartCoroutine(FadeOut(1, 3));
     }
     public void GoScene(int scene)
     {

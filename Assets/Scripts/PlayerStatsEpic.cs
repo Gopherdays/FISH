@@ -28,6 +28,7 @@ public class PlayerStatsEpic : ScriptableObject
     public int lightbulbCost;
 
     public List<int> bucket;
+    public List<string> discoveredFish;
 
     public void Reset()
     {
@@ -51,6 +52,7 @@ public class PlayerStatsEpic : ScriptableObject
         lightbulbCost = 50;
 
         bucket = new List<int>();
+        discoveredFish = new List<string>();
     }
 
     public void BucketAdd(int value)

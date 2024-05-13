@@ -11,6 +11,8 @@ public class Fishing : MonoBehaviour
     GameObject player;
     CircleCollider2D coll;
     public GameObject fish;
+    public Fish fishFish;
+    public float valueMult;
     public GameObject indicator;
     public GameObject catcher;
     public TextMeshProUGUI depthText;
@@ -331,7 +333,8 @@ public class Fishing : MonoBehaviour
                     tutorial = false;
                     aim.SetActive(false);
                 }
-                gm.AddFish(value);
+                print(fishFish);
+                gm.AddFish(fishFish,valueMult);
                 Switch();
             }
         }
@@ -357,7 +360,7 @@ public class Fishing : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             fish.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             fish.GetComponent<SpriteRenderer>().sortingOrder = 420;
-            value = Mathf.RoundToInt(fish.GetComponent<Fish>().value * (100 + distance)/100);
+            valueMult = (100 + distance)/100;
             fl.hook = fish;
             sr.enabled = false;
             hooking = false;
@@ -396,11 +399,11 @@ public class Fishing : MonoBehaviour
         if (collision.gameObject.CompareTag("Fish"))
         {
             fish = collision.gameObject;
-            Fish feesh = fish.GetComponent<Fish>();
-            speed = feesh.speed;
-            escape = feesh.escape;
-            turnChance = feesh.turnChance;
-            skipChance = feesh.skipChance;
+            fishFish = fish.GetComponent<Fish>();
+            speed = fishFish.speed;
+            escape = fishFish.escape;
+            turnChance = fishFish.turnChance;
+            skipChance = fishFish.skipChance;
             source.clip = clip2;
             source.Play();
             Switch();
