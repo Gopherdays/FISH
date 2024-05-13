@@ -151,7 +151,7 @@ public class Encyclopedia : MonoBehaviour
     {
         if (context.started)
         {
-            selection = Mathf.Clamp(selection -= 4,0,listOfAllFishInTheGameAGAIN.Length - 1);
+            selection = Mathf.Clamp(selection -= 8,0,listOfAllFishInTheGameAGAIN.Length - 1);
         }
     }
 
@@ -159,7 +159,7 @@ public class Encyclopedia : MonoBehaviour
     {
         if (context.started)
         {
-            selection = Mathf.Clamp(selection += 4, 0, listOfAllFishInTheGameAGAIN.Length - 1);
+            selection = Mathf.Clamp(selection += 8, 0, listOfAllFishInTheGameAGAIN.Length - 1);
         }
     }
 
