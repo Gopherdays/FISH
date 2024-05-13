@@ -101,10 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swimSpeed: 0.5
   hookPoint: {x: 0.23, y: 0.38}
-  hookRotation: 0
   value: 20
   points: 250
-  description: Unfortunately, these are too small for you to ride them.
+  description: Unfortunately, these are too small for you to ride them into sea battle.
   speed: 0.2
   escape: 2
   turnChance: 2

@@ -103,7 +103,7 @@ MonoBehaviour:
   hookPoint: {x: 0.1, y: -0.07}
   value: 45
   points: 200
-  description: Very sharp.
+  description: A fish well versed in martial combat. No, not maritime.
   speed: 0.5
   escape: 8
   turnChance: 3
