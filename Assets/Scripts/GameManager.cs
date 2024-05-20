@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 {
     public Fishing hook;
     public PlayerStatsEpic playerStats;
+    public WhatTheSavema whatTheSavema;
     public bool win;
     
     public float time = 0;
@@ -60,6 +61,12 @@ public class GameManager : MonoBehaviour
             StartCoroutine(CreditsSpawning());
             time = -69;
             playerStats.Reset();
+            whatTheSavema.Load();
+        }
+        if (SceneManager.GetActiveScene().name == "Game Over")
+        {
+            // do the high score thing
+            whatTheSavema.Save();
         }
         bulkTutorial = true;
     }

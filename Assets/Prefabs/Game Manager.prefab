@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &436518666310776673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 348381574952943404}
+  - component: {fileID: 2543473549101193516}
+  m_Layer: 0
+  m_Name: what the savema?
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &348381574952943404
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436518666310776673}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 945.09503, y: 328.16196, z: -0.82278013}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1359756754041688498}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2543473549101193516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436518666310776673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b9546123d952f449b7d8bac73a837e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &888772344043510386
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,6 +599,7 @@ Transform:
   m_Children:
   - {fileID: 8984765130568464580}
   - {fileID: 8916985809774211517}
+  - {fileID: 348381574952943404}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -570,6 +615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43de9c2c17f0b2f458bead366574d112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hook: {fileID: 0}
   playerStats: {fileID: 11400000, guid: 444d98e1fff443f42b1ef1bb38fb97ed, type: 2}
   win: 0
   time: 0
@@ -582,9 +628,16 @@ MonoBehaviour:
   creditsObject: {fileID: 0}
   credits: []
   shoppe: {fileID: 0}
+  point: {fileID: 0}
+  bulk: {fileID: 0}
   feesherCam: {fileID: 0}
   pause: {fileID: 8608829742108951651}
   transitionImage: {fileID: 8075485521155465974}
+  lt: {fileID: 0}
+  bulbLvl: 0
+  lineLvl: 0
+  buckLvl: 0
+  reelLvl: 0
 --- !u!1 &8179644358846597915
 GameObject:
   m_ObjectHideFlags: 0
