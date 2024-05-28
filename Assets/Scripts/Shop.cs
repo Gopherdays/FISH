@@ -235,6 +235,7 @@ public class Shop : MonoBehaviour
                 case true when (up && right): //northeast
                     BuyItem(4);
                     break;
+                    break;
                 default:
                     break;
             }
@@ -245,6 +246,7 @@ public class Shop : MonoBehaviour
         }
         if (context.canceled)
         {
+            if (playerStats.day >= 4)
             StopCoroutine(holdThatCoroutine);
         }
     }

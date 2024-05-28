@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   money: 0
   food: 0
-  points: 0
+  points: 650
   day: 1
-  finalTime: 0
+  finalTime: 98.38083
   foodEffectiveness: 25
-  turtleHunger: 100
+  turtleHunger: -0.33821172
   lineSpeedHorizontal: 1
   lineSpeedVertical: 1
-  strengthMult: 1
+  strengthMult: 4
   bucketSize: 3
   lightTier: 0
   candleStatus: 0
@@ -30,4 +30,7 @@ MonoBehaviour:
   strengthMultUpgradeCost: 30
   bucketSizeCost: 60
   lightbulbCost: 50
-  bucket: 
+  bucket: 0d0000000d00000007000000
+  discoveredFish:
+  - Pretty valuable, in high demand, but... so boring.
+  - Good for trophies, but most people don't want to pay to eat solid gold.

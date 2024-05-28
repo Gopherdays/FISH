@@ -43,6 +43,7 @@ public class Fishing : MonoBehaviour
     public bool shopTutorial;
     public bool foodTutorial;
     public bool foodBought;
+    public TextMeshProUGUI lastFish;
     
     public GameManager gm;
     public float speed; 
@@ -50,6 +51,7 @@ public class Fishing : MonoBehaviour
     public int turnChance;
     public int skipChance;
     public int value;
+    public int baseValue;
     public float distance;
     float timer;
     bool direction;
@@ -375,10 +377,9 @@ public class Fishing : MonoBehaviour
     IEnumerator WaitForAnimation()
     {
         yield return new WaitForSeconds(1);
-
+        lastFish.text = "Last Fish Caught:\n" + Mathf.Round(baseValue + Random.Range(-0.25f * baseValue, 0.25f * baseValue)) + "lb " + fish.name.Remove(fish.name.Length - 7);
         if (shopTutorial)
             shop.SetActive(true);
-        print("Yay! You caught: " + fish.name.Remove(fish.name.Length - 7));
         rb.constraints = RigidbodyConstraints2D.None;
         fl.hook = gameObject;
         cam.Follow = GameObject.Find("Player").transform;
@@ -404,6 +405,7 @@ public class Fishing : MonoBehaviour
             escape = fishFish.escape;
             turnChance = fishFish.turnChance;
             skipChance = fishFish.skipChance;
+            baseValue = fishFish.value;
             source.clip = clip2;
             source.Play();
             Switch();
