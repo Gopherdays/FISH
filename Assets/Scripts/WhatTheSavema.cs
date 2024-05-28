@@ -1,15 +1,35 @@
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class WhatTheSavema : MonoBehaviour
 {
     public HighScores highScores = new HighScores();
 
+    public List<string> names;
+    public List<float> times;
+    public List<int> scores;
+    public List<int> fishs;
+
+    public TextMeshProUGUI text;
+
+    public void ArrangeScores()
+    {
+        highScores.SortHighestTime();
+        foreach (SingleScore thing in highScores.scores)
+        {
+            names.Add(thing.name);
+            times.Add(thing.time);
+            scores.Add(thing.score);
+            fishs.Add(thing.fish);
+        }
+    }
+
     public (string, float, int, int) GetStats(int index)
     {
         SingleScore score = highScores.scores[index];
-        return (score.name, score.time, score.day, score.fish);
+        return (score.name, score.time, score.score, score.fish);
     }
 
     public void Save()
@@ -37,7 +57,7 @@ public class SingleScore
 {
     public string name;
     public float time;
-    public int day;
+    public int score;
     public int fish;
 }
 

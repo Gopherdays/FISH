@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "Game Over")
         {
-            time = playerStats.finalTime;
+            /*time = playerStats.finalTime;
             timer.text = "Day " + playerStats.day + " - ";
             if (time > 3600)
             {
@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
             }
             timer.text += Mathf.FloorToInt(time / 60) % 60 + ":";
             if (Mathf.FloorToInt(time) % 60 < 10) timer.text += "0";
-            timer.text += Mathf.FloorToInt(time) % 60;
+            timer.text += Mathf.FloorToInt(time) % 60;*/
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
