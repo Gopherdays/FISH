@@ -9,6 +9,11 @@ using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
+    bool part1;
+    bool part2;
+    bool part3;
+    float resetTimer;
+
     public Fishing hook;
     public PlayerStatsEpic playerStats;
     public WhatTheSavema whatTheSavema;
@@ -61,18 +66,32 @@ public class GameManager : MonoBehaviour
             StartCoroutine(CreditsSpawning());
             time = -69;
             playerStats.Reset();
-            whatTheSavema.Load();
         }
         if (SceneManager.GetActiveScene().name == "Game Over")
         {
             // do the high score thing
-            whatTheSavema.Save();
+        
         }
         bulkTutorial = true;
     }
     
     private void Update()
     {
+        if (part1 && part2 && part3)
+        {
+            if (resetTimer < 5)
+                resetTimer += Time.deltaTime;
+            else
+            {
+                resetTimer = 0;
+                GoMenu();
+            }
+        }
+        else
+        {
+            if (resetTimer != 0)
+                resetTimer = 0;
+        }
         if (SceneManager.GetActiveScene().name == "Fishing")
         {
             if (clock < 0.1)
@@ -335,22 +354,41 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
-    public void Y(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            playerStats.Feed();
-        }
-    }
     public void A(InputAction.CallbackContext context)
     {
         if (context.started)
         {
+            part2 = true;
             if (SceneManager.GetActiveScene().name == "Main Menu")
                 GoFish();
             else if (SceneManager.GetActiveScene().name == "Game Over")
                 GoMenu();
+        }
+        if (context.canceled)
+        {
+            part2 = false;
+        }
+    }
+    public void Up(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            part3 = true;
+        }
+        if (context.canceled)
+        {
+            part3 = false;
+        }
+    }
+    public void Right(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            part1 = true;
+        }
+        if (context.canceled)
+        {
+            part1 = false;
         }
     }
 }

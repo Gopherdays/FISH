@@ -270,6 +270,17 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""d562b602-a49a-410b-9526-4c8feeacee43"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Xbox"",
+                    ""action"": ""B"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""998e9e32-2fac-4df1-aac4-af3a9e91f847"",
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
