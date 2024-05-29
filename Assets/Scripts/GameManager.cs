@@ -93,7 +93,6 @@ public class GameManager : MonoBehaviour
             hook.tutorial = false;
             hook.foodTutorial = false;
             hook.shopTutorial = false;
-            //shoppe.tutorial = false;
         }
     }
 
