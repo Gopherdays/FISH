@@ -66,11 +66,16 @@ public class GameManager : MonoBehaviour
             StartCoroutine(CreditsSpawning());
             time = -69;
             playerStats.Reset();
+            if (whatTheSavema != null)
+                whatTheSavema.Load();
         }
         if (SceneManager.GetActiveScene().name == "Game Over")
         {
             // do the high score thing
-        
+            whatTheSavema.Load();
+            whatTheSavema.highScores.scores.Add(new("BBBB", playerStats.finalTime, playerStats.points, playerStats.discoveredFish.Count));
+            whatTheSavema.Save();
+            whatTheSavema.ArrangeScores();
         }
         bulkTutorial = true;
     }
@@ -105,15 +110,9 @@ public class GameManager : MonoBehaviour
             time += Time.deltaTime;
             playerStats.turtleHunger -= Time.deltaTime * 100 / 180;
 
-            timer.text = "Day " + playerStats.day + " - ";
-            if (time > 3600)
-            {
-                timer.text += Mathf.FloorToInt(time / 3600) + ":";
-                if (Mathf.FloorToInt(time) % 3600 < 600) timer.text += "0";
-            }
-            timer.text += Mathf.FloorToInt(time / 60) % 60 + ":";
-            if (Mathf.FloorToInt(time) % 60 < 10) timer.text += "0";
-            timer.text += Mathf.FloorToInt(time) % 60;
+            timer.text = TimeFormat(time);
+
+            
 
             if (time >= playerStats.day * 180)
                 playerStats.NewDay();
@@ -139,6 +138,7 @@ public class GameManager : MonoBehaviour
             timer.text += Mathf.FloorToInt(time / 60) % 60 + ":";
             if (Mathf.FloorToInt(time) % 60 < 10) timer.text += "0";
             timer.text += Mathf.FloorToInt(time) % 60;*/
+            whatTheSavema.ArrangeScores();
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -390,5 +390,23 @@ public class GameManager : MonoBehaviour
         {
             part1 = false;
         }
+    }
+
+    public static string TimeFormat(float time, bool withDay = false)
+    {
+        string timer = "";
+        if (withDay)
+        {
+            timer += "Day " + Mathf.CeilToInt(time / 180) + " - ";
+        }
+        if (time > 3600)
+        {
+            timer += Mathf.FloorToInt(time / 3600) + ":";
+            if (Mathf.FloorToInt(time) % 3600 < 600) timer += "0";
+        }
+        timer += Mathf.FloorToInt(time / 60) % 60 + ":";
+        if (Mathf.FloorToInt(time) % 60 < 10) timer += "0";
+        timer += Mathf.FloorToInt(time) % 60;
+        return timer;
     }
 }
