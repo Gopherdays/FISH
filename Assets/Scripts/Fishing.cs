@@ -39,7 +39,7 @@ public class Fishing : MonoBehaviour
     public GameObject cast;
     public GameObject aim;
     public GameObject shop;
-    bool tutorial;
+    public bool tutorial;
     public bool shopTutorial;
     public bool foodTutorial;
     public bool foodBought;

@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
     bool part3;
     float resetTimer;
 
+    [SerializeField] GameObject controls;
+    [SerializeField] TextMeshProUGUI tutorialText;
+    static bool tutorialOn;
+
     public Fishing hook;
     public PlayerStatsEpic playerStats;
     public WhatTheSavema whatTheSavema;
@@ -51,6 +55,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        tutorialOn = true;
+        if (controls != null)
+            controls.SetActive(false);
         color = Color.black;
         StartCoroutine(FadeIn(1));
         
@@ -74,7 +81,17 @@ public class GameManager : MonoBehaviour
         }
         bulkTutorial = true;
     }
-    
+    private void Awake()
+    {
+        if (!tutorialOn && SceneManager.GetActiveScene().name == "Fishing")
+        {
+            hook.tutorial = false;
+            hook.foodTutorial = false;
+            hook.shopTutorial = false;
+            //shoppe.tutorial = false;
+        }
+    }
+
     private void Update()
     {
         if (part1 && part2 && part3)
@@ -344,13 +361,18 @@ public class GameManager : MonoBehaviour
     {
         if (context.started)
         {
-            if (!hook.fishing)
-                SwitchShop();
-            else if (!fishCancel)
-                fishCancel = true;
+            if (SceneManager.GetActiveScene().name == "Main Menu")
+                controls.SetActive(!controls.activeSelf);
             else
             {
-                fishCancel = false;
+                if (!hook.fishing)
+                    SwitchShop();
+                else if (!fishCancel)
+                    fishCancel = true;
+                else
+                {
+                    fishCancel = false;
+                }
             }
         }
     }
@@ -360,7 +382,19 @@ public class GameManager : MonoBehaviour
         {
             part2 = true;
             if (SceneManager.GetActiveScene().name == "Main Menu")
-                GoFish();
+            {
+                if (controls.activeSelf)
+                {
+                    if (tutorialOn)
+                        tutorialText.text = "Press A to toggle in-game\ntutorial (OFF)";
+                    else
+                        tutorialText.text = "Press A to toggle in-game\ntutorial (ON)";
+                    tutorialOn = !tutorialOn;
+                }
+                else
+                    GoFish();
+
+            }
             else if (SceneManager.GetActiveScene().name == "Game Over")
                 GoMenu();
         }
