@@ -12,17 +12,49 @@ public class WhatTheSavema : MonoBehaviour
     public List<int> scores;
     public List<int> fishs;
 
-    public TextMeshProUGUI text;
+    public TextMeshProUGUI[] texts;
 
     public void ArrangeScores()
     {
         highScores.SortHighestTime();
+        names.Clear();
+        times.Clear();
+        scores.Clear();
+        fishs.Clear();
         foreach (SingleScore thing in highScores.scores)
         {
             names.Add(thing.name);
             times.Add(thing.time);
             scores.Add(thing.score);
             fishs.Add(thing.fish);
+        }
+        foreach (TextMeshProUGUI text in texts)
+        {
+            text.text = "";
+        }
+        for (int i = 0; i < 9; i++)
+        {
+            if (names.Count <= i)
+                break;
+            texts[0].text += names[i] + "\n";
+        }
+        for (int i = 0; i < 9; i++)
+        {
+            if (scores.Count <= i)
+                break;
+            texts[1].text += scores[i] + "\n";
+        }
+        for (int i = 0; i < 9; i++)
+        {
+            if (times.Count <= i)
+                break;
+            texts[2].text += GameManager.TimeFormat(times[i],true) + "\n";
+        }
+        for (int i = 0; i < 9; i++)
+        {
+            if (fishs.Count <= i)
+                break;
+            texts[3].text += fishs[i] + "\n";
         }
     }
 
@@ -47,9 +79,14 @@ public class HighScores
 {
     public List<SingleScore> scores;
 
+    public HighScores()
+    {
+        scores = new();
+    }
+
     public void SortHighestTime()
     {
-        scores.Sort((a,b)=>a.time.CompareTo(b.time));
+        scores.Sort((b,a)=>a.time.CompareTo(b.time));
     }
 }
 
@@ -59,6 +96,13 @@ public class SingleScore
     public float time;
     public int score;
     public int fish;
+    public SingleScore(string name, float time, int score, int fish)
+    {
+        this.name = name;
+        this.time = time;
+        this.score = score;
+        this.fish = fish;
+    }
 }
 
 public class SaverLoader
@@ -74,13 +118,18 @@ public class SaverLoader
 
         // If there isn't a high score folder, make one
         if (!Directory.Exists(dir))
+        {
             Directory.CreateDirectory(dir);
+            Debug.Log("no save directory");
+        }
 
         // Serialize high scores to json
         string json = JsonUtility.ToJson(hs);
 
         // Write json to file
         File.WriteAllText(dir + fileName, json);
+        Debug.Log(JsonUtility.ToJson(hs));
+        Debug.Log("Saved " + hs.scores.Count + " records to " + (dir + fileName));
     }
 
     public static HighScores Load()
@@ -96,6 +145,7 @@ public class SaverLoader
         {
             string json = File.ReadAllText(fullPath);
             hs = JsonUtility.FromJson<HighScores>(json);
+            Debug.Log("Loaded " + hs.scores.Count + " records from " + fullPath);
         }
         else
         {

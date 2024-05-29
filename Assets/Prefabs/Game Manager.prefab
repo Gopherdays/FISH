@@ -44,6 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9546123d952f449b7d8bac73a837e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  names: []
+  times: []
+  scores: 
+  fishs: 
+  texts: []
 --- !u!1 &888772344043510386
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,6 +622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hook: {fileID: 0}
   playerStats: {fileID: 11400000, guid: 444d98e1fff443f42b1ef1bb38fb97ed, type: 2}
+  whatTheSavema: {fileID: 2543473549101193516}
   win: 0
   time: 0
   timer: {fileID: 0}
