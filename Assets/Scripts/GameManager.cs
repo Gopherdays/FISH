@@ -81,8 +81,8 @@ public class GameManager : MonoBehaviour
             // do the high score thing
             whatTheSavema.Load();
             whatTheSavema.highScores.scores.Add(new("BBBB", playerStats.finalTime, playerStats.points, playerStats.discoveredFish.Count));
-            whatTheSavema.Save();
             whatTheSavema.ArrangeScores();
+            whatTheSavema.Save();
         }
         bulkTutorial = true;
     }

@@ -2,6 +2,7 @@ using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class WhatTheSavema : MonoBehaviour
 {
@@ -71,7 +72,7 @@ public class WhatTheSavema : MonoBehaviour
 
     public void Load()
     {
-        SaverLoader.Load();
+        highScores = SaverLoader.Load();
     }
 }
 
@@ -79,9 +80,62 @@ public class HighScores
 {
     public List<SingleScore> scores;
 
+    public string TurnIntoFile()
+    {
+        string big = new("");
+        foreach (SingleScore score in scores)
+        {
+            string line = score.name + '|' + score.score + '|' + score.time + '|' + score.fish;
+            big += line + Environment.NewLine;
+        }
+        return big;
+    }
+
     public HighScores()
     {
         scores = new();
+    }
+
+    public HighScores(string[] fileLines)
+    {
+        scores = new();
+        foreach (string line in fileLines)
+        {
+            SingleScore score = new SingleScore();
+            Debug.Log("Full thing: " + line);
+
+            // Get indexes of bars in line
+            List<int> barIndex = new List<int>();
+            int pos = 0;
+            int mark = 0;
+            while (pos < line.Length && mark > -1)
+            {
+                mark = line.IndexOf('|', pos);
+                if (mark == -1) break;
+                barIndex.Add(mark);
+                pos = mark + 1;
+            }
+            Debug.Log(barIndex);
+
+            // Name is start of string to first bar
+            Debug.Log("Name:" + line[..(barIndex[0] - 1)]);
+            score.name = (line[..(barIndex[0])]);
+
+            // Score is first to second bar
+            Debug.Log("Score: " + line[(barIndex[0] + 1)..(barIndex[1])]);
+            score.score = int.Parse(line[(barIndex[0] + 1)..(barIndex[1])]);
+
+            // Time is second to third bar
+            Debug.Log("Time: " + line[(barIndex[1] + 1)..(barIndex[2])]);
+            score.time = float.Parse(line[(barIndex[1] + 1)..(barIndex[2])]);
+
+            // Unique fish is third bar to end of string
+            Debug.Log("Fish: " + line[(barIndex[2] + 1)..(line.Length)]);
+            score.fish = int.Parse(line[(barIndex[2] + 1)..(line.Length)]);
+
+            // Add compiled single score to high score
+            scores.Add(score);
+        }
     }
 
     public void SortHighestTime()
@@ -103,6 +157,10 @@ public class SingleScore
         this.score = score;
         this.fish = fish;
     }
+    public SingleScore()
+    {
+
+    }
 }
 
 public class SaverLoader
@@ -123,12 +181,8 @@ public class SaverLoader
             Debug.Log("no save directory");
         }
 
-        // Serialize high scores to json
-        string json = JsonUtility.ToJson(hs);
-
         // Write json to file
-        File.WriteAllText(dir + fileName, json);
-        Debug.Log(JsonUtility.ToJson(hs));
+        File.WriteAllText(dir + fileName, hs.TurnIntoFile());
         Debug.Log("Saved " + hs.scores.Count + " records to " + (dir + fileName));
     }
 
@@ -143,8 +197,8 @@ public class SaverLoader
         // If the file exists, read it
         if (File.Exists(fullPath))
         {
-            string json = File.ReadAllText(fullPath);
-            hs = JsonUtility.FromJson<HighScores>(json);
+            string[] file = File.ReadAllLines(fullPath);
+            hs = new HighScores(file);
             Debug.Log("Loaded " + hs.scores.Count + " records from " + fullPath);
         }
         else
