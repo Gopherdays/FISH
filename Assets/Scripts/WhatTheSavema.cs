@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using System.Text;
 
 public class WhatTheSavema : MonoBehaviour
 {
@@ -167,7 +168,7 @@ public class SaverLoader
 {
     // The stuff will be in AppData/LocalLow/Black Curtain/HighScores/HighScores.txt or similar
     public static string directory = "/HighScores/";
-    public static string fileName = "HighScores.txt";
+    public static string fileName = "HighScores.hydra";
 
     public static void Save(HighScores hs)
     {
@@ -182,7 +183,7 @@ public class SaverLoader
         }
 
         // Write json to file
-        File.WriteAllText(dir + fileName, hs.TurnIntoFile());
+        File.WriteAllText(dir + fileName, hs.TurnIntoFile(), Encoding.ASCII);
         Debug.Log("Saved " + hs.scores.Count + " records to " + (dir + fileName));
     }
 
@@ -197,7 +198,7 @@ public class SaverLoader
         // If the file exists, read it
         if (File.Exists(fullPath))
         {
-            string[] file = File.ReadAllLines(fullPath);
+            string[] file = File.ReadAllLines(fullPath, Encoding.ASCII);
             hs = new HighScores(file);
             Debug.Log("Loaded " + hs.scores.Count + " records from " + fullPath);
         }
