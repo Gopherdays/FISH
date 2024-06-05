@@ -9,10 +9,6 @@ using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
-    bool part1;
-    bool part2;
-    bool part3;
-    float resetTimer;
 
     [SerializeField] GameObject controls;
     [SerializeField] TextMeshProUGUI tutorialText;
@@ -96,21 +92,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (part1 && part2 && part3)
-        {
-            if (resetTimer < 5)
-                resetTimer += Time.deltaTime;
-            else
-            {
-                resetTimer = 0;
-                GoMenu();
-            }
-        }
-        else
-        {
-            if (resetTimer != 0)
-                resetTimer = 0;
-        }
         if (SceneManager.GetActiveScene().name == "Fishing")
         {
             if (clock < 0.1)
@@ -367,7 +348,6 @@ public class GameManager : MonoBehaviour
     {
         if (context.started)
         {
-            part2 = true;
             if (SceneManager.GetActiveScene().name == "Main Menu")
             {
                 if (controls.activeSelf)
@@ -385,32 +365,7 @@ public class GameManager : MonoBehaviour
             else if (SceneManager.GetActiveScene().name == "Game Over")
                 GoMenu();
         }
-        if (context.canceled)
-        {
-            part2 = false;
-        }
-    }
-    public void Up(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            part3 = true;
-        }
-        if (context.canceled)
-        {
-            part3 = false;
-        }
-    }
-    public void Right(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            part1 = true;
-        }
-        if (context.canceled)
-        {
-            part1 = false;
-        }
+        
     }
 
     public static string TimeFormat(float time, bool withDay = false)

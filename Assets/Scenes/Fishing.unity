@@ -12507,6 +12507,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2099728168}
     - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
+      propertyPath: hook
+      value: 
+      objectReference: {fileID: 2145965931}
+    - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
       propertyPath: light
       value: 
       objectReference: {fileID: 2145965933}
@@ -12549,6 +12553,10 @@ PrefabInstance:
     - target: {fileID: 7738027014404792582, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
       propertyPath: m_Name
       value: Game Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8608829742108951651, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
