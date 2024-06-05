@@ -82,9 +82,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Y"",
+                    ""name"": ""Pause"",
                     ""type"": ""Button"",
-                    ""id"": ""0a5331d2-e783-43a0-8be4-d092418524df"",
+                    ""id"": ""91fc500f-79f3-43e9-b51b-7ae7eadbfce5"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -127,6 +127,28 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""4b7e905b-dba0-4209-ab06-19aa459c1e4d"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5495879b-3dba-486e-9556-4b9d5546705a"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""a2e74865-f963-4104-b68b-b0ace122a6e2"",
                     ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
@@ -154,6 +176,28 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Joystick"",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""09664f34-241c-4e10-ac07-92e7a67f9683"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""db41dfb8-967a-4ff0-bfde-f80956692868"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -193,6 +237,28 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""c2bddc0f-4d26-4194-8f64-161ec2b036cb"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1c761038-b1b7-4017-a75c-925679e051a3"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""4d9aaab2-9b51-4246-9590-d7bb43a425bf"",
                     ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
@@ -226,6 +292,28 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""a440bd9a-66ce-4f7b-b148-7722d3bfa550"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""02a322ad-1ee6-4e9a-ac4f-7f088c540473"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""91b60f10-33de-48de-b409-b14192ba4482"",
                     ""path"": ""<HID::Microntek              USB Joystick          >/button3"",
                     ""interactions"": """",
@@ -242,6 +330,17 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Xbox"",
+                    ""action"": ""A"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2613365c-a0db-42b8-a528-7d940af814e9"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""A"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -271,7 +370,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d562b602-a49a-410b-9526-4c8feeacee43"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Keyboard>/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Xbox"",
@@ -281,12 +380,23 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""998e9e32-2fac-4df1-aac4-af3a9e91f847"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""id"": ""e9a30f2d-2509-4a8a-9392-d8140442ac00"",
+                    ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Y"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""575c4041-74b3-401a-8d69-4036e2e69345"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -331,7 +441,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         m_Reel_Right = m_Reel.FindAction("Right", throwIfNotFound: true);
         m_Reel_A = m_Reel.FindAction("A", throwIfNotFound: true);
         m_Reel_B = m_Reel.FindAction("B", throwIfNotFound: true);
-        m_Reel_Y = m_Reel.FindAction("Y", throwIfNotFound: true);
+        m_Reel_Pause = m_Reel.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -397,7 +507,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Reel_Right;
     private readonly InputAction m_Reel_A;
     private readonly InputAction m_Reel_B;
-    private readonly InputAction m_Reel_Y;
+    private readonly InputAction m_Reel_Pause;
     public struct ReelActions
     {
         private @InputActions m_Wrapper;
@@ -408,7 +518,7 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         public InputAction @Right => m_Wrapper.m_Reel_Right;
         public InputAction @A => m_Wrapper.m_Reel_A;
         public InputAction @B => m_Wrapper.m_Reel_B;
-        public InputAction @Y => m_Wrapper.m_Reel_Y;
+        public InputAction @Pause => m_Wrapper.m_Reel_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Reel; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -436,9 +546,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @B.started -= m_Wrapper.m_ReelActionsCallbackInterface.OnB;
                 @B.performed -= m_Wrapper.m_ReelActionsCallbackInterface.OnB;
                 @B.canceled -= m_Wrapper.m_ReelActionsCallbackInterface.OnB;
-                @Y.started -= m_Wrapper.m_ReelActionsCallbackInterface.OnY;
-                @Y.performed -= m_Wrapper.m_ReelActionsCallbackInterface.OnY;
-                @Y.canceled -= m_Wrapper.m_ReelActionsCallbackInterface.OnY;
+                @Pause.started -= m_Wrapper.m_ReelActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_ReelActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_ReelActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_ReelActionsCallbackInterface = instance;
             if (instance != null)
@@ -461,9 +571,9 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
                 @B.started += instance.OnB;
                 @B.performed += instance.OnB;
                 @B.canceled += instance.OnB;
-                @Y.started += instance.OnY;
-                @Y.performed += instance.OnY;
-                @Y.canceled += instance.OnY;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -494,6 +604,6 @@ public partial class @InputActions : IInputActionCollection2, IDisposable
         void OnRight(InputAction.CallbackContext context);
         void OnA(InputAction.CallbackContext context);
         void OnB(InputAction.CallbackContext context);
-        void OnY(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

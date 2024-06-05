@@ -78,9 +78,7 @@ public class GameManager : MonoBehaviour
         }
         if (SceneManager.GetActiveScene().name == "Game Over")
         {
-            // do the high score thing
             whatTheSavema.Load();
-            whatTheSavema.highScores.scores.Add(new("BBBB", playerStats.finalTime, playerStats.points, playerStats.discoveredFish.Count));
             whatTheSavema.ArrangeScores();
             whatTheSavema.Save();
         }
@@ -144,16 +142,6 @@ public class GameManager : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "Game Over")
         {
-            /*time = playerStats.finalTime;
-            timer.text = "Day " + playerStats.day + " - ";
-            if (time > 3600)
-            {
-                timer.text += Mathf.FloorToInt(time / 3600) + ":";
-                if (Mathf.FloorToInt(time) % 3600 < 600) timer.text += "0";
-            }
-            timer.text += Mathf.FloorToInt(time / 60) % 60 + ":";
-            if (Mathf.FloorToInt(time) % 60 < 10) timer.text += "0";
-            timer.text += Mathf.FloorToInt(time) % 60;*/
             whatTheSavema.ArrangeScores();
         }
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -441,5 +429,12 @@ public class GameManager : MonoBehaviour
         if (Mathf.FloorToInt(time) % 60 < 10) timer += "0";
         timer += Mathf.FloorToInt(time) % 60;
         return timer;
+    }
+
+    public void SaveCurrentStats(string chosenName)
+    {
+        whatTheSavema.highScores.scores.Add(new(chosenName, playerStats.finalTime, playerStats.points, playerStats.discoveredFish.Count));
+        whatTheSavema.ArrangeScores();
+        whatTheSavema.Save();
     }
 }
