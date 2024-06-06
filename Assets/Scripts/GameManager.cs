@@ -9,6 +9,7 @@ using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
+    public List<GameObject> allFish;
 
     [SerializeField] GameObject controls;
     [SerializeField] TextMeshProUGUI tutorialText;
@@ -390,6 +391,20 @@ public class GameManager : MonoBehaviour
         if (Mathf.FloorToInt(time) % 60 < 10) timer += "0";
         timer += Mathf.FloorToInt(time) % 60;
         return timer;
+    }
+
+    public List<GameObject> FindFishAtDepth(float depth)
+    {
+        List<GameObject> temp = new();
+        foreach (GameObject fish in allFish)
+        {
+            Fish gamer = fish.GetComponent<Fish>();
+            if (gamer.minDepth < depth && depth < gamer.maxDepth)
+            {
+                temp.Add(fish);
+            }
+        }
+        return temp;
     }
 
     public void SaveCurrentStats(string chosenName)

@@ -8427,6 +8427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01039d6fce58cf42a6969b6148800c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1730600965}
   fishTypes:
   - {fileID: 5619285366630353900, guid: d8ad31d13f626bf48beb903d1c3034bb, type: 3}
   - {fileID: 5619285366630353900, guid: 1fb501e5de9e20a4ba9207bc2d1aaa75, type: 3}

@@ -17,6 +17,9 @@ public class Fish : MonoBehaviour
     public int turnChance;
     public int skipChance;
 
+    public int minDepth;
+    public int maxDepth;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

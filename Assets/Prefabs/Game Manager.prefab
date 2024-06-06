@@ -620,6 +620,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43de9c2c17f0b2f458bead366574d112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allFish:
+  - {fileID: 5619285366630353900, guid: 20fede8c202ce0744ba732423ff1689b, type: 3}
+  - {fileID: 5619285366630353900, guid: 2a728dc37036ba44882baa1bd9dce90f, type: 3}
+  - {fileID: 5619285366630353900, guid: ca37576fdb0f85e4fb35e5e613caf22e, type: 3}
+  - {fileID: 5619285366630353900, guid: 2734b43c62788af40aa0ace0bb131918, type: 3}
+  - {fileID: 5619285366630353900, guid: d8ad31d13f626bf48beb903d1c3034bb, type: 3}
+  - {fileID: 5619285366630353900, guid: c45743e7fd4b07349ae7033f242ff653, type: 3}
+  - {fileID: 5619285366630353900, guid: 1fb501e5de9e20a4ba9207bc2d1aaa75, type: 3}
+  - {fileID: 5619285366630353900, guid: 619808ae35b9a694d9d3920727fab33b, type: 3}
+  - {fileID: 5619285366630353900, guid: b485503466f1a3f4590cfaac5a482fed, type: 3}
+  - {fileID: 5619285366630353900, guid: 2df2cc8129066714ebeea3e22feed50f, type: 3}
+  - {fileID: 3399629275999387119, guid: 53610bfc898c1dc4e9a2535a4503a8b7, type: 3}
+  - {fileID: 5619285366630353900, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
+  - {fileID: 5619285366630353900, guid: 56583b15f07bc444295a10a469672d32, type: 3}
+  - {fileID: 5619285366630353900, guid: 8b6b7870d6c6e0f42a5ae9ec935b8f06, type: 3}
+  - {fileID: 5619285366630353900, guid: 6fb5e533ef5533c409afc884b3772045, type: 3}
+  - {fileID: 5619285366630353900, guid: 3c6ac6b1ea9921d4ba3498d9a2106138, type: 3}
+  - {fileID: 5619285366630353900, guid: b3d593ef332df1a4289fa96d56a73ba9, type: 3}
+  controls: {fileID: 0}
+  tutorialText: {fileID: 0}
   hook: {fileID: 0}
   playerStats: {fileID: 11400000, guid: 444d98e1fff443f42b1ef1bb38fb97ed, type: 2}
   whatTheSavema: {fileID: 2543473549101193516}
@@ -1065,7 +1085,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8984765130568464580
 RectTransform:
   m_ObjectHideFlags: 0
