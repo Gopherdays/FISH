@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
             time += Time.deltaTime;
             playerStats.turtleHunger -= Time.deltaTime * 100 / 180;
 
-            timer.text = TimeFormat(time);
+            timer.text = TimeFormat(time,true);
 
             
 
@@ -362,8 +362,6 @@ public class GameManager : MonoBehaviour
                     GoFish();
 
             }
-            else if (SceneManager.GetActiveScene().name == "Game Over")
-                GoMenu();
         }
         
     }
