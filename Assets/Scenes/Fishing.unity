@@ -12162,7 +12162,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1730600965}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Y
+        m_MethodName: Pause
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12172,8 +12172,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 0a5331d2-e783-43a0-8be4-d092418524df
-    m_ActionName: Reel/Y[/XInputControllerWindows/buttonNorth]
+    m_ActionId: 91fc500f-79f3-43e9-b51b-7ae7eadbfce5
+    m_ActionName: Reel/Pause[/XInputControllerWindows/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Xbox
   m_DefaultActionMap: Reel

@@ -366,6 +366,14 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void Pause(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            PauseUnpause();
+        }
+    }
+        
     public static string TimeFormat(float time, bool withDay = false)
     {
         string timer = "";
