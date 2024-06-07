@@ -107,6 +107,7 @@ public class GameManager : MonoBehaviour
             hook.foodTutorial = false;
             hook.shopTutorial = false;
         }
+        allFish.Sort((a, b) => a.GetComponent<Fish>().maxDepth.CompareTo(b.GetComponent<Fish>().maxDepth));
     }
 
     private void Update()

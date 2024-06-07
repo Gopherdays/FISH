@@ -92,6 +92,7 @@ public class Encyclopedia : MonoBehaviour
             <= 1f => "Slow",
             _ => "Very Slow",
         };
+
         rightSideStats[3].text = fish.escape.ToString() + " m/s";
 
         rightSideStats[4].text = fish.turnChance switch
@@ -115,7 +116,12 @@ public class Encyclopedia : MonoBehaviour
             <= 40 => "Very Often",
             _ => "Continuously",
         };
+
         rightSideStats[6].text = "Base Value: $" + fish.value;
+
+        rightSideStats[7].text = fish.minDepth + "m";
+
+        rightSideStats[8].text = fish.maxDepth + "m";
     }
 
     //Menu navigation
@@ -172,10 +178,12 @@ public class FishData
     public int turnChance;
     public int skipChance;
     public int value;
+    public int minDepth;
+    public int maxDepth;
     public Sprite sprite;
 
-    //Make from given stats
-    public FishData(string name, string description, float speed, float escape, int turnChance, int skipChance, int value, Sprite sprite)
+    //Make from given stats, if needed
+    public FishData(string name, string description, float speed, float escape, int turnChance, int skipChance, int value, int minDepth, int maxDepth, Sprite sprite)
     {
         this.name = name;
         this.description = description;
@@ -185,6 +193,8 @@ public class FishData
         this.skipChance = skipChance;
         this.value = value;
         this.sprite = sprite;
+        this.minDepth = minDepth;
+        this.maxDepth = maxDepth;
     }
 
     //Make from an actual fish script
@@ -197,6 +207,8 @@ public class FishData
         turnChance = fish.turnChance;
         skipChance = fish.skipChance;
         value = fish.value;
+        minDepth = fish.minDepth;
+        maxDepth = fish.maxDepth;
         sprite = fish.gameObject.GetComponent<SpriteRenderer>().sprite;
     }
 }
