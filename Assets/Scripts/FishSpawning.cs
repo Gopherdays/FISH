@@ -5,7 +5,7 @@ using UnityEngine;
 public class FishSpawning : MonoBehaviour
 {
     public GameManager gameManager;
-    GameObject fishingHook;
+    public GameObject fishingHook;
 
     public int maxDepth = -15;
 
@@ -15,7 +15,6 @@ public class FishSpawning : MonoBehaviour
         {
             SpawnFish(-i);
         }
-        fishingHook = GameObject.Find("Fishing Hook");
     }
 
     private void Update()

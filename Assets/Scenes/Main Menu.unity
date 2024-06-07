@@ -377,6 +377,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 8608829742108951651, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1004,8 +1008,8 @@ MonoBehaviour:
     m_ActionName: Reel/B[/XInputControllerWindows/buttonEast]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 0a5331d2-e783-43a0-8be4-d092418524df
-    m_ActionName: Reel/Y[/XInputControllerWindows/buttonNorth]
+    m_ActionId: 91fc500f-79f3-43e9-b51b-7ae7eadbfce5
+    m_ActionName: Reel/Pause[/XInputControllerWindows/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Reel
