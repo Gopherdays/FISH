@@ -8,7 +8,7 @@ using TMPro;
 public class Encyclopedia : MonoBehaviour
 {
     public PlayerStatsEpic playerStats;
-    public GameObject[] listOfAllFishInTheGameAGAIN;
+    public GameManager gm;
 
     public Image[] leftSidePictures;
     public Image[] leftSideBackgrounds;
@@ -22,136 +22,108 @@ public class Encyclopedia : MonoBehaviour
 
     private void Update()
     {
+        //Fish displaying stuff
         for (int i = 0 + ((selection / 8) * 8); i < 8 + ((selection / 8) * 8); i++)
         {
-            if (i < listOfAllFishInTheGameAGAIN.Length)
+            if (i < gm.allFish.Count)
             {
+                //Show the section as the corresponding fish
+                //Dividing then multiplying by 8 actually has a purpose, because integer division rounds down for free
                 leftSidePictures[i - ((selection / 8) * 8)].gameObject.SetActive(true);
                 leftSideNames[i - ((selection / 8) * 8)].gameObject.SetActive(true);
-                leftSidePictures[i - ((selection / 8) * 8)].sprite = listOfAllFishInTheGameAGAIN[i].GetComponent<SpriteRenderer>().sprite;
+                leftSidePictures[i - ((selection / 8) * 8)].sprite = gm.allFish[i].GetComponent<SpriteRenderer>().sprite;
                 if (HasFish(i))
                 {
+                    //If you have the fish, actually show it
                     leftSidePictures[i - ((selection / 8) * 8)].color = Color.white;
-                    leftSideNames[i - ((selection / 8) * 8)].text = listOfAllFishInTheGameAGAIN[i].name;
+                    leftSideNames[i - ((selection / 8) * 8)].text = gm.allFish[i].name;
                 }
                 else
                 {
+                    //Mysterious fish...
                     leftSidePictures[i - ((selection / 8) * 8)].color = Color.black;
                     leftSideNames[i - ((selection / 8) * 8)].text = "???";
                 }
             }
             else
             {
+                //Hide boxes that go past the max fish
                 leftSidePictures[i - ((selection / 8) * 8)].gameObject.SetActive(false);
                 leftSideNames[i - ((selection / 8) * 8)].gameObject.SetActive(false);
             }
         }
 
+        //Hide the selectors except for the thing that the player has selected
         foreach (Image item in leftSideBackgrounds)
         {
             item.enabled = false;
         }
         leftSideBackgrounds[selection%8].enabled = true;
-        pageIndex.text = "Page " + ((selection / 8) + 1) + "/" + ((listOfAllFishInTheGameAGAIN.Length / 8) + 1);
+
+        //Page number
+        pageIndex.text = "Page " + ((selection / 8) + 1) + "/" + ((gm.allFish.Count / 8) + 1);
     }
 
+    //Do you have a fish?
     public bool HasFish(int index)
     {
-        return (playerStats.discoveredFish.Contains(listOfAllFishInTheGameAGAIN[index].GetComponent<Fish>().description));
+        return (playerStats.discoveredFish.Contains(gm.allFish[index].GetComponent<Fish>().description));
     }
 
+    //When A pressed, set the stuff on the right page to work
     public void DisplayFish(FishData fish)
     {
+        //Set the image to show the fish
         rightSideImage.sprite = fish.sprite;
         rightSideImage.SetNativeSize();
         rightSideImage.rectTransform.sizeDelta *= 3;
 
+        //Set the texts to the fish
         rightSideStats[0].text = fish.name;
 
         rightSideStats[1].text = fish.description;
 
-        switch (fish.speed)
+        rightSideStats[2].text = fish.speed switch
         {
-            case <= 0.1f:
-                rightSideStats[2].text = "Extremely Fast";
-                break;
-            case <= 0.2f:
-                rightSideStats[2].text = "Very Fast";
-                break;
-            case <= 0.4f:
-                rightSideStats[2].text = "Fast";
-                break;
-            case <= 0.7f:
-                rightSideStats[2].text = "Medium";
-                break;
-            case <= 1f:
-                rightSideStats[2].text = "Slow";
-                break;
-            default:
-                rightSideStats[2].text = "Very Slow";
-                break;
-        }
-
+            <= 0.1f => "Extremely Fast",
+            <= 0.2f => "Very Fast",
+            <= 0.4f => "Fast",
+            <= 0.7f => "Medium",
+            <= 1f => "Slow",
+            _ => "Very Slow",
+        };
         rightSideStats[3].text = fish.escape.ToString() + " m/s";
 
-        switch (fish.turnChance)
+        rightSideStats[4].text = fish.turnChance switch
         {
-            case 0:
-                rightSideStats[4].text = "Never";
-                break;
-            case <= 1:
-                rightSideStats[4].text = "Very Unlikely";
-                break;
-            case <= 3:
-                rightSideStats[4].text = "Unlikely";
-                break;
-            case <= 10:
-                rightSideStats[4].text = "Sometimes";
-                break;
-            case <= 25:
-                rightSideStats[4].text = "Often";
-                break;
-            case <= 40:
-                rightSideStats[4].text = "Very Often";
-                break;
-            default:
-                rightSideStats[4].text = "Continuously";
-                break;
-        }
+            0 => "Never",
+            <= 1 => "Very Unlikely",
+            <= 3 => "Unlikely",
+            <= 10 => "Sometimes",
+            <= 25 => "Often",
+            <= 40 => "Very Often",
+            _ => "Continuously",
+        };
 
-        switch (fish.skipChance)
+        rightSideStats[5].text = fish.skipChance switch
         {
-            case 0:
-                rightSideStats[5].text = "Never";
-                break;
-            case <= 1:
-                rightSideStats[5].text = "Very Unlikely";
-                break;
-            case <= 3:
-                rightSideStats[5].text = "Unlikely";
-                break;
-            case <= 10:
-                rightSideStats[5].text = "Sometimes";
-                break;
-            case <= 25:
-                rightSideStats[5].text = "Often";
-                break;
-            case <= 40:
-                rightSideStats[5].text = "Very Often";
-                break;
-            default:
-                rightSideStats[5].text = "Continuously";
-                break;
-        }
-
+            0 => "Never",
+            <= 1 => "Very Unlikely",
+            <= 3 => "Unlikely",
+            <= 10 => "Sometimes",
+            <= 25 => "Often",
+            <= 40 => "Very Often",
+            _ => "Continuously",
+        };
         rightSideStats[6].text = "Base Value: $" + fish.value;
     }
 
+    //Menu navigation
     public void Left(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            selection = Mathf.Clamp(selection -= 4,0,listOfAllFishInTheGameAGAIN.Length - 1);
+            selection = Mathf.Clamp(selection -= 4, 0, gm.allFish.Count - 1);
         }
     }
 
@@ -159,7 +131,7 @@ public class Encyclopedia : MonoBehaviour
     {
         if (context.started)
         {
-            selection = Mathf.Clamp(selection += 4, 0, listOfAllFishInTheGameAGAIN.Length - 1);
+            selection = Mathf.Clamp(selection += 4, 0, gm.allFish.Count - 1);
         }
     }
 
@@ -167,7 +139,7 @@ public class Encyclopedia : MonoBehaviour
     {
         if (context.started)
         {
-            selection = Mathf.Clamp(selection -= 1, 0, listOfAllFishInTheGameAGAIN.Length - 1);
+            selection = Mathf.Clamp(selection -= 1, 0, gm.allFish.Count - 1);
         }
     }
 
@@ -175,20 +147,22 @@ public class Encyclopedia : MonoBehaviour
     {
         if (context.started)
         {
-            selection = Mathf.Clamp(selection += 1, 0, listOfAllFishInTheGameAGAIN.Length - 1);
+            selection = Mathf.Clamp(selection += 1, 0, gm.allFish.Count - 1);
         }
     }
 
+    //Select a fish if you have it
     public void A(InputAction.CallbackContext context)
     {
         if (context.started)
         {
             if (HasFish(selection))
-                DisplayFish(new FishData(listOfAllFishInTheGameAGAIN[selection].GetComponent<Fish>()));
+                DisplayFish(new FishData(gm.allFish[selection].GetComponent<Fish>()));
         }
     }
 }
 
+//Class for fish data
 public class FishData
 {
     public string name;
@@ -200,6 +174,7 @@ public class FishData
     public int value;
     public Sprite sprite;
 
+    //Make from given stats
     public FishData(string name, string description, float speed, float escape, int turnChance, int skipChance, int value, Sprite sprite)
     {
         this.name = name;
@@ -212,6 +187,7 @@ public class FishData
         this.sprite = sprite;
     }
 
+    //Make from an actual fish script
     public FishData (Fish fish)
     {
         name = fish.gameObject.name;

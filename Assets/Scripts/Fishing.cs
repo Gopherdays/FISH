@@ -3,37 +3,55 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
-using UnityEngine.UI;
 using TMPro;
 
 public class Fishing : MonoBehaviour
 {
+    //Player stuff
     GameObject player;
+    public GameManager gm;
+    public PlayerStatsEpic stats;
+
+    //Hook controlling
     CircleCollider2D coll;
+    Rigidbody2D rb;
+    public Transform origin;
+    SpriteRenderer sr;
+    public float hookSpeedHorizontal = 2;
+    public float hookSpeedVertical = 4;
+    float prevY;
+    public bool thrown;
+
+    //Fish stats, when reeling
     public GameObject fish;
     public Fish fishFish;
     public float valueMult;
+    Vector2 tempV;
+
+    //Reeling UI
     public GameObject indicator;
     public GameObject catcher;
     public TextMeshProUGUI depthText;
-    Vector2 tempV;
     int catcherPos;
     int curCatcherPos;
     int indPos;
     int curIndPos;
-    List<float> positions = new List<float>();
 
+    //Reeling minigame position
     bool up;
     bool left;
     bool down;
     bool right;
+    List<float> positions = new List<float>();
+
+    //Input whatevers
     bool confirm;
-    bool bConfirm;
     bool once;
     bool changed;
     bool bulk;
     Vector2 temp = new Vector2();
 
+    //Tutorials
     public GameObject feed;
     public GameObject move;
     public GameObject cast;
@@ -43,9 +61,11 @@ public class Fishing : MonoBehaviour
     public bool shopTutorial;
     public bool foodTutorial;
     public bool foodBought;
+
+    //Last fish
     public TextMeshProUGUI lastFish;
-    
-    public GameManager gm;
+
+    //Fish stats
     public float speed; 
     public float escape;
     public int turnChance;
@@ -57,19 +77,13 @@ public class Fishing : MonoBehaviour
     bool direction;
     bool skip;
 
+    //Beautify
     public GameObject splash;
-    public Transform origin;
-    public PlayerStatsEpic stats;
-    Rigidbody2D rb;
     CameraScript cs;
     FishingLine fl;
-    SpriteRenderer sr;
     CinemachineVirtualCamera cam;
-    public float hookSpeedHorizontal = 2;
-    public float hookSpeedVertical = 4;
-    float prevY;
-    public bool thrown;
 
+    //HUD
     public TextMeshProUGUI foodCount;
     GameObject fishingUI;
     GameObject depth;
@@ -77,6 +91,7 @@ public class Fishing : MonoBehaviour
     public bool fishing;
     bool reset;
 
+    //Audio
     private AudioSource source;
     public AudioClip clip1, clip2, clip3, clip4;
     public AudioClip[] sounds;
@@ -84,6 +99,8 @@ public class Fishing : MonoBehaviour
 
     private void Start()
     {
+        //OMEGA INITIALIZATION
+        //This is basically just all setting up
         coll = GetComponent<CircleCollider2D>();
         fishingUI = GameObject.Find("Fishing UI");
         depth = GameObject.Find("Depth Meter");
@@ -125,6 +142,7 @@ public class Fishing : MonoBehaviour
 
     private void Update()
     {
+        // I stopped here lol, this is just so dense we really should've done this earlier -Nick
         if (thrown && confirm && !gm.shoppe.activeSelf)
         {
             if (gm.playerStats.day < 4 || !bulk)
@@ -209,24 +227,6 @@ public class Fishing : MonoBehaviour
                     StartCoroutine(WaitForInWater(feed));
                 ThrowHook();
 
-            }
-        }
-        if (bConfirm)
-        {
-            bConfirm = false;
-            if (!once)
-                once = true;
-            else
-            {
-                once = false;
-                fishingUI.SetActive(false);
-                depth.SetActive(false);
-                if (tutorial)
-                {
-                    tutorial = false;
-                    aim.SetActive(false);
-                }
-                Switch();
             }
         }
     }
@@ -573,7 +573,20 @@ public class Fishing : MonoBehaviour
     {
         if (context.started && fishing)
         {
-            bConfirm = true;
+            if (!once)
+                once = true;
+            else
+            {
+                once = false;
+                fishingUI.SetActive(false);
+                depth.SetActive(false);
+                if (tutorial)
+                {
+                    tutorial = false;
+                    aim.SetActive(false);
+                }
+                Switch();
+            }
         }
     }
 }
