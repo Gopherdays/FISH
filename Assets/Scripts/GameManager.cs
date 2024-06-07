@@ -414,6 +414,7 @@ public class GameManager : MonoBehaviour
     //Calculate what fish should spawn at a given depth
     public List<GameObject> FindFishAtDepth(float depth)
     {
+        depth = Mathf.Abs(depth);
         List<GameObject> temp = new();
         foreach (GameObject fish in allFish)
         {
