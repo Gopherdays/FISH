@@ -7,22 +7,31 @@ using System.Text;
 
 public class WhatTheSavema : MonoBehaviour
 {
+    //Actual list of the high scores
     public HighScores highScores = new HighScores();
 
+    //Unpacked list of high scores
     public List<string> names;
     public List<float> times;
     public List<int> scores;
     public List<int> fishs;
 
+    //High score texts
     public TextMeshProUGUI[] texts;
 
+    //Sort scores by highest time
     public void ArrangeScores()
     {
+        //Do the actual sorting in the background
         highScores.SortHighestTime();
+
+        //Clear current stuff
         names.Clear();
         times.Clear();
         scores.Clear();
         fishs.Clear();
+
+        //Unpack the scores, in order, now that they're sorted
         foreach (SingleScore thing in highScores.scores)
         {
             names.Add(thing.name);
@@ -30,10 +39,14 @@ public class WhatTheSavema : MonoBehaviour
             scores.Add(thing.score);
             fishs.Add(thing.fish);
         }
+
+        //Blank the text, so += works
         foreach (TextMeshProUGUI text in texts)
         {
             text.text = "";
         }
+
+        //Add each type of score stat into the corresponding text box
         for (int i = 0; i < 9; i++)
         {
             if (names.Count <= i)
@@ -60,17 +73,11 @@ public class WhatTheSavema : MonoBehaviour
         }
     }
 
-    public (string, float, int, int) GetStats(int index)
-    {
-        SingleScore score = highScores.scores[index];
-        return (score.name, score.time, score.score, score.fish);
-    }
-
+    //Tell the SaverLoader to save or load
     public void Save()
     {
         SaverLoader.Save(highScores);
     }
-
     public void Load()
     {
         highScores = SaverLoader.Load();
@@ -79,8 +86,10 @@ public class WhatTheSavema : MonoBehaviour
 
 public class HighScores
 {
+    //List of scores, wow
     public List<SingleScore> scores;
 
+    //Packs the scores into the custom .hydra format
     public string TurnIntoFile()
     {
         string big = new("");
@@ -92,20 +101,28 @@ public class HighScores
         return big;
     }
 
+    //Blank constructor
     public HighScores()
     {
         scores = new();
     }
 
+    //Good thing they have a sorting function built in
+    public void SortHighestTime()
+    {
+        scores.Sort((b, a) => a.time.CompareTo(b.time));
+    }
+
+    //Here's the actual loading part.
     public HighScores(string[] fileLines)
     {
         scores = new();
+        //Get each string from the given array and do the following stuff to it
         foreach (string line in fileLines)
         {
             SingleScore score = new SingleScore();
-            Debug.Log("Full thing: " + line);
 
-            // Get indexes of bars in line
+            // Get indexes of bars in the line
             List<int> barIndex = new List<int>();
             int pos = 0;
             int mark = 0;
@@ -116,41 +133,33 @@ public class HighScores
                 barIndex.Add(mark);
                 pos = mark + 1;
             }
-            Debug.Log(barIndex);
 
             // Name is start of string to first bar
-            Debug.Log("Name:" + line[..(barIndex[0] - 1)]);
             score.name = (line[..(barIndex[0])]);
 
             // Score is first to second bar
-            Debug.Log("Score: " + line[(barIndex[0] + 1)..(barIndex[1])]);
             score.score = int.Parse(line[(barIndex[0] + 1)..(barIndex[1])]);
 
             // Time is second to third bar
-            Debug.Log("Time: " + line[(barIndex[1] + 1)..(barIndex[2])]);
             score.time = float.Parse(line[(barIndex[1] + 1)..(barIndex[2])]);
 
             // Unique fish is third bar to end of string
-            Debug.Log("Fish: " + line[(barIndex[2] + 1)..(line.Length)]);
             score.fish = int.Parse(line[(barIndex[2] + 1)..(line.Length)]);
 
             // Add compiled single score to high score
             scores.Add(score);
         }
     }
-
-    public void SortHighestTime()
-    {
-        scores.Sort((b,a)=>a.time.CompareTo(b.time));
-    }
 }
 
+//Class for a single entry into the high score
 public class SingleScore
 {
     public string name;
     public float time;
     public int score;
     public int fish;
+    //Make out of actual data
     public SingleScore(string name, float time, int score, int fish)
     {
         this.name = name;
@@ -158,18 +167,21 @@ public class SingleScore
         this.score = score;
         this.fish = fish;
     }
+    //Empty constructor
     public SingleScore()
     {
 
     }
 }
 
+//The thing that controls actually saving and actually loading
 public class SaverLoader
 {
-    // The stuff will be in AppData/LocalLow/Black Curtain/HighScores/HighScores.txt or similar
+    // The stuff will be in */AppData/LocalLow/Black Curtain/HighScores/HighScores.hydra or similar
     public static string directory = "/HighScores/";
     public static string fileName = "HighScores.hydra";
 
+    //Save function
     public static void Save(HighScores hs)
     {
         // Get path to high scores folder
@@ -179,7 +191,7 @@ public class SaverLoader
         if (!Directory.Exists(dir))
         {
             Directory.CreateDirectory(dir);
-            Debug.Log("no save directory");
+            Debug.Log("No save directory, new one created");
         }
 
         // Write json to file
@@ -187,6 +199,7 @@ public class SaverLoader
         Debug.Log("Saved " + hs.scores.Count + " records to " + (dir + fileName));
     }
 
+    //Load function
     public static HighScores Load()
     {
         // Get path to high scores text file
