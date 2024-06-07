@@ -30,15 +30,18 @@ public class FishSpawning : MonoBehaviour
     {
         GameObject fish;
         List<GameObject> fishList = gameManager.FindFishAtDepth(depth);
-        fish = fishList[Random.Range(0, fishList.Count)];
-        fish.transform.position = new Vector3(Random.Range(-49f, 49f), Mathf.Clamp(depth + Random.Range(-3f, 3f),-9999999,-1));
-        fish.GetComponent<Fish>().swimSpeed *= Random.Range(0.6f, 1.35f);
-        if (Random.Range(0,2) == 0)
+        if (fishList.Count > 0)
         {
-            Vector3 temp = fish.transform.localScale;
-            temp.x *= -1;
-            fish.transform.localScale = temp;
-            fish.GetComponent<Fish>().swimSpeed *= -1;
+            fish = fishList[Random.Range(0, fishList.Count)];
+            fish.transform.position = new Vector3(Random.Range(-49f, 49f), Mathf.Clamp(depth + Random.Range(-3f, 3f), -9999999, -1));
+            fish.GetComponent<Fish>().swimSpeed *= Random.Range(0.6f, 1.35f);
+            if (Random.Range(0, 2) == 0)
+            {
+                Vector3 temp = fish.transform.localScale;
+                temp.x *= -1;
+                fish.transform.localScale = temp;
+                fish.GetComponent<Fish>().swimSpeed *= -1;
+            }
         }
     }
 }
