@@ -226,7 +226,7 @@ public class Shop : MonoBehaviour
                 //Set text
                 textbox.text = currentDialogue;
                 //20 letters per second
-                yield return new WaitForSeconds(0.05f);
+                yield return new WaitForSeconds(0.02f);
             }
             //Extra caw timer set just in case
             cawTimer = 0.1f;
