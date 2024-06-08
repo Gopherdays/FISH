@@ -18,10 +18,10 @@ public class HighScoreSelector : MonoBehaviour
 
     private void Start()
     {
-        letters[0] = 0;
-        letters[1] = 0;
-        letters[2] = 0;
-        letters[3] = 0;
+        for (int i = 0; i < letters.Length; i++)
+        {
+            letters[i] = 0;
+        }
 
         selector = 0;
     }
@@ -38,20 +38,22 @@ public class HighScoreSelector : MonoBehaviour
 
     public void A(InputAction.CallbackContext context)
     {
-        if (window.activeSelf)
-        {
-            gm.SaveCurrentStats(allLetters[letters[0] % allLetters.Length] + allLetters[letters[1] % allLetters.Length] + allLetters[letters[2] % allLetters.Length] + allLetters[letters[3] % allLetters.Length]);
-            window.SetActive(false);
-        }
-        else
-            gm.GoMenu();
+        if (context.started)
+            if (window.activeSelf)
+            {
+                gm.SaveCurrentStats(allLetters[letters[0] % allLetters.Length] + allLetters[letters[1] % allLetters.Length] + allLetters[letters[2] % allLetters.Length] + allLetters[letters[3] % allLetters.Length]);
+                window.SetActive(false);
+            }
+            else
+                gm.GoMenu();
     }
     public void B(InputAction.CallbackContext context)
     {
-        if (window.activeSelf)
-            window.SetActive(false);
-        else
-            gm.GoEncyclopedia();
+        if (context.started)
+            if (window.activeSelf)
+                window.SetActive(false);
+            else
+                gm.GoEncyclopedia();
     }
     public void Up(InputAction.CallbackContext context)
     {

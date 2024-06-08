@@ -5,6 +5,7 @@ using UnityEngine;
 public class Clouds : MonoBehaviour
 {
     public Sprite[] clouds;
+    private SpriteRenderer sr;
     private Rigidbody2D rb;
     private float random;
 
@@ -13,8 +14,9 @@ public class Clouds : MonoBehaviour
         if (rb == null)
         {
             rb = GetComponent<Rigidbody2D>();
-            GetComponent<SpriteRenderer>().sprite = clouds[Random.Range(0, clouds.Length)];
-            GetComponent<SpriteRenderer>().sortingOrder = Random.Range(-110, -105);
+            sr = GetComponent<SpriteRenderer>();
+            sr.sprite = clouds[Random.Range(0, clouds.Length)];
+            sr.sortingOrder = Random.Range(-110, -105);
             random = Random.Range(0.1f, 0.3f);
         }
         rb.velocity = Vector2.left * random;

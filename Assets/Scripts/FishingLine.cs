@@ -19,13 +19,19 @@ public class FishingLine : MonoBehaviour
 
     void Update()
     {
+        //First position goes from the player's fishing rod
         positions[0] = origin.transform.position + (Vector3)offsetOrigin;
-        positions[1] = positions[2] = hook.transform.position;
-        positions[2] += (Vector3)offsetHook;
+
+        //Second and third position are set to the hook's loop
+        positions[1] = positions[2] = hook.transform.position + (Vector3)offsetHook;
+
+        //If the hook is underwater, the second position sits at the surface of the water
         if (hook.transform.position.y < offsetHook.y)
             positions[1].y = 0;
         else
             positions[1] = positions[2];
+
+        //Put the positions into the line renderer
         line.SetPositions(positions);
     }
 }

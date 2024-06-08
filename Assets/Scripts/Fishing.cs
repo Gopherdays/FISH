@@ -101,6 +101,8 @@ public class Fishing : MonoBehaviour
     {
         //OMEGA INITIALIZATION
         //This is basically just all setting up
+
+        //Get components and find things
         coll = GetComponent<CircleCollider2D>();
         fishingUI = GameObject.Find("Fishing UI");
         depth = GameObject.Find("Depth Meter");
@@ -111,21 +113,29 @@ public class Fishing : MonoBehaviour
         source = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+
+        //Set actives
         fishingUI.SetActive(false);
         depth.SetActive(false);
         move.SetActive(false);
         aim.SetActive(false);
         shop.SetActive(false);
         feed.SetActive(false);
+
+        //Don't move at the start
         up = false;
         left = false;
         down = false;
         right = false;
         fishing = false;
         hooking = true;
+
+        //Tutorials
         tutorial = true;
         shopTutorial = true;
         foodTutorial = true;
+
+        //Vector 2s and position related things
         temp = new Vector2(0, 0);
         tempV = new Vector2(-7, -5);
         prevY = transform.position.y;
@@ -142,20 +152,25 @@ public class Fishing : MonoBehaviour
 
     private void Update()
     {
-        // I stopped here lol, this is just so dense we really should've done this earlier -Nick
+        // A Button while casted and outside of the shop
         if (thrown && confirm && !gm.shoppe.activeSelf)
         {
+            //Only confirm once if bulk is disabled
             if (gm.playerStats.day < 4 || !bulk)
                 confirm = false;
+            //If the player has food, play the food sound (PlayerStats.Feed() bool does the feeding already)
             if (gm.playerStats.Feed())
             {
                 source.clip = sounds2[Random.Range(0, sounds2.Length)];
                 source.Play();
             }
         }
+        
+        // Direction change while casted
         if (thrown && changed)
         {
             changed = false;
+            //Deal with hook-based tutorials
             if (move.activeSelf)
             {
                 StartCoroutine(WaitHook(move));
@@ -166,79 +181,102 @@ public class Fishing : MonoBehaviour
                 StartCoroutine(WaitHook(feed));
                 StartCoroutine(WaitMove(feed));
             }
+
+            //Calculate movement direction
             switch (true)
             {
-                case true when (up && !left && !right):
+                case true when (up && !left && !right): //North
                     catcherPos = 0;
                     temp = Vector2.up;
                     break;
-                case true when (up && left):
+                case true when (up && left): //Northwest
                     catcherPos = 1;
                     temp.y = 1;
                     temp.x = -1;
                     break;
-                case true when (left && !up && !down):
+                case true when (left && !up && !down): //West
                     catcherPos = 2;
                     temp = Vector2.left;
                     break;
-                case true when (down && left):
+                case true when (down && left): //Southwest
                     catcherPos = 3;
                     temp.y = -1;
                     temp.x = -1;
                     break;
-                case true when (down && !left && !right):
+                case true when (down && !left && !right): //South
                     catcherPos = 4;
                     temp = Vector2.down;
                     break;
-                case true when (down && right):
+                case true when (down && right): //Southeast
                     catcherPos = 5;
                     temp.y = -1;
                     temp.x = 1;
                     break;
-                case true when (right && !up && !down):
+                case true when (right && !up && !down): //East
                     catcherPos = 6;
                     temp = Vector2.right;
                     break;
-                case true when (up && right):
+                case true when (up && right): //Northeast
                     catcherPos = 7;
                     temp.y = 1;
                     temp.x = 1;
                     break;
-                default:
+                default: //Do nothing if some keyboard player is mashing weird button combos
                     temp = Vector2.zero;
                     break;
             }
         }
+
+        //Stuff if you're not casted
         else if (!thrown)
         {
+            //Keep the hook on the player with no velocity
             if (transform.position != origin.transform.position)
                 transform.position = origin.transform.position;
             if (rb.velocity != Vector2.zero)
                 rb.velocity = Vector2.zero;
+
+            //A button to cast
             if (confirm)
             {
                 confirm = false;
+                //Get rid of the tutorial
                 cast.SetActive(false);
+
+                //Disable shop??
                 if (shop.activeSelf)
                     shop.SetActive(false);
+                
+                //Prep movement/feed tutorials
                 if (tutorial)
                     StartCoroutine(WaitForInWater(move));
                 if (foodBought && foodTutorial && !tutorial)
                     StartCoroutine(WaitForInWater(feed));
-                ThrowHook();
 
+                //Actually throw hook
+                thrown = true;
+                rb.AddForce(new Vector2(Random.Range(0.25f, 1.25f) * -300, Random.Range(0.5f, 1.25f) * 300));
+                source.clip = clip4;
+                source.Play();
             }
         }
     }
 
     private void FixedUpdate()
     {
+        // Not reeling in a fish
         if (hooking)
         {
+            //If hook has entered the water
             if (transform.position.y < 0 && prevY >= 0)
             {
+                //Remove X velocity
                 rb.velocity = new Vector2(0,rb.velocity.y);
+                
+                //Cam follow hook
                 cam.Follow = transform;
+
+                //Splash
                 for (int i = 0; i < Random.Range(40, 61); i++)
                 {
                     GameObject g = Instantiate(splash, transform.position, Quaternion.identity);
@@ -252,6 +290,7 @@ public class Fishing : MonoBehaviour
                 source.Play();
             }
 
+            //Only move if you're under the water
             if (thrown && transform.position.y <= 0)
             {
                 temp = temp.normalized;
@@ -259,35 +298,42 @@ public class Fishing : MonoBehaviour
                 temp.x *= stats.lineSpeedHorizontal;
                 rb.AddForce(temp * 20);
             }
+
+            //Set previous position
             prevY = transform.position.y;
         }
 
+        // Reeling in a fish
         else if (fishing && !reset)
         {
+            //Advance timer unless the fish is supposed to move
             if (timer < speed)
                 timer += Time.deltaTime;
             else
             {
+                //FISH MOVE INDICATOR
                 indPos = NewPos(indPos);
                 timer = 0;
-               
             }
 
+            //Fish position has changed, update rotation
             if (indPos != curIndPos)
             {
                 indicator.transform.rotation = Quaternion.Euler(0, 0, positions[indPos]);
                 curIndPos = indPos;
             }
 
+            //Player position has changed, update rotation
             if (catcherPos != curCatcherPos)
             {
                 catcher.transform.rotation = Quaternion.Euler(0, 0, positions[catcherPos]);
                 curCatcherPos = catcherPos;
             }
 
+            //Player is right on that fish
             if (catcherPos == indPos)
             { 
-                
+                //Play high reeling
                 if (!source.isPlaying)
                 {
                     source.clip = sounds[Random.Range(0, sounds.Length)]; 
@@ -297,14 +343,17 @@ public class Fishing : MonoBehaviour
                
             }
 
+            //Player is sorta on that fish
             else if (FixIndexOverflow(catcherPos - 1) == indPos || FixIndexOverflow(catcherPos + 1) == indPos)
             {
+                //Only half as effective
                 distance -= stats.strengthMult * Time.deltaTime * 0.5f;
-                
             }
 
+            //Player is off of the fish
             else
             {
+                //WE'RE LOSIN' EM
                 distance += escape * Time.deltaTime;
                 if (!source.isPlaying)
                 {
@@ -313,11 +362,16 @@ public class Fishing : MonoBehaviour
                 }
             }
 
+            //Update depth
             depthText.text = (int)distance + "m";
+
+            //Start the bring-up scene if not done already and minigame won
             if (distance <= 0 && fish.transform.position.y == -5)
                 reset = true;
 
         }
+
+        //Bring up fish cutscene
         else if (reset)
         {
             if (fish.transform.position.y <= -1.5f)
@@ -343,27 +397,36 @@ public class Fishing : MonoBehaviour
         foodCount.text = stats.food.ToString();
     }
 
+    //Switch between fishing or reeling
     void Switch()
     {
         if (hooking)
         {
+            //Measure fish related values
             distance = Vector2.Distance(fish.transform.position, player.transform.position);
+            if (fish.transform.localScale.x > 0)
+                fish.transform.SetPositionAndRotation(new Vector2(-7, -5), Quaternion.Euler(0, 0, 90));
+            else if (fish.transform.localScale.x < 0)
+                fish.transform.SetPositionAndRotation(new Vector2(-7, -5), Quaternion.Euler(0, 0, -90));
+            fish.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            fish.GetComponent<SpriteRenderer>().sortingOrder = 420;
+            valueMult = (100 + distance) / 100;
+            fl.hook = fish;
+
+            //Camera and UI
             cs.Shake(100);
             cam.Follow = player.transform;
             fishingUI.SetActive(true);
             depth.SetActive(true);
             if (tutorial)
                 aim.SetActive(true);
-            if (fish.transform.localScale.x > 0)
-                fish.transform.SetPositionAndRotation(new Vector2(-7, -5), Quaternion.Euler(0, 0, 90));
-            else if (fish.transform.localScale.x < 0)
-                fish.transform.SetPositionAndRotation(new Vector2(-7, -5), Quaternion.Euler(0, 0, -90));
+            
+            //Get the hook back to the player
             transform.position = player.transform.position;
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
-            fish.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-            fish.GetComponent<SpriteRenderer>().sortingOrder = 420;
-            valueMult = (100 + distance)/100;
-            fl.hook = fish;
+
+            //Bools
+            once = false;
             sr.enabled = false;
             hooking = false;
             fishing = true;
@@ -374,31 +437,42 @@ public class Fishing : MonoBehaviour
         }
     }
 
+    //Show off that fish
     IEnumerator WaitForAnimation()
     {
         yield return new WaitForSeconds(1);
+
+        //UI updating
         lastFish.text = "Last Fish Caught:\n" + Mathf.Round(baseValue + Random.Range(-0.25f * baseValue, 0.25f * baseValue)) + "lb " + fish.name.Remove(fish.name.Length - 7);
         if (shopTutorial)
             shop.SetActive(true);
-        rb.constraints = RigidbodyConstraints2D.None;
-        fl.hook = gameObject;
-        cam.Follow = GameObject.Find("Player").transform;
+
+        //Other things
         stats.points += fish.GetComponent<Fish>().points;
         indPos = Random.Range(2, 7);
         tempV.y = -5;
         catcherPos = 1;
         curCatcherPos = 1;
+
+        //Go back to before throw
+        cam.Follow = GameObject.Find("Player").transform;
+        rb.constraints = RigidbodyConstraints2D.None;
+        fl.hook = gameObject;
         sr.enabled = true;
         fishing = false;
         hooking = true;
         thrown = false;
+
+        //KILL FISH
         Destroy(fish);
     }
     
+    //Hook hit the fish, get the fish and do the fishing fish fish fishing the fish up fish the up fish up the fish
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Fish"))
         {
+            //Get fish and stats
             fish = collision.gameObject;
             fishFish = fish.GetComponent<Fish>();
             speed = fishFish.speed;
@@ -406,13 +480,15 @@ public class Fishing : MonoBehaviour
             turnChance = fishFish.turnChance;
             skipChance = fishFish.skipChance;
             baseValue = fishFish.value;
+
+            //Play sound and switch
             source.clip = clip2;
             source.Play();
             Switch();
         }
     }
 
-
+    //Fish choosing a new position
     int NewPos(int position)
     {
         if (Random.Range(1, 101) <= turnChance)
@@ -436,6 +512,7 @@ public class Fishing : MonoBehaviour
         return temp;
     }
 
+    //Jake should probably find a better way to do this part
     int FixIndexOverflow(int temp)
     {
         switch (temp)
@@ -462,20 +539,12 @@ public class Fishing : MonoBehaviour
         return temp;
     }
 
-    public void ThrowHook()
-    {
-        thrown = true;
-        rb.AddForce(new Vector2(Random.Range(0.25f, 1.25f) * -300, Random.Range(0.5f, 1.25f) * 300));
-        source.clip = clip4;
-        source.Play();
-    }
-
+    //Tutorial waiting things
     IEnumerator WaitForInWater(GameObject obj)
     {
         yield return new WaitUntil(() => prevY > 0 && transform.position.y <= 0);
         obj.SetActive(true);
     }
-
     IEnumerator WaitHook(GameObject obj)
     {
         yield return new WaitUntil(() => fishing);
@@ -484,7 +553,6 @@ public class Fishing : MonoBehaviour
             obj.SetActive(false);
         }
     }
-
     IEnumerator WaitMove(GameObject obj)
     {
         yield return new WaitForSeconds(3);
@@ -494,6 +562,7 @@ public class Fishing : MonoBehaviour
         }
     }
     
+    //Freeze or unfreeze the hook so you don't catch while shopping
     public void FreezeUnfreeze()
     {
         if (gm.shoppe.activeSelf)
@@ -507,6 +576,7 @@ public class Fishing : MonoBehaviour
         }
     }
 
+    //InputSystem stuff
     public void Up(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -573,6 +643,7 @@ public class Fishing : MonoBehaviour
     {
         if (context.started && fishing)
         {
+            //Only release fish when B is pressed twice
             if (!once)
                 once = true;
             else

@@ -7,14 +7,17 @@ using TMPro;
 
 public class Encyclopedia : MonoBehaviour
 {
+    //Figure out what stuff is
     public PlayerStatsEpic playerStats;
     public GameManager gm;
 
+    //Left side - selection
     public Image[] leftSidePictures;
     public Image[] leftSideBackgrounds;
     public TextMeshProUGUI[] leftSideNames;
     public int selection;
 
+    //Right side - display
     public Image rightSideImage;
     public TextMeshProUGUI[] rightSideStats;
     public Sprite blankFish;
