@@ -561,7 +561,7 @@ public class Fishing : MonoBehaviour
     }
     public void A(InputAction.CallbackContext context)
     {
-        if (context.started && !gm.shoppe.activeSelf)
+        if (context.started && !gm.shoppe.activeSelf && !gm.pause.activeSelf)
         {
             confirm = true;
             bulk = true;

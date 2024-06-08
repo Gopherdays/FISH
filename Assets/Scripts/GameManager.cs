@@ -59,6 +59,9 @@ public class GameManager : MonoBehaviour
     public Light2D lt;
     public int bulbLvl;
 
+    //Music
+    public MusicControl music;
+
     private void Start()
     {
         //Don't be paused immediately... just in case
@@ -191,6 +194,13 @@ public class GameManager : MonoBehaviour
     //YOU BETTER NOT BE PAUSED WHEN *THIS* FUNCTION GETS CALLED!!!
     public void ForceUnpause()
     {
+        //Stop the pause music
+        if (SceneManager.GetActiveScene().name == "Fishing")
+        {
+            music.music.UnPause();
+            music.pauseMusic.Stop();
+        }
+
         pause.SetActive(false);
         Time.timeScale = 1;
     }
@@ -321,7 +331,12 @@ public class GameManager : MonoBehaviour
     {
         if (context.started)
         {
-            if (SceneManager.GetActiveScene().name == "Main Menu")
+            if (pause.activeSelf)
+            {
+                ForceUnpause();
+                GoMenu();
+            }
+            else if (SceneManager.GetActiveScene().name == "Main Menu")
                 controls.SetActive(!controls.activeSelf); //Show controls menu in main menu
             else
             {
@@ -343,7 +358,11 @@ public class GameManager : MonoBehaviour
     {
         if (context.started)
         {
-            if (SceneManager.GetActiveScene().name == "Main Menu")
+            if (pause.activeSelf)
+            {
+                ForceUnpause();
+            }
+            else if (SceneManager.GetActiveScene().name == "Main Menu")
             {
                 //If the controls menu is up, toggle tutorials, or start game
                 if (controls.activeSelf)
@@ -370,11 +389,20 @@ public class GameManager : MonoBehaviour
             //Show/hide the menu and stop/start time
             if (pause.activeSelf)
             {
+                //Stop the pause music
+                music.music.UnPause();
+                music.pauseMusic.Stop();
+                
                 pause.SetActive(false);
                 Time.timeScale = 1;
             }
             else
             {
+                //Start the pause music and pause everything else
+                music.music.Pause();
+                music.shopMusic.Stop();
+                music.pauseMusic.Play();
+
                 pause.SetActive(true);
                 Time.timeScale = 0;
             }
