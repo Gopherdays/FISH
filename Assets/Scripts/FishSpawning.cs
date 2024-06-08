@@ -7,11 +7,14 @@ public class FishSpawning : MonoBehaviour
     public GameManager gameManager;
     public GameObject fishingHook;
 
-    public int maxDepth = -15;
+    //Change this variable to change how often fish spawn
+    public float fishDepthInterval = 2;
+
+    public float maxDepth = -15;
 
     private void Start()
     {
-        for (int i = 3; i < 18; i += 3)
+        for (float i = 3; i < 18; i += fishDepthInterval)
         {
             SpawnFish(-i);
         }
@@ -22,7 +25,7 @@ public class FishSpawning : MonoBehaviour
         if (fishingHook.transform.position.y < maxDepth + 9)
         {
             SpawnFish(maxDepth);
-            maxDepth -= 3;
+            maxDepth -= fishDepthInterval;
         }
     }
 
@@ -32,7 +35,7 @@ public class FishSpawning : MonoBehaviour
         List<GameObject> fishList = gameManager.FindFishAtDepth(depth);
         if (fishList.Count > 0)
         {
-            fish = fishList[Random.Range(0, fishList.Count)];
+            fish = Instantiate(fishList[Random.Range(0, fishList.Count)]);
             fish.transform.position = new Vector3(Random.Range(-49f, 49f), Mathf.Clamp(depth + Random.Range(-3f, 3f), -9999999, -1));
             fish.GetComponent<Fish>().swimSpeed *= Random.Range(0.6f, 1.35f);
             if (Random.Range(0, 2) == 0)
