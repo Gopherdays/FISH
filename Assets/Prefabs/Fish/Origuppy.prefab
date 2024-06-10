@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swimSpeed: 0.5
   hookPoint: {x: 0.25, y: -0.03}
-  value: 80
+  value: 10
   points: 750
   description: Folded delicately and magically came to life.
   speed: 0.7
@@ -109,7 +109,7 @@ MonoBehaviour:
   turnChance: 0
   skipChance: 0
   minDepth: 0
-  maxDepth: 15
+  maxDepth: 20
 --- !u!50 &5619285366630353901
 Rigidbody2D:
   serializedVersion: 4

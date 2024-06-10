@@ -101,7 +101,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swimSpeed: 0.5
   hookPoint: {x: 0.4, y: -0.04}
-  hookRotation: 0
   value: 15
   points: 250
   description: A colorful, domesticated fish. Science cannot tell if it meows or
@@ -110,6 +109,8 @@ MonoBehaviour:
   escape: 2
   turnChance: 10
   skipChance: 10
+  minDepth: 130
+  maxDepth: 180
 --- !u!50 &5619285366630353901
 Rigidbody2D:
   serializedVersion: 4

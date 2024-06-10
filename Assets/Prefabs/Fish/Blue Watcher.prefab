@@ -109,6 +109,8 @@ MonoBehaviour:
   escape: 11
   turnChance: 0
   skipChance: 0
+  minDepth: 90
+  maxDepth: 140
 --- !u!50 &5619285366630353901
 Rigidbody2D:
   serializedVersion: 4

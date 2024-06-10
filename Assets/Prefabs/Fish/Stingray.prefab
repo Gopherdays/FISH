@@ -102,7 +102,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swimSpeed: 0.5
   hookPoint: {x: 0.37, y: -0.04}
-  hookRotation: 0
   value: 30
   points: 350
   description: The fish have public transportation too? Crazy!
@@ -110,6 +109,8 @@ MonoBehaviour:
   escape: 4
   turnChance: 20
   skipChance: 5
+  minDepth: 250
+  maxDepth: 310
 --- !u!50 &5619285366630353901
 Rigidbody2D:
   serializedVersion: 4

@@ -101,7 +101,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swimSpeed: 0.5
   hookPoint: {x: 0.483, y: -0.072}
-  hookRotation: 0
   value: 40
   points: 100
   description: Blob.
@@ -109,6 +108,8 @@ MonoBehaviour:
   escape: 5
   turnChance: 5
   skipChance: 10
+  minDepth: 80
+  maxDepth: 120
 --- !u!50 &5619285366630353901
 Rigidbody2D:
   serializedVersion: 4

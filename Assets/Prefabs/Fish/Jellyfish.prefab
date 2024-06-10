@@ -101,7 +101,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swimSpeed: 0.5
   hookPoint: {x: -0.05, y: 0.33}
-  hookRotation: -90
   value: 20
   points: 400
   description: Usually, a net is required to catch these, but clearly you didn't
@@ -110,6 +109,8 @@ MonoBehaviour:
   escape: 2
   turnChance: 40
   skipChance: 10
+  minDepth: 120
+  maxDepth: 150
 --- !u!50 &5619285366630353901
 Rigidbody2D:
   serializedVersion: 4
