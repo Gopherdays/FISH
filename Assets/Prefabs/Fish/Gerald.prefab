@@ -103,7 +103,7 @@ MonoBehaviour:
   hookPoint: {x: 0.25, y: -0.03}
   value: 80
   points: 750
-  description: This is Gerald the whale shark
+  description: This is Gerald, the whale shark.
   speed: 0.7
   escape: 7
   turnChance: 0

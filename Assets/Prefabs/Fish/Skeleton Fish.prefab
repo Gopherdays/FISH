@@ -103,7 +103,7 @@ MonoBehaviour:
   hookPoint: {x: 0.25, y: -0.03}
   value: 80
   points: 750
-  description: Probably doesn't have much meat on it's bones.
+  description: Probably doesn't have much meat on its bones.
   speed: 0.7
   escape: 7
   turnChance: 0
