@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5619285366630353901}
   - component: {fileID: 5619285366630353894}
   m_Layer: 3
-  m_Name: Limeviathan
+  m_Name: Seal
   m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,9 +28,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5619285366630353900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.874468, y: -4.35, z: 0}
-  m_LocalScale: {x: 11, y: 11, z: 11}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: -20.7486, y: -4.2493, z: 0}
+  m_LocalScale: {x: 1.2014, y: 1.2014, z: 1.2014}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -76,9 +76,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0cdad24b91345854e8c0acaf6f118c1d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9873eca77e74c99499f201fbf8404d5c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -100,16 +100,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swimSpeed: 0.5
-  hookPoint: {x: -0.171, y: 0.142}
-  value: 2000
-  points: 20000
-  description: Huge monster from the deep, reportedly made out of pure lime...
-  speed: 0.1
-  escape: 27
-  turnChance: 10
-  skipChance: 20
-  minDepth: 400
-  maxDepth: 1000
+  hookPoint: {x: 0.25, y: -0.03}
+  value: 80
+  points: 750
+  description: You caught an endangered species. Good job! Monster.
+  speed: 0.7
+  escape: 7
+  turnChance: 0
+  skipChance: 0
+  minDepth: 0
+  maxDepth: 0
 --- !u!50 &5619285366630353901
 Rigidbody2D:
   serializedVersion: 4
