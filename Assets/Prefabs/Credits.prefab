@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 9197340455264856402}
   - component: {fileID: 6034792546713396613}
   - component: {fileID: 8026931844259353093}
-  m_Layer: 0
+  - component: {fileID: -8756957137084818482}
+  m_Layer: 5
   m_Name: Credits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,6 +142,26 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 300, y: 128}
   m_Direction: 1
+--- !u!114 &-8756957137084818482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200591651036022085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 374d8cea3d363aa40b6f7f38fa8680e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splash: {fileID: 3462652267452336289, guid: 2b87ad0dbabbffe47a32e8bac38adfa8, type: 3}
+  parent: {fileID: 0}
+  splashHeight: -50
+  intensity: 2
+  scale: 2
+  velocityBased: 1
+  velocityMod: 0.1
+  canvasOverride: 1
 --- !u!1 &1974175580642359996
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +173,7 @@ GameObject:
   - component: {fileID: 900082523396655758}
   - component: {fileID: 8483128791961325921}
   - component: {fileID: 3837102389887615063}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

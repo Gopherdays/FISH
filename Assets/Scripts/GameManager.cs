@@ -42,10 +42,6 @@ public class GameManager : MonoBehaviour
     //Track if the player wants to cancel fishing
     bool fishCancel;
 
-    //Flying credits controls - unused outside of Main Menu
-    public GameObject creditsObject;
-    public string[] credits;
-
     //Shop and fishing camera
     public GameObject shoppe;
     public GameObject feesherCam;
@@ -61,6 +57,11 @@ public class GameManager : MonoBehaviour
 
     //Music
     public MusicControl music;
+
+    //Flying credits controls - unused outside of Main Menu
+    public GameObject creditsObject;
+    public string[] credits;
+    public GameObject thing;
 
     private void Start()
     {
@@ -273,7 +274,7 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             //Make a credits object, and kill it eventually
-            GameObject fish = Instantiate(creditsObject, GameObject.Find("Canvas").transform);
+            GameObject fish = Instantiate(creditsObject, GameObject.Find("Credits Container").transform);
             fish.GetComponent<Rigidbody2D>().velocity = Vector2.left * Random.Range(25f, 250f);
             Destroy(fish, 60);
             
@@ -291,6 +292,7 @@ public class GameManager : MonoBehaviour
             //Send the fish away to bump into the other ones
             fish.GetComponent<CapsuleCollider2D>().size = lastFish.sizeDelta;
             fish.GetComponent<Rigidbody2D>().mass = Random.Range(0.1f, 100f);
+            fish.GetComponent<SplashEffect>().parent = thing;
 
             //Wait a little bit
             yield return new WaitForSeconds(3);

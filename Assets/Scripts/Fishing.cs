@@ -276,16 +276,7 @@ public class Fishing : MonoBehaviour
                 //Cam follow hook
                 cam.Follow = transform;
 
-                //Splash
-                for (int i = 0; i < Random.Range(40, 61); i++)
-                {
-                    GameObject g = Instantiate(splash, transform.position, Quaternion.identity);
-                    float rand = Random.Range(0.25f, 0.35f);
-                    g.transform.localScale = new Vector2(rand,rand);
-                    float xVal = Random.Range(-0.25f, 0.25f);
-                    g.GetComponent<Rigidbody2D>().AddForce(new Vector2(xVal, 2 + Random.Range(0f, 1f) - Mathf.Abs(2 * xVal)) * (30 + Random.Range(0, 50)));
-                    Destroy(g, 3);
-                }
+                //Splash sound
                 source.clip = clip1;
                 source.Play();
             }
