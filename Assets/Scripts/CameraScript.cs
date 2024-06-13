@@ -67,7 +67,7 @@ public class CameraScript : MonoBehaviour
         {
             cast = true;
             cam.Follow = hook.transform;
-            cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0.7f;
+            //cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0.7f;
         }
         /*Slow down camera shake over time
         if (noise.m_FrequencyGain > 1)

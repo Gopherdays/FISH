@@ -12060,6 +12060,7 @@ GameObject:
   - component: {fileID: 2145965930}
   - component: {fileID: 2145965932}
   - component: {fileID: 2145965933}
+  - component: {fileID: 2145965934}
   m_Layer: 0
   m_Name: Fishing Hook
   m_TagString: Untagged
@@ -12707,6 +12708,26 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &2145965934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145965923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 374d8cea3d363aa40b6f7f38fa8680e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splash: {fileID: 3462652267452336289, guid: 2b87ad0dbabbffe47a32e8bac38adfa8, type: 3}
+  parent: {fileID: 0}
+  splashHeight: 0
+  intensity: 1
+  scale: 1
+  velocityBased: 1
+  velocityMod: 0.125
+  canvasOverride: 0
 --- !u!1001 &4999972280380581603
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -42,12 +42,14 @@ public class SplashEffect : MonoBehaviour
                 
             float rand = Random.Range(0.15f, 0.35f) * scale;
             g.transform.localScale = new Vector2(rand, rand);
-            float xVal = Random.Range(-0.25f, 0.25f) * intensity * scale;
+            float xVal = Random.Range(-0.5f, 0.5f) * intensity * scale;
             Rigidbody2D rb = g.GetComponent<Rigidbody2D>();
             if (velocityBased)
-                rb.AddForce(new Vector2(xVal, 2 + Random.Range(0f, 1f) - Mathf.Abs(2 * xVal)) * (30 + Random.Range(0, 50)) * intensity * rb.velocity.magnitude * velocityMod);
+                rb.AddForce(new Vector2(xVal, 2 + Random.Range(0f, 1f) - Mathf.Abs(2 * xVal)) * (30 + Random.Range(0, 50)) * intensity * GetComponent<Rigidbody2D>().velocity.magnitude * velocityMod);
             else
                 rb.AddForce(new Vector2(xVal, 2 + Random.Range(0f, 1f) - Mathf.Abs(2 * xVal)) * (30 + Random.Range(0, 50)) * intensity);
+            Debug.Log(xVal);
+            Debug.Log(rand);
             Destroy(g, 4);
         }
     }

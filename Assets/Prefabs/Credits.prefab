@@ -156,11 +156,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splash: {fileID: 3462652267452336289, guid: 2b87ad0dbabbffe47a32e8bac38adfa8, type: 3}
   parent: {fileID: 0}
-  splashHeight: -50
-  intensity: 2
+  splashHeight: -100
+  intensity: 1.5
   scale: 2
   velocityBased: 1
-  velocityMod: 0.1
+  velocityMod: 0.005
   canvasOverride: 1
 --- !u!1 &1974175580642359996
 GameObject:
