@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
     public GameObject creditsObject;
     public string[] credits;
     public GameObject thing;
+    public GameObject menuCreditsScreen;
 
     private void Start()
     {
@@ -388,25 +389,32 @@ public class GameManager : MonoBehaviour
     {
         if (context.started)
         {
-            //Show/hide the menu and stop/start time
-            if (pause.activeSelf)
+            if (SceneManager.GetActiveScene().name == "Main Menu")
             {
-                //Stop the pause music
-                music.music.UnPause();
-                music.pauseMusic.Stop();
-                
-                pause.SetActive(false);
-                Time.timeScale = 1;
+                menuCreditsScreen.SetActive(!menuCreditsScreen.activeSelf);
             }
             else
             {
-                //Start the pause music and pause everything else
-                music.music.Pause();
-                music.shopMusic.Stop();
-                music.pauseMusic.Play();
+                //Show/hide the menu and stop/start time
+                if (pause.activeSelf)
+                {
+                    //Stop the pause music
+                    music.music.UnPause();
+                    music.pauseMusic.Stop();
 
-                pause.SetActive(true);
-                Time.timeScale = 0;
+                    pause.SetActive(false);
+                    Time.timeScale = 1;
+                }
+                else
+                {
+                    //Start the pause music and pause everything else
+                    music.music.Pause();
+                    music.shopMusic.Stop();
+                    music.pauseMusic.Play();
+
+                    pause.SetActive(true);
+                    Time.timeScale = 0;
+                }
             }
         }
     }

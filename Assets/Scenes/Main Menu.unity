@@ -334,6 +334,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1200591651036022085, guid: 8d6f2b2a3eed34a44a96398609e173b7, type: 3}
     - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
+      propertyPath: menuCreditsScreen
+      value: 
+      objectReference: {fileID: 807999001}
+    - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
       propertyPath: credits.Array.size
       value: 12
       objectReference: {fileID: 0}
@@ -1406,7 +1410,19 @@ MonoBehaviour:
     m_ActionId: 55ecb160-de70-49df-a946-96d7bbb932af
     m_ActionName: Reel/B[/XInputControllerWindows/buttonEast]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 406854830}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Pause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 91fc500f-79f3-43e9-b51b-7ae7eadbfce5
     m_ActionName: Reel/Pause[/XInputControllerWindows/start]
   m_NeverAutoSwitchControlSchemes: 0
