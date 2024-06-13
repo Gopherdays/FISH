@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 195e0cb18e023784895feff2ae25dd7b, type: 3}
+  m_Name: ManyRareFish
+  m_EditorClassIdentifier: 
+  name: Not So Rare Anymore
+  desc: Catch 50 rare fish, in total
+  flavor: There's too many of them. I keep opening doors and finding more.
+  icon: {fileID: 0}
+  progressMax: 50

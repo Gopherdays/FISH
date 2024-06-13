@@ -419,6 +419,55 @@ MonoBehaviour:
   m_DefaultActionMap: Reel
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!1 &2934233768458658542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7884995893645792543}
+  - component: {fileID: 6243285928122642162}
+  m_Layer: 0
+  m_Name: Achievement Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7884995893645792543
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2934233768458658542}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1359756754041688498}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6243285928122642162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2934233768458658542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7eeb29075fc8d34395c5cb2f529eb51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  themChievos:
+  - {fileID: 0}
+  progresses: 
+  achievementPopup: {fileID: 0}
+  achievementPage: 0
 --- !u!1 &5444138350288162911
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,10 +677,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -688,6 +737,7 @@ Transform:
   - {fileID: 8984765130568464580}
   - {fileID: 8916985809774211517}
   - {fileID: 348381574952943404}
+  - {fileID: 7884995893645792543}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -742,14 +792,16 @@ MonoBehaviour:
   total: {fileID: 0}
   bucketBar: {fileID: 0}
   full: 0
-  creditsObject: {fileID: 0}
-  credits: []
   shoppe: {fileID: 0}
   feesherCam: {fileID: 0}
   pause: {fileID: 8608829742108951651}
   transitionImage: {fileID: 8075485521155465974}
   lt: {fileID: 0}
   bulbLvl: 0
+  music: {fileID: 0}
+  creditsObject: {fileID: 0}
+  credits: []
+  thing: {fileID: 0}
 --- !u!1 &8179644358846597915
 GameObject:
   m_ObjectHideFlags: 0

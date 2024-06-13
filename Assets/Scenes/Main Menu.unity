@@ -309,6 +309,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2726179234934132495, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
       propertyPath: fade
       value: 1
@@ -388,6 +392,10 @@ PrefabInstance:
     - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
       propertyPath: credits.Array.data[11]
       value: Voice Actor (Turtle)<br>Nicholas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5949409040014549965, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7738027014404792582, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
       propertyPath: m_Name
