@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Fed for a Day
   desc: Survive for 1 day (3 minutes)
-  flavor: This turtle is going to need a lot more than daily maintenance...
+  flavor: This turtle is going to need a lot more than daily maintenance.
   icon: {fileID: 21300000, guid: 3993aac463b974b4eab2775a4e9c5550, type: 3}
   progressMax: 181

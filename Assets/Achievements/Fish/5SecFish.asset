@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Fast Catcher
   desc: Catch a fish in 5 seconds
-  flavor: I've got a turtle to feed! There's no time to relax!
+  flavor: I've got a turtle to feed, there's no time to relax!
   icon: {fileID: 0}
   progressMax: 5

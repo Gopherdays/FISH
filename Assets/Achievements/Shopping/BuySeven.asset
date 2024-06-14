@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Consumer
   desc: Buy 7 items, excluding food
-  flavor: This stuff will help me get money to get more stuff...
+  flavor: This stuff will help me get money to get more stuff to get more money to
+    get more stuff.
   icon: {fileID: 0}
   progressMax: 7
