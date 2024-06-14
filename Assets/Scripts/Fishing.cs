@@ -110,7 +110,7 @@ public class Fishing : MonoBehaviour
         cs = cam.gameObject.GetComponent<CameraScript>();
         source = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        FreezeUnfreeze();
         sr = GetComponent<SpriteRenderer>();
 
         //Set actives
@@ -250,7 +250,7 @@ public class Fishing : MonoBehaviour
 
                 //Actually throw hook
                 thrown = true;
-                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+                FreezeUnfreeze();
                 rb.AddForce(new Vector2(Random.Range(0.25f, 1.25f) * -300, Random.Range(0.5f, 1.25f) * 300));
                 source.clip = clip4;
                 source.Play();
@@ -410,7 +410,7 @@ public class Fishing : MonoBehaviour
             
             //Get the hook back to the player
             transform.position = origin;
-            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            FreezeUnfreeze();
 
             //Bools
             once = false;
@@ -443,7 +443,7 @@ public class Fishing : MonoBehaviour
 
         //Go back to before throw
         cam.Follow = GameObject.Find("Player").transform;
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        FreezeUnfreeze();
         fl.hook = gameObject;
         sr.enabled = true;
         fishing = false;
