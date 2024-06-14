@@ -7,6 +7,9 @@ using TMPro;
 
 public class Encyclopedia : MonoBehaviour
 {
+    //ACHIEVEMENT PAGE MODE
+    public bool achievementPageMode = false;
+
     //Figure out what stuff is
     public PlayerStatsEpic playerStats;
     public GameManager gm;
@@ -28,32 +31,71 @@ public class Encyclopedia : MonoBehaviour
         //Fish displaying stuff
         for (int i = 0 + ((selection / 8) * 8); i < 8 + ((selection / 8) * 8); i++)
         {
-            if (i < gm.allFish.Count)
+            if (!achievementPageMode)
             {
-                //Show the section as the corresponding fish
-                //Dividing then multiplying by 8 actually has a purpose, because integer division rounds down for free
-                leftSidePictures[i - ((selection / 8) * 8)].gameObject.SetActive(true);
-                leftSideNames[i - ((selection / 8) * 8)].gameObject.SetActive(true);
-                leftSidePictures[i - ((selection / 8) * 8)].sprite = gm.allFish[i].GetComponent<SpriteRenderer>().sprite;
-                if (HasFish(i))
+                if (i < gm.allFish.Count)
                 {
-                    //If you have the fish, actually show it
-                    leftSidePictures[i - ((selection / 8) * 8)].color = Color.white;
-                    leftSideNames[i - ((selection / 8) * 8)].text = gm.allFish[i].name;
+                    //Show the section as the corresponding fish
+                    //Dividing then multiplying by 8 actually has a purpose, because integer division rounds down for free
+                    leftSidePictures[i - ((selection / 8) * 8)].gameObject.SetActive(true);
+                    leftSideNames[i - ((selection / 8) * 8)].gameObject.SetActive(true);
+                    leftSidePictures[i - ((selection / 8) * 8)].sprite = gm.allFish[i].GetComponent<SpriteRenderer>().sprite;
+                    if (HasFish(i))
+                    {
+                        //If you have the fish, actually show it
+                        leftSidePictures[i - ((selection / 8) * 8)].color = Color.white;
+                        leftSideNames[i - ((selection / 8) * 8)].text = gm.allFish[i].name;
+                    }
+                    else
+                    {
+                        //Mysterious fish...
+                        leftSidePictures[i - ((selection / 8) * 8)].color = Color.black;
+                        leftSideNames[i - ((selection / 8) * 8)].text = "???";
+                    }
                 }
                 else
                 {
-                    //Mysterious fish...
-                    leftSidePictures[i - ((selection / 8) * 8)].color = Color.black;
-                    leftSideNames[i - ((selection / 8) * 8)].text = "???";
+                    //Hide boxes that go past the max fish
+                    leftSidePictures[i - ((selection / 8) * 8)].gameObject.SetActive(false);
+                    leftSideNames[i - ((selection / 8) * 8)].gameObject.SetActive(false);
                 }
             }
             else
             {
-                //Hide boxes that go past the max fish
-                leftSidePictures[i - ((selection / 8) * 8)].gameObject.SetActive(false);
-                leftSideNames[i - ((selection / 8) * 8)].gameObject.SetActive(false);
+                if (i < gm.achievementManager.themChievos.Count)
+                {
+                    //Show the section as the corresponding achievement
+                    //Dividing then multiplying by 8 actually has a purpose, because integer division rounds down for free
+                    leftSidePictures[i - ((selection / 8) * 8)].gameObject.SetActive(true);
+                    leftSideNames[i - ((selection / 8) * 8)].gameObject.SetActive(true);
+                    leftSidePictures[i - ((selection / 8) * 8)].sprite = gm.achievementManager.themChievos[i].icon;
+                    if (HasAchievement(i))
+                    {
+                        //If you have the achievement, show completely
+                        leftSidePictures[i - ((selection / 8) * 8)].color = Color.white;
+                        leftSideNames[i - ((selection / 8) * 8)].text = gm.achievementManager.themChievos[i].name;
+                    }
+                    else if (gm.achievementManager.themChievos[i].hidden)
+                    {
+                        //Unknown achievement...
+                        leftSidePictures[i - ((selection / 8) * 8)].color = Color.black;
+                        leftSideNames[i - ((selection / 8) * 8)].text = "???";
+                    }
+                    else
+                    {
+                        //You can still see the achievement even if you don't have it
+                        leftSidePictures[i - ((selection / 8) * 8)].color = Color.white * 0.3f;
+                        leftSideNames[i - ((selection / 8) * 8)].text = gm.achievementManager.themChievos[i].name;
+                    }
+                }
+                else
+                {
+                    //Hide boxes that go past the max achievement
+                    leftSidePictures[i - ((selection / 8) * 8)].gameObject.SetActive(false);
+                    leftSideNames[i - ((selection / 8) * 8)].gameObject.SetActive(false);
+                }
             }
+
         }
 
         //Hide the selectors except for the thing that the player has selected
@@ -64,13 +106,19 @@ public class Encyclopedia : MonoBehaviour
         leftSideBackgrounds[selection%8].enabled = true;
 
         //Page number
-        pageIndex.text = "Page " + ((selection / 8) + 1) + "/" + ((gm.allFish.Count / 8) + 1);
+        pageIndex.text = "Page " + ((selection / 8) + 1) + "/" + (((gm.allFish.Count - 1) / 8) + 1);
     }
 
     //Do you have a fish?
     public bool HasFish(int index)
     {
         return (playerStats.discoveredFish.Contains(gm.allFish[index].GetComponent<Fish>().description));
+    }
+
+    //Do you have achievement?
+    public bool HasAchievement(int index)
+    {
+        return (gm.achievementManager.progresses[index] >= gm.achievementManager.themChievos[index].progressMax);
     }
 
     //When A pressed, set the stuff on the right page to work
@@ -127,6 +175,22 @@ public class Encyclopedia : MonoBehaviour
         rightSideStats[8].text = fish.maxDepth + "m";
     }
 
+    //Alternate for achievements
+    public void DisplayAchievement(Achievement ach)
+    {
+        //Set the image to show the achievement
+        rightSideImage.sprite = ach.icon;
+        rightSideImage.SetNativeSize();
+        rightSideImage.rectTransform.sizeDelta *= 3;
+
+        //Set the texts to the achievement
+        rightSideStats[0].text = ach.name;
+
+        rightSideStats[1].text = ach.desc;
+
+        rightSideStats[2].text = ach.flavor;
+    }
+
     //Menu navigation
     public void Left(InputAction.CallbackContext context)
     {
@@ -165,8 +229,16 @@ public class Encyclopedia : MonoBehaviour
     {
         if (context.started)
         {
-            if (HasFish(selection))
-                DisplayFish(new FishData(gm.allFish[selection].GetComponent<Fish>()));
+            if (achievementPageMode)
+            {
+                if (!gm.achievementManager.themChievos[selection].hidden)
+                    DisplayAchievement(gm.achievementManager.themChievos[selection]);
+            }
+            else
+            {
+                if (HasFish(selection))
+                    DisplayFish(new FishData(gm.allFish[selection].GetComponent<Fish>()));
+            }
         }
     }
 }

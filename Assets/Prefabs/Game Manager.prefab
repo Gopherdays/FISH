@@ -464,10 +464,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   themChievos:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: d17655e7b49843a499835766ddb533b3, type: 2}
+  - {fileID: 11400000, guid: cdabbb792fe9b9f4d95ed519e1055173, type: 2}
+  - {fileID: 11400000, guid: 88c4bdb7d5767244fbcf91bf214c68fd, type: 2}
+  - {fileID: 11400000, guid: edfde18dcd0fc2c44b01c8ca4243f62f, type: 2}
+  - {fileID: 11400000, guid: 817d3164d342d5141a8dc5b498c5d89d, type: 2}
+  - {fileID: 11400000, guid: 73b088860569aa7488d2442d6cf705e2, type: 2}
+  - {fileID: 11400000, guid: 16061129bb2bd1f4f8e5ba43f260ed35, type: 2}
+  - {fileID: 11400000, guid: c3deec4803433a44f924513d5bb1549b, type: 2}
+  - {fileID: 11400000, guid: 114b6a0cfecaffe4e8ea2fd723dac88a, type: 2}
+  - {fileID: 11400000, guid: 92a4866bf3402c442817afea1663630a, type: 2}
+  - {fileID: 11400000, guid: 9312337d378397943b663c4100afe84e, type: 2}
+  - {fileID: 11400000, guid: 82f346fd744b1434f94b723ecca08402, type: 2}
+  - {fileID: 11400000, guid: 81a78b990da766a4c8a20dc934beb423, type: 2}
+  - {fileID: 11400000, guid: d2edf349656335745a3cf7a266f54081, type: 2}
+  - {fileID: 11400000, guid: 837cfebe735b4d84a845717833757400, type: 2}
+  - {fileID: 11400000, guid: 2fb0c7d7a6ca05d46bfe349f1e210134, type: 2}
+  - {fileID: 11400000, guid: bc2712fcdbc572d4fafc02b64eb34e5a, type: 2}
+  - {fileID: 11400000, guid: 18537a8dc8bbe544387c0bc0d0bf3b06, type: 2}
+  - {fileID: 11400000, guid: 12aa4bcd3dcae9d45b0037ff6cd9b9f9, type: 2}
+  - {fileID: 11400000, guid: 98a7f891808b56b429e5809ac494ca4a, type: 2}
+  - {fileID: 11400000, guid: a6be8e657fde4704c9d2e6ceda8d22cd, type: 2}
+  - {fileID: 11400000, guid: 8c3e937640084cf439739a5f806623aa, type: 2}
+  - {fileID: 11400000, guid: 294d4de1adb5ed041902feb727da79af, type: 2}
+  - {fileID: 11400000, guid: 4bf38141aea624f43baa3f204ecc027e, type: 2}
   progresses: 
-  achievementPopup: {fileID: 0}
-  achievementPage: 0
+  achievementPopup: {fileID: 5077477039171156784, guid: 79754ff5b7b915a47983e193d3835604, type: 3}
 --- !u!1 &5444138350288162911
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,7 +789,6 @@ MonoBehaviour:
   - {fileID: 3399629275999387119, guid: 53610bfc898c1dc4e9a2535a4503a8b7, type: 3}
   - {fileID: 5619285366630353900, guid: 267d70b5365c1d94aa17399d5451bbce, type: 3}
   - {fileID: 5619285366630353900, guid: 56583b15f07bc444295a10a469672d32, type: 3}
-  - {fileID: 5619285366630353900, guid: 8b6b7870d6c6e0f42a5ae9ec935b8f06, type: 3}
   - {fileID: 5619285366630353900, guid: 6fb5e533ef5533c409afc884b3772045, type: 3}
   - {fileID: 5619285366630353900, guid: 3c6ac6b1ea9921d4ba3498d9a2106138, type: 3}
   - {fileID: 5619285366630353900, guid: b3d593ef332df1a4289fa96d56a73ba9, type: 3}
@@ -775,6 +796,7 @@ MonoBehaviour:
   - {fileID: 5619285366630353900, guid: aab1d9ede9cd54e45bca540e5c83d488, type: 3}
   - {fileID: 5619285366630353900, guid: c133db55683895b4d95f2f2f6a85731b, type: 3}
   - {fileID: 5619285366630353900, guid: c297df7bfe0bbe343876e64be093cd07, type: 3}
+  - {fileID: 5619285366630353900, guid: 5727d4ae355151745af300c536f33300, type: 3}
   - {fileID: 5619285366630353900, guid: c7719c97766ae884b94fbc71d8a6b2aa, type: 3}
   - {fileID: 5619285366630353900, guid: ddaa23bb746119a4da27217d34f034ee, type: 3}
   - {fileID: 5619285366630353900, guid: 5727d4ae355151745af300c536f33300, type: 3}
@@ -785,6 +807,7 @@ MonoBehaviour:
   hook: {fileID: 0}
   playerStats: {fileID: 11400000, guid: 444d98e1fff443f42b1ef1bb38fb97ed, type: 2}
   whatTheSavema: {fileID: 2543473549101193516}
+  achievementManager: {fileID: 6243285928122642162}
   time: 0
   timer: {fileID: 0}
   foodBar: {fileID: 0}
@@ -802,6 +825,7 @@ MonoBehaviour:
   creditsObject: {fileID: 0}
   credits: []
   thing: {fileID: 0}
+  menuCreditsScreen: {fileID: 0}
 --- !u!1 &8179644358846597915
 GameObject:
   m_ObjectHideFlags: 0

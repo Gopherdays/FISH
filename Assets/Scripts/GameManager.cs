@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public Fishing hook;
     public PlayerStatsEpic playerStats;
     public WhatTheSavema whatTheSavema;
+    public AchievementManager achievementManager;
     
     //Time related things
     public float time = 0;
@@ -258,6 +259,11 @@ public class GameManager : MonoBehaviour
     {
         StopAllCoroutines();
         StartCoroutine(FadeOut(1, 3));
+    }
+    public void GoAchievement()
+    {
+        StopAllCoroutines();
+        StartCoroutine(FadeOut(1, 4));
     }
     //Plus a scene value one just in case
     public void GoScene(int scene)

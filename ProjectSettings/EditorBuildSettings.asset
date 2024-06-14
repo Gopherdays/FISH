@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Encyclopedia.unity
     guid: dab2b8aed77b038428ab26e8fee74374
+  - enabled: 1
+    path: Assets/Scenes/Achievements.unity
+    guid: aecab8b1d17714b4e94846ebb1b1ed6e
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: cfd210a0c5669d8469143c575b028b30, type: 2}

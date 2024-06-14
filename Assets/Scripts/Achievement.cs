@@ -10,4 +10,5 @@ public class Achievement : ScriptableObject
     public string flavor;
     public Sprite icon;
     public int progressMax = 1;
+    public bool hidden = false;
 }
