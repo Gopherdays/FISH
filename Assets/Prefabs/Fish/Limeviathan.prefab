@@ -104,11 +104,12 @@ MonoBehaviour:
   value: 2000
   points: 20000
   description: Huge monster from the deep, reportedly made out of pure lime...
+  volume: 20089
   speed: 0.1
   escape: 27
   turnChance: 10
   skipChance: 20
-  minDepth: 400
+  minDepth: 350
   maxDepth: 1000
 --- !u!50 &5619285366630353901
 Rigidbody2D:

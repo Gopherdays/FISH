@@ -19,7 +19,7 @@ public class PlayerStatsEpic : ScriptableObject
     public float lineSpeedHorizontal;
     public float lineSpeedVertical;
     public float strengthMult;
-    public int bucketSize;
+    public int bucketMaxVolume;
     public int lightTier;
 
     //Costs for the upgrades for the player
@@ -32,6 +32,7 @@ public class PlayerStatsEpic : ScriptableObject
     //Fish tracking
     public List<int> bucket;
     public List<string> discoveredFish;
+    public int bucketVolume = 0;
 
     public void Reset()
     {
@@ -46,7 +47,7 @@ public class PlayerStatsEpic : ScriptableObject
         lineSpeedHorizontal = 1;
         lineSpeedVertical = 1;
         strengthMult = 4;
-        bucketSize = 3;
+        bucketMaxVolume = 100;
         lightTier = 0;
 
         lineSpeedUpgradeCost = 50;
@@ -59,10 +60,13 @@ public class PlayerStatsEpic : ScriptableObject
     }
 
     //Add money - I mean fish - into the bucket
-    public void BucketAdd(int value)
+    public void BucketAdd(int value, int volume)
     {
-        if (bucket.Count < bucketSize)
+        if (bucketVolume < bucketMaxVolume)
+        {
             bucket.Add(value);
+            bucketVolume += volume;
+        }
     }
 
     //Make the turtle hungrier every day

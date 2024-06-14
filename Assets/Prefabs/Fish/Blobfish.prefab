@@ -101,9 +101,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swimSpeed: 0.5
   hookPoint: {x: 0.483, y: -0.072}
-  value: 40
+  value: 60
   points: 100
   description: Blob.
+  volume: 35
   speed: 0.4
   escape: 5
   turnChance: 5

@@ -105,11 +105,12 @@ MonoBehaviour:
   value: 100
   points: 500
   description: Hard to comprehend for normal humans.
+  volume: 0
   speed: 0.07
   escape: 10
   turnChance: 0
   skipChance: 0
-  minDepth: 400
+  minDepth: 280
   maxDepth: 1000
 --- !u!50 &5619285366630353901
 Rigidbody2D:

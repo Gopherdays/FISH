@@ -105,12 +105,13 @@ MonoBehaviour:
   value: 120
   points: 2000
   description: ...Don't look at it. It already sees, it already knows.
+  volume: 55
   speed: 0.2
   escape: 19
   turnChance: 0
   skipChance: 1
-  minDepth: 90
-  maxDepth: 140
+  minDepth: 150
+  maxDepth: 200
 --- !u!50 &3399629275999387118
 Rigidbody2D:
   serializedVersion: 4

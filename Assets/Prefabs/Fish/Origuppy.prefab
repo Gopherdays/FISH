@@ -104,12 +104,13 @@ MonoBehaviour:
   value: 10
   points: 750
   description: Folded delicately and magically came to life.
+  volume: 20
   speed: 0.7
   escape: 7
   turnChance: 0
   skipChance: 0
   minDepth: 0
-  maxDepth: 20
+  maxDepth: 30
 --- !u!50 &5619285366630353901
 Rigidbody2D:
   serializedVersion: 4

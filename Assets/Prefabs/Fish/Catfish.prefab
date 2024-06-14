@@ -101,9 +101,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swimSpeed: 0.5
   hookPoint: {x: 0.4, y: 0}
-  value: 35
+  value: 100
   points: 200
   description: It's a catfish, nothing wrong here.
+  volume: 30
   speed: 1
   escape: 1
   turnChance: 50

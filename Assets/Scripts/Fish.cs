@@ -12,6 +12,7 @@ public class Fish : MonoBehaviour
     public int value;
     public int points;
     public string description;
+    public int volume;
 
     public float speed;
     public float escape;

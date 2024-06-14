@@ -367,7 +367,7 @@ public class Shop : MonoBehaviour
                             Dialogue(purchaseDialogue, Status.PurchasedItem);
                             chaching.Play();
                             //Make the bucket bigger (USES OLD SYSTEM, CAEL MAKE NEW SYSTEM)
-                            playerStats.bucketSize += 5;
+                            playerStats.bucketMaxVolume *= 2;
                             playerStats.bucketSizeCost *= 2;
                         }
                         break;

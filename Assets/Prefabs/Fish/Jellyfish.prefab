@@ -105,6 +105,7 @@ MonoBehaviour:
   points: 400
   description: Usually, a net is required to catch these, but clearly you didn't
     need it.
+  volume: 30
   speed: 2
   escape: 2
   turnChance: 40

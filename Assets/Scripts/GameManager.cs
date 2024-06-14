@@ -147,7 +147,7 @@ public class GameManager : MonoBehaviour
             }
 
             //Full bucket management
-            if (playerStats.bucket.Count >= playerStats.bucketSize)
+            if (playerStats.bucket.Count >= playerStats.bucketMaxVolume)
                 full = true;
         }
         else if (SceneManager.GetActiveScene().name == "Game Over")
@@ -210,10 +210,10 @@ public class GameManager : MonoBehaviour
     //Add a caught fish into the bucket
     public void AddFish(Fish fish, float mult)
     {
-        if (playerStats.bucket.Count < playerStats.bucketSize)
+        if (playerStats.bucket.Count < playerStats.bucketMaxVolume)
         {
             //Add the fish's value to the bucket
-            playerStats.BucketAdd(Mathf.RoundToInt(fish.value * mult));
+            playerStats.BucketAdd(Mathf.RoundToInt(fish.value * mult),fish.volume);
             bucketTotal += Mathf.RoundToInt(fish.value * mult);
             //If we haven't seen this fish before, add it into the discovered list
             if (!playerStats.discoveredFish.Contains(fish.description))
@@ -232,7 +232,7 @@ public class GameManager : MonoBehaviour
     //Update the UI that doesn't need immediate attention
     public void UIUpdate()
     {
-        bucketBar.fillAmount = (float)playerStats.bucket.Count / playerStats.bucketSize;
+        bucketBar.fillAmount = (float)playerStats.bucket.Count / playerStats.bucketMaxVolume;
         total.text = "$" + bucketTotal;
 
     }

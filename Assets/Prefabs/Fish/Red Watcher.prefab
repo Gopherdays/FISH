@@ -101,15 +101,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swimSpeed: 0.5
   hookPoint: {x: 0.25, y: -0.03}
-  value: 80
+  value: 35
   points: 750
   description: ...Don't look at it. It already sees, it already knows.
+  volume: 55
   speed: 0.7
   escape: 7
   turnChance: 0
   skipChance: 0
-  minDepth: 90
-  maxDepth: 140
+  minDepth: 40
+  maxDepth: 100
 --- !u!50 &5619285366630353901
 Rigidbody2D:
   serializedVersion: 4

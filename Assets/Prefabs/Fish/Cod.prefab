@@ -104,6 +104,7 @@ MonoBehaviour:
   value: 80
   points: 750
   description: This fish is too sweaty and hasn't taken that headset off in ages.
+  volume: 65
   speed: 0.7
   escape: 7
   turnChance: 0

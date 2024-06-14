@@ -105,6 +105,7 @@ MonoBehaviour:
   points: 250
   description: A colorful, domesticated fish. Science cannot tell if it meows or
     blubs. Mubs? Bleows?
+  volume: 35
   speed: 1
   escape: 2
   turnChance: 10

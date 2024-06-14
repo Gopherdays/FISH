@@ -101,16 +101,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swimSpeed: 0.5
   hookPoint: {x: 0.38, y: -0.1}
-  value: 6
+  value: 10
   points: 500
   description: Good for trophies, but most people don't want to pay to eat solid
     gold.
+  volume: 10
   speed: 2
   escape: 1
   turnChance: 10
   skipChance: 10
   minDepth: 10
-  maxDepth: 30
+  maxDepth: 40
 --- !u!50 &5619285366630353901
 Rigidbody2D:
   serializedVersion: 4
