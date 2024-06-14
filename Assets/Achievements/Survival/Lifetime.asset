@@ -17,3 +17,4 @@ MonoBehaviour:
   flavor: Time is meaningless now... DO NOT ACTUALLY PUT THIS IN THE GAME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   icon: {fileID: 21300000, guid: b89cb63c9dd21314ab5c45b8bd763106, type: 3}
   progressMax: 2147483647
+  hidden: 1

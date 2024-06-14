@@ -74,18 +74,21 @@ public class Encyclopedia : MonoBehaviour
                         //If you have the achievement, show completely
                         leftSidePictures[i - ((selection / 8) * 8)].color = Color.white;
                         leftSideNames[i - ((selection / 8) * 8)].text = gm.achievementManager.themChievos[i].name;
+                        leftSideNames[i - ((selection / 8) * 8)].color = Color.white;
                     }
                     else if (gm.achievementManager.themChievos[i].hidden)
                     {
                         //Unknown achievement...
                         leftSidePictures[i - ((selection / 8) * 8)].color = Color.black;
                         leftSideNames[i - ((selection / 8) * 8)].text = "???";
+                        leftSideNames[i - ((selection / 8) * 8)].color = new(0.4f, 0.4f, 0.4f);
                     }
                     else
                     {
                         //You can still see the achievement even if you don't have it
-                        leftSidePictures[i - ((selection / 8) * 8)].color = Color.white * 0.3f;
+                        leftSidePictures[i - ((selection / 8) * 8)].color = new(0.4f, 0.4f, 0.4f);
                         leftSideNames[i - ((selection / 8) * 8)].text = gm.achievementManager.themChievos[i].name;
+                        leftSideNames[i - ((selection / 8) * 8)].color = new(0.4f, 0.4f, 0.4f);
                     }
                 }
                 else
@@ -180,8 +183,6 @@ public class Encyclopedia : MonoBehaviour
     {
         //Set the image to show the achievement
         rightSideImage.sprite = ach.icon;
-        rightSideImage.SetNativeSize();
-        rightSideImage.rectTransform.sizeDelta *= 3;
 
         //Set the texts to the achievement
         rightSideStats[0].text = ach.name;

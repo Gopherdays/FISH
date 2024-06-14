@@ -17,3 +17,4 @@ MonoBehaviour:
   flavor: Haha, it almost feels normal now!
   icon: {fileID: 21300000, guid: 3993aac463b974b4eab2775a4e9c5550, type: 3}
   progressMax: 5041
+  hidden: 1

@@ -16,5 +16,6 @@ MonoBehaviour:
   desc: Buy 15 items, excluding food
   flavor: It's a wise decision to fund the only other sentient being you've found
     across this entire sea.
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 542b315b8c22a3145a10c7597c26df50, type: 3}
   progressMax: 15
+  hidden: 0

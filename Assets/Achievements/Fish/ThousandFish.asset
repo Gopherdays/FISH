@@ -18,3 +18,4 @@ MonoBehaviour:
     fish.
   icon: {fileID: 7482667652216324306, guid: 3f89686cc7ba00e4983c049f150c85c7, type: 3}
   progressMax: 1000
+  hidden: 1

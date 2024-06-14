@@ -15,5 +15,6 @@ MonoBehaviour:
   name: Local Supporter
   desc: Buy 3 items, excluding food
   flavor: Keep the change, which is $0.00.
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 542b315b8c22a3145a10c7597c26df50, type: 3}
   progressMax: 3
+  hidden: 0
