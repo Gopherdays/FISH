@@ -233,7 +233,7 @@ public class GameManager : MonoBehaviour
     //Update the UI that doesn't need immediate attention
     public void UIUpdate()
     {
-        bucketBar.fillAmount = (float)playerStats.bucket.Count / playerStats.bucketMaxVolume;
+        bucketBar.fillAmount = (float)playerStats.bucketVolume / playerStats.bucketMaxVolume;
         total.text = "$" + bucketTotal;
 
     }
