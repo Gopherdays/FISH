@@ -15,7 +15,7 @@ public class Fishing : MonoBehaviour
     //Hook controlling
     CircleCollider2D coll;
     Rigidbody2D rb;
-    public Transform origin;
+    Transform origin;
     SpriteRenderer sr;
     public float hookSpeedHorizontal = 2;
     public float hookSpeedVertical = 4;
