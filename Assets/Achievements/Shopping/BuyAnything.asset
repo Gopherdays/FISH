@@ -15,5 +15,6 @@ MonoBehaviour:
   name: Capitalism.
   desc: Buy something from the shop
   flavor: Since when do seagulls talk? Or operate cash registers? Or... use money?
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 542b315b8c22a3145a10c7597c26df50, type: 3}
   progressMax: 1
+  hidden: 0

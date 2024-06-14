@@ -15,5 +15,6 @@ MonoBehaviour:
   name: Wait No Nevermind
   desc: Let go of a fish that you'd rather not catch
   flavor: Know yourself.
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 9b94320e1052e7d4a8971845904d2506, type: 3}
   progressMax: 1
+  hidden: 0

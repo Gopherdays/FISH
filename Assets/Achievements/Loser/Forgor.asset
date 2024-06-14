@@ -17,3 +17,4 @@ MonoBehaviour:
   flavor: Now, where did I leave that one can...
   icon: {fileID: 21300000, guid: 3993aac463b974b4eab2775a4e9c5550, type: 3}
   progressMax: 1
+  hidden: 1

@@ -15,5 +15,6 @@ MonoBehaviour:
   name: Shiny...!
   desc: Catch a rare fish
   flavor: Wait... is glowing good? Or radioactive?
-  icon: {fileID: 0}
+  icon: {fileID: 7482667652216324306, guid: 3f89686cc7ba00e4983c049f150c85c7, type: 3}
   progressMax: 1
+  hidden: 1

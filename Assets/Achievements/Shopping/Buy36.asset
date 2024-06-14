@@ -15,5 +15,6 @@ MonoBehaviour:
   name: High Roller
   desc: Buy 36 items, excluding food
   flavor: There's no way I can't catch fish with this epic DRIP.
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 542b315b8c22a3145a10c7597c26df50, type: 3}
   progressMax: 36
+  hidden: 1

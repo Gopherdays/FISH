@@ -16,5 +16,6 @@ MonoBehaviour:
   desc: Buy 7 items, excluding food
   flavor: This stuff will help me get money to get more stuff to get more money to
     get more stuff.
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 542b315b8c22a3145a10c7597c26df50, type: 3}
   progressMax: 7
+  hidden: 0

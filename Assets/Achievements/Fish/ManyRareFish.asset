@@ -15,5 +15,6 @@ MonoBehaviour:
   name: Not So Rare Anymore
   desc: Catch 50 rare fish, in total
   flavor: There's too many of them. I keep opening doors and finding more.
-  icon: {fileID: 0}
+  icon: {fileID: 7482667652216324306, guid: 3f89686cc7ba00e4983c049f150c85c7, type: 3}
   progressMax: 50
+  hidden: 1
