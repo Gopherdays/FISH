@@ -112,6 +112,7 @@ public class Fishing : MonoBehaviour
         cs = cam.gameObject.GetComponent<CameraScript>();
         source = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
         sr = GetComponent<SpriteRenderer>();
 
         //Set actives
@@ -230,11 +231,6 @@ public class Fishing : MonoBehaviour
         //Stuff if you're not casted
         else if (!thrown)
         {
-            //Keep the hook on the player with no velocity
-            if (transform.position != origin.transform.position)
-                transform.position = origin.transform.position;
-            if (rb.velocity != Vector2.zero)
-                rb.velocity = Vector2.zero;
 
             //A button to cast
             if (confirm)
@@ -255,6 +251,7 @@ public class Fishing : MonoBehaviour
 
                 //Actually throw hook
                 thrown = true;
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
                 rb.AddForce(new Vector2(Random.Range(0.25f, 1.25f) * -300, Random.Range(0.5f, 1.25f) * 300));
                 source.clip = clip4;
                 source.Play();
@@ -447,7 +444,7 @@ public class Fishing : MonoBehaviour
 
         //Go back to before throw
         cam.Follow = GameObject.Find("Player").transform;
-        rb.constraints = RigidbodyConstraints2D.None;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
         fl.hook = gameObject;
         sr.enabled = true;
         fishing = false;
