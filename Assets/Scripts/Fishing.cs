@@ -8,14 +8,13 @@ using TMPro;
 public class Fishing : MonoBehaviour
 {
     //Player stuff
-    GameObject player;
     public GameManager gm;
     public PlayerStatsEpic stats;
 
     //Hook controlling
     CircleCollider2D coll;
     Rigidbody2D rb;
-    Transform origin;
+    Vector2 origin;
     SpriteRenderer sr;
     public float hookSpeedHorizontal = 2;
     public float hookSpeedVertical = 4;
@@ -106,7 +105,6 @@ public class Fishing : MonoBehaviour
         coll = GetComponent<CircleCollider2D>();
         fishingUI = GameObject.Find("Fishing UI");
         depth = GameObject.Find("Depth Meter");
-        player = GameObject.Find("Player");
         cam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
         fl = GameObject.Find("Line Renderer").GetComponent<FishingLine>();
         cs = cam.gameObject.GetComponent<CameraScript>();
@@ -137,6 +135,7 @@ public class Fishing : MonoBehaviour
         foodTutorial = true;
 
         //Vector 2s and position related things
+        origin = GameObject.Find("Player").transform.position;
         temp = new Vector2(0, 0);
         tempV = new Vector2(-7, -5);
         prevY = transform.position.y;
@@ -391,7 +390,7 @@ public class Fishing : MonoBehaviour
         if (hooking)
         {
             //Measure fish related values
-            distance = Vector2.Distance(fish.transform.position, player.transform.position);
+            distance = Vector2.Distance(fish.transform.position, origin);
             if (fish.transform.localScale.x > 0)
                 fish.transform.SetPositionAndRotation(new Vector2(-7, -5), Quaternion.Euler(0, 0, 90));
             else if (fish.transform.localScale.x < 0)
@@ -403,14 +402,14 @@ public class Fishing : MonoBehaviour
 
             //Camera and UI
             cs.Shake(100);
-            cam.Follow = player.transform;
+            cam.Follow = GameObject.Find("Player").transform;
             fishingUI.SetActive(true);
             depth.SetActive(true);
             if (tutorial)
                 aim.SetActive(true);
             
             //Get the hook back to the player
-            transform.position = player.transform.position;
+            transform.position = origin;
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
             //Bools
