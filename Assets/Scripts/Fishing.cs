@@ -8,8 +8,8 @@ using TMPro;
 public class Fishing : MonoBehaviour
 {
     //Player stuff
-    public GameManager gm;
-    public PlayerStatsEpic stats;
+    GameManager gm;
+    [SerializeField] PlayerStatsEpic stats;
 
     //Hook controlling
     CircleCollider2D coll;
@@ -26,7 +26,7 @@ public class Fishing : MonoBehaviour
     public Fish fishFish;
     public float valueMult;
     Vector2 tempV;
-
+    
     //Reeling UI
     public GameObject indicator;
     public GameObject catcher;
@@ -44,7 +44,6 @@ public class Fishing : MonoBehaviour
     List<float> positions = new List<float>();
 
     //Input whatevers
-    bool confirm;
     bool once;
     bool changed;
     bool bulk;
@@ -105,12 +104,12 @@ public class Fishing : MonoBehaviour
         coll = GetComponent<CircleCollider2D>();
         fishingUI = GameObject.Find("Fishing UI");
         depth = GameObject.Find("Depth Meter");
+        gm = GameObject.Find("Game Manager").GetComponent<GameManager>();
         cam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
         fl = GameObject.Find("Line Renderer").GetComponent<FishingLine>();
         cs = cam.gameObject.GetComponent<CameraScript>();
         source = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
-        FreezeUnfreeze();
         sr = GetComponent<SpriteRenderer>();
 
         //Set actives
@@ -122,6 +121,7 @@ public class Fishing : MonoBehaviour
         feed.SetActive(false);
 
         //Don't move at the start
+        FreezeUnfreeze();
         up = false;
         left = false;
         down = false;
@@ -135,6 +135,7 @@ public class Fishing : MonoBehaviour
         foodTutorial = true;
 
         //Vector 2s and position related things
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
         origin = GameObject.Find("Player").transform.position;
         temp = new Vector2(0, 0);
         tempV = new Vector2(-7, -5);
@@ -152,20 +153,6 @@ public class Fishing : MonoBehaviour
 
     private void Update()
     {
-        // A Button while casted and outside of the shop
-        if (thrown && confirm && !gm.shoppe.activeSelf)
-        {
-            //Only confirm once if bulk is disabled
-            if (gm.playerStats.day < 4 || !bulk)
-                confirm = false;
-            //If the player has food, play the food sound (PlayerStats.Feed() bool does the feeding already)
-            if (gm.playerStats.Feed())
-            {
-                source.clip = sounds2[Random.Range(0, sounds2.Length)];
-                source.Play();
-            }
-        }
-        
         // Direction change while casted
         if (thrown && changed)
         {
@@ -226,33 +213,33 @@ public class Fishing : MonoBehaviour
                     break;
             }
         }
+    }
+    private void Confirm()
+    {
+        //Get rid of the tutorial
+        cast.SetActive(false);
 
-        //Stuff if you're not casted
-        else if (!thrown)
+        //Prep movement/feed tutorials
+        if (tutorial)
+            StartCoroutine(WaitForInWater(move));
+        if (foodBought && foodTutorial && !tutorial)
+            StartCoroutine(WaitForInWater(feed));
+
+        //Actually throw hook
+        if (!thrown)
         {
-
-            //A button to cast
-            if (confirm)
+            thrown = true;
+            FreezeUnfreeze();
+            rb.AddForce(new Vector2(Random.Range(0.25f, 1.25f) * -300, Random.Range(0.5f, 1.25f) * 300));
+            source.clip = clip4;
+            source.Play();
+        }
+        if (thrown && !gm.shoppe.activeSelf)
+        {
+            //If the player has food, play the food sound (PlayerStats.Feed() bool does the feeding already)
+            if (gm.playerStats.Feed())
             {
-                confirm = false;
-                //Get rid of the tutorial
-                cast.SetActive(false);
-
-                //Disable shop??
-                if (shop.activeSelf)
-                    shop.SetActive(false);
-                
-                //Prep movement/feed tutorials
-                if (tutorial)
-                    StartCoroutine(WaitForInWater(move));
-                if (foodBought && foodTutorial && !tutorial)
-                    StartCoroutine(WaitForInWater(feed));
-
-                //Actually throw hook
-                thrown = true;
-                FreezeUnfreeze();
-                rb.AddForce(new Vector2(Random.Range(0.25f, 1.25f) * -300, Random.Range(0.5f, 1.25f) * 300));
-                source.clip = clip4;
+                source.clip = sounds2[Random.Range(0, sounds2.Length)];
                 source.Play();
             }
         }
@@ -480,49 +467,26 @@ public class Fishing : MonoBehaviour
     {
         if (Random.Range(1, 101) <= turnChance)
             direction = !direction;
-
         if (Random.Range(1, 101) <= skipChance)
             skip = true;
-
-        int temp;
-        temp = position;
-        if (direction && skip)
-            temp += 2;
-        else if (direction && !skip)
-            temp++;
-        else if (!direction && skip)
-            temp -= 2;
-        else
-            temp--;
-        temp = FixIndexOverflow(temp);
+        int additive = 1;
+        if (skip)
+            additive++;
+        if (!direction)
+            additive *= -1;
+        position += additive;
+        position = FixIndexOverflow(position);
         skip = false;
-        return temp;
+        return position;
     }
 
     //Jake should probably find a better way to do this part
     int FixIndexOverflow(int temp)
     {
-        switch (temp)
-        {
-            case 8:
-                temp = 0;
-                break;
-
-            case 9:
-                temp = 1;
-                break;
-
-            case -1:
-                temp = 7;
-                break;
-
-            case -2:
-                temp = 6;
-                break;
-
-            default:
-                break;
-        }
+        if (temp > 7) //How's this
+            temp = temp % 7 - 1;
+        else if (temp < 0)
+            temp += 8;
         return temp;
     }
 
@@ -557,10 +521,6 @@ public class Fishing : MonoBehaviour
         else
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         coll.enabled = !coll.enabled;
-        if (rb.position.y >= 0)
-        {
-            thrown = false;
-        }
     }
 
     //InputSystem stuff
@@ -620,7 +580,7 @@ public class Fishing : MonoBehaviour
     {
         if (context.started && !gm.shoppe.activeSelf && !gm.pause.activeSelf)
         {
-            confirm = true;
+            Confirm();
             bulk = true;
         }
         if (context.canceled)
