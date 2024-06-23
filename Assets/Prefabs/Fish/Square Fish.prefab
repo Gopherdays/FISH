@@ -103,7 +103,7 @@ MonoBehaviour:
   hookPoint: {x: 0.25, y: -0.03}
   value: 35
   points: 750
-  description: ...Don't look at it. It already sees, it already knows.
+  description: It goes in the square hole.
   volume: 55
   speed: 0.7
   escape: 7

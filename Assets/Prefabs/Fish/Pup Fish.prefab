@@ -27,14 +27,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5619285366630353900}
-  m_LocalRotation: {x: -0, y: -0, z: 0.024885295, w: 0.99969035}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -20.8204, y: -4.3019, z: 0}
   m_LocalScale: {x: 1.0961, y: 1.0961, z: 1.0961}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2.852}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5619285366630353888
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   hookPoint: {x: 0.25, y: -0.03}
   value: 35
   points: 750
-  description: ...Don't look at it. It already sees, it already knows.
+  description: An envelope just came in the mailbox. I wonder what it says?
   volume: 55
   speed: 0.7
   escape: 7
