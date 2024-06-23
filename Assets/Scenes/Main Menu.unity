@@ -343,7 +343,7 @@ PrefabInstance:
       objectReference: {fileID: 807999001}
     - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
       propertyPath: allFish.Array.size
-      value: 21
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
       propertyPath: credits.Array.size
@@ -392,11 +392,23 @@ PrefabInstance:
     - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
       propertyPath: allFish.Array.data[21]
       value: 
-      objectReference: {fileID: 5619285366630353900, guid: 5727d4ae355151745af300c536f33300, type: 3}
+      objectReference: {fileID: 5619285366630353900, guid: b6f0c88886104784caf3ebddd4da1852, type: 3}
     - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
       propertyPath: allFish.Array.data[22]
       value: 
-      objectReference: {fileID: 5619285366630353900, guid: 5727d4ae355151745af300c536f33300, type: 3}
+      objectReference: {fileID: 5619285366630353900, guid: 072980478ced2a74bac9b427bf017410, type: 3}
+    - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
+      propertyPath: allFish.Array.data[23]
+      value: 
+      objectReference: {fileID: 5619285366630353900, guid: 6e74a22ce95261f4fa92483c31a10b5e, type: 3}
+    - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
+      propertyPath: allFish.Array.data[24]
+      value: 
+      objectReference: {fileID: 5619285366630353900, guid: bf249e989a69b1740af00d5376d497a0, type: 3}
+    - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
+      propertyPath: allFish.Array.data[25]
+      value: 
+      objectReference: {fileID: 5619285366630353900, guid: 4be6b8521bb45124dbf54d021f01ad67, type: 3}
     - target: {fileID: 4430734427699054212, guid: 1941ac4a4292b694dbacaa5f485fea6b, type: 3}
       propertyPath: credits.Array.data[10]
       value: Voice Actor (Seagull)<br>Xavier
